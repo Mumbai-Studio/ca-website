@@ -1698,14 +1698,14 @@ C.principles = [
     sub: 'Design in dialogue with place', full: 'We approach each project as an inquiry into the interplay of site, climate, culture and human needs. Through close dialogue with clients and communities, we reconcile aspirations, resources and constraints to develop context-responsive architecture. Participatory engagement informs our process across scales, grounding each intervention in its setting while seeking to enrich the lives and environments it touches.' },
   { n: 'Performative', c: 'marigold', img: 'img/hb/bgrtmumbai', fpm: '36% 50%', s: 'bgrt-mumbai', pt: 'BGRT Mumbai', sent: 'We design for environmental responsibility, human well-being and enduring value.',
     sub: 'Performance through time', full: 'We design buildings and systems for enduring performance, integrating environmental responsibility, resource efficiency and human well-being. Passive strategies, responsible material choices and adaptable planning inform buildings that perform efficiently, respond to changing needs and retain their value over time. Our design longevity strategies anchor human health and well-being at the center of environmental performance.' },
-  { n: 'Collaborative', c: 'fog', img: 'img/cascadia/p01', fpm: '100% 50%', vid: 'vid/cascadia-teaser-1080.mp4', vidm: 'vid/cascadia-teaser-720.mp4', s: 'cascadia', pt: 'Cascadia, with J. MAYER H. und Partner', sent: 'We bring global expertise and diverse perspectives into the making of each project.',
+  { n: 'Collaborative', c: 'fog', img: 'img/cascadia/p01', fpm: '100% 50%', vid: 'vid/cascadia-teaser-1080.mp4', vidm: 'vid/cascadia-teaser-720.mp4', loop: 10, s: 'cascadia', pt: 'Cascadia, with J. MAYER H. und Partner', sent: 'We bring global expertise and diverse perspectives into the making of each project.',
     sub: 'Thinking beyond disciplines', full: 'We bring clients, users and a global network of specialists into the design process as active collaborators. By bringing diverse disciplines and perspectives into dialogue, we challenge established assumptions, synthesize collective knowledge and discover more appropriate architectural solutions.' }
 ];
 C.intro = ['Our projects evolve out of a meaningful convergence of people, places, culture, climate, ecology and economics.',
   'Clients are our collaborators. Along with international teams of engineers, consultants and building scientists, our clients and end-users actively engage and collaborate to create architecture that performs and stays relevant for decades.'];
 C.panels = [
   { id: 'H08', st: 'Architecture that|fosters democracy', s: 'national-unity-pavilion', img: 'img/unity/p03', fpm: '75% 50%', sent: 'Conceived for the 75th anniversary of India’s independence, the pavilion brings together a pylon representing each state and union territory around a central Bodhi tree, within a footprint comparable to the Great Stupa at Sanchi.', cap: 'National Unity Pavilion · Notions of India|One of the three winning entries, 2021' },
-  { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
+  { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', loop: 10, sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
   { id: 'H10', st: 'Architecture|for peace', s: '', img: 'img/hb/peacecanopy', sent: 'Our proposal for India’s National War Museum placed peace at its center and was exhibited by the Cooper Hewitt, Smithsonian Design Museum in New York.', cap: 'Peace Pavilion · Exhibited at the Cooper Hewitt, New York|and the Museum of Craft and Design, San Francisco' },
   { id: 'H11', st: 'Homes shaped by the|people who live in them', s: 'house-of-cantilevers', img: 'img/cantilevers/p02', fpm: '80% 50%', sent: 'Our sophisticated mapping tools capture the unique and distinctive lifestyle and aspirations of each of our clients.', cap: 'House of Cantilevers|Kerala' },
   { id: 'H11a', st: 'Beyond the cost|of construction', s: 'project-alpha', img: 'img/alpha/p05', fpm: '62% 50%', sent: 'For ICON’s Initiative 99, 3D-printed homes built around two curved walls, with policy safeguards that keep them affordable: the cost of a dwelling is not the cost of housing.', cap: 'Project Alpha · ICON Initiative 99|Texas' },
@@ -1990,7 +1990,7 @@ C.stubs = {
 };
 C.rev = {
   'reflected-topography': { seq: ['p03', 'p10', 'p07', 'p02', 'p01', 'p04', 'p14'], rot: ['p10', 'p01', 'p07'], mrot: ['p03', 'p10', 'p01'], card: 'p01', sec: { 0: { sk: ['p05'], img: 'p15' } }, rel: ['cascadia', 'ntt', 'bgrtmumbai'], unflag: ['Year'] },
-  'iconic-gateway': { teaser: { src: 'vid/diyar-gateway-1080.mp4', m: 'vid/diyar-gateway-720.mp4' }, seq: ['p01', 'p02', 'p04', 'p03', 'p05'], rot: ['p01', 'p04', 'p03'], card: 'p01', feat: 'p01', facts: [['Structure', 'Web Structures | Ramboll']], rel: ['musi', 'national-unity-pavilion', 'brooklyn'], unflag: ['Year'],
+  'iconic-gateway': { teaser: { src: 'vid/diyar-gateway-1080.mp4', m: 'vid/diyar-gateway-720.mp4', loop: 10 }, seq: ['p01', 'p02', 'p04', 'p03', 'p05'], rot: ['p01', 'p04', 'p03'], card: 'p01', feat: 'p01', facts: [['Structure', 'Web Structures | Ramboll']], rel: ['musi', 'national-unity-pavilion', 'brooklyn'], unflag: ['Year'],
     media: [{ k: 'Video', items: [{ t: 'The Iconic Gateway film', tbs: true }] }],
     add: [{ f: 's01', k: 'sk', cap: 'Concept sketch, the pylon', r: 0.786 }, { f: 's02', k: 'sk', cap: 'Concept sketch, the crossing', r: 1.594 }, { f: 's03', k: 'sk', cap: 'Concept sketch, the elevation', r: 1.679 },
       { f: 'd01', k: 'dr', cap: 'Site plan', r: 1.361 },
@@ -2004,7 +2004,7 @@ C.rev = {
     media: [{ k: 'Video', items: [{ t: 'Video 1 · The Notions video, 4:36', src: 'vid/unity-film.mp4', poster: 'vid/unity-film.webp' }, { t: 'Video 2', tbs: true }] }],
     sec: { 0: { sk: ['p02'], wide: true }, 1: { vid: { src: 'vid/unity-sim.mp4', poster: 'vid/unity-sim.webp', r: 1.915, cap: 'Deflection of the canopy under load, structural simulation' } } }, drw: ['p02', 'p08', 'p05', 'p10', 'p06', 'p09'], rel: ['the-souk', 'peace', 'warmuseum'] },
   cascadia: { seq: ['p01', 'p02', 'p04', 'p03', 'p05', 'p06', 'p08'], rot: ['p01', 'p04', 'p05'],
-    teaser: { src: 'vid/cascadia-teaser-1080.mp4', m: 'vid/cascadia-teaser-720.mp4' },
+    teaser: { src: 'vid/cascadia-teaser-1080.mp4', m: 'vid/cascadia-teaser-720.mp4', loop: 10 },
     media: [{ k: 'Walkthrough', items: [{ t: 'Cascadia walkthrough, 1:31', src: 'vid/cascadia-walkthrough.mp4', poster: 'vid/cascadia-walkthrough.webp' }] }],
     gvid: [{ src: 'vid/cascadia-teaser-720.mp4', full: 'vid/cascadia-walkthrough.mp4', poster: 'vid/cascadia-walkthrough.webp', t: 'Cascadia walkthrough', d: '1:31', w: 2 }], sec: { 0: { sk: ['p13'] } }, gif: ['p13', 'p14', 'p15'], drw: ['p07', 'p09', 'p10', 'p11', 'p12'], rel: ['reflected-topography', 'urnes-stave-heritage-center', 'musi'] },
   'stacked-tectonics': { seq: ['p01', 'p05', 'p07', 'p03', 'p06', 'p08', 'p02'], rot: ['p01', 'p05', 'p07'], mrot: ['p03', 'p06'], sec: { 1: { sk: ['p04'] } }, rel: ['wrap-3', 'urnes-stave-heritage-center', 'national-unity-pavilion'] },
@@ -3254,7 +3254,7 @@ function home() {
 const wksBox = i => i >= 3 ? `<span class="wks" role="link" tabindex="0" data-wks aria-label="Works: see all projects"><span class="wa" aria-hidden="true">→</span><span aria-hidden="true">Works</span></span>` : '';
 function panel(x, i) {
   const ims = x.mimg ? `<div class="im imd" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div><div class="im imm" ${bg(x.mimg)}></div>` : `<div class="im" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div>`;
-  const tv = x.vid && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="none" data-src="${A(x.vid)}" data-m="${A(x.vidm || x.vid)}" data-replay aria-hidden="true"></video>` : '';
+  const tv = x.vid && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="none" data-src="${A(x.vid)}" data-m="${A(x.vidm || x.vid)}"${x.loop ? ` data-loop="${+x.loop}"` : ''} data-replay aria-hidden="true"></video>` : '';
   const inner = `${ims}${tv}<div class="shade"></div>
     <div class="pp-in"><div><div class="ttl k5">${lines(x.st, 'dsp d-l')}</div><p>${x.id === 'H10' ? chLink(esc(x.sent)) : esc(x.sent)}</p><span class="mono cap2">${x.cap.split('|').map(t => nb(fl(t)).replace(/ ~ /g, '<span class="dsep"> · </span><span class="mnl"></span>')).join('<br>')}${x.lk ? `<br><span class="caplk">${esc(x.lk)}</span>` : ''}</span></div><span class="pp-r">${wksBox(i)}${x.s ? '<span class="sq" aria-hidden="true">→</span>' : `<span class="tbc">${tbc}</span>`}</span></div>${x.q ? `<p class="ppq" aria-hidden="true">${esc(x.q)}</p>` : ''}`;
   return x.s ? `<a class="pp" href="#p-${x.s}" data-tone="dark" data-pp aria-label="${esc(x.st.replace('|', ' '))}">${inner}</a>` : `<div class="pp" data-tone="dark" data-pp>${inner}</div>`;
@@ -3266,7 +3266,7 @@ const ptHtml = t => { const [name, w] = t.split(', with '); const ci = name.inde
   if (w) h += `<span class="d-br"></span> <span class="nobr">with ${nb(esc(w))}</span>`; return h; };
 function slide(x, i, band) {
   const link = x.s ? `<a class="lk sii" href="#p-${x.s}"><span class="sii-a">See it in ·</span><span class="sii-b">${ptHtml(x.pt)}&nbsp;→</span></a>` : `<span class="mono sii"><span class="sii-a">See it in ·</span><span class="sii-b">${ptHtml(x.pt)}${tbc ? ` · <span style="opacity:.8">${tbc}</span>` : ''}</span></span>`;
-  const tv = x.vid && !band && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="none" data-src="${A(x.vid)}" data-m="${A(x.vidm || x.vid)}" data-replay aria-hidden="true"></video>` : '';
+  const tv = x.vid && !band && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="none" data-src="${A(x.vid)}" data-m="${A(x.vidm || x.vid)}"${x.loop ? ` data-loop="${+x.loop}"` : ''} data-replay aria-hidden="true"></video>` : '';
   return `<section class="ps${band ? ' band' : ''}" id="${band ? 'principle-' + x.n.toLowerCase() : ''}" data-tone="dark" aria-label="Principle ${i + 1}: ${x.n}">
     <div class="im" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div>${tv}<div class="sh"></div>
     <div class="txt">
@@ -3509,7 +3509,7 @@ function project(slug) {
   const drwTiles = (gifItems.length && gifF ? `<button class="gif gifx" data-lb="${all.indexOf(gifItems[0])}" data-gif aria-label="Open the sketches"><div class="on" data-bg="${A(gifF.gif)}" data-alt="${esc(p.title)}: ${/development/i.test(gifItems[0].cap) ? 'development' : 'concept'} sketches"></div><span class="dt"><b>${/development/i.test(gifItems[0].cap) ? 'Development sketches' : 'Concept sketches'}<small>${gifItems.length} sketches</small></b></span></button>` : gifItems.length ? `<button class="gif" data-lb="${all.indexOf(gifItems[0])}" data-gif aria-label="Open the sketches">${gifItems.map((g, i) => `<div class="${i ? '' : 'on'}" ${bg(g.f, false, `${p.title}: ${g.cap}`)}></div>`).join('')}<span class="dt"><b>${/development/i.test(gifItems[0].cap) ? 'Development sketches' : 'Concept sketches'}<small data-gifn>1 / ${gifItems.length}</small></b></span></button>` : '')
     + drwOrder.map(d => `<button data-lb="${all.indexOf(d)}">${d.f === 'img/unity/p02' ? symsHtml() : `<div ${bg(d.f, false, `${p.title}: ${d.cap}`)}></div>`}${dcap(d)}</button>`).join('');
   const mediaRows = media.map(m => LIVE ? { ...m, items: m.items.filter(it => !it.tbs) } : m).filter(m => m.items.length).map(m => `<div><dt>${esc(m.k)}</dt><dd>${m.items.map(it => it.tbs ? `${esc(it.t)}, to be supplied <span class="flag" title="To be supplied by the studio">⚑</span>` : it.u ? `<a class="play" href="${esc(safeUrl(it.u))}" target="_blank" rel="noopener">${esc(it.t)}<i class="ne" aria-hidden="true"></i></a>` : `<button type="button" class="play" data-vid="${A(it.src)}" data-poster="${A(it.poster || '')}" data-t="${esc(it.t.startsWith(p.title) ? it.t : p.title + ' · ' + it.t)}">${esc(it.t)}</button>`).join('<br>')}</dd></div>`).join('');
-  const tv = r.teaser && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="auto" data-src="${A(r.teaser.src)}" data-m="${A(r.teaser.m || r.teaser.src)}" aria-hidden="true"></video>` : '';
+  const tv = r.teaser && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="auto" data-src="${A(r.teaser.src)}" data-m="${A(r.teaser.m || r.teaser.src)}"${r.teaser.loop ? ` data-loop="${+r.teaser.loop}"` : ''} aria-hidden="true"></video>` : '';
   const shareUrl = SEO.abs(SEO.toPath('p-' + slug));
   const html = `
   <section class="prh" data-tone="dark">
@@ -4178,7 +4178,9 @@ function loopInit() {
   const o = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { if (!v.getAttribute('src')) v.src = v.dataset.src; v.muted = true; v.playsInline = true; v.loop = true; const pr = v.play(); if (pr && pr.catch) pr.catch(() => tapToPlay(v)); v._play = () => v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
   vs.forEach(v => o.observe(v)); cleanup.push(() => o.disconnect());
 }
-/* teaser films: play once over the still, then hand over to it; on the home slide again on every visit to the slide */
+/* teaser films: play once over the still, then hand over to it; on the home slide again on every visit to the slide
+   review of 25 October: a film with data-loop plays again that many seconds after it has settled on the still, and again
+   when the visitor comes back to it (back to the browser tab, or scrolled back to it) */
 function teaserInit() {
   const vs = $$('video.tv', app); if (!vs.length) return;
   if (CAP || PRE) { vs.forEach(v => v.remove()); return; }
@@ -4193,6 +4195,16 @@ function teaserInit() {
     const host0 = v.parentElement, on = x => { host0.classList.toggle('tvon', x && phone); host0.classList.toggle('playing', !!x); filmBody(); };
     host0.classList.add('film');
     const hold = !!v.closest('.pslides');
+    const loopS = +v.dataset.loop || 0; let wait = 0, seen = true;
+    const again = () => { clearTimeout(wait); wait = 0; if (!document.body.contains(v) || document.hidden || !seen) return;
+      if (!v.classList.contains('done')) { v.classList.add('done'); wait = setTimeout(play, 1600); return; }   // a held last frame dissolves to the still first
+      play(); };
+    if (loopS) {
+      v.addEventListener('ended', () => { clearTimeout(wait); wait = setTimeout(again, loopS * 1000); });
+      v.addEventListener('playing', () => { clearTimeout(wait); wait = 0; });
+      const back = () => { if (!document.hidden && seen && v.paused && v.getAttribute('src')) again(); };
+      document.addEventListener('visibilitychange', back); cleanup.push(() => { document.removeEventListener('visibilitychange', back); clearTimeout(wait); });
+    }
     v.addEventListener('playing', () => { fading = false; frame(); v.classList.remove('done'); on(true); });
     v.addEventListener('timeupdate', () => { if (hold) return; if (!fading && v.duration && v.duration - v.currentTime < 1.6) { fading = true; v.classList.add('done'); on(false); } });
     v.addEventListener('ended', () => { if (hold) { host0.classList.remove('playing'); filmBody(); return; } v.classList.add('done'); on(false); });
@@ -4206,9 +4218,12 @@ function teaserInit() {
     addEventListener('orientationchange', turn); cleanup.push(() => removeEventListener('orientationchange', turn));
     if (v.hasAttribute('data-replay')) {
       const host = v.parentElement;
-      const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(); else { v.classList.add('done'); v.pause(); } }), { threshold: .55 });
+      const o = new IntersectionObserver(es => es.forEach(e => { seen = e.isIntersecting; if (e.isIntersecting) play(); else { clearTimeout(wait); v.classList.add('done'); v.pause(); } }), { threshold: .55 });
       o.observe(host); cleanup.push(() => o.disconnect());
-    } else play();
+    } else { play();
+      // a looping project film rests while the visitor reads further down, and starts again when they scroll back to it
+      if (loopS) { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (!seen) { seen = true; again(); } } else { seen = false; clearTimeout(wait); v.classList.add('done'); v.pause(); } }), { threshold: .3 });
+        o.observe(v.parentElement); cleanup.push(() => o.disconnect()); } }
   });
 }
 /* where a phone refuses to start a film on its own (battery saver, some in-app browsers), the first touch anywhere starts the films on screen */
