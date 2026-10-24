@@ -155,7 +155,7 @@ A subdomain such as `new.collaborativearchitecture.com` also works. If you use o
 **Checks:**
 
 - [ ] `/` opens: the opening animation, then the home page. On a phone too.
-- [ ] Work, a few project pages, Expertise, Lab, Awards, Studio, News, Contact, Privacy, Cookies.
+- [ ] Work, a few project pages, Expertise, Lab, Awards, Studio, News, Contact, Privacy (and /cookies/, which should open Privacy).
 - [ ] Menu, search, image viewer, a project film (Cascadia, National Unity Pavilion), the map view (Work → Map).
 - [ ] The cookie box appears once; *Accept all* and *Essential only* both close it.
 - [ ] The inquiry and newsletter forms (5.5).

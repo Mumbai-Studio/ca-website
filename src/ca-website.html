@@ -1558,6 +1558,23 @@ html.snap .pslides>.ps{position:relative}
 .svb{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;text-align:left}
 /* 24 October: visually hidden, still read by screen readers and AI agents */
 .vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* 25 October 2026: the privacy policy, a heading column and a reading column; its tables stack on phones */
+.pol{border-top:1px solid var(--line);margin-inline:var(--gut);padding:clamp(34px,4vw,64px) 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:clamp(20px,4vw,70px)}
+.pol .hd{margin:0}
+.pol-b{max-width:880px}
+.pol-b>*+*{margin-top:14px}
+.pol-b p,.pol-b li{font-size:16px;line-height:1.6}
+.pol-b ul,.pol-b ol{padding-left:1.25em}
+.pol-b li+li{margin-top:6px}
+.pol-b a{text-decoration:underline;text-underline-offset:.15em}
+.pol-b table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.45}
+.pol-b th,.pol-b td{text-align:left;vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line)}
+.pol-b th{font:500 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--concrete);border-bottom-color:var(--ink)}
+.pol-b code{font:13px/1 var(--mono)}
+.pol-b .btn{margin-top:6px}
+@media (max-width:860px){.pol{grid-template-columns:1fr}}
+@media (max-width:700px){.pol-b thead{display:none}.pol-b tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}.pol-b td{display:block;border:0;padding:3px 0}
+  .pol-b td[data-l]::before{content:attr(data-l);display:block;font:500 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--concrete);margin-bottom:2px}}
 /* STANDING RULE, 22 October 2026: no fog between transitions. The picture layer is always fully opaque and never animates;
    keep this rule in every later draft */
 img.bgi{opacity:1!important;transition:none!important}
@@ -1624,18 +1641,17 @@ img.bgi{opacity:1!important;transition:none!important}
     <div><h2 class="fh">Contact</h2><ul><li><a class="b" href="#contact" data-studio="mumbai">Mumbai Studio →</a></li><li><a class="b" href="#contact" data-studio="riyadh">Riyadh Studio →</a></li></ul></div>
     <div><h2 class="fh">Follow us</h2><ul><li><a class="sub" href="#lab-newsletters">Subscribe to the newsletter</a></li><li><a class="logs" href="https://www.linkedin.com/newsletters/collaborative-logs-7413949544054530048/" target="_blank" rel="noopener">The Collaborative Logs<i class="ne" aria-hidden="true"></i></a></li>
       <li><a class="si" href="https://www.instagram.com/collaborativearchitecture/" target="_blank" rel="noopener me"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 4.86a4.94 4.94 0 1 0 0 9.88 4.94 4.94 0 0 0 0-9.88zm0 8.14a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.14-9.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg><span>Instagram</span></a></li><li><a class="si" href="https://www.linkedin.com/company/collaborative-architecture/" target="_blank" rel="noopener me"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.2 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.03 0-2.34 1.58-2.34 3.21V21h-4z"/></svg><span>LinkedIn</span></a></li></ul></div>
-    <div><h4 aria-hidden="true">&nbsp;</h4><ul><li><a class="b" href="#news-press">Press room</a></li><li><a class="b" href="#studio" data-sec="careers" data-sec-page="studio">Careers</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#cookies">Cookie policy</a></li><li><button type="button" data-cookie-settings style="text-decoration:none">Cookie settings</button></li></ul></div>
+    <div><h4 aria-hidden="true">&nbsp;</h4><ul><li><a class="b" href="#news-press">Press room</a></li><li><a class="b" href="#studio" data-sec="careers" data-sec-page="studio">Careers</a></li><li><a href="#privacy">Privacy policy</a></li><li><button type="button" data-cookie-settings style="text-decoration:none">Cookie settings</button></li></ul></div>
   </div>
   <div class="ftr-b"><span>© Collaborative Architecture <span id="yr">2026</span></span><span class="mono" data-draft-only>Draft website 2.9 for review · built from the web handbook, version 2.5<a class="ftr-adm" href="#admin" rel="nofollow">Admin</a></span><span class="mono" data-live-only hidden>Mumbai · Riyadh</span></div>
 </footer>
 
 <div class="ck" id="ck" hidden role="dialog" aria-labelledby="ck-h" aria-live="polite">
   <h2 id="ck-h">Cookies on this site</h2>
-  <p>We use essential cookies to run this site. With your permission we also use analytics to understand how it is used, and video and map services that set their own cookies. <a href="#cookies">Read the cookie policy</a>.</p>
+  <p>We use essential cookies and browser storage to run this site. With your permission we also use Google Analytics to understand how it is used. <a href="#privacy">Read our privacy policy</a>.</p>
   <div class="ck-sw" data-ck-sw hidden>
     <label>Essential · always on <input type="checkbox" checked disabled id="ck-es"></label>
     <label for="ck-an">Analytics <input type="checkbox" id="ck-an"></label>
-    <label for="ck-vm">Video and maps <input type="checkbox" id="ck-vm"></label>
   </div>
   <div class="ck-row"><button class="btn pri" type="button" data-ck-all>Accept all</button><button class="btn" type="button" data-ck-ess>Essential only</button><button class="btn" type="button" data-ck-set>Settings</button><button class="btn" type="button" data-ck-save hidden>Save preferences</button></div>
 </div>
@@ -2500,7 +2516,7 @@ const T = {
   'news-press': ['Press room', 'Features, interviews and books on Collaborative Architecture, with press images and contacts for publications.'],
   contact: ['Contact: Mumbai and Riyadh', 'Start a conversation with Collaborative Architecture about a new project, a career, a collaboration, research or supply. Studios in Mumbai and Riyadh.'],
   cookies: ['Cookie policy', 'The cookies used on collaborativearchitecture.com, what they do and how long they last.'],
-  privacy: ['Privacy', 'How Collaborative Architecture collects, uses and protects personal data.'],
+  privacy: ['Privacy policy', 'How Collaborative Architecture collects, uses, shares and protects personal data, including cookies, and the rights of visitors in India, the Gulf and Europe.'],
   links: ['Links', 'Latest work, the newsletter and contacts of Collaborative Architecture, for the Instagram and LinkedIn profiles.'],
   admin: ['Studio admin', 'Sign in to edit the site.'],
   nothing: ['Page not found', 'This page does not exist. Find a project in the index of all work.']
@@ -3096,7 +3112,7 @@ const LOCAL = location.protocol === 'file:';
 const SEO = window.CA_SEO;
 const PATHMODE = /^https?:$/.test(location.protocol) && document.documentElement.dataset.routing === 'path';
 /* draft 2.9: addresses renamed for American English; the old ones still open the page */
-const ALIAS = { 'x-design-management': 'x-design-and-behavioral-mapping', 'x-design-and-behavioural-mapping': 'x-design-and-behavioral-mapping', 'p-urnes-stave-heritage-centre': 'p-urnes-stave-heritage-center' };
+const ALIAS = { cookies: 'privacy', 'x-design-management': 'x-design-and-behavioral-mapping', 'x-design-and-behavioural-mapping': 'x-design-and-behavioral-mapping', 'p-urnes-stave-heritage-centre': 'p-urnes-stave-heritage-center' };
 const routeNow = () => PATHMODE ? (SEO.fromPath(location.pathname) || 'nothing') : (decodeURIComponent(location.hash.slice(1)) || 'home');
 const A = f => PATHMODE && f && /^(img|vid)\//.test(f) ? '/' + f : f;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -3837,28 +3853,136 @@ function contactInit() {
 }
 
 /* ---------- legal and 404 T10 ---------- */
-function cookiesPage() {
-  const html = `<section class="ph" data-tone="light"><h1 class="dsp d-l">Cookie policy</h1><p class="lede">We use essential cookies to run this site. With your permission we also use analytics to understand how it is used, and video and map services that set their own cookies.</p></section>
-  <section class="cols2" data-tone="light"><div><h2 class="hd">Essential</h2><p class="mono" style="color:var(--concrete)">Always on</p></div><div><p>Remember your cookie choice for 12 months and keep the site secure. No personal profile is built from them.</p>${LIVE ? '<p>The site also keeps two small notes in your browser: which project it featured last, so the next visit opens on another, and whether the opening animation has played in this visit. Nothing is sent to the studio from them.</p>' : ''}</div></section>
-  <section class="cols2" data-tone="light"><div><h2 class="hd">Analytics</h2><p class="mono" style="color:var(--concrete)">Only with your consent</p></div><div>${LIVE ? '<p>Google Analytics counts visits and shows which pages are read, so the studio can improve the site. It sets two cookies, _ga and _ga_ followed by the site’s analytics ID, which last up to two years. They are set only after you accept analytics, and are removed when you withdraw your consent.</p>' : '<p>Count visits and show which pages are read, so the studio can improve the site. The list of cookies, their purposes and how long they last is added before launch <span class="flag">⚑</span>.</p>'}</div></section>
-  <section class="cols2" data-tone="light" style="margin-bottom:60px"><div><h2 class="hd">Video and maps</h2><p class="mono" style="color:var(--concrete)">Only with your consent</p></div><div><p>${LIVE ? 'Films played on this site set no cookies. Films on YouTube and other services open on their own sites, which set their own cookies. The Work map is drawn by the site itself and sets none.' : 'Services that play project films set their own cookies. The Work map is drawn by the site itself and sets none.'}</p><p><button class="btn" data-cks>Change your cookie settings</button></p></div></section>`;
-  return { html, title: 'Cookie policy', nav: '', init: () => $('[data-cks]').addEventListener('click', () => cookieBox(true)) };
-}
-const PRIVACY = [
-  ['Who we are', 'Collaborative Architecture, G/4, Amit Industrial Estate, Dr. S S Rao Road, Lalbaug, Mumbai 400012, India, is responsible for the personal data collected on this site. The Riyadh studio is run by Collaborative Architecture SA. For any question about your data, write to enquiry@collaborativearchitecture.com.'],
-  ['What we collect', 'When you send an inquiry: your name, email address and country, and, if you give them, your organization, telephone number, portfolio link and message. When you subscribe to the newsletter: your email address. When you visit: the site’s host keeps standard server logs (internet address, browser, pages requested and time) to run and protect the site. Only with your consent: analytics that count visits and the pages read.'],
-  ['Why we use it', 'To answer your inquiry and follow it up; to send the newsletter you asked for; to keep the site secure and working; and, with your consent, to understand how the site is used. We do not sell personal data, and we do not use it for advertising.'],
-  ['Who sees it', 'Your inquiry reaches the studio by email, which is hosted by Google Workspace, and is read by the team it concerns. The newsletter list is kept by Mailchimp. Analytics, if you accept them, are processed by Google. The site’s host keeps the server logs, and the forms may be checked by Cloudflare Turnstile to stop automated messages. These services can process data outside your country, under their own safeguards.'],
-  ['How long we keep it', 'Inquiries: as long as we need to answer them, and up to two years afterwards unless they lead to a project. The newsletter: until you unsubscribe, through the link in every edition. Analytics: up to 14 months. Server logs: for a limited period, for security.'],
-  ['Your choices and rights', 'You can ask to see, correct or delete the personal data we hold about you, and withdraw your consent at any time: for analytics through Cookie settings at the foot of every page, for the newsletter through the unsubscribe link. Write to enquiry@collaborativearchitecture.com and we will reply within 30 days. You may also complain to the data protection authority where you live: in India, the Data Protection Board of India; in Saudi Arabia, the Saudi Data and AI Authority (SDAIA).'],
-  ['Children', 'This site is not meant for children, and we do not knowingly collect their personal data.'],
-  ['Changes', 'Any change to this policy is published on this page with its date. This version: October 2026.']
+/* 25 October 2026: the privacy policy, from the studio's doc "Privacy Policy, Collaborative Architecture" (modeled on ZHA and SOM,
+   reviewed against Indian and GCC practices). Facts still to be confirmed carry a ⚑ in the review copy and are left out on the published site.
+   Its Section 4 is also the cookie policy: /cookies/ opens this page. */
+const pf = t => LIVE ? '' : ` <span class="flag" title="${esc(t)}">⚑</span>`;
+const PMAIL = '<a href="mailto:enquiry@collaborativearchitecture.com">enquiry@collaborativearchitecture.com</a>';
+const ptab = (head, rows) => `<table><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map((c, k) => `<td data-l="${head[k]}">${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+const POLICY = () => [
+  ['1', 'About this policy', `<p><b>Who we are.</b> This website is run by Collaborative Architecture, Mumbai Studio (“Collaborative Architecture”, “we”, “us”), G/4, Amit Industrial Estate, Dr. S S Rao Road, Lalbaug, Mumbai 400012, India.${pf('Legal form and registration number to be added')} We decide how personal data collected through the website is used, as its controller (in India’s terms, its data fiduciary).</p>
+    <p><b>Privacy contact.</b> Nitika, Coordinator, handles every question and request under this policy:</p>
+    <ul><li>email: ${PMAIL}, with “Privacy” in the subject line;</li><li>telephone: <a href="tel:+912240047007">+91 22 4004 7007</a>;</li><li>post: the Mumbai Studio address above.</li></ul>
+    <p><b>What it covers.</b> Personal data we collect when you:</p>
+    <ul><li>visit the website;</li><li>send an inquiry, including for a career or as a vendor;</li><li>subscribe to our newsletter;</li><li>write to us at one of our published email addresses.</li></ul>
+    <p>It does not cover our project work for clients, which follows the terms of each engagement. Nor does it cover other websites we link to, such as Instagram, LinkedIn and YouTube, which have their own policies.</p>
+    <p><b>Which law applies.</b> We follow this policy for everyone, wherever they live. Where the law of your country gives you more, Section 10 sets out what it adds, and that law prevails.</p>`],
+  ['2', 'Personal data we collect', `<p>We collect only what we need to answer you and to run the website. The fields marked required on our forms are needed to reply; the rest are optional.</p>
+    ${ptab(['When', 'What we collect', 'Required or optional'], [
+      ['You send an inquiry (Contact page)', 'Name, email address, country, type of inquiry (Client, Consultants, Research, Career, Vendors), the studio it is for, your message. The page it was sent from and the time.', 'Required'],
+      ['', 'Organization, telephone number, portfolio link (career inquiries)', 'Optional'],
+      ['You subscribe to the newsletter', 'Email address. Our newsletter service may record when an edition is opened and which links are clicked.', 'Required'],
+      ['You apply for a role', 'What you send with a career inquiry or by email: name, contact details, portfolio, CV and covering note', 'Your choice'],
+      ['You email us directly', 'Your name, email address and what you choose to write or attach', 'Your choice'],
+      ['You visit the website', 'Standard server logs kept by our host: internet (IP) address, browser and device type, pages requested, the page you came from, date and time', 'Automatic, for security and operation'],
+      ['You accept analytics', 'Through Google Analytics: pages viewed, time on the site, approximate location (city or country), device and browser, how you reached us', 'Only with your consent'],
+      ['A form’s security check runs (if enabled)', 'Through Cloudflare Turnstile: technical browser and device signals, and your IP address, to tell people from automated programs', 'Automatic, when the check is enabled']])}
+    <p><b>We do not ask for sensitive data,</b> and we ask you not to send it. That includes health, religious or political beliefs, biometric data, identity numbers and financial details.</p>
+    <p>If you send someone else’s details, for example a colleague’s, please make sure they are content for you to do so.</p>`],
+  ['3', 'How and why we use it', `<p>We use personal data for these purposes only. The legal basis column uses the terms of the GDPR and the Saudi PDPL. Where a law relies mainly on consent, such as India’s DPDP Act, sending a form or an email is your consent to the use described here, and you may withdraw it at any time.</p>
+    ${ptab(['Purpose', 'Data used', 'Legal basis'], [
+      ['Answer your inquiry, discuss a project, prepare a proposal', 'Inquiry and email details', 'Steps you ask for before a contract; our legitimate interest in replying to people who contact us'],
+      ['Consider you for a role', 'Career inquiry, portfolio, CV', 'Steps before a contract; your consent to keep it for future roles'],
+      ['Send the newsletter', 'Email address', 'Your consent (Mailchimp asks you to confirm it)'],
+      ['Run the website, keep it secure, stop spam and abuse', 'Server logs, security-check signals', 'Our legitimate interest in a secure, working site; legal obligations on security'],
+      ['Understand how the website is used, to improve it', 'Analytics data', 'Your consent, given in the cookie box'],
+      ['Work with clients, consultants and vendors once a project starts', 'Contact and correspondence details', 'Performance of a contract'],
+      ['Meet legal, tax and regulatory duties; establish or defend legal claims', 'Any of the above, as needed', 'Legal obligation; our legitimate interest in protecting our rights']])}
+    <p><b>What we do not do:</b></p>
+    <ul><li>We do not sell personal data, rent it out, or use it for advertising.</li><li>We do not build profiles of visitors.</li><li>We do not make decisions about anyone by automated means alone.</li></ul>
+    <p>We do not use personal data for a new purpose without telling you, and, where the law requires it, asking for your consent.</p>`],
+  ['4', 'Cookies and similar technologies', POLICY_COOKIES()],
+  ['5', 'Who we share it with', `<p>Inside the studio, personal data is seen only by the people who need it. An inquiry goes to the team its type names:</p>
+    <ul><li>client, consultant and research inquiries → the client inquiries team;</li><li>career inquiries → the careers team;</li><li>vendor inquiries → the vendor team.</li></ul>
+    <p>Inquiries marked for our Riyadh studio are passed to our team in Riyadh to answer.</p>
+    <p>Outside the studio, we use these service providers. Each acts on our instructions and may use the data only to provide its service to us.</p>
+    ${ptab(['Provider', 'What it does for us', 'Data it handles', 'Where'], [
+      ['Google (Google Workspace)', 'Our email: delivers inquiries and newsletter sign-ups to our mailboxes', 'Inquiry and email contents', 'Google’s data centers worldwide'],
+      [`Our website host${pf('Name of the host to be added')}`, 'Hosts the website and its form handlers; keeps server logs and a protected copy of each message sent through the site', 'Server logs, form contents', `Its data centers${pf('Country of the servers to be added')}`],
+      ['Mailchimp (Intuit)', 'Sends the newsletter and manages subscriptions', 'Email address, newsletter activity', 'United States'],
+      ['Google (Google Analytics)', 'Counts visits and shows how the site is used, only with your consent', 'Analytics data', 'United States and worldwide'],
+      ['Cloudflare (Turnstile), if enabled', 'Checks that a form is sent by a person', 'Browser signals, IP address', 'Worldwide']])}
+    <p>We may also share personal data when the law requires it, or to establish or defend a legal claim. That could be with a court, a regulator or the police, or with our professional advisers (lawyers, accountants and auditors) under a duty of confidence.</p>
+    <p>We do not pass your details to project consultants, collaborators or clients without your agreement.</p>`],
+  ['6', 'International transfers', `<p>We are based in India, and our team in Riyadh answers inquiries for the Riyadh studio. Our providers keep data in the United States and elsewhere (Section 5). So your personal data may be stored and used outside your country, including in countries whose laws protect it less than yours.</p>
+    <p>When we transfer personal data across borders, we do it only as your country’s law allows. Each transfer is protected, for example:</p>
+    <ul><li><b>From the EU, EEA, UK or Switzerland:</b> an adequacy decision, or the standard contractual clauses approved for such transfers.</li>
+      <li><b>From Saudi Arabia:</b> a destination SDAIA recognizes as adequate, or the appropriate safeguards of the Transfer Regulation under the PDPL, such as standard contractual clauses.</li>
+      <li><b>From other countries with transfer rules:</b> the mechanism that law sets. That may be a contract, a transfer impact assessment, a regulator’s authorization, or your separate consent where the law requires it (Section 10).</li></ul>
+    <p>For a copy of the safeguards that apply to your data, write to Nitika at ${PMAIL}.</p>`],
+  ['7', 'How long we keep it', `<p>We keep personal data only as long as the purpose needs it, then delete it or make it anonymous.</p>
+    ${ptab(['Data', 'How long'], [
+      ['Inquiries that do not lead to a project', 'Up to 2 years after our last exchange'],
+      ['Inquiries that become a project', `For the engagement, then as long as the law requires us to keep business records${pf('Period to be confirmed, for example 8 years')}`],
+      ['Career applications', '12 months; longer only with your consent, to consider you for future roles'],
+      ['Newsletter subscription', 'Until you unsubscribe. We then keep only your email address on a do-not-send list, so you are not added again by mistake.'],
+      ['Messages held as likely automated', '90 days'],
+      ['Server logs', `Up to 90 days, as set by our host${pf('To be confirmed with the host')}`],
+      ['Analytics data', '14 months'],
+      ['Your cookie choice', '12 months']])}
+    <p>We may keep data longer only where the law requires it, or for an actual or likely legal claim, and then only for as long as needed.</p>
+    <p><b>How we delete it.</b> We remove it from our mailboxes, our website’s protected folder and our providers’ systems. Backups are overwritten on their normal cycle, within 90 days.${pf('To be confirmed with the host')}</p>`],
+  ['8', 'How we protect it', `<p><b>Our principles.</b> We handle personal data:</p>
+    <ul><li>lawfully, fairly and openly;</li><li>for the purposes stated, and no more than they need;</li><li>accurately, and only for as long as needed (Section 7);</li><li>securely.</li></ul>
+    <p>We are accountable for meeting these principles, and we consider privacy from the start whenever we change the website or our systems.</p>
+    <p><b>Security measures.</b></p>
+    <ul><li>The website is served only over encrypted connections (HTTPS), with modern security settings.</li><li>Every message sent through a form is checked again on our server.</li><li>The copies of messages we keep are in a folder closed to the internet.</li><li>Passwords and keys are kept out of the website’s public code.</li><li>Our email accounts use two-step sign-in.</li><li>Access to personal data is limited to the people who need it for their work, and they are bound to keep it confidential.</li><li>Our service providers are bound by contract to protect it.</li></ul>
+    <p>No transmission over the internet can be guaranteed to be completely secure. Please do not send us information you consider highly confidential through the website.</p>
+    <p><b>If something goes wrong.</b> If a breach of security puts personal data at risk, we act at once to contain it. We notify the relevant authority and the people affected, as and when the law requires.</p>`],
+  ['9', 'Your rights and how to use them', `<p>Wherever you live, you can ask us to do any of the following. Some rights depend on the law of your country and on our reason for using the data; Section 10 notes the differences.</p>
+    ${ptab(['Right', 'What it means'], [
+      ['To be informed', 'Know what we collect, why and how. This policy does that.'],
+      ['Access', 'Get confirmation of whether we hold your personal data, a summary of how we use it, and a copy of it'],
+      ['Correction', 'Have inaccurate or incomplete data corrected, completed or updated'],
+      ['Erasure', 'Have your data deleted, unless the law requires us to keep it'],
+      ['Restriction', 'Have us pause using your data while a question about it is resolved'],
+      ['Objection', 'Object to our use of your data based on legitimate interests. You can always object to direct marketing.'],
+      ['Portability', 'Receive the data you gave us in a common, machine-readable format, or have it sent to another organization'],
+      ['Withdraw consent', 'Withdraw consent you have given, at any time and as easily as you gave it. Use that has already taken place stays lawful.'],
+      ['Complain', 'Raise a concern with us, and with the data protection authority of your country (Section 10)']])}
+    <p><b>How to make a request.</b></p>
+    <ol><li>Write to Nitika, Coordinator, at ${PMAIL}, with “Privacy request” in the subject line.</li><li>Tell us what you would like us to do, and the email address you used with us.</li><li>We may ask for information to confirm who you are before we act, so that no one else gets your data.</li><li>Someone acting for you, such as an authorized agent, needs your written permission.</li></ol>
+    <p><b>What happens next.</b></p>
+    <ul><li>We reply in full within 30 days. Where the law of your country sets a shorter time, we meet it.</li><li>If a request is complex and the law allows more time, we tell you within those 30 days, with the reason.</li><li>Requests are free. Where the law allows, we may refuse, or charge a reasonable fee for, requests that are clearly unfounded or excessive. We explain why.</li><li>If you are not satisfied with our answer, you can ask us to review it, or complain to your data protection authority.</li></ul>
+    <p><b>Newsletter.</b> Every edition has an unsubscribe link. You can also write to Nitika at ${PMAIL} to be removed.</p>
+    <p><b>Analytics.</b> Use <b>Cookie settings</b> at the foot of any page.</p>`],
+  ['10', 'Regional terms', `<p>We work in, and welcome visitors from, India, the Gulf, Asia, North Africa, Europe and the Americas. The table lists the laws of the countries where we are established or have projects, and of Europe, whose law reaches visitors we count with analytics. Where a law gives you more than this policy, that law applies.</p>
+    ${ptab(['Where you live', 'Law', 'Authority you can complain to', 'What it adds'], [
+      ['India', 'Digital Personal Data Protection Act, 2023, and DPDP Rules, 2025. The Rules were notified on 13 November 2025, and their main duties apply from 13 May 2027. Until then, the Information Technology Act, 2000, and its 2011 rules on sensitive personal data apply.', 'Data Protection Board of India', 'Use based on consent or legitimate uses; the right to nominate; a Grievance Officer (below); grievances answered within 90 days at most'],
+      ['Saudi Arabia', 'Personal Data Protection Law (Royal Decree M/19 of 1443H, as amended), with its Implementing and Transfer Regulations; enforceable since 14 September 2024', 'Saudi Data & AI Authority (SDAIA)', 'Rights to be informed, to access and obtain a copy, to correction, to destruction and to withdraw consent; complaints and compensation; transfers only under the Transfer Regulation'],
+      ['United Arab Emirates', 'Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data (in force since 2 January 2022; its Executive Regulations are still awaited)', 'UAE Data Office', 'Rights of access, correction, erasure, restriction, portability and objection'],
+      ['Bahrain', 'Law No. 30 of 2018 on the Protection of Personal Data', 'Personal Data Protection Authority', 'Rights of access, correction, objection and complaint'],
+      ['Qatar', 'Law No. 13 of 2016 on the Protection of Personal Data Privacy', 'National Cyber Security Agency', 'Rights of access, correction, withdrawal and objection'],
+      ['European Union and EEA (including Norway)', 'General Data Protection Regulation (EU) 2016/679', 'The supervisory authority where you live or work', 'The legal bases in Section 3 and every right in Section 9'],
+      ['United Kingdom', 'UK GDPR and the Data Protection Act 2018', 'Information Commissioner’s Office', 'As for the EU'],
+      ['Switzerland', 'Federal Act on Data Protection', 'Federal Data Protection and Information Commissioner', 'As for the EU, in substance']])}
+    <p><b>Anywhere else.</b> If you live in another country, you have the rights your country’s law gives you, and this policy applies to you in full. Write to Nitika at ${PMAIL} and we will help.</p>
+    <p><b>India.</b> Our Grievance Officer is Nitika, Coordinator, at ${PMAIL} and <a href="tel:+912240047007">+91 22 4004 7007</a>.</p>
+    <ul><li>We resolve a grievance within 30 days, and in any case within the 90 days the DPDP Rules allow.</li><li>You may nominate someone to exercise your rights if you die or cannot act yourself. If you are not satisfied, you may complain to the Data Protection Board of India.</li></ul>
+    <p><b>Saudi Arabia.</b> Personal data collected through this website is stored on our website host’s servers${pf('Country of the servers to be added')} and in the email and newsletter services in Section 5. We keep and destroy it as Section 7 describes.</p>
+    <p><b>European Union, EEA, United Kingdom and Switzerland.</b> You may complain to the authority where you live or work, or where an infringement took place.${pf('EU and UK representative, if one is appointed: name and address')}</p>`],
+  ['11', 'Other things you should know', `<p><b>Children.</b> This website is meant for adults. We do not knowingly collect personal data from anyone under 18. If you believe a child has sent us personal data, tell us and we will delete it.</p>
+    <p><b>Links to other websites.</b> The site links to our profiles on Instagram, LinkedIn, YouTube, Pinterest and X, and to publications, museums and partners. Those sites are run by others under their own privacy policies, which we do not control. Please read them before you share information there.</p>
+    <p><b>Automated decisions.</b> We make no decision about anyone by automated means alone, and we do not profile visitors.</p>
+    <p><b>Changes to this policy.</b> We update this policy when our website or the law changes in a way that affects it.</p>
+    <ul><li>We publish every change on this page, with its date.</li><li>If a change matters to how we use data we already hold, we tell newsletter subscribers by email.</li><li>Where the law requires it, we ask for your consent again.</li></ul>
+    <p><b>Contact us.</b> For any question, request or complaint about privacy:</p>
+    <ul><li><b>Who:</b> Nitika, Coordinator, Collaborative Architecture.</li><li><b>Email:</b> ${PMAIL}, with “Privacy” in the subject line.</li><li><b>Telephone:</b> <a href="tel:+912240047007">+91 22 4004 7007</a>.</li><li><b>Post:</b> Collaborative Architecture, Mumbai Studio, G/4, Amit Industrial Estate, Dr. S S Rao Road, Lalbaug, Mumbai 400012, India.</li></ul>
+    <p><i>Last updated: October 2026.</i>${pf('Effective date to be set at publication')}</p>`]
 ];
+const POLICY_COOKIES = () => `<p>The website sets no advertising or social-media tracking cookies. It uses a few small notes in your browser to work, and Google Analytics only if you accept it. Its fonts are served from our own server, so no font service learns of your visit.</p>
+    ${ptab(['Name', 'Set by', 'What it does', 'How long', 'When'], [
+      ['Essential site storage', 'This website (browser storage)', 'Remembers your cookie choice, and keeps small notes that let the site work as you left it: the opening animation, the featured project, and your place on each page', 'Your cookie choice: 12 months. The rest: until you close the tab or clear your browser data', 'Always (essential)'],
+      ['<code>_ga</code>, <code>_ga_[ID]</code>', 'Google Analytics', 'Distinguish visitors and visits, to count them', 'Up to 2 years', 'Only after you accept analytics']])}
+    <p><b>Your choice.</b> Choose “Accept all”, “Essential only” or your own settings in the cookie box.</p>
+    <ul><li>You can change your choice at any time through <b>Cookie settings</b> at the foot of every page.</li><li>If you withdraw consent, analytics stop and the analytics cookies are removed.</li><li>Your browser’s settings can also block or delete cookies; the site keeps working without them.</li></ul>
+    <p><b>Films and links.</b> Films on this site play from our own server and set no cookies. Films and pages on YouTube, Instagram, LinkedIn and other services open on those sites, under their own cookie policies. Our share buttons are plain links: nothing is sent to a social network unless you choose to share.</p>
+    <p><button class="btn" type="button" data-cks>Change your cookie settings</button></p>`;
 function privacy() {
-  if (LIVE) return { html: `<section class="ph" data-tone="light"><h1 class="dsp d-l">Privacy</h1><p class="lede">What Collaborative Architecture collects through this website, why, who sees it, how long it is kept, and the choices you have.</p></section>
-  ${PRIVACY.map(([h, t], i) => `<section class="cols2" data-tone="light"${i === PRIVACY.length - 1 ? ' style="margin-bottom:60px"' : ''}><div><h2 class="hd">${esc(h)}</h2></div><div><p>${esc(t).replace(/enquiry@collaborativearchitecture\.com/g, '<a href="mailto:enquiry@collaborativearchitecture.com">enquiry@collaborativearchitecture.com</a>')}</p>${i === 5 ? '<p><button class="btn" data-cks>Change your cookie settings</button></p>' : ''}</div></section>`).join('')}`,
-    title: 'Privacy', nav: '', init: () => { const b = $('[data-cks]'); b && b.addEventListener('click', () => cookieBox(true)); } };
-  return { html: `<section class="ph" data-tone="light" style="min-height:60svh"><h1 class="dsp d-l">Privacy</h1><p class="lede">The privacy policy is written with the studio’s legal adviser before launch <span class="flag">⚑</span>. It explains what the inquiry form and newsletter collect, where it is stored and how long it is kept.</p></section>`, title: 'Privacy', nav: '' };
+  const P = POLICY();
+  return { html: `<section class="ph" data-tone="light"><h1 class="dsp d-l">Privacy policy</h1><p class="lede">How Collaborative Architecture collects and uses personal data through this website, its inquiry and newsletter forms, and the emails people send the studio. It applies wherever you live, and its Section 4 is our cookie policy.</p></section>
+  ${P.map(([n, h, b], k) => `<section class="pol" data-tone="light"${k === P.length - 1 ? ' style="margin-bottom:60px"' : ''}><div><h2 class="hd">${n}. ${h}</h2></div><div class="pol-b">${b}</div></section>`).join('')}`,
+    title: 'Privacy policy', nav: '', init: () => $$('[data-cks]').forEach(b => b.addEventListener('click', () => cookieBox(true))) };
 }
 /* Places and markets (handbook v1.6, chapter 12): a hub per country, and per city or region with real work */
 const GULF = /UAE|Bahrain|Qatar|Saudi|Oman|Kuwait/;
@@ -4784,7 +4908,7 @@ function admBoot() {
   }
 }
 
-const ROUTES = { admin: LIVE ? notFound : admin, home, work: () => work('mosaic'), 'work-list': () => work('list'), 'work-index': () => work('index'), 'work-map': () => work('map'), expertise: expertiseIndex, lab: () => lab(), awards, studio, approach, news: () => news(), 'news-press': () => news('press'), contact, cookies: cookiesPage, privacy, links };
+const ROUTES = { admin: LIVE ? notFound : admin, home, work: () => work('mosaic'), 'work-list': () => work('list'), 'work-index': () => work('index'), 'work-map': () => work('map'), expertise: expertiseIndex, lab: () => lab(), awards, studio, approach, news: () => news(), 'news-press': () => news('press'), contact, cookies: privacy, privacy, links };
 function render() {
   settleTok++; // a new page ends any settling still under way from the last one
   cleanup.forEach(f => f()); cleanup = [];
@@ -4867,7 +4991,7 @@ function cookieBox(force) {
   $('[data-ck-all]', box).onclick = () => done('all');
   $('[data-ck-ess]', box).onclick = () => done('essential');
   $('[data-ck-set]', box).onclick = () => { $('[data-ck-sw]', box).hidden = false; $('[data-ck-set]', box).hidden = true; $('[data-ck-save]', box).hidden = false; };
-  $('[data-ck-save]', box).onclick = () => done(['essential', $('#ck-an').checked && 'analytics', $('#ck-vm').checked && 'video'].filter(Boolean).join(','));
+  $('[data-ck-save]', box).onclick = () => done(['essential', $('#ck-an').checked && 'analytics', ($('#ck-vm') || {}).checked && 'video'].filter(Boolean).join(','));
 }
 /* H01 preloader (draft 2.4): the logo holds for 3.25 seconds every time the site is opened, on whichever page the visitor arrives,
    but only once in the same session: moving between pages, reloading or coming back to the tab does not show it again.

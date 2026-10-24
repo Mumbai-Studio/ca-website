@@ -165,6 +165,7 @@
 /expertise/design-management/               /expertise/design-and-behavioral-mapping/
 /expertise/design-and-behavioural-mapping/  /expertise/design-and-behavioral-mapping/
 /work/urnes-stave-heritage-centre/          /work/urnes-stave-heritage-center/
+/cookies/                                    /privacy/
 
 # ---- gone: the theme's demonstration pages and posts, and WordPress system addresses ----
 /shop/*                         410

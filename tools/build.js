@@ -185,7 +185,7 @@ const server = http.createServer((req, res) => {
   const plan = await pg.evaluate(() => {
     const S = CA_SEO, files = S.feeds(), md = S.pagesMd();
     const ids = [...(files['sitemap.xml'].match(/<loc>[^<]+<\/loc>/g) || [])].map(l => new URL(l.slice(5, -6)).pathname);
-    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/cookies/', '/privacy/', '/links/'])], files, md };
+    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])], files, md };
   });
   for (const x of SHARED) write(x.file, x.body);
   for (const [f, t] of Object.entries(plan.files)) write(f, t);
