@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-staging/
+release/
+public/api/config.php
+.DS_Store

@@ -1,0 +1,98 @@
+# Collaborative Architecture · build the site and put it on the server, on every change to the main branch.
+#
+# What it does: builds dist/ (tools/build.js, all checks), keeps it as a download on the run's page ("site"), publishes it to the
+# branch "live-site" (for hosts that pull a branch: cPanel Git, Netlify, Cloudflare Pages), and, when the server details are set
+# in the repository's Settings → Secrets and variables → Actions, uploads it to the server:
+#   FTP or FTPS (cPanel and most shared hosts): variable DEPLOY = ftp;  secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD;
+#                                               variable FTP_DIR (the web folder on the server, default public_html/)
+#   SSH (a VPS):                                variable DEPLOY = ssh;  secrets SSH_HOST, SSH_USER, SSH_KEY (private key);
+#                                               variable SSH_DIR (default /var/www/collaborativearchitecture.com/)
+# The server's own api/config.php (passwords) and _private/ folder (copies of messages) are never overwritten or removed.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      staging:
+        description: 'Build the staging copy (noindex everywhere) instead, and do not deploy it'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install the build tools
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Build the site (with checks)
+        run: |
+          if [ "${{ inputs.staging }}" = "true" ]; then node tools/build.js --staging --out=dist; else node tools/build.js; fi
+
+      - name: Keep the built site as a download
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist/
+          include-hidden-files: true
+          retention-days: 30
+
+      - name: Publish to the live-site branch
+        if: ${{ inputs.staging != true }}
+        run: |
+          cd dist
+          git init -q -b live-site
+          git config user.name "CA website build"
+          git config user.email "website@collaborativearchitecture.com"
+          git add -A
+          git commit -q -m "Site built from ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" live-site
+          rm -rf .git
+
+      - name: Upload to the server (FTP)
+        if: ${{ inputs.staging != true && vars.DEPLOY == 'ftp' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_DIR || 'public_html/' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            api/config.php
+            _private/**
+            build-report.json
+
+      - name: Upload to the server (SSH)
+        if: ${{ inputs.staging != true && vars.DEPLOY == 'ssh' }}
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_DIR: ${{ vars.SSH_DIR || '/var/www/collaborativearchitecture.com/' }}
+        run: |
+          install -m 600 /dev/null ~/key && printf '%s\n' "$SSH_KEY" > ~/key
+          rsync -az --delete --exclude 'api/config.php' --exclude '_private/' --exclude 'build-report.json' \
+            -e "ssh -i ~/key -o StrictHostKeyChecking=accept-new" dist/ "$SSH_USER@$SSH_HOST:$SSH_DIR"
+          rm -f ~/key
