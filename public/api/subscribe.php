@@ -18,6 +18,9 @@ ca_rate_limit('subscribe');
 ca_turnstile();
 
 $mc = $cfg['mailchimp'];
+// tidy what was pasted: stray spaces, quotes or a trailing hyphen would otherwise break the Mailchimp address
+$mc['api_key'] = trim((string) $mc['api_key'], " -\t\r\n'\"");
+$mc['list_id'] = trim((string) $mc['list_id'], " \t\r\n'\"");
 if ($mc['api_key'] !== '' && $mc['list_id'] !== '') {
     $dc = substr(strrchr($mc['api_key'], '-') ?: '-us1', 1);
     $url = 'https://' . preg_replace('/[^a-z0-9]/', '', $dc) . '.api.mailchimp.com/3.0/lists/' . rawurlencode($mc['list_id']) . '/members/' . md5(strtolower($email));
