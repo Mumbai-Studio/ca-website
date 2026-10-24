@@ -4876,6 +4876,7 @@ function preloader() {
   const pl = $('#pl'); if (!pl) return;
   if (PRE) { pl.hidden = true; return; }
   let seen = false; try { seen = sessionStorage.getItem('ca-pl') === '1'; sessionStorage.setItem('ca-pl', '1'); } catch (e) {}
+  if (FRAMED && !PATHMODE) seen = false; // 25 October: the review copy on claude.ai starts with the logo animation every time it opens or reloads
   if (CAP || seen) { pl.remove(); return; }
   PL_ACTIVE = true;
   pl.hidden = false;
@@ -5170,14 +5171,21 @@ $('#yr').textContent = new Date().getFullYear();
 window.CA = { render, openMenu, openSearch, cookieBox, closeOverlays };
 liveClean(document.body); fixLinks(document.body); fixAssets(document.body);
 preloader();
-/* review of 24 October: a refresh reopens the page, and the place on it, where the visitor was, everywhere on the site.
-   On the live site the address already names the page (and Back/Forward places keep the scroll). Inside a framed preview,
-   such as the review prototype, a reload starts again from the frame's first address, so the last page and its place are
-   kept for this browser tab and reopened; an address that names a page always wins, and a new tab starts at Home. */
+/* review of 24 October: a refresh reopens the page, and the place on it, where the visitor was. On the live site the address
+   already names the page (and Back/Forward places keep the scroll).
+   25 October: the review copy on claude.ai no longer reopens the last page; it always starts at Home, after the logo animation. */
 const LASTK = 'ca-last';
 function keepLast() { if (CAP) return; try { sessionStorage.setItem(LASTK, JSON.stringify({ h: location.hash, id: placeId })); } catch (e) {} }
-(function reopenLast() {
+(function startHome() {
+  // 25 October: inside the claude.ai frame every opening and reload starts at Home, after the logo animation, wherever the
+  // reviewer was before; a signed-in editor's admin and preview keep their page
   if (!FRAMED || PATHMODE || CAP) return;
+  let ed = false; try { ed = sessionStorage.getItem('ca-admin-preview') === '1' || !!sessionStorage.getItem('ca-admin-mode'); } catch (e) {}
+  if (ed || /^#admin/.test(location.hash) || !location.hash || location.hash === '#' || location.hash === '#home') return;
+  try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+})();
+(function reopenLast() {
+  return; // off since 25 October (see startHome)
   if (location.hash && location.hash !== '#') return;
   let L = null; try { L = JSON.parse(sessionStorage.getItem(LASTK) || 'null'); } catch (e) {}
   if (!L) return;
