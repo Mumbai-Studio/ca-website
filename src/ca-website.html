@@ -935,8 +935,8 @@ body[data-route=expertise] .ph h1{color:var(--crimson)}
 @media (orientation:landscape) and (max-height:500px){
   .prh.film,.ps.film{height:100svh;min-height:0}
   .film video.tv{object-fit:contain!important;object-position:50% 50%!important;background:#000;transition:opacity .8s ease-in-out}
-  .film .txt,.film .ps-foot,.film .sh,.film .shade,.film .prh-in,.film .crumb{transition:opacity .6s ease}
-  .film.playing .txt,.film.playing .ps-foot,.film.playing .sh,.film.playing .shade,.film.playing .prh-in,.film.playing .crumb{opacity:0;pointer-events:none}
+  .film .txt,.film .ps-foot,.film .sh,.film .shade,.film .prh-in,.film .crumb,.film .pp-in{transition:opacity .6s ease}
+  .film.playing .txt,.film.playing .ps-foot,.film.playing .sh,.film.playing .shade,.film.playing .prh-in,.film.playing .crumb,.film.playing .pp-in{opacity:0;pointer-events:none}
   body.filmon .hdr{transform:translateY(-100%)}
   .vb{padding:0;gap:0;grid-template-rows:minmax(0,1fr)}
   .vb .lb-top{position:fixed;top:0;left:0;right:0;z-index:2;padding:calc(env(safe-area-inset-top,0px) + 8px) calc(env(safe-area-inset-right,0px) + 12px) 22px calc(env(safe-area-inset-left,0px) + 14px);background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0))}
@@ -1704,7 +1704,7 @@ C.intro = ['Our projects evolve out of a meaningful convergence of people, place
   'Clients are our collaborators. Along with international teams of engineers, consultants and building scientists, our clients and end-users actively engage and collaborate to create architecture that performs and stays relevant for decades.'];
 C.panels = [
   { id: 'H08', st: 'Architecture that|fosters democracy', s: 'national-unity-pavilion', img: 'img/unity/p03', fpm: '75% 50%', sent: 'Conceived for the 75th anniversary of India’s independence, the pavilion brings together a pylon representing each state and union territory around a central Bodhi tree, within a footprint comparable to the Great Stupa at Sanchi.', cap: 'National Unity Pavilion · Notions of India|One of the three winning entries, 2021' },
-  { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%', sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
+  { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
   { id: 'H10', st: 'Architecture|for peace', s: '', img: 'img/hb/peacecanopy', sent: 'Our proposal for India’s National War Museum placed peace at its center and was exhibited by the Cooper Hewitt, Smithsonian Design Museum in New York.', cap: 'Peace Pavilion · Exhibited at the Cooper Hewitt, New York|and the Museum of Craft and Design, San Francisco' },
   { id: 'H11', st: 'Homes shaped by the|people who live in them', s: 'house-of-cantilevers', img: 'img/cantilevers/p02', fpm: '80% 50%', sent: 'Our sophisticated mapping tools capture the unique and distinctive lifestyle and aspirations of each of our clients.', cap: 'House of Cantilevers|Kerala' },
   { id: 'H11a', st: 'Beyond the cost|of construction', s: 'project-alpha', img: 'img/alpha/p05', fpm: '62% 50%', sent: 'For ICON’s Initiative 99, 3D-printed homes built around two curved walls, with policy safeguards that keep them affordable: the cost of a dwelling is not the cost of housing.', cap: 'Project Alpha · ICON Initiative 99|Texas' },
@@ -1989,7 +1989,7 @@ C.stubs = {
 };
 C.rev = {
   'reflected-topography': { seq: ['p03', 'p10', 'p07', 'p02', 'p01', 'p04', 'p14'], rot: ['p10', 'p01', 'p07'], mrot: ['p03', 'p10', 'p01'], card: 'p01', sec: { 0: { sk: ['p05'], img: 'p15' } }, rel: ['cascadia', 'ntt', 'bgrtmumbai'], unflag: ['Year'] },
-  'iconic-gateway': { seq: ['p01', 'p02', 'p04', 'p03', 'p05'], rot: ['p01', 'p04', 'p03'], card: 'p01', feat: 'p01', facts: [['Structure', 'Web Structures | Ramboll']], rel: ['musi', 'national-unity-pavilion', 'brooklyn'], unflag: ['Year'],
+  'iconic-gateway': { teaser: { src: 'vid/diyar-gateway-1080.mp4', m: 'vid/diyar-gateway-720.mp4' }, seq: ['p01', 'p02', 'p04', 'p03', 'p05'], rot: ['p01', 'p04', 'p03'], card: 'p01', feat: 'p01', facts: [['Structure', 'Web Structures | Ramboll']], rel: ['musi', 'national-unity-pavilion', 'brooklyn'], unflag: ['Year'],
     media: [{ k: 'Video', items: [{ t: 'The Iconic Gateway film', tbs: true }] }],
     add: [{ f: 's01', k: 'sk', cap: 'Concept sketch, the pylon', r: 0.786 }, { f: 's02', k: 'sk', cap: 'Concept sketch, the crossing', r: 1.594 }, { f: 's03', k: 'sk', cap: 'Concept sketch, the elevation', r: 1.679 },
       { f: 'd01', k: 'dr', cap: 'Site plan', r: 1.361 },
@@ -3253,7 +3253,8 @@ function home() {
 const wksBox = i => i >= 3 ? `<span class="wks" role="link" tabindex="0" data-wks aria-label="Works: see all projects"><span class="wa" aria-hidden="true">→</span><span aria-hidden="true">Works</span></span>` : '';
 function panel(x, i) {
   const ims = x.mimg ? `<div class="im imd" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div><div class="im imm" ${bg(x.mimg)}></div>` : `<div class="im" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div>`;
-  const inner = `${ims}<div class="shade"></div>
+  const tv = x.vid && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="none" data-src="${A(x.vid)}" data-m="${A(x.vidm || x.vid)}" data-replay aria-hidden="true"></video>` : '';
+  const inner = `${ims}${tv}<div class="shade"></div>
     <div class="pp-in"><div><div class="ttl k5">${lines(x.st, 'dsp d-l')}</div><p>${x.id === 'H10' ? chLink(esc(x.sent)) : esc(x.sent)}</p><span class="mono cap2">${x.cap.split('|').map(t => nb(fl(t)).replace(/ ~ /g, '<span class="dsep"> · </span><span class="mnl"></span>')).join('<br>')}${x.lk ? `<br><span class="caplk">${esc(x.lk)}</span>` : ''}</span></div><span class="pp-r">${wksBox(i)}${x.s ? '<span class="sq" aria-hidden="true">→</span>' : `<span class="tbc">${tbc}</span>`}</span></div>${x.q ? `<p class="ppq" aria-hidden="true">${esc(x.q)}</p>` : ''}`;
   return x.s ? `<a class="pp" href="#p-${x.s}" data-tone="dark" data-pp aria-label="${esc(x.st.replace('|', ' '))}">${inner}</a>` : `<div class="pp" data-tone="dark" data-pp>${inner}</div>`;
 }
