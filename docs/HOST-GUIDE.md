@@ -13,17 +13,31 @@
 
 ## 1. What you are getting
 
-| In the package | What it is |
+**The website comes as six zip files.** Together they hold the complete site (about 130 MB, 664 files). They are split only to keep each file under 30 MB. Each one extracts into the same web folder, and together they rebuild it exactly:
+
+| Zip | Contents |
 |---|---|
-| `site/` | **The website. Upload the contents of this folder to the web root.** It holds: 65 pages, each as its own `index.html` (`/`, `/work/`, `/work/wedge-1/` …); `404.html`; pictures (`img/`), films (`vid/`), fonts (`fonts/`) and scripts (`assets/`); the search files (`sitemap.xml`, `robots.txt`, `llms.txt`, feeds); and the server settings (`.htaccess`, `_redirects`, `_headers`). |
-| `site/api/` | The two form handlers: `contact.php` (the inquiry form) and `subscribe.php` (the newsletter). `config.sample.php` is the settings template, and `lib.php` is shared code. |
-| `site/site-config.js` | The settings you can change without a new build: Google Analytics ID, Turnstile key, form addresses. |
-| `server/nginx.conf` | The same server rules for nginx, if the server is not Apache or LiteSpeed. |
-| `docs/HOST-GUIDE.md` | This guide. |
+| `CA-website-1-of-6-pages-and-code.zip` | **The pages and code:** 65 pages, each as its own `index.html` (`/`, `/work/`, `/work/wedge-1/` …), plus `404.html`. Scripts (`assets/`), fonts (`fonts/`), the form handlers (`api/`), `site-config.js` and the icons. The search files (`sitemap.xml`, `robots.txt`, `llms.txt`, feeds, a Markdown copy of each page). The server settings (`.htaccess`, `_redirects`, `_headers`). |
+| `CA-website-2-of-6-pictures-a.zip`, `…3-of-6-pictures-b.zip` | **The pictures,** in `img/`. |
+| `CA-website-4-of-6-films-a.zip` to `…6-of-6-films-c.zip` | **The films,** in `vid/`. |
 
-The same files live in the studio's private GitHub repository, `Mumbai-Studio/ca-website`. Ask the studio to invite you.
+**Inside the site:**
 
-- The ready-to-serve copy is on the **`live-site`** branch.
+| File | What it is |
+|---|---|
+| `api/` | The two form handlers: `contact.php` (the inquiry form) and `subscribe.php` (the newsletter). `config.sample.php` is the settings template, and `lib.php` is shared code. |
+| `site-config.js` | The settings you can change without a new build: Google Analytics ID, Turnstile key, form addresses. |
+
+**Beside the zips:**
+
+| File | What it is |
+|---|---|
+| `nginx.conf` | The same server rules for nginx, if the server is not Apache or LiteSpeed. |
+| This guide | `HOST-GUIDE.pdf` and `HOST-GUIDE.md`. |
+
+**The same site in one download:** the studio's private GitHub repository, `Mumbai-Studio/ca-website`. Ask the studio to invite you.
+
+- The ready-to-serve copy is on the **`live-site`** branch (*Code → Download ZIP*).
 - The source and build tools are on **`main`**.
 
 ## 2. What the server needs
@@ -49,9 +63,12 @@ The current site is WordPress.
 
 ### 4.1 cPanel, Apache or LiteSpeed (most likely)
 
-1. **Upload the contents of `site/` into the web root** of the account the domain will point to (usually `public_html/`).
-   - Upload the *contents* of `site/`, not the `site` folder itself.
-   - The easiest way is to upload `site.zip` in cPanel's File Manager and choose *Extract*.
+1. **Put the site in the web root** of the account the domain will point to (usually `public_html/`):
+   1. In cPanel's File Manager, open the web root.
+   2. Upload the six zip files there.
+   3. Select each one and choose *Extract*, into that same folder.
+   4. Delete the six zips afterwards.
+   - The files must sit directly in the web root (`public_html/index.html`, `public_html/work/…`), not inside a subfolder.
 2. **Check that the hidden file `.htaccess` arrived.** In File Manager, open *Settings → Show hidden files*. This file holds every redirect and security rule; without it the old addresses break.
 3. **Check permissions:** folders 755, files 644. These are the normal defaults.
 4. **Set PHP 8.x** for the domain (cPanel → *MultiPHP Manager*).
@@ -59,8 +76,8 @@ The current site is WordPress.
 
 ### 4.2 nginx (a VPS)
 
-1. Copy the contents of `site/` to `/var/www/collaborativearchitecture.com/`.
-2. Use `server/nginx.conf`. Set `root`, the certificate lines and the `fastcgi_pass` socket for your PHP-FPM.
+1. Extract the six zips into `/var/www/collaborativearchitecture.com/`.
+2. Use `nginx.conf` (in the repository: `server/nginx.conf`). Set `root`, the certificate lines and the `fastcgi_pass` socket for your PHP-FPM.
 3. Then run `nginx -t && systemctl reload nginx`.
 
 ### 4.3 Netlify or Cloudflare Pages
