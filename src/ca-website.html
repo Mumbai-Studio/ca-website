@@ -3211,14 +3211,14 @@ function home() {
     <p class="stq stq-ho stq-2l"><b><i>${quoteHtml2()}</i></b></p>
     <a class="lk" href="#studio">About the studio →</a>
   </section>
-  ${C.panels.slice(0, ctrAt).map(panel).join('')}
+  ${C.panels.slice(0, ctrAt).map((x, i) => panel(x, i)).join('')}
   <!-- review of 24 October: the record (awards, exhibitions, publications) follows Architecture for Peace -->
   <section class="ctr" data-tone="light" aria-label="The record">
     <div class="cl">Since 2004 our work has received <b data-n="60">60</b> awards, honors and international shortlists<a class="sq" href="#awards" aria-label="See all awards">→</a></div>
     <div class="cl">Our projects have been exhibited at the ${chLink('<b>Cooper Hewitt</b>, Smithsonian Design Museum')}, New York, and the <b>Museum of Craft and Design</b>, San Francisco<a class="sq" href="#awards" aria-label="See exhibitions">→</a></div>
     <div class="cl">Our work has appeared in more than <b data-n="150">150</b> publications<a class="sq" href="#news-press" aria-label="See the press room">→</a></div>
   </section>
-  ${C.panels.slice(ctrAt, recAt).map(panel).join('')}
+  ${C.panels.slice(ctrAt, recAt).map((x, i) => panel(x, ctrAt + i)).join('')}
   <!-- review of 24 October: Recognized internationally comes before Luxury that answers to its context -->
   <section class="rec on-crimson" data-tone="crimson" aria-labelledby="rec-h">
     <div class="rec-in">
@@ -3229,11 +3229,11 @@ function home() {
       <p style="margin-top:24px"><a class="lk" href="#awards">All awards →</a></p>
     </div>
   </section>
-  ${C.panels.slice(recAt).map(panel).join('')}
+  ${C.panels.slice(recAt).map((x, i) => panel(x, recAt + i)).join('')}
   <!-- review of 24 October: Objects that grow out of architecture, then Expertise, then Speculative Futures -->
   <a class="pp" href="#x-products-and-objects" data-tone="dark" data-pp>
     <div class="im" ${bg('img/bgrt/p16')}></div><div class="shade"></div>
-    <div class="pp-in"><div><div class="ttl k6">${lines('Objects that grow|out of architecture', 'dsp d-l')}</div><p>Seating, lighting and objects first designed for our buildings are developed into products, supported by the Lab’s material research.</p><span class="mono">Huddle seating, first designed for Reflected Topography</span></div><span class="sq" aria-hidden="true">→</span></div>
+    <div class="pp-in"><div><div class="ttl k6">${lines('Objects that grow|out of architecture', 'dsp d-l')}</div><p>Seating, lighting and objects first designed for our buildings are developed into products, supported by the Lab’s material research.</p><span class="mono">Huddle seating, first designed for Reflected Topography</span></div><span class="pp-r">${wksBox(C.panels.length)}<span class="sq" aria-hidden="true">→</span></span></div>
   </a>
   <section class="xs" data-tone="light" aria-labelledby="xs-h">
     <p id="xs-h" class="mono" style="color:var(--crimson);margin-bottom:18px">Expertise</p>
