@@ -4876,7 +4876,7 @@ function preloader() {
   const pl = $('#pl'); if (!pl) return;
   if (PRE) { pl.hidden = true; return; }
   let seen = false; try { seen = sessionStorage.getItem('ca-pl') === '1'; sessionStorage.setItem('ca-pl', '1'); } catch (e) {}
-  if (FRAMED && !PATHMODE) seen = false; // 25 October: the review copy on claude.ai starts with the logo animation every time it opens or reloads
+  if (!PATHMODE && !window.__KEEP_ROUTE) seen = false; // 25 October: the review copy (claude.ai, in a frame or in the Claude app) starts with the logo animation every time it opens or reloads
   if (CAP || seen) { pl.remove(); return; }
   PL_ACTIVE = true;
   pl.hidden = false;
@@ -5177,10 +5177,11 @@ preloader();
 const LASTK = 'ca-last';
 function keepLast() { if (CAP) return; try { sessionStorage.setItem(LASTK, JSON.stringify({ h: location.hash, id: placeId })); } catch (e) {} }
 (function startHome() {
-  // 25 October: inside the claude.ai frame every opening and reload starts at Home, after the logo animation, wherever the
-  // reviewer was before; a signed-in editor's admin and preview keep their page
-  if (!FRAMED || PATHMODE || CAP) return;
-  let ed = false; try { ed = sessionStorage.getItem('ca-admin-preview') === '1' || !!sessionStorage.getItem('ca-admin-mode'); } catch (e) {}
+  // 25 October: the review copy (claude.ai, in a frame or in the Claude app) starts at Home after the logo animation on every
+  // opening and reload, whatever page the viewer last showed; an editor's admin and preview keep their page. The published
+  // site is not affected: there the address names the page. Test scripts set window.__KEEP_ROUTE to open a page directly.
+  if (PATHMODE || CAP || window.__KEEP_ROUTE) return;
+  let ed = false; try { ed = sessionStorage.getItem('ca-admin-preview') === '1'; } catch (e) {}
   if (ed || /^#admin/.test(location.hash) || !location.hash || location.hash === '#' || location.hash === '#home') return;
   try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
 })();
