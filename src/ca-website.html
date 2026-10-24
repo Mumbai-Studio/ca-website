@@ -526,7 +526,8 @@ a.crow:hover{color:var(--crimson)}
 .chk input{width:18px;height:18px;margin-top:3px;accent-color:var(--crimson)}
 .send{background:var(--crimson);color:#fff;border-color:var(--crimson);width:max-content}
 .send:hover{background:var(--crimson-deep)!important;border-color:var(--crimson-deep)!important}
-.done{border-top:4px solid var(--crimson);background:var(--fog);padding:28px;max-width:640px}
+/* the thank-you box after a form is sent; div only, so the films (which use .done while they fade) keep their full frame */
+div.done{border-top:4px solid var(--crimson);background:var(--fog);padding:28px;max-width:640px}
 @media (max-width:560px){.frm{grid-template-columns:1fr}}
 
 .prose{max-width:70ch}
