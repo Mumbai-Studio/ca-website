@@ -1,5 +1,5 @@
 <title>CA Website Prototype</title>
-<meta name="description" content="Research-led architecture and interior architecture studio in Mumbai and Riyadh, for private, corporate and public clients across India, the Gulf and Asia.">
+<meta name="description" content="Collaborative Architecture is an internationally award-winning studio led by Lalita Tharani and Mujib Ahmed, headquartered in Mumbai, India, with a satellite studio in Riyadh, KSA. Our projects evolve out of a meaningful convergence of people, places, culture, climate, ecology and economics.">
 <meta name="author" content="Collaborative Architecture">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,6 +68,17 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .pl.rm .pl-in img{opacity:1;transform:none}
 @keyframes plr{to{opacity:1;transform:none}}
 @keyframes pls{to{height:60vh}}
+/* speed (25 October 2026), published site: the head script marks the first page of a visit (html.pl-boot), so the logo screen is
+   there from the first frame, before the page's scripts have arrived; the scripts then carry on the same animation */
+html.pl-boot #pl[hidden]{display:grid}
+/* safety: if the scripts never arrive, the logo screen still goes after 8 seconds */
+html.pl-boot #pl[hidden]{animation:plgone 0s 8s forwards}
+@keyframes plgone{to{visibility:hidden}}
+/* published site: a returning visitor whose turn of the Featured project differs from the built page's waits for the page's own drawing */
+html.w01-wait #app .mrow.r-xl{visibility:hidden}
+html.pl-boot #pl .pl-in img{animation:plr .6s var(--ease) forwards}
+html.pl-boot #pl .pl-s{animation:pls .6s .6s var(--ease) forwards}
+@media (prefers-reduced-motion:reduce){html.pl-boot #pl .pl-in img{animation:none;opacity:1;transform:none}html.pl-boot #pl .pl-s{animation:none}}
 
 /* header */
 .hdr{position:fixed;left:0;right:0;top:0;z-index:50;height:calc(var(--hdr) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) var(--gut) 0;display:flex;align-items:center;gap:clamp(16px,2.4vw,36px);color:var(--ink);transition:transform .35s var(--ease),background-color .25s,color .25s,height .25s}
@@ -2504,7 +2515,7 @@ const projectLoc = p => (p.facts.find(f => /^location$/i.test(f[0])) || [, p.cit
 
 /* ---------- text for every page ---------- */
 const T = {
-  home: ['Collaborative Architecture | Architects in Mumbai and Riyadh', 'Research-led architecture and interior architecture studio in Mumbai and Riyadh, for private, corporate and public clients across India, the Gulf and Asia.'],
+  home: ['Collaborative Architecture | Architects in Mumbai and Riyadh', 'Collaborative Architecture is an internationally award-winning studio led by Lalita Tharani and Mujib Ahmed, headquartered in Mumbai, India, with a satellite studio in Riyadh, KSA. Our projects evolve out of a meaningful convergence of people, places, culture, climate, ecology and economics.'],
   work: ['Architecture and interior projects', 'Workplaces, homes, show apartments, schools, restaurants, pavilions and infrastructure by Collaborative Architecture, in India, the Gulf, Asia and beyond.'],
   'work-list': ['Projects, list view', null], 'work-map': ['Projects on a map', null],
   'work-index': ['Index of all projects', 'Every project by Collaborative Architecture, listed with location, year and type: buildings, interiors, competitions, installations and research.'],
@@ -3162,7 +3173,14 @@ let PL_ACTIVE = false;
 const bySlug = Object.fromEntries(P.map(p => [p.slug, p]));
 const byTitle = t => { const n = t.toLowerCase(); return P.find(p => p.title.toLowerCase() === n) || P.find(p => n.includes(p.title.toLowerCase())) || (n.includes('diyar') ? bySlug['iconic-gateway'] : null); };
 const app = $('#app'), hdr = $('#hdr');
-const shuffle = a => { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+/* speed (25 October 2026): the published page paints before its scripts run, so the first drawing in the browser must show the same
+   shuffled order as the built page. The built page records its seed (body data-seed); the first drawing reuses it; later pages draw afresh. */
+let RS = (Math.random() * 4294967296) >>> 0, RS_PAGE = false;
+const rnd = () => { RS = (RS + 0x6D2B79F5) >>> 0; let t = RS; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+const reseed = () => { const b = document.body, fromPage = !RS_PAGE && b.dataset.seed && !PRE; RS_PAGE = true;
+  RS = fromPage ? (+b.dataset.seed >>> 0) : ((Math.random() * 4294967296) >>> 0); if (PRE) b.dataset.seed = String(RS); return !!fromPage; };
+let SEEDED = false;
+const shuffle = a => { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
 const lines = (txt, cls = 'dsp d-l') => `<span class="rv" style="display:block"><span class="${cls}" style="display:block">${txt.split('|').map((l, i) => `<span class="ln"><span style="--i:${i}">${esc(l)}</span></span>`).join('')}</span></span>`;
 const place = p => p.city && p.city !== p.country ? `${p.city}, ${p.country}` : p.country;
 const meta = p => [place(p), p.year, p.status].filter(Boolean).map(fl).join(' · ');
@@ -3188,9 +3206,9 @@ function home() {
   const last = store.get('ca-reel-first');
   reelOrder = shuffle(C.reel);
   if (CAP) reelOrder = C.reel;
-  else if (last && reelOrder[0].t === last && reelOrder.length > 1) reelOrder.push(reelOrder.shift());
+  else if (!SEEDED && last && reelOrder[0].t === last && reelOrder.length > 1) reelOrder.push(reelOrder.shift());   // not when redrawing the built page
   // 24 October 2026: a residential interior is always among the first three slides
-  if (!CAP && !reelOrder.slice(0, 3).some(r => r.ri)) { const k = reelOrder.findIndex(r => r.ri); if (k > 0) reelOrder.splice(1 + Math.floor(Math.random() * 2), 0, reelOrder.splice(k, 1)[0]); }
+  if (!CAP && !reelOrder.slice(0, 3).some(r => r.ri)) { const k = reelOrder.findIndex(r => r.ri); if (k > 0) reelOrder.splice(1 + Math.floor(rnd() * 2), 0, reelOrder.splice(k, 1)[0]); }
   store.set('ca-reel-first', reelOrder[0].t);
   const r0 = reelOrder[0];
   const ctrAt = (C.panels.findIndex(x => x.id === 'H10') + 1) || C.panels.length;
@@ -3326,7 +3344,7 @@ function mosaic(list) {
   const take = (pref, n) => { const out = []; while (out.length < n && (A.length || B.length)) out.push((pref === 'A' ? (A.length ? A : B) : (B.length ? B : A)).shift()); return out; };
   const rows = [['r-xl', [lead]]];
   const pats = CAP ? ['p2', 't3', 'h2', 'tt', 'p2', 't3', 'tt'] : ['p2', ...shuffle(['t3', 'h2', 'tt', 'p2', 't3', 'tt', 'h2'])];
-  let k = 0, flip = Math.random() < .5;
+  let k = 0, flip = rnd() < .5;
   while (A.length + B.length) {
     const rem = A.length + B.length;
     let t = pats[k % pats.length]; k++;
@@ -4046,9 +4064,9 @@ function heroInit() {
     loadBg(bgs[(i + 1) % bgs.length]); heroPre(bgs[(i + 1) % bgs.length]);
   };
   const go2 = () => { go(); t = setInterval(tick, 5200); };
-  heroPre(bgs[1]);
+  // speed (25 October): the second slide is fetched once the page has loaded (it is first shown 5 seconds after the logo)
+  afterLoad(() => { heroPre(bgs[1]); loadBg(bgs[1]); });
   if (PL_ACTIVE) addEventListener('ca-pl-done', go2, { once: true }); else go2();
-  loadBg(bgs[1]);
   cleanup.push(() => { clearInterval(t); clearTimeout(t1); clearTimeout(t2); });
 }
 /* the principles' names shrink by a transform (smoother than changing the type size): the ratio of the settled size to the first */
@@ -4268,7 +4286,11 @@ const loadBg = el => {
   if (el.dataset.alt !== undefined) {
     const cs = getComputedStyle(el), im = document.createElement('img');
     im.className = 'bgi'; im.alt = el.dataset.alt; im.decoding = CAP ? 'sync' : 'async';
-    if (el.closest('.prh') || el.getBoundingClientRect().top < innerHeight) im.fetchPriority = 'high'; else if (!CAP && el.dataset.alt !== '') im.loading = 'lazy';
+    // speed (25 October): only the picture really on the first screen is fetched first; a hidden one (a later hero slide, a closed
+    // slider) reads as the top of the page, so it is checked by its size; everything else waits until the visitor comes near it
+    const r0 = el.getBoundingClientRect(), first = el.closest('.prh') || (el.closest('.hero') ? el.classList.contains('on') : r0.width > 0 && r0.height > 0 && r0.top < innerHeight && r0.bottom > 0);
+    // in the built page every other picture is lazy (the script redraws the page and fetches them in order once it has loaded)
+    if (first) im.fetchPriority = 'high'; else if (!CAP && (PRE || el.dataset.alt !== '')) im.loading = 'lazy';
     im.style.objectFit = /contain/.test(cs.backgroundSize) ? 'contain' : 'cover'; if (!el.dataset.fp) im.style.objectPosition = cs.backgroundPosition || 'center';
     if (cs.position === 'static') el.style.position = 'relative';
     el.style.isolation = 'isolate'; im.src = el.dataset.bg; el.prepend(im);
@@ -4283,10 +4305,19 @@ const loadBg = el => {
   if (PHONE() && el.classList.contains('im')) { const host = el.parentElement; if (host && host.matches('[data-pp]') && getComputedStyle(el).display !== 'none') { host.style.backgroundImage = `url('${el.dataset.bg}')`; host.style.backgroundPosition = getComputedStyle(el).backgroundPosition; } }
 };
 let lio;
+const PAGE_LOADED = () => document.readyState === 'complete';
+const afterLoad = f => { if (PAGE_LOADED()) f(); else addEventListener('load', () => setTimeout(f, 50), { once: true }); };
+let LATE = [];
 function lazy() {
-  if (CAP || PRE || !('IntersectionObserver' in window)) { $$('[data-bg]').forEach(loadBg); return; }
-  lio && lio.disconnect();
-  lio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { lio.unobserve(e.target); sharpen(e.target); } }), { rootMargin: PHONE() ? '300% 0px' : '250% 0px' });
+  // speed (25 October): the built page carries only the first hero slide; the others are put in by the reel when their turn comes
+  if (PRE) { $$('[data-bg]').forEach(el => { if (el.closest('.hero') && !el.classList.contains('on')) return; loadBg(el); }); return; }
+  if (CAP || !('IntersectionObserver' in window)) { $$('[data-bg]').forEach(loadBg); return; }
+  lio && lio.disconnect(); LATE = [];
+  // speed (25 October): until the page has loaded, only pictures on the first screen are fetched; those further down wait for the
+  // load event, so they never hold up the first picture, the type or the scripts
+  const onScreen = t => { const r = t.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.top < innerHeight * 1.05 && r.bottom > 0; };
+  afterLoad(() => { const q = LATE; LATE = []; q.forEach(t => document.body.contains(t) && sharpen(t)); });
+  lio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { lio.unobserve(e.target); if (PAGE_LOADED() || onScreen(e.target)) sharpen(e.target); else LATE.push(e.target); } }), { rootMargin: PHONE() ? '300% 0px' : '250% 0px' });
   $$('[data-bg]').forEach(el => { if (el.closest('.hero') && !el.classList.contains('on')) return; if (el.closest('.ns .sl:not(.on)')) return; if (el.closest('.rec .bgs') && !el.classList.contains('on')) return; lio.observe(el); });
 }
 let io;
@@ -4931,8 +4962,9 @@ function render() {
   cleanup.forEach(f => f()); cleanup = [];
   $('#cimg').classList.remove('on'); viewDrop(); $('#lb').hidden = true;
   let h = routeNow(); if (ALIAS[h]) { h = ALIAS[h]; if (!PATHMODE) history.replaceState(history.state, '', '#' + h); }
+  SEEDED = reseed();
   const r = h.startsWith('p-') ? project(h.slice(2)) : h.startsWith('x-') ? expertisePage(h.slice(2)) : h.startsWith('lab-') ? lab(h.slice(4)) : h.startsWith('in-') ? placePage(h.slice(3)) : (ROUTES[h] || notFound)();
-  app.innerHTML = r.html; document.body.dataset.route = h.split('-')[0] === 'p' ? 'project' : h;
+  app.innerHTML = r.html; document.body.dataset.route = h.split('-')[0] === 'p' ? 'project' : h; document.documentElement.classList.remove('w01-wait');
   liveClean(app); applyFp(); fixLinks(app); fixAssets(app); lqApply(app); snapRoute(h); mcdLinks(app); labLinks(app);
   SEO.apply(SEO.isRoute(h) && !r.missing ? h : 'nothing'); gaView();
   $$('.nav a, .tools a, .menu-links a').forEach(a => a.dataset.nav === r.nav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
@@ -5022,7 +5054,9 @@ function preloader() {
   PL_ACTIVE = true;
   pl.hidden = false;
   pl.classList.add(RM ? 'rm' : 'run');
-  setTimeout(() => { pl.classList.add('out'); PL_ACTIVE = false; dispatchEvent(new Event('ca-pl-done')); setTimeout(() => pl.remove(), 1200); }, 3250);
+  // published site: the logo has been on screen since the first frame (head script), so it holds 3.25 seconds from then
+  const t0 = window.CA_PL_T, hold = typeof t0 === 'number' ? Math.max(600, 3250 - (performance.now() - t0)) : 3250;
+  setTimeout(() => { pl.classList.add('out'); document.documentElement.classList.remove('pl-boot'); PL_ACTIVE = false; dispatchEvent(new Event('ca-pl-done')); setTimeout(() => pl.remove(), 1200); }, hold);
 }
 
 /* ===== draft 2.5 ===== */
@@ -5044,7 +5078,7 @@ function lqApply(root = app) {
 }
 /* the home page scrolls section by section: a scroll moves the page on, and it settles smoothly on the next section,
    never resting half on one picture and half on the next; the principles no longer stack over one another */
-function snapRoute(h) { const on = h === 'home' && !CAP && !PRE; document.documentElement.classList.toggle('snap', on); tsnap(on && !ANYFINE); if (on) setTimeout(() => aheadFrom(scrollY, true), 500); snapMarks(); }
+function snapRoute(h) { const on = h === 'home' && !CAP && !PRE; document.documentElement.classList.toggle('snap', on); tsnap(on && !ANYFINE); if (on) afterLoad(() => setTimeout(() => aheadFrom(scrollY, true), 300)); snapMarks(); }
 /* draft 2.5: a section taller than the screen gets resting places of its own: its foot on the screen's foot, and in a very tall
    one every 0.8 screen, so nothing in it passes by in mid-glide. Rebuilt when a section changes height or the phone turns. */
 const SNAPM = { w: 0, h: 0, ro: null, raf: 0 };
