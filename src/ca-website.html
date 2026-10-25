@@ -589,6 +589,12 @@ div.done{border-top:4px solid var(--crimson);background:var(--fog);padding:28px;
 .ttl{transform-origin:left bottom;transition:transform 1.1s var(--ease)}
 .ttl.settled{transform:scale(.6)}
 .ttl.k5.settled{transform:scale(.5)}
+/* 25 October: a heading whose line breaks are set (fitl) keeps each line whole on every screen; where a line is wider than the
+   column it is drawn a little smaller (--f0 while it opens, --f1 once settled, worked out by fitTitles); the settled size is unchanged wherever it fits */
+.ttl.fitl{width:max-content;max-width:none}
+.ttl.fitl .ln{white-space:nowrap}
+.ttl.k5.fitl{transform:scale(var(--f0,1))}
+.ttl.k5.fitl.settled{transform:scale(var(--f1,.5))}
 .pp-in .ttl{display:block}
 /* logo and breadcrumb scaled up */
 .brand{font-size:21px;gap:16px}
@@ -1719,7 +1725,7 @@ C.panels = [
   { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', loop: 10, sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
   { id: 'H10', st: 'Architecture|for peace', s: '', img: 'img/hb/peacecanopy', sent: 'Our proposal for India’s National War Museum placed peace at its center and was exhibited by the Cooper Hewitt, Smithsonian Design Museum in New York.', cap: 'Peace Pavilion · Exhibited at the Cooper Hewitt, New York|and the Museum of Craft and Design, San Francisco' },
   { id: 'H11', st: 'Homes shaped by the|people who live in them', s: 'house-of-cantilevers', img: 'img/cantilevers/p02', fpm: '80% 50%', sent: 'Our sophisticated mapping tools capture the unique and distinctive lifestyle and aspirations of each of our clients.', cap: 'House of Cantilevers|Kerala' },
-  { id: 'H11a', st: 'Resilience through|policy embedded strategies', s: 'project-alpha', img: 'img/alpha/p05', fpm: '62% 50%', sent: 'For ICON’s Initiative 99, 3D-printed homes built around two curved walls, with policy safeguards that keep them affordable: the cost of a dwelling is not the cost of housing.', b: 'the cost of a dwelling is not the cost of housing', cap: 'Project Alpha · ICON Initiative 99|Texas' },
+  { id: 'H11a', st: 'Resilience through|policy embedded|strategies', fit: 1, s: 'project-alpha', img: 'img/alpha/p05', fpm: '62% 50%', sent: 'For ICON’s Initiative 99, 3D-printed homes built around two curved walls, with policy safeguards that keep them affordable: the cost of a dwelling is not the cost of housing.', b: 'the cost of a dwelling is not the cost of housing', cap: 'Project Alpha · ICON Initiative 99|Texas' },
   { id: 'H12', st: 'Spaces that|tell a story', s: 'miller-knoll-experience-center', img: 'img/millerknoll/p01', sent: 'Experience centers for MillerKnoll, Titan and Hyundai translate the curatorial principles of galleries and museums into immersive retail environments.', cap: 'MillerKnoll Experience Center|Bengaluru' },
   { id: 'H13', st: 'Workplaces built|around people', s: 'reflected-topography', img: 'img/bgrt/p01', fpm: '34% 50%', sent: 'An illuminated waffle slab establishes spatial identity, while undulating seating facilitates informal encounter, serendipity and collective occupation.', cap: 'Reflected Topography|BGRT, Bengaluru' },
   { id: 'H14', st: 'Learning spaces that|invite discovery', s: 'stacked-tectonics', img: 'img/jdt/p05', fpm: '5% 50%', sent: 'Every classroom at the JDT Primary School has its own window, shape and color, and the school was built by workers from the surrounding village.', cap: 'Stacked Tectonics|JDT Primary School, Kozhikode' },
@@ -3274,7 +3280,7 @@ function panel(x, i) {
   const ims = x.mimg ? `<div class="im imd" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div><div class="im imm" ${bg(x.mimg)}></div>` : `<div class="im" ${bg(x.img, false, undefined, x.fpm ? '|' + x.fpm : '')}></div>`;
   const tv = x.vid && !CAP && !PRE ? `<video class="tv done" muted playsinline preload="none" data-src="${A(x.vid)}" data-m="${A(x.vidm || x.vid)}"${x.loop ? ` data-loop="${+x.loop}"` : ''} data-replay aria-hidden="true"></video>` : '';
   const inner = `${ims}${tv}<div class="shade"></div>
-    <div class="pp-in"><div><div class="ttl k5">${lines(x.st, 'dsp d-l')}</div><p>${(t => x.id === 'H10' ? chLink(t) : t)(x.b ? esc(x.sent).replace(esc(x.b), `<b>${esc(x.b)}</b>`) : esc(x.sent))}</p><span class="mono cap2">${x.cap.split('|').map(t => nb(fl(t)).replace(/ ~ /g, '<span class="dsep"> · </span><span class="mnl"></span>')).join('<br>')}${x.lk ? `<br><span class="caplk">${esc(x.lk)}</span>` : ''}</span></div><span class="pp-r">${wksBox(i)}${x.s ? '<span class="sq" aria-hidden="true">→</span>' : `<span class="tbc">${tbc}</span>`}</span></div>${x.q ? `<p class="ppq" aria-hidden="true">${esc(x.q)}</p>` : ''}`;
+    <div class="pp-in"><div><div class="ttl k5${x.fit ? ' fitl' : ''}">${lines(x.st, 'dsp d-l')}</div><p>${(t => x.id === 'H10' ? chLink(t) : t)(x.b ? esc(x.sent).replace(esc(x.b), `<b>${esc(x.b)}</b>`) : esc(x.sent))}</p><span class="mono cap2">${x.cap.split('|').map(t => nb(fl(t)).replace(/ ~ /g, '<span class="dsep"> · </span><span class="mnl"></span>')).join('<br>')}${x.lk ? `<br><span class="caplk">${esc(x.lk)}</span>` : ''}</span></div><span class="pp-r">${wksBox(i)}${x.s ? '<span class="sq" aria-hidden="true">→</span>' : `<span class="tbc">${tbc}</span>`}</span></div>${x.q ? `<p class="ppq" aria-hidden="true">${esc(x.q)}</p>` : ''}`;
   return x.s ? `<a class="pp" href="#p-${x.s}" data-tone="dark" data-pp aria-label="${esc(x.st.replace('|', ' '))}">${inner}</a>` : `<div class="pp" data-tone="dark" data-pp>${inner}</div>`;
 }
 const ptLines = t => esc(t).replace(', with ', '<br>with ');
@@ -4262,8 +4268,19 @@ function copyInit() { $$('[data-copy]').forEach(b => b.addEventListener('click',
 /* titles open 25 percent smaller than draft 1.5 and, after 2.5 seconds on screen, shrink by 40 percent (panels by 50) into the lower-left corner */
 let tio;
 const homeNow = () => !!$('.hero', app);
+function fitTitles() {
+  $$('.ttl.fitl', app).forEach(t => {
+    const col = t.parentElement; if (!col) return;
+    const W = t.offsetWidth, C = col.clientWidth; if (!W || !C) return;   // offsetWidth is the width before the scale
+    const k = matchMedia('(max-width:700px)').matches ? .65 : .5;
+    t.style.setProperty('--f0', Math.min(1, C / W).toFixed(4)); t.style.setProperty('--f1', Math.min(k, C / W).toFixed(4));
+  });
+}
+addEventListener('resize', () => { clearTimeout(fitTitles.t); fitTitles.t = setTimeout(fitTitles, 120); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitTitles());
 function ttlInit() {
   tio && tio.disconnect();
+  fitTitles();
   const ts = $$('.ttl', app); if (!ts.length) return;
   if (CAP || PRE) { ts.forEach(t => t.classList.add('settled')); return; }
   const cta = $('.cta', app);
