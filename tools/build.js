@@ -149,13 +149,43 @@ if (STAGING) { if (!/indexable:\s*true/.test(siteConfig)) throw new Error('site-
 
 /* every executable inline script becomes a shared file named by its content (the security policy allows no inline script; the browser keeps
    them for a year); large style blocks too. Order and behavior are unchanged. */
+/* speed (25 October 2026): the shared files are minified (esbuild). Each script stays a classic script: names at the top level are kept,
+   because the files share them; only local names are shortened. The target keeps every browser the site supports. */
+const esbuild = require('esbuild');
+const TARGET = ['chrome100', 'edge100', 'firefox100', 'safari15', 'ios15'];
+const minify = (code, ext) => esbuild.transformSync(code, { loader: ext, minify: true, target: TARGET, legalComments: 'none', charset: 'utf8' }).code;
 const SHARED = [];
 for (const m of DOC.matchAll(/<(script|style)>([\s\S]*?)<\/\1>/g)) {
   if (m[1] === 'style' && m[2].length < 2000) continue;
-  const h = crypto.createHash('sha256').update(m[2]).digest('hex').slice(0, 12), ext = m[1] === 'script' ? 'js' : 'css', n = SHARED.length + 1;
-  SHARED.push({ whole: m[0], file: `assets/site-${n}.${h}.${ext}`, body: m[2], tag: m[1] === 'script' ? `<script src="/assets/site-${n}.${h}.${ext}"></script>` : `<link rel="stylesheet" href="/assets/site-${n}.${h}.${ext}">` });
+  const ext = m[1] === 'script' ? 'js' : 'css', body = minify(m[2], ext);
+  const h = crypto.createHash('sha256').update(body).digest('hex').slice(0, 12), n = SHARED.length + 1;
+  SHARED.push({ whole: m[0], file: `assets/site-${n}.${h}.${ext}`, body, tag: m[1] === 'script' ? `<script src="/assets/site-${n}.${h}.${ext}"></script>` : `<link rel="stylesheet" href="/assets/site-${n}.${h}.${ext}">` });
 }
-const externalize = html => { for (const x of SHARED) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('shared block not found in a page: ' + x.file); html = html.slice(0, i) + x.tag + html.slice(i + x.whole.length); } return html; };
+/* speed (25 October 2026): the page paints first, then its scripts run.
+   - boot.js, in the head (tiny, runs before the first paint): on the first page of a visit it marks <html class="pl-boot">, so the logo
+     screen is there from the first frame (it used to wait for the scripts); it notes the time, so the logo still holds 3.25 seconds.
+   - load.js, at the end of the body: puts the page's scripts in after the first frame has been painted, in their order (async=false keeps
+     the order). The built page is complete without them, so the first picture and the type appear as soon as they arrive. */
+// the Work page's top cell: the built page shows the first of the projects that take turns (C.leads); a returning visitor whose turn
+// is another waits for the page's drawing (html.w01-wait hides that one cell for the moment), so the cell never switches before their eyes
+const LEADS = (frag.match(/C\.leads = \[([^\]]*)\]/) || [, ''])[1].split(',').filter(x => x.trim()).length;
+const BOOT = minify(`(function(){try{var d=document.documentElement;if(sessionStorage.getItem('ca-pl')!=='1'){d.classList.add('pl-boot');window.CA_PL_T=performance.now();}}catch(e){}
+try{var n=+localStorage.getItem('ca-w01')||0;if(${LEADS}>1&&n%${LEADS}!==0)document.documentElement.classList.add('w01-wait');}catch(e){}})();`, 'js');
+const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
+const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
+const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false;
+function go(){if(done)return;done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
+if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(go,0);});setTimeout(go,400);})();`, 'js');
+const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
+const externalize = html => {
+  for (const x of SHARED) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('shared block not found in a page: ' + x.file); html = html.slice(0, i) + x.tag + html.slice(i + x.whole.length); }
+  // the scripts' own tags give way to the loader, at the place of the first one
+  let first = -1;
+  for (const x of SCRIPTS) { const i = html.indexOf(x.tag); if (i < 0) throw new Error('script tag not found: ' + x.file); if (first < 0) first = i; html = html.slice(0, i) + html.slice(i + x.tag.length); }
+  html = html.slice(0, first) + `<script src="/${loadFile}"></script>` + html.slice(first);
+  const c = html.indexOf('<script src="/site-config.js"></script>'); if (c < 0) throw new Error('site-config.js tag not found');
+  return html.slice(0, c) + `<script src="/${bootFile}"></script>` + html.slice(c);
+};
 
 /* ---------- a local server for the build: the public files, and the page for every address ---------- */
 const TYPES = { '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.ico': 'image/x-icon', '.svg': 'image/svg+xml', '.mp4': 'video/mp4', '.woff2': 'font/woff2', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.webmanifest': 'application/manifest+json' };
@@ -188,6 +218,7 @@ const server = http.createServer((req, res) => {
     return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])], files, md };
   });
   for (const x of SHARED) write(x.file, x.body);
+  write(bootFile, BOOT); write(loadFile, LOADER);
   for (const [f, t] of Object.entries(plan.files)) write(f, t);
   for (const [f, t] of Object.entries(plan.md)) write(f, t);
 
@@ -198,7 +229,8 @@ const server = http.createServer((req, res) => {
     await pg.waitForFunction(() => document.querySelector('#app').children.length && document.querySelector('script#ca-ld'));
     await pg.waitForTimeout(250);
     return pg.evaluate(BAN => {
-      const pl = document.getElementById('pl'); if (pl) pl.removeAttribute('hidden');
+      // the logo screen stays hidden in the built page: the head script (boot.js) shows it from the first frame on the first page of a visit
+      const pl = document.getElementById('pl'); if (pl) pl.setAttribute('hidden', '');
       document.querySelectorAll('[data-lq]').forEach(el => el.removeAttribute('data-lq'));
       const html = '<!doctype html>\n' + document.documentElement.outerHTML;
       const ld = document.querySelector('script#ca-ld').textContent;
