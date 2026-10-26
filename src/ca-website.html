@@ -1740,7 +1740,7 @@ C.intro = ['Our projects evolve out of a meaningful convergence of people, place
 C.panels = [
   { id: 'H08', st: 'Architecture that|fosters democracy', s: 'national-unity-pavilion', img: 'img/unity/p03', fpm: '75% 50%', sent: 'Conceived for the 75th anniversary of India’s independence, the pavilion brings together a pylon representing each state and union territory around a central Bodhi tree, within a footprint comparable to the Great Stupa at Sanchi.', cap: 'National Unity Pavilion · Notions of India|One of the three winning entries, 2021' },
   { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', loop: 10, sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
-  { id: 'H10', st: 'Architecture|for peace', s: '', img: 'img/hb/peacecanopy', sent: 'Our proposal for India’s National War Museum placed peace at its center and was exhibited by the Cooper Hewitt, Smithsonian Design Museum in New York.', cap: 'Peace Pavilion · Exhibited at the Cooper Hewitt, New York|and the Museum of Craft and Design, San Francisco' },
+  { id: 'H10', st: 'Architecture|for peace', s: '', img: 'img/hb/peacecanopy', sent: 'The Peace Pavilion was part of Collaborative Architecture’s finalist entry in the international competition for the Indian National War Museum in New Delhi, organized by the Government of India in 2017.', cap: 'Peace Pavilion · Exhibited at the Cooper Hewitt, New York|and the Museum of Craft and Design, San Francisco' },
   { id: 'H11', st: 'Homes shaped by the|people who live in them', s: 'house-of-cantilevers', img: 'img/cantilevers/p02', fpm: '80% 50%', sent: 'Our sophisticated mapping tools capture the unique and distinctive lifestyle and aspirations of each of our clients.', cap: 'House of Cantilevers|Kerala' },
   { id: 'H11a', st: 'Resilience through|policy embedded|strategies', fit: 1, s: 'project-alpha', img: 'img/alpha/p05', fpm: '62% 50%', sent: 'For ICON’s Initiative 99, 3D-printed homes built around two curved walls, with policy safeguards that keep them affordable: the cost of a dwelling is not the cost of housing.', b: 'the cost of a dwelling is not the cost of housing', cap: 'Project Alpha · ICON Initiative 99|Texas' },
   { id: 'H12', st: 'Spaces that|tell a story', s: 'miller-knoll-experience-center', img: 'img/millerknoll/p01', sent: 'Experience centers for MillerKnoll, Titan and Hyundai translate the curatorial principles of galleries and museums into immersive retail environments.', cap: 'MillerKnoll Experience Center|Bengaluru' },
@@ -4742,7 +4742,15 @@ function lightbox(items, i, title, step) {
   const lb = $('#lb'); let k = i; const last = document.activeElement;
   // draft 1.8: on phones a landscape or panoramic image, drawing or sketch fills the screen, turned to landscape
   const portraitPhone = () => matchMedia('(max-width:700px) and (orientation:portrait)').matches;
-  const draw = () => { const it = items[k]; const box = $('.lb-img', lb); box.style.backgroundImage = `url('${it.src}')`; box.classList.toggle('paper', !!it.paper); lb.classList.toggle('rot', portraitPhone() && (it.r || 1) > 1.15); $('[data-lbc]', lb).textContent = `${title} · ${it.cap} · ${k + 1} / ${items.length}`; };
+  // STANDING RULE (no fog), 27 October 2026: a picture in the viewer is shown only once it is decoded, in one frame at full strength
+  // (the one before stays until then); the next and the previous pictures are fetched ahead
+  let dTok = 0;
+  const draw = () => { const it = items[k], my = ++dTok, box = $('.lb-img', lb);
+    const paint = () => { if (my !== dTok) return; box.style.backgroundImage = `url('${it.src}')`; box.classList.toggle('paper', !!it.paper); lb.classList.toggle('rot', portraitPhone() && (it.r || 1) > 1.15); $('[data-lbc]', lb).textContent = `${title} · ${it.cap} · ${k + 1} / ${items.length}`; };
+    if (HELD.has(it.src) || PICS.ok.has(it.src)) paint(); else holdPic(it.src, 4000).then(paint);
+    if (items.length > 1) [items[(k + 1) % items.length], items[(k - 1 + items.length) % items.length]].forEach(n => { if (n && n.src && !HELD.has(n.src)) holdPic(n.src, 15000); }); };
+  // a picture left from the last time the viewer was open is never shown, even for a moment
+  if (!HELD.has(items[k].src) && !PICS.ok.has(items[k].src)) $('.lb-img', lb).style.backgroundImage = 'none';
   lb.hidden = false; draw(); $('[data-lbx]', lb).focus();
   if (matchMedia('(max-width:700px)').matches && lb.requestFullscreen && !document.fullscreenElement) {
     lb.requestFullscreen({ navigationUI: 'hide' }).then(() => { if ((items[k].r || 1) > 1.15 && screen.orientation && screen.orientation.lock) return screen.orientation.lock('landscape'); }).then(draw, () => {});
@@ -5579,13 +5587,31 @@ function admBoot() {
 }
 
 const ROUTES = { admin: LIVE ? notFound : admin, home, work: () => work('mosaic'), 'work-list': () => work('list'), 'work-index': () => work('index'), 'work-map': () => work('map'), expertise: expertiseIndex, lab: () => lab(), awards, studio, approach, news: () => news(), 'news-press': () => news('press'), contact, cookies: privacy, privacy, links };
+/* STANDING RULE (no fog), 27 October 2026: a new page never opens on the flat colours that stand in for its pictures. The page the
+   visitor is on stays in place until the new page's first picture (its hero) has been fetched and decoded, up to NOFOG_WAIT; then
+   the new page replaces it in one frame, with that picture at full strength. The first page of a visit is not held. */
+let swapTok = 0;
+const HELD = new Set();
+function holdPic(url, max) {
+  return new Promise(res => { let fin = false; const end = () => { if (!fin) { fin = true; res(); } };
+    const im = new Image(); im.decoding = 'async'; im.src = url;
+    (im.decode ? im.decode() : new Promise((a, b) => { im.onload = a; im.onerror = b; })).then(() => { HELD.add(url); end(); }, end);
+    setTimeout(end, max); });
+}
 function render() {
-  settleTok++; // a new page ends any settling still under way from the last one
-  cleanup.forEach(f => f()); cleanup = [];
-  $('#cimg').classList.remove('on'); viewDrop(); $('#lb').hidden = true;
+  const tok = ++swapTok;
   let h = routeNow(); if (ALIAS[h]) { h = ALIAS[h]; if (!PATHMODE) history.replaceState(history.state, '', '#' + h); }
   SEEDED = reseed();
   const r = h.startsWith('p-') ? project(h.slice(2)) : h.startsWith('x-') ? expertisePage(h.slice(2)) : h.startsWith('lab-') ? lab(h.slice(4)) : h.startsWith('in-') ? placePage(h.slice(3)) : (ROUTES[h] || notFound)();
+  const first = (/data-bg="([^"]+)"/.exec(r.html) || [])[1];
+  const go = () => { if (tok !== swapTok) return; document.documentElement.style.cursor = ''; swapIn(h, r); };
+  if (first && document.body.dataset.route && !CAP && !PRE && !window.__PRERENDER && !HELD.has(first) && !PICS.ok.has(first)) { document.documentElement.style.cursor = 'progress'; holdPic(first, NOFOG_WAIT).then(go); }
+  else go();
+}
+function swapIn(h, r) {
+  settleTok++; // a new page ends any settling still under way from the last one
+  cleanup.forEach(f => f()); cleanup = [];
+  $('#cimg').classList.remove('on'); viewDrop(); $('#lb').hidden = true;
   app.innerHTML = r.html; document.body.dataset.route = h.split('-')[0] === 'p' ? 'project' : h; document.documentElement.classList.remove('w01-wait');
   liveClean(app); applyFp(); fixLinks(app); fixAssets(app); lqApply(app); snapRoute(h); mcdLinks(app); labLinks(app);
   SEO.apply(SEO.isRoute(h) && !r.missing ? h : 'nothing'); gaView();
