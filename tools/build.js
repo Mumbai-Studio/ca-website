@@ -215,7 +215,7 @@ const server = http.createServer((req, res) => {
   const plan = await pg.evaluate(() => {
     const S = CA_SEO, files = S.feeds(), md = S.pagesMd();
     const ids = [...(files['sitemap.xml'].match(/<loc>[^<]+<\/loc>/g) || [])].map(l => new URL(l.slice(5, -6)).pathname);
-    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])], files, md };
+    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md }; // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages
   });
   for (const x of SHARED) write(x.file, x.body);
   write(bootFile, BOOT); write(loadFile, LOADER);
@@ -253,7 +253,7 @@ const server = http.createServer((req, res) => {
     return html;
   };
   for (const p of plan.paths) {
-    const r = await capture(p);
+    let r; try { r = await capture(p); } catch (e) { console.error('could not build ' + p + ': ' + String(e).slice(0, 160), errors.slice(-3)); fail.push('could not build the page ' + p); continue; } // 26 October 2026: a page that fails is reported with the others, and the build still fails
     write(path.join(p, 'index.html'), keep(p, r));
     report.push({ path: p, title: r.title, h1: r.h1.trim().replace(/\s+/g, ' '), words: r.words, imgs: r.imgs, noalt: r.noalt, ld: r.ldOk, robots: r.robots });
   }

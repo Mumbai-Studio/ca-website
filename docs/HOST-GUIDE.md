@@ -1,7 +1,7 @@
 # Collaborative Architecture website · guide for the host
 
 **For:** the developer or host who puts collaborativearchitecture.com online.
-**Version:** 25 October 2026.
+**Version:** 26 October 2026, evening (draft 2.16: the complete site in one set of 13 zips, built from the latest review copy, with the Peace Pavilion, Tree of Life, The Barn and The Vessel pages, the press pages and covers, and the share pictures).
 
 **In short:** the new site is a set of ready-made files: a static site plus two small PHP scripts for the forms.
 
@@ -13,13 +13,16 @@
 
 ## 1. What you are getting
 
-**The website comes as six zip files.** Together they hold the complete site (about 130 MB, 664 files). They are split only to keep each file under 30 MB. Each one extracts into the same web folder, and together they rebuild it exactly:
+**The website comes as 13 zip files.** Together they hold the complete site (about 225 MB, 792 files). They are split only to keep each file under 30 MB. Each one extracts into the same web folder, and together they rebuild it exactly. Extract all 13 into the web root; the order does not matter.
 
 | Zip | Contents |
 |---|---|
-| `CA-website-1-of-6-pages-and-code.zip` | **The pages and code:** 65 pages, each as its own `index.html` (`/`, `/work/`, `/work/wedge-1/` …), plus `404.html`. Scripts (`assets/`), fonts (`fonts/`), the form handlers (`api/`), `site-config.js` and the icons. The search files (`sitemap.xml`, `robots.txt`, `llms.txt`, feeds, a Markdown copy of each page). The server settings (`.htaccess`, `_redirects`, `_headers`). |
-| `CA-website-2-of-6-pictures-a.zip`, `…3-of-6-pictures-b.zip` | **The pictures,** in `img/`. |
-| `CA-website-4-of-6-films-a.zip` to `…6-of-6-films-c.zip` | **The films,** in `vid/`. |
+| `CA-website-pages-and-code.zip` | **The pages and code:** 67 pages, each as its own `index.html` (`/`, `/work/`, `/work/peace-pavilion/` …), plus `404.html`. Scripts and styles (`assets/`), fonts (`fonts/`), the form handlers (`api/`), `site-config.js`, the icons and `site.webmanifest`. The search files (`sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, the feeds, a Markdown copy of each page, the IndexNow key file). The server settings (`.htaccess`, `_redirects`, `_headers`), with 191 redirects from the old WordPress addresses. |
+| `CA-website-pictures-a.zip`, `-b.zip`, `-c.zip` | **The pictures,** in `img/`: the project photographs and drawings, the press covers (`img/cov/` and the `c01-t.webp` files in the project folders) and the share pictures (`img/share/`, 1200 × 630, shown when a page is shared). |
+| `CA-website-films-a.zip` to `-e.zip` | **The films,** in `vid/`. |
+| `CA-website-press-pages-a.zip` to `-d.zip` | **The press pages,** in `press/books/` (19 books) and `press/features/` (54 magazine features), as PDF. The project pages, the News page, the site search, the sitemap and `llms.txt` link to these addresses. |
+
+The separate `CA-website-books.zip`, `CA-website-press-covers.zip` and `CA-website-share-images.zip` of earlier drafts are no longer needed: everything is in the 13 zips above. If the site is already online from an earlier upload, extract all 13 over it (files are replaced; nothing needs deleting first).
 
 **Inside the site:**
 
@@ -27,6 +30,7 @@
 |---|---|
 | `api/` | The two form handlers: `contact.php` (the inquiry form) and `subscribe.php` (the newsletter). `config.sample.php` is the settings template, and `lib.php` is shared code. |
 | `site-config.js` | The settings you can change without a new build: Google Analytics ID, Turnstile key, form addresses. |
+| `press/books/`, `press/features/` | The book pages and magazine features, as PDF. Their names say the year, the publication and the project (for example `2011-retail-design-international-wedge-1.pdf`, `2013-05-society-interiors-studio-profile.pdf`). Keep the names: the site, the sitemap and search engines use them. |
 
 **Beside the zips:**
 
@@ -65,9 +69,9 @@ The current site is WordPress.
 
 1. **Put the site in the web root** of the account the domain will point to (usually `public_html/`):
    1. In cPanel's File Manager, open the web root.
-   2. Upload the six zip files there.
+   2. Upload the 13 zip files there.
    3. Select each one and choose *Extract*, into that same folder.
-   4. Delete the six zips afterwards.
+   4. Delete the 13 zips afterwards.
    - The files must sit directly in the web root (`public_html/index.html`, `public_html/work/…`), not inside a subfolder.
 2. **Check that the hidden file `.htaccess` arrived.** In File Manager, open *Settings → Show hidden files*. This file holds every redirect and security rule; without it the old addresses break.
 3. **Check permissions:** folders 755, files 644. These are the normal defaults.
@@ -76,7 +80,7 @@ The current site is WordPress.
 
 ### 4.2 nginx (a VPS)
 
-1. Extract the six zips into `/var/www/collaborativearchitecture.com/`.
+1. Extract the 13 zips into `/var/www/collaborativearchitecture.com/`.
 2. Use `nginx.conf` (in the repository: `server/nginx.conf`). Set `root`, the certificate lines and the `fastcgi_pass` socket for your PHP-FPM.
 3. Then run `nginx -t && systemctl reload nginx`.
 
@@ -155,8 +159,9 @@ A subdomain such as `new.collaborativearchitecture.com` also works. If you use o
 **Checks:**
 
 - [ ] `/` opens: the opening animation, then the home page. On a phone too.
-- [ ] Work, a few project pages, Expertise, Lab, Awards, Studio, News, Contact, Privacy (and /cookies/, which should open Privacy).
+- [ ] Work, a few project pages, Expertise, Lab, Awards, Studio, News, Contact, Privacy, Cookies.
 - [ ] Menu, search, image viewer, a project film (Cascadia, National Unity Pavilion), the map view (Work → Map).
+- [ ] **A book opens:** on Wedge-1, *Awards and Press → Books*, click a cover; the PDF opens in a new tab. `curl -I https://collaborativearchitecture.com/press/books/2011-retail-design-international-wedge-1.pdf` shows `Content-Type: application/pdf` and status 200.
 - [ ] The cookie box appears once; *Accept all* and *Essential only* both close it.
 - [ ] The inquiry and newsletter forms (5.5).
 - [ ] An unknown address such as `/abc/` shows *Page not found*, with status 404.
@@ -226,9 +231,10 @@ The domain has **no SPF and no DMARC record** today. Gmail and Yahoo now expect 
 - [ ] Repeat the checks in 6 on the real address, from a phone on mobile data as well.
 - [ ] **Google Search Console:**
   1. Add a *Domain* property and verify it with the DNS TXT record Google gives.
-  2. Submit `https://collaborativearchitecture.com/sitemap.xml`.
+  2. Submit `https://collaborativearchitecture.com/sitemap.xml`. It lists the pages and the 71 press PDFs (18 books, 53 magazine features), which Google indexes as documents.
   3. Ask for indexing of the home page.
 - [ ] **Bing Webmaster Tools:** import the site from Search Console, then submit the sitemap. The IndexNow key file is already published.
+- [ ] **Changed pages of 26 October 2026 (IndexNow):** upload `Web copies\seo\96896a9128953f1d84cf614dd721177e.txt` to the site root, then send `Web copies\seo\indexnow-2026-10-26.json` as the body of a POST to `https://api.indexnow.org/indexnow` (`Content-Type: application/json; charset=utf-8`). It lists 101 addresses: the 20 project pages changed that day (Tree of Life, The Barn and The Vessel are new), the Home, Work and press pages, the sitemap, `llms.txt` and the feeds, and the 72 press PDFs. In Google Search Console, request indexing for the three new project pages; Google reads the sitemap's new `lastmod` dates for the rest.
 - [ ] **Google Analytics 4:**
   1. Create the property.
   2. Put the measurement ID (`G-…`) in `site-config.js`.
@@ -250,7 +256,7 @@ Email is unaffected either way, as long as the MX records were left alone.
 ## 11. Changing the site later
 
 - **Do not edit the HTML files on the server.** They are generated, and the next deployment replaces them.
-- The source is `src/ca-website.html` in the repository; pictures are in `public/img/`. The studio requests changes through Claude, which edits the repository.
+- The source is `src/ca-website.html` in the repository; pictures are in `public/img/`, the press pages in `public/press/books/` and `public/press/features/`. The studio requests changes through Claude, which edits the repository.
 - **Automatic deployment (recommended):** every change pushed to `main` is built, checked and uploaded by GitHub Actions (`.github/workflows/deploy.yml`). To switch it on, in the repository's *Settings → Secrets and variables → Actions*:
   - **FTP (cPanel):**
     - Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`. Create an FTP account limited to the web root.
