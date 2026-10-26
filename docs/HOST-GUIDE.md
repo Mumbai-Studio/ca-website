@@ -1,7 +1,8 @@
 # Collaborative Architecture website · guide for the host
 
 **For:** the developer or host who puts collaborativearchitecture.com online.
-**Version:** 27 October 2026 (draft 2.16: the complete site in one set of 13 zips, built from the latest review copy, with the Peace Pavilion, Tree of Life, The Barn and The Vessel pages, the press pages and covers, and the share pictures).
+
+**Version:** 27 October 2026, second package (the complete site in **one zip file**, built from the latest review copy. It replaces the 13 zips sent earlier the same day and adds smoother page changes and picture viewing, and the new Peace Pavilion text on the home page).
 
 **In short:** the new site is a set of ready-made files: a static site plus two small PHP scripts for the forms.
 
@@ -13,16 +14,16 @@
 
 ## 1. What you are getting
 
-**The website comes as 13 zip files.** Together they hold the complete site (about 225 MB, 804 files). They are split only to keep each file under 30 MB. Each one extracts into the same web folder, and together they rebuild it exactly. Extract all 13 into the web root; the order does not matter.
+**The website comes as one zip file, `CA-website.zip`** (225 MB, 804 files). It holds the complete site, with the files at the top level of the zip (no enclosing folder), so it extracts straight into the web root.
 
-| Zip | Contents |
+| In the zip | Contents |
 |---|---|
-| `CA-website-pages-and-code.zip` | **The pages and code:** 67 pages, each as its own `index.html` (`/`, `/work/`, `/work/peace-pavilion/` …), plus `404.html`. Scripts and styles (`assets/`), fonts (`fonts/`), the form handlers (`api/`), `site-config.js`, the icons and `site.webmanifest`. The search files (`sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, the feeds, a Markdown copy of each page, the IndexNow key file). The server settings (`.htaccess`, `_redirects`, `_headers`), with 191 redirects from the old WordPress addresses. |
-| `CA-website-pictures-a.zip`, `-b.zip`, `-c.zip` | **The pictures,** in `img/`: the project photographs and drawings, the press covers (`img/cov/` and the `c01-t.webp` files in the project folders) and the share pictures (`img/share/`, 1200 × 630, shown when a page is shared). |
-| `CA-website-films-a.zip` to `-e.zip` | **The films,** in `vid/`. |
-| `CA-website-press-pages-a.zip` to `-d.zip` | **The press pages,** in `press/books/` (19 books) and `press/features/` (54 magazine features), as PDF. The project pages, the News page, the site search, the sitemap and `llms.txt` link to these addresses. |
+| The pages and code | **The pages and code:** 67 pages, each as its own `index.html` (`/`, `/work/`, `/work/peace-pavilion/` …), plus `404.html`. Scripts and styles (`assets/`), fonts (`fonts/`), the form handlers (`api/`), `site-config.js`, the icons and `site.webmanifest`. The search files (`sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, the feeds, a Markdown copy of each page, the IndexNow key file). The server settings (`.htaccess`, `_redirects`, `_headers`), with 191 redirects from the old WordPress addresses. |
+| `img/` | **The pictures,** in `img/`: the project photographs and drawings, the press covers (`img/cov/` and the `c01-t.webp` files in the project folders) and the share pictures (`img/share/`, 1200 × 630, shown when a page is shared). |
+| `vid/` | **The films.** |
+| `press/` | **The press pages,** in `press/books/` (19 books) and `press/features/` (54 magazine features), as PDF. The project pages, the News page, the site search, the sitemap and `llms.txt` link to these addresses. |
 
-The separate `CA-website-books.zip`, `CA-website-press-covers.zip` and `CA-website-share-images.zip` of earlier drafts are no longer needed: everything is in the 13 zips above. If the site is already online from an earlier upload, extract all 13 over it (files are replaced; nothing needs deleting first).
+**If you received the 13 zips (`CA-website-pages-and-code.zip`, `CA-website-pictures-a.zip` …) earlier, set them aside:** this one zip replaces all of them, and the separate books, press-covers and share-images zips of older drafts. If the site is already online from an earlier upload, extract `CA-website.zip` over it (files are replaced; nothing needs deleting first).
 
 **Inside the site:**
 
@@ -32,7 +33,7 @@ The separate `CA-website-books.zip`, `CA-website-press-covers.zip` and `CA-websi
 | `site-config.js` | The settings you can change without a new build: Google Analytics ID, Turnstile key, form addresses. |
 | `press/books/`, `press/features/` | The book pages and magazine features, as PDF. Their names say the year, the publication and the project (for example `2011-retail-design-international-wedge-1.pdf`, `2013-05-society-interiors-studio-profile.pdf`). Keep the names: the site, the sitemap and search engines use them. |
 
-**Beside the zips:**
+**Beside the zip:**
 
 | File | What it is |
 |---|---|
@@ -51,7 +52,7 @@ The separate `CA-website-books.zip`, `CA-website-press-covers.zip` and `CA-websi
   - nginx works with `server/nginx.conf`.
   - Netlify and Cloudflare Pages also work, using `_redirects` and `_headers`, but they have no PHP: see 5.4.
 - **PHP 7.4 or later, for the two form handlers.** PHP 8.2 or 8.3 is recommended. It needs the `curl` or `openssl` extension, which is standard.
-- **About 140 MB of disk space.**
+- **About 230 MB of disk space** for the site, and as much again for a short time while the zip is on the server before it is extracted.
 - **The site must sit at the root of a domain or subdomain,** for example `collaborativearchitecture.com/` or `new.collaborativearchitecture.com/`.
   - It cannot run from a subfolder such as `example.com/new/`, because every link starts with `/`.
 
@@ -69,9 +70,10 @@ The current site is WordPress.
 
 1. **Put the site in the web root** of the account the domain will point to (usually `public_html/`):
    1. In cPanel's File Manager, open the web root.
-   2. Upload the 13 zip files there.
-   3. Select each one and choose *Extract*, into that same folder.
-   4. Delete the 13 zips afterwards.
+   2. Upload `CA-website.zip` there.
+      - If File Manager refuses a file of this size, upload it with an FTP program (for example FileZilla) into the same folder, then come back to File Manager.
+   3. Select it and choose *Extract*, into that same folder.
+   4. Delete the zip afterwards.
    - The files must sit directly in the web root (`public_html/index.html`, `public_html/work/…`), not inside a subfolder.
 2. **Check that the hidden file `.htaccess` arrived.** In File Manager, open *Settings → Show hidden files*. This file holds every redirect and security rule; without it the old addresses break.
 3. **Check permissions:** folders 755, files 644. These are the normal defaults.
@@ -80,7 +82,7 @@ The current site is WordPress.
 
 ### 4.2 nginx (a VPS)
 
-1. Extract the 13 zips into `/var/www/collaborativearchitecture.com/`.
+1. Extract the zip into `/var/www/collaborativearchitecture.com/` (`unzip -o CA-website.zip -d /var/www/collaborativearchitecture.com/`).
 2. Use `nginx.conf` (in the repository: `server/nginx.conf`). Set `root`, the certificate lines and the `fastcgi_pass` socket for your PHP-FPM.
 3. Then run `nginx -t && systemctl reload nginx`.
 
