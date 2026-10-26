@@ -1,7 +1,7 @@
 # Collaborative Architecture website · guide for the host
 
 **For:** the developer or host who puts collaborativearchitecture.com online.
-**Version:** 26 October 2026, evening (draft 2.16: the complete site in one set of 13 zips, built from the latest review copy, with the Peace Pavilion, Tree of Life, The Barn and The Vessel pages, the press pages and covers, and the share pictures).
+**Version:** 27 October 2026 (draft 2.16: the complete site in one set of 13 zips, built from the latest review copy, with the Peace Pavilion, Tree of Life, The Barn and The Vessel pages, the press pages and covers, and the share pictures).
 
 **In short:** the new site is a set of ready-made files: a static site plus two small PHP scripts for the forms.
 
@@ -13,7 +13,7 @@
 
 ## 1. What you are getting
 
-**The website comes as 13 zip files.** Together they hold the complete site (about 225 MB, 792 files). They are split only to keep each file under 30 MB. Each one extracts into the same web folder, and together they rebuild it exactly. Extract all 13 into the web root; the order does not matter.
+**The website comes as 13 zip files.** Together they hold the complete site (about 225 MB, 804 files). They are split only to keep each file under 30 MB. Each one extracts into the same web folder, and together they rebuild it exactly. Extract all 13 into the web root; the order does not matter.
 
 | Zip | Contents |
 |---|---|
