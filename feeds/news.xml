@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>Collaborative Architecture: news</title>
+<link>https://collaborativearchitecture.com/</link>
+<atom:link href="https://collaborativearchitecture.com/feeds/news.xml" rel="self" type="application/rss+xml"/>
+<description>New projects, exhibitions and awards from Collaborative Architecture.</description>
+<language>en</language>
+<image><url>https://collaborativearchitecture.com/img/logo-640.png</url><title>Collaborative Architecture</title><link>https://collaborativearchitecture.com/</link></image>
+<item>
+<title>The Barn hands over in Navi Mumbai</title>
+<link>https://collaborativearchitecture.com/work/the-barn/</link>
+<guid isPermaLink="true">https://collaborativearchitecture.com/news/#the-barn-hands-over-in-navi-mumbai</guid>
+<pubDate>Thu, 01 Jan 2026 09:00:00 GMT</pubDate>
+<dc:creator>Collaborative Architecture</dc:creator>
+<category>News</category>
+<description>An industrial shed converted into a workspace for Suretech Infrastructure, with punched Corten openings outside and a perforated steel cage inside.</description>
+<media:content url="https://collaborativearchitecture.com/img/hb/barn.webp" medium="image"/>
+</item>
+<item>
+<title>The Measured City for the National Pavilion of the UAE, Venice Biennale 2027</title>
+<link>https://collaborativearchitecture.com/work/the-measured-city/</link>
+<guid isPermaLink="true">https://collaborativearchitecture.com/news/#the-measured-city-for-the-national-pavilion-of-the-uae-venic</guid>
+<pubDate>Thu, 01 Jan 2026 09:00:00 GMT</pubDate>
+<dc:creator>Collaborative Architecture</dc:creator>
+<category>News</category>
+<description>An exhibition that maps decades of data on how the region lives, instead of returning to its famous skyline.</description>
+<media:content url="https://collaborativearchitecture.com/img/hb/measured2.webp" medium="image"/>
+</item>
+<item>
+<title>Insite: “Minimalism &amp; Misinterpretations” on The Iconic Gateway and the National Unity Pavilion</title>
+<link>https://collaborativearchitecture.com/work/iconic-gateway/</link>
+<guid isPermaLink="true">https://collaborativearchitecture.com/news/#insite-minimalism-misinterpretations-on-the-iconic-gateway-a</guid>
+<pubDate>Wed, 01 Oct 2025 09:00:00 GMT</pubDate>
+<dc:creator>Collaborative Architecture</dc:creator>
+<category>Press</category>
+<description></description>
+<media:content url="https://collaborativearchitecture.com/img/diyar/p03.webp" medium="image"/>
+</item>
+<item>
+<title>MillerKnoll Experience Center completed in Bengaluru</title>
+<link>https://collaborativearchitecture.com/work/miller-knoll-experience-center/</link>
+<guid isPermaLink="true">https://collaborativearchitecture.com/news/#millerknoll-experience-center-completed-in-bengaluru</guid>
+<pubDate>Wed, 01 Jan 2025 09:00:00 GMT</pubDate>
+<dc:creator>Collaborative Architecture</dc:creator>
+<category>News</category>
+<description>Considered among the best three MillerKnoll retail interfaces worldwide.</description>
+<media:content url="https://collaborativearchitecture.com/img/millerknoll/p01.webp" medium="image"/>
+</item>
+<item>
+<title>Peace Pavilion shown at the Museum of Craft and Design, San Francisco</title>
+<link>https://collaborativearchitecture.com/work/peace-pavilion/</link>
+<guid isPermaLink="true">https://collaborativearchitecture.com/news/#peace-pavilion-shown-at-the-museum-of-craft-and-design-san-f</guid>
+<pubDate>Sun, 01 Jan 2023 09:00:00 GMT</pubDate>
+<dc:creator>Collaborative Architecture</dc:creator>
+<category>Exhibition</category>
+<description></description>
+<media:content url="https://collaborativearchitecture.com/img/hb/peacech.webp" medium="image"/>
+</item>
+</channel>
+</rss>

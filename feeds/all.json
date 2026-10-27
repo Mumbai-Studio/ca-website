@@ -1,0 +1,4111 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Collaborative Architecture: project archive",
+  "home_page_url": "https://collaborativearchitecture.com/",
+  "feed_url": "https://collaborativearchitecture.com/feeds/all.json",
+  "description": "The structured, interconnected archive of Collaborative Architecture: every project with its place, type, status and year, its related projects, its expertise and the press that cites it, together with the studio's news, press and newsletters. Collaborative Architecture is an internationally award-winning studio headquartered in Mumbai, India, with a satellite studio in Riyadh, KSA. Our projects evolve out of a meaningful convergence of people, places, culture, climate, ecology and economics.",
+  "icon": "https://collaborativearchitecture.com/img/logo-640.png",
+  "language": "en",
+  "authors": [
+    {
+      "name": "Collaborative Architecture",
+      "url": "https://collaborativearchitecture.com/"
+    }
+  ],
+  "_archive": {
+    "kind": "project archive",
+    "structured": true,
+    "interconnected": true,
+    "projects": 31,
+    "sitemap": "https://collaborativearchitecture.com/sitemap.xml",
+    "llms": "https://collaborativearchitecture.com/llms.txt"
+  },
+  "_profiles": {
+    "studio": [
+      "https://www.instagram.com/collaborativearchitecture/",
+      "https://www.linkedin.com/company/collaborative-architecture/",
+      "https://www.youtube.com/channel/UCVT_6IYHwG1D-PVAoeo-bRg",
+      "https://in.pinterest.com/CollaborativeArchitecture/",
+      "https://twitter.com/collabarch"
+    ],
+    "people": {
+      "Lalita Tharani": [
+        {
+          "k": "linkedin",
+          "u": "https://www.linkedin.com/in/lalitatharani/"
+        }
+      ],
+      "Mujib Ahmed": [
+        {
+          "k": "linkedin",
+          "u": "https://www.linkedin.com/in/mujibahmed/"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "https://www.linkedin.com/pulse/architecture-located-where-built-mujib-ahmed-ki4rc",
+      "url": "https://www.linkedin.com/pulse/architecture-located-where-built-mujib-ahmed-ki4rc",
+      "title": "Architecture is Located NOT Where it is Built",
+      "summary": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "content_text": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "date_published": "2026-10-01T09:00:00Z",
+      "tags": [
+        "The Collaborative Logs"
+      ],
+      "authors": [
+        {
+          "name": "Mujib Ahmed"
+        }
+      ],
+      "_kind": "logs"
+    },
+    {
+      "id": "https://www.linkedin.com/pulse/narrative-environment-re-imagining-contemporary-retail-mujib-ahmed-9w1rf",
+      "url": "https://www.linkedin.com/pulse/narrative-environment-re-imagining-contemporary-retail-mujib-ahmed-9w1rf",
+      "title": "The Narrative Environment: re-imagining the contemporary retail interface",
+      "summary": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "content_text": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "date_published": "2026-08-01T09:00:00Z",
+      "tags": [
+        "The Collaborative Logs"
+      ],
+      "authors": [
+        {
+          "name": "Mujib Ahmed"
+        }
+      ],
+      "_kind": "logs"
+    },
+    {
+      "id": "https://www.linkedin.com/pulse/profession-counts-carbon-should-count-wars-mujib-ahmed-9jpcc",
+      "url": "https://www.linkedin.com/pulse/profession-counts-carbon-should-count-wars-mujib-ahmed-9jpcc",
+      "title": "The profession that counts carbon should count wars",
+      "summary": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "content_text": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "date_published": "2026-07-01T09:00:00Z",
+      "tags": [
+        "The Collaborative Logs"
+      ],
+      "authors": [
+        {
+          "name": "Mujib Ahmed"
+        }
+      ],
+      "_kind": "logs"
+    },
+    {
+      "id": "https://www.linkedin.com/pulse/could-architecture-save-democracy-mujib-ahmed-hcedc",
+      "url": "https://www.linkedin.com/pulse/could-architecture-save-democracy-mujib-ahmed-hcedc",
+      "title": "Could architecture save democracy?",
+      "summary": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "content_text": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "date_published": "2026-06-01T09:00:00Z",
+      "tags": [
+        "The Collaborative Logs"
+      ],
+      "authors": [
+        {
+          "name": "Mujib Ahmed"
+        }
+      ],
+      "_kind": "logs"
+    },
+    {
+      "id": "https://www.linkedin.com/pulse/architects-dunning-kruger-affliction-mujib-ahmed-q678f",
+      "url": "https://www.linkedin.com/pulse/architects-dunning-kruger-affliction-mujib-ahmed-q678f",
+      "title": "Architects’ Dunning–Kruger affliction",
+      "summary": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "content_text": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "date_published": "2026-04-01T09:00:00Z",
+      "tags": [
+        "The Collaborative Logs"
+      ],
+      "authors": [
+        {
+          "name": "Mujib Ahmed"
+        }
+      ],
+      "_kind": "logs"
+    },
+    {
+      "id": "https://www.linkedin.com/pulse/perceptive-phenomenologyies-mujib-ahmed-lsd6c",
+      "url": "https://www.linkedin.com/pulse/perceptive-phenomenologyies-mujib-ahmed-lsd6c",
+      "title": "Hidden Cartographies: perceptive phenomenologies",
+      "summary": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "content_text": "The Collaborative Logs, by Mujib Ahmed, on LinkedIn.",
+      "date_published": "2026-03-01T09:00:00Z",
+      "tags": [
+        "The Collaborative Logs"
+      ],
+      "authors": [
+        {
+          "name": "Mujib Ahmed"
+        }
+      ],
+      "_kind": "logs"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/material-cartographies/",
+      "url": "https://collaborativearchitecture.com/work/material-cartographies/",
+      "title": "Material Cartographies, Venice",
+      "summary": "1 × 1 is Collaborative Architecture’s proposal for the Bahrain Pavilion at the 2027 Venice Architecture Biennale, investigating the material dependencies of contemporary architecture through the lens of a single square meter of built space.",
+      "content_text": "1 × 1 is Collaborative Architecture’s proposal for the Bahrain Pavilion at the 2027 Venice Architecture Biennale, investigating the material dependencies of contemporary architecture through the lens of a single square meter of built space.",
+      "image": "https://collaborativearchitecture.com/img/bahrain/p01.webp",
+      "date_published": "2026-01-01T09:00:00Z",
+      "tags": [
+        "Exhibition, Research",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "material-cartographies",
+        "location": "Venice, Italy",
+        "region": "Europe",
+        "typology": "Exhibition, Research",
+        "status": "Competition proposal",
+        "year": "2026",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/the-measured-city/",
+          "https://collaborativearchitecture.com/work/iconic-gateway/",
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/"
+        ],
+        "press": [
+          {
+            "group": "Writing",
+            "date": "2026 Oct",
+            "title": "The Collaborative Logs: Architecture is Located NOT Where it is Built",
+            "url": "https://www.linkedin.com/pulse/architecture-located-where-built-mujib-ahmed-ki4rc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/the-measured-city/",
+      "url": "https://collaborativearchitecture.com/work/the-measured-city/",
+      "title": "The Measured City, Venice",
+      "summary": "The Measured City is Collaborative Architecture’s proposal for the UAE National Pavilion at the 2027 Venice Architecture Biennale, positioning the United Arab Emirates as a living laboratory for urban futures in arid regions.",
+      "content_text": "The Measured City is Collaborative Architecture’s proposal for the UAE National Pavilion at the 2027 Venice Architecture Biennale, positioning the United Arab Emirates as a living laboratory for urban futures in arid regions.",
+      "image": "https://collaborativearchitecture.com/img/uae/p01.webp",
+      "date_published": "2026-01-01T09:00:00Z",
+      "tags": [
+        "Exhibition, Research",
+        "Narrative Environments and Installations",
+        "Urban Design and Infrastructure"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "the-measured-city",
+        "location": "Venice, Italy",
+        "region": "Europe",
+        "typology": "Exhibition, Research",
+        "status": "Competition proposal",
+        "year": "2026",
+        "expertise": [
+          "Narrative Environments and Installations",
+          "Urban Design and Infrastructure"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/material-cartographies/",
+          "https://collaborativearchitecture.com/work/the-souk/",
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/"
+        ],
+        "press": []
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/the-barn/",
+      "url": "https://collaborativearchitecture.com/work/the-barn/",
+      "title": "The Barn, Navi Mumbai",
+      "summary": "The Barn transforms an industrial shed in Navi Mumbai into a contemporary workspace for Suretech Infrastructure, retaining elements of its original workshop, paint shop, and mechanical repair functions. Conceived alongside the client’s ambitions to rebrand and expand its business, the project demonstrates how a modest budget can become a catalyst for architectural reinvention.",
+      "content_text": "The Barn transforms an industrial shed in Navi Mumbai into a contemporary workspace for Suretech Infrastructure, retaining elements of its original workshop, paint shop, and mechanical repair functions. Conceived alongside the client’s ambitions to rebrand and expand its business, the project demonstrates how a modest budget can become a catalyst for architectural reinvention.",
+      "image": "https://collaborativearchitecture.com/img/barn/p01.webp",
+      "date_published": "2026-01-01T09:00:00Z",
+      "tags": [
+        "Adaptive reuse, Workplace",
+        "Architecture",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "the-barn",
+        "location": "Navi Mumbai, India",
+        "region": "South Asia",
+        "typology": "Adaptive reuse, Workplace",
+        "status": "Completed",
+        "year": "2026",
+        "expertise": [
+          "Architecture",
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/the-vessel/"
+        ],
+        "press": [
+          {
+            "group": "Writing",
+            "date": "2026 Jan",
+            "title": "LinkedIn: The Barn, Suretech Infra, adaptive re-use",
+            "url": "https://www.linkedin.com/pulse/barn-suretech-infra-new-bombay-adaptive-re-use-mujib-ahmed-wadof"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/news/#the-barn-hands-over-in-navi-mumbai",
+      "url": "https://collaborativearchitecture.com/work/the-barn/",
+      "title": "The Barn hands over in Navi Mumbai",
+      "summary": "An industrial shed converted into a workspace for Suretech Infrastructure, with punched Corten openings outside and a perforated steel cage inside.",
+      "content_text": "An industrial shed converted into a workspace for Suretech Infrastructure, with punched Corten openings outside and a perforated steel cage inside.",
+      "image": "https://collaborativearchitecture.com/img/hb/barn.webp",
+      "date_published": "2026-01-01T09:00:00Z",
+      "tags": [
+        "News"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "news"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/news/#the-measured-city-for-the-national-pavilion-of-the-uae-venic",
+      "url": "https://collaborativearchitecture.com/work/the-measured-city/",
+      "title": "The Measured City for the National Pavilion of the UAE, Venice Biennale 2027",
+      "summary": "An exhibition that maps decades of data on how the region lives, instead of returning to its famous skyline.",
+      "content_text": "An exhibition that maps decades of data on how the region lives, instead of returning to its famous skyline.",
+      "image": "https://collaborativearchitecture.com/img/hb/measured2.webp",
+      "date_published": "2026-01-01T09:00:00Z",
+      "tags": [
+        "News"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "news"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2026-faire-memoire-lyon-shoah-memorial-tree-of-life.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2026-faire-memoire-lyon-shoah-memorial-tree-of-life.pdf",
+      "title": "Ante Prima, AAM Éditions: Faire mémoire: 96 projets pour un mémorial, on Tree of Life",
+      "summary": "Book. 6 pages on Tree of Life, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/tree-of-life/",
+      "content_text": "Book. 6 pages on Tree of Life, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/tree-of-life/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-fairememoire.webp",
+      "date_published": "2026-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Tree of Life"
+      ],
+      "authors": [
+        {
+          "name": "Ante Prima, AAM Éditions"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/news/#insite-minimalism-misinterpretations-on-the-iconic-gateway-a",
+      "url": "https://collaborativearchitecture.com/work/iconic-gateway/",
+      "title": "Insite: “Minimalism & Misinterpretations” on The Iconic Gateway and the National Unity Pavilion",
+      "summary": "",
+      "content_text": "",
+      "image": "https://collaborativearchitecture.com/img/diyar/p03.webp",
+      "date_published": "2025-10-01T09:00:00Z",
+      "tags": [
+        "Press"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "news"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2025-10-insite-minimalism-and-misinterpretations.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2025-10-insite-minimalism-and-misinterpretations.pdf",
+      "title": "Insite, October 2025: Minimalism & Misinterpretations, on the Iconic Gateway and the National Unity Pavilion",
+      "summary": "Magazine feature. 7 pages on The Iconic Gateway, National Unity Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/iconic-gateway/",
+      "content_text": "Magazine feature. 7 pages on The Iconic Gateway, National Unity Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/iconic-gateway/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-incite2025.webp",
+      "date_published": "2025-10-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "The Iconic Gateway",
+        "National Unity Pavilion"
+      ],
+      "authors": [
+        {
+          "name": "Insite"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/project-alpha/",
+      "url": "https://collaborativearchitecture.com/work/project-alpha/",
+      "title": "Project Alpha, Texas",
+      "summary": "Project Alpha is Collaborative Architecture’s proposal for Initiative 99, ICON’s global challenge exploring the potential of 3D-printed housing to address affordability. The project questions the premise that housing affordability is primarily an engineering problem, solvable through cheaper materials and faster construction.",
+      "content_text": "Project Alpha is Collaborative Architecture’s proposal for Initiative 99, ICON’s global challenge exploring the potential of 3D-printed housing to address affordability. The project questions the premise that housing affordability is primarily an engineering problem, solvable through cheaper materials and faster construction.",
+      "image": "https://collaborativearchitecture.com/img/alpha/p01.webp",
+      "date_published": "2025-01-01T09:00:00Z",
+      "tags": [
+        "Housing, Research",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "project-alpha",
+        "location": "Texas, USA",
+        "region": "North America",
+        "typology": "Housing, Research",
+        "status": "Competition proposal",
+        "year": "2025",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/house-of-cantilevers/",
+          "https://collaborativearchitecture.com/work/stacked-tectonics/",
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/"
+        ],
+        "press": [
+          {
+            "group": "Writing",
+            "date": "2026 Jan",
+            "title": "The Collaborative Logs: Reflections 2026, are we serving right?",
+            "url": "https://www.linkedin.com/pulse/reflections-2026-we-serving-right-mujib-ahmed-noojf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/miller-knoll-experience-center/",
+      "url": "https://collaborativearchitecture.com/work/miller-knoll-experience-center/",
+      "title": "MillerKnoll Experience Center, Bengaluru",
+      "summary": "The MillerKnoll Experience Center brings together the brand’s strategic ambitions with the demands of retail and daily operation. Collaborative Architecture transformed a challenging interior—its low ceilings, deep structural beams and exposed services—into an immersive setting for experiencing the collection, making the center both a brand environment and a retail interface.",
+      "content_text": "The MillerKnoll Experience Center brings together the brand’s strategic ambitions with the demands of retail and daily operation. Collaborative Architecture transformed a challenging interior—its low ceilings, deep structural beams and exposed services—into an immersive setting for experiencing the collection, making the center both a brand environment and a retail interface.",
+      "image": "https://collaborativearchitecture.com/img/millerknoll/p01.webp",
+      "date_published": "2025-01-01T09:00:00Z",
+      "tags": [
+        "Experience center, Retail",
+        "Narrative Environments and Installations",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "miller-knoll-experience-center",
+        "location": "Bengaluru, India",
+        "region": "South Asia",
+        "typology": "Experience center, Retail",
+        "status": "Completed",
+        "year": "2025",
+        "expertise": [
+          "Narrative Environments and Installations",
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/wrap-4/",
+          "https://collaborativearchitecture.com/work/wedge-1/",
+          "https://collaborativearchitecture.com/work/stanley-lifestyle-store/"
+        ],
+        "press": [
+          {
+            "group": "Writing",
+            "date": "2026 Aug",
+            "title": "The Collaborative Logs: The Narrative Environment, re-imagining the contemporary retail interface",
+            "url": "https://www.linkedin.com/pulse/narrative-environment-re-imagining-contemporary-retail-mujib-ahmed-9w1rf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/news/#millerknoll-experience-center-completed-in-bengaluru",
+      "url": "https://collaborativearchitecture.com/work/miller-knoll-experience-center/",
+      "title": "MillerKnoll Experience Center completed in Bengaluru",
+      "summary": "Considered among the best three MillerKnoll retail interfaces worldwide.",
+      "content_text": "Considered among the best three MillerKnoll retail interfaces worldwide.",
+      "image": "https://collaborativearchitecture.com/img/millerknoll/p01.webp",
+      "date_published": "2025-01-01T09:00:00Z",
+      "tags": [
+        "News"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "news"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/iconic-gateway/",
+      "url": "https://collaborativearchitecture.com/work/iconic-gateway/",
+      "title": "The Iconic Gateway, Muharraq",
+      "summary": "The Iconic Gateway marks the entrance to Diyar Al Muharraq in Bahrain. Conceived as both a pedestrian bridge and a landmark within the emerging urban landscape, it establishes a distinctive threshold to the new city.",
+      "content_text": "The Iconic Gateway marks the entrance to Diyar Al Muharraq in Bahrain. Conceived as both a pedestrian bridge and a landmark within the emerging urban landscape, it establishes a distinctive threshold to the new city.",
+      "image": "https://collaborativearchitecture.com/img/diyar/p01.webp",
+      "date_published": "2023-01-01T09:00:00Z",
+      "tags": [
+        "Infrastructure, Civic",
+        "Urban Design and Infrastructure"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "iconic-gateway",
+        "location": "Muharraq, Bahrain",
+        "region": "Middle East",
+        "typology": "Infrastructure, Civic",
+        "status": "Competition proposal",
+        "year": "2023",
+        "expertise": [
+          "Urban Design and Infrastructure"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2023 ⚑",
+            "title": "Competition proposal, Diyar Al Muharraq",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2025 Oct",
+            "title": "Insite, “Minimalism & Misinterpretations”",
+            "url": "https://collaborativearchitecture.com/press/features/2025-10-insite-minimalism-and-misinterpretations.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/tree-of-life/",
+      "url": "https://collaborativearchitecture.com/work/tree-of-life/",
+      "title": "Tree of Life, Lyon",
+      "summary": "The Shoah Memorial in Lyon is conceived as a place of remembrance for the Jewish victims of the Holocaust and a setting for collective reflection on one of the darkest chapters in human history.",
+      "content_text": "The Shoah Memorial in Lyon is conceived as a place of remembrance for the Jewish victims of the Holocaust and a setting for collective reflection on one of the darkest chapters in human history.",
+      "image": "https://collaborativearchitecture.com/img/shoah/p01.webp",
+      "date_published": "2023-01-01T09:00:00Z",
+      "tags": [
+        "Memorial, Civic",
+        "Architecture",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "tree-of-life",
+        "location": "Lyon, France",
+        "region": "Europe",
+        "typology": "Memorial, Civic",
+        "status": "Competition entry",
+        "year": "2023",
+        "expertise": [
+          "Architecture",
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/peace-pavilion/",
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/",
+          "https://collaborativearchitecture.com/work/sandy-hook-memorial/"
+        ],
+        "press": [
+          {
+            "group": "Books",
+            "date": "2026",
+            "title": "Faire mémoire: 96 projets pour un mémorial, AAM Éditions",
+            "url": "https://collaborativearchitecture.com/press/books/2026-faire-memoire-lyon-shoah-memorial-tree-of-life.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/news/#peace-pavilion-shown-at-the-museum-of-craft-and-design-san-f",
+      "url": "https://collaborativearchitecture.com/work/peace-pavilion/",
+      "title": "Peace Pavilion shown at the Museum of Craft and Design, San Francisco",
+      "summary": "",
+      "content_text": "",
+      "image": "https://collaborativearchitecture.com/img/hb/peacech.webp",
+      "date_published": "2023-01-01T09:00:00Z",
+      "tags": [
+        "Exhibition"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "news"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/national-unity-pavilion/",
+      "url": "https://collaborativearchitecture.com/work/national-unity-pavilion/",
+      "title": "National Unity Pavilion, India",
+      "summary": "The National Unity Pavilion is Collaborative Architecture’s winning proposal for Notions of India, an international competition organized by Tata Steel to commemorate 75 years of Indian independence.",
+      "content_text": "The National Unity Pavilion is Collaborative Architecture’s winning proposal for Notions of India, an international competition organized by Tata Steel to commemorate 75 years of Indian independence.",
+      "image": "https://collaborativearchitecture.com/img/unity/p01.webp",
+      "date_published": "2021-01-01T09:00:00Z",
+      "tags": [
+        "Pavilion, Civic",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "national-unity-pavilion",
+        "location": "India, India",
+        "region": "South Asia",
+        "typology": "Pavilion, Civic",
+        "status": "One of the three winning entries, international competition",
+        "year": "2021",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/peace-pavilion/",
+          "https://collaborativearchitecture.com/work/tree-of-life/",
+          "https://collaborativearchitecture.com/work/the-souk/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2021",
+            "title": "Notions of India, international competition, Tata Steel, winning entry",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2025 Oct",
+            "title": "Insite, “Minimalism & Misinterpretations”",
+            "url": "https://collaborativearchitecture.com/press/features/2025-10-insite-minimalism-and-misinterpretations.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2021",
+            "title": "Notions of India, competition submission",
+            "url": "https://www.notionsofindia.com/exhibition/submissions/national-unity-pavillion.html"
+          },
+          {
+            "group": "Video",
+            "date": "2026",
+            "title": "National Unity Pavilion, the film (Video 1, 4:36), played from the project facts; Video 2 to be supplied",
+            "url": ""
+          },
+          {
+            "group": "Writing",
+            "date": "2026 Jun",
+            "title": "The Collaborative Logs: Could Architecture Save Democracy?",
+            "url": "https://www.linkedin.com/pulse/could-architecture-save-democracy-mujib-ahmed-hcedc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2020-mgs-architecture-designing-peace-cooper-hewitt.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2020-mgs-architecture-designing-peace-cooper-hewitt.pdf",
+      "title": "MGS Architecture, August 2020: Designing Peace, Cooper Hewitt, Smithsonian Design Museum",
+      "summary": "Magazine feature. 2 pages on Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/peace-pavilion/",
+      "content_text": "Magazine feature. 2 pages on Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/peace-pavilion/",
+      "date_published": "2020-08-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Peace Pavilion"
+      ],
+      "authors": [
+        {
+          "name": "MGS Architecture"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2020-07-mgs-architecture-style-and-strategy-interview.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2020-07-mgs-architecture-style-and-strategy-interview.pdf",
+      "title": "MGS Architecture, July 2020: Style and Strategy, interview with the principals",
+      "summary": "Magazine feature. 2 pages on Sandy Hook Memorial, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/sandy-hook-memorial/",
+      "content_text": "Magazine feature. 2 pages on Sandy Hook Memorial, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/sandy-hook-memorial/",
+      "image": "https://collaborativearchitecture.com/img/sandyhook/c02-t.webp",
+      "date_published": "2020-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Sandy Hook Memorial"
+      ],
+      "authors": [
+        {
+          "name": "MGS Architecture"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/",
+      "url": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/",
+      "title": "BluPrint: Collaborative Architecture: key projects of the decade",
+      "summary": "Feature",
+      "content_text": "Feature",
+      "date_published": "2020-04-01T09:00:00Z",
+      "tags": [
+        "Feature"
+      ],
+      "authors": [
+        {
+          "name": "BluPrint"
+        }
+      ],
+      "_kind": "press"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/50th-cross-road/",
+      "url": "https://collaborativearchitecture.com/work/50th-cross-road/",
+      "title": "50th Cross Road, Kerala",
+      "summary": "Designed as a show apartment for PVS Developers in Kozhikode, 50th Cross Road supported the developer’s repositioning into the luxury condominium market.",
+      "content_text": "Designed as a show apartment for PVS Developers in Kozhikode, 50th Cross Road supported the developer’s repositioning into the luxury condominium market.",
+      "image": "https://collaborativearchitecture.com/img/cross50/p01.webp",
+      "date_published": "2020-01-01T09:00:00Z",
+      "tags": [
+        "Residential, Interior",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "50th-cross-road",
+        "location": "Kerala, India",
+        "region": "South Asia",
+        "typology": "Residential, Interior",
+        "status": "Completed",
+        "year": "2020",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+          "https://collaborativearchitecture.com/work/the-legend/",
+          "https://collaborativearchitecture.com/work/house-of-cantilevers/"
+        ],
+        "press": [
+          {
+            "group": "In print",
+            "date": "2020 Jul",
+            "title": "MGS Architecture, interview",
+            "url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2019-09-idecorama-interview-with-the-principals.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2019-09-idecorama-interview-with-the-principals.pdf",
+      "title": "iDecorama, September–October 2019: interview with the principals",
+      "summary": "Magazine feature. 2 pages on Reflected Topography, House of Cantilevers, Stacked Tectonics, Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 2 pages on Reflected Topography, House of Cantilevers, Stacked Tectonics, Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-decorama.webp",
+      "date_published": "2019-09-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography",
+        "House of Cantilevers",
+        "Stacked Tectonics",
+        "Peace Pavilion"
+      ],
+      "authors": [
+        {
+          "name": "iDecorama"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2019-03-indian-furniture-journal-workspace.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2019-03-indian-furniture-journal-workspace.pdf",
+      "title": "Indian Furniture Journal, March–April 2019, issue 85: workspace",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-ifj2019.webp",
+      "date_published": "2019-04-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "Indian Furniture Journal"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2019-02-architecture-and-design-global-dynamics.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2019-02-architecture-and-design-global-dynamics.pdf",
+      "title": "Architecture + Design, February 2019: Global Dynamics in Indian Architecture",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Sandy Hook Memorial, Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Sandy Hook Memorial, Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/sandyhook/c01-t.webp",
+      "date_published": "2019-02-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography",
+        "Sandy Hook Memorial",
+        "Peace Pavilion"
+      ],
+      "authors": [
+        {
+          "name": "Architecture + Design"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/the-souk/",
+      "url": "https://collaborativearchitecture.com/work/the-souk/",
+      "title": "The Souk, Dubai",
+      "summary": "Selected as the winner of Dubai Design Week’s 2019 installation program, The Souk reimagines the traditional Middle Eastern bazaar as a contemporary public realm. Three identical timber pavilions form an interconnected cluster around a shared square, creating an urban microcosm where commerce, social exchange, and collective activity shape the spatial experience.",
+      "content_text": "Selected as the winner of Dubai Design Week’s 2019 installation program, The Souk reimagines the traditional Middle Eastern bazaar as a contemporary public realm. Three identical timber pavilions form an interconnected cluster around a shared square, creating an urban microcosm where commerce, social exchange, and collective activity shape the spatial experience.",
+      "image": "https://collaborativearchitecture.com/img/souk/p01.webp",
+      "date_published": "2019-01-01T09:00:00Z",
+      "tags": [
+        "Pavilion, Temporary architecture",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "the-souk",
+        "location": "Dubai, UAE",
+        "region": "Middle East",
+        "typology": "Pavilion, Temporary architecture",
+        "status": "Competition winner (unbuilt)",
+        "year": "2019",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/rasa-totem/",
+          "https://collaborativearchitecture.com/work/the-spline/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2019",
+            "title": "Dubai Design Week installation program, Winner",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2019 Dec",
+            "title": "Architecture + Design",
+            "url": ""
+          },
+          {
+            "group": "Online",
+            "date": "2019 Aug",
+            "title": "e-architect",
+            "url": "https://www.e-architect.co.uk/dubai/timber-pavilion-dubai-design-week-2019"
+          },
+          {
+            "group": "Online",
+            "date": "2020",
+            "title": "ArchiDiaries",
+            "url": "https://www.archidiaries.com/the-souk-collaborative-architecture/"
+          },
+          {
+            "group": "Online",
+            "date": "—",
+            "title": "LinkedIn: Decoding the Pattern, The Souk, Dubai",
+            "url": "https://www.linkedin.com/pulse/decoding-pattern-souk-dubai-mujib-ahmed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2018-11-indian-furniture-journal-kitchen-special.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2018-11-indian-furniture-journal-kitchen-special.pdf",
+      "title": "Indian Furniture Journal, November–December 2018: kitchen special",
+      "summary": "Magazine feature. 3 pages on Apartment by the Bay, The Legend, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "content_text": "Magazine feature. 3 pages on Apartment by the Bay, The Legend, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "image": "https://collaborativearchitecture.com/img/bay/c03-t.webp",
+      "date_published": "2018-12-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Apartment by the Bay",
+        "The Legend"
+      ],
+      "authors": [
+        {
+          "name": "Indian Furniture Journal"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2018-12-society-interiors-studio-profile.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2018-12-society-interiors-studio-profile.pdf",
+      "title": "Society Interiors, December 2018: studio profile",
+      "summary": "Magazine feature. 15 pages on Cascadia, The Legend, Sandy Hook Memorial, Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/cascadia/",
+      "content_text": "Magazine feature. 15 pages on Cascadia, The Legend, Sandy Hook Memorial, Peace Pavilion, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/cascadia/",
+      "image": "https://collaborativearchitecture.com/img/cascadia/c02-t.webp",
+      "date_published": "2018-12-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Cascadia",
+        "The Legend",
+        "Sandy Hook Memorial",
+        "Peace Pavilion"
+      ],
+      "authors": [
+        {
+          "name": "Society Interiors"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2018-06-mgs-architecture-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2018-06-mgs-architecture-reflected-topography.pdf",
+      "title": "MGS Architecture, June 2018, lighting special: Reflected Topography",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c09-t.webp",
+      "date_published": "2018-06-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "MGS Architecture"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2018-06-livingetc-the-legend.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2018-06-livingetc-the-legend.pdf",
+      "title": "Livingetc, June 2018: The Legend",
+      "summary": "Magazine feature. 7 pages on The Legend, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/the-legend/",
+      "content_text": "Magazine feature. 7 pages on The Legend, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/the-legend/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-livingetc2018.webp",
+      "date_published": "2018-06-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "The Legend"
+      ],
+      "authors": [
+        {
+          "name": "Livingetc"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/the-legend/",
+      "url": "https://collaborativearchitecture.com/work/the-legend/",
+      "title": "The Legend, Kochi",
+      "summary": "The Legend is a 3,800-square-foot show condominium developed for Skyline Builders in Kochi to demonstrate the potential of design-led luxury residential development in South India.",
+      "content_text": "The Legend is a 3,800-square-foot show condominium developed for Skyline Builders in Kochi to demonstrate the potential of design-led luxury residential development in South India.",
+      "image": "https://collaborativearchitecture.com/img/legend/p01.webp",
+      "date_published": "2018-01-01T09:00:00Z",
+      "tags": [
+        "Residential, Interior",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "the-legend",
+        "location": "Kochi, India",
+        "region": "South Asia",
+        "typology": "Residential, Interior",
+        "status": "Completed",
+        "year": "2018",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [],
+        "press": [
+          {
+            "group": "In print",
+            "date": "2018 Jun",
+            "title": "Livingetc",
+            "url": "https://collaborativearchitecture.com/press/features/2018-06-livingetc-the-legend.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2018 Jun",
+            "title": "Interiors & Décor, interview issue",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Society Interiors",
+            "url": "https://collaborativearchitecture.com/press/features/2018-12-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Indian Furniture Journal, kitchen special",
+            "url": "https://collaborativearchitecture.com/press/features/2018-11-indian-furniture-journal-kitchen-special.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/iconic-mosque/",
+      "url": "https://collaborativearchitecture.com/work/iconic-mosque/",
+      "title": "Iconic Mosque, Dubai",
+      "summary": "Collaborative Architecture’s competition proposal for a mosque in Dubai reconsiders the building’s civic and spiritual role. It challenges familiar mosque typologies while retaining the hierarchy of the prayer space, bringing a contemporary architectural expression to a place of worship, reflection and cultural exchange.",
+      "content_text": "Collaborative Architecture’s competition proposal for a mosque in Dubai reconsiders the building’s civic and spiritual role. It challenges familiar mosque typologies while retaining the hierarchy of the prayer space, bringing a contemporary architectural expression to a place of worship, reflection and cultural exchange.",
+      "image": "https://collaborativearchitecture.com/img/mosque/p05.webp",
+      "date_published": "2018-01-01T09:00:00Z",
+      "tags": [
+        "Religious, Civic",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "iconic-mosque",
+        "location": "Dubai, UAE",
+        "region": "Middle East",
+        "typology": "Religious, Civic",
+        "status": "Competition proposal",
+        "year": "2018",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/iconic-gateway/",
+          "https://collaborativearchitecture.com/work/urnes-stave-heritage-center/",
+          "https://collaborativearchitecture.com/work/cascadia/"
+        ],
+        "press": []
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/cascadia/",
+      "url": "https://collaborativearchitecture.com/work/cascadia/",
+      "title": "Cascadia, Metro Manila",
+      "summary": "Cascadia was a finalist entry in the two-stage international competition for the BCDA Iconic Tower, organized by the Government of the Philippines and the Bonifacio Development Authority in Manila. Designed by Collaborative Architecture in collaboration with J.",
+      "content_text": "Cascadia was a finalist entry in the two-stage international competition for the BCDA Iconic Tower, organized by the Government of the Philippines and the Bonifacio Development Authority in Manila. Designed by Collaborative Architecture in collaboration with J.",
+      "image": "https://collaborativearchitecture.com/img/cascadia/p01.webp",
+      "date_published": "2017-01-01T09:00:00Z",
+      "tags": [
+        "Mixed use, Tower",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "cascadia",
+        "location": "Metro Manila, Philippines",
+        "region": "East and Southeast Asia",
+        "typology": "Mixed use, Tower",
+        "status": "Finalist, two-stage international competition",
+        "year": "2017",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/reflected-topography/",
+          "https://collaborativearchitecture.com/work/urnes-stave-heritage-center/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2017",
+            "title": "Finalist, BCDA Iconic Tower, two-stage international competition, with J. MAYER H.",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2017",
+            "title": "BluPrint, special issue",
+            "url": "https://collaborativearchitecture.com/press/features/2017-bluprint-special-issue-cascadia.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Society Interiors, studio profile",
+            "url": "https://collaborativearchitecture.com/press/features/2018-12-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Apr",
+            "title": "BluPrint",
+            "url": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/"
+          },
+          {
+            "group": "Writing",
+            "date": "2026 Aug",
+            "title": "The Collaborative Logs: The Narrative Environment",
+            "url": "https://www.linkedin.com/pulse/narrative-environment-re-imagining-contemporary-retail-mujib-ahmed-9w1rf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/sandy-hook-memorial/",
+      "url": "https://collaborativearchitecture.com/work/sandy-hook-memorial/",
+      "title": "Sandy Hook Memorial, Connecticut",
+      "summary": "Collaborative Architecture’s 2017 competition proposal for the Sandy Hook Memorial in Newtown, Connecticut, explores how architecture and landscape can create a setting for healing, introspection, and community.",
+      "content_text": "Collaborative Architecture’s 2017 competition proposal for the Sandy Hook Memorial in Newtown, Connecticut, explores how architecture and landscape can create a setting for healing, introspection, and community.",
+      "image": "https://collaborativearchitecture.com/img/sandyhook/p02.webp",
+      "date_published": "2017-01-01T09:00:00Z",
+      "tags": [
+        "Memorial, Landscape",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "sandy-hook-memorial",
+        "location": "Connecticut, USA",
+        "region": "North America",
+        "typology": "Memorial, Landscape",
+        "status": "Competition entry",
+        "year": "2017",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/urnes-stave-heritage-center/",
+          "https://collaborativearchitecture.com/work/tree-of-life/"
+        ],
+        "press": [
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Society Interiors, studio profile",
+            "url": "https://collaborativearchitecture.com/press/features/2018-12-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Feb",
+            "title": "Architecture + Design",
+            "url": "https://collaborativearchitecture.com/press/features/2019-02-architecture-and-design-global-dynamics.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2020 Jul",
+            "title": "MGS Architecture, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2020-07-mgs-architecture-style-and-strategy-interview.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2018 Feb",
+            "title": "e-architect",
+            "url": "https://www.e-architect.co.uk/architects/collaborative-architecture"
+          },
+          {
+            "group": "Online",
+            "date": "2019 Mar",
+            "title": "ArchitectureLive",
+            "url": "https://architecturelive.in/sandy-hook-memorial-competition-entry-by-collaborative-architecture/"
+          },
+          {
+            "group": "Online",
+            "date": "2019 Jun",
+            "title": "Indian Furniture Journal",
+            "url": "https://www.ifj.co.in/focus-projects/mumbai-based-architect-enters-international-competition-for-a-memorial-at-newtown/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/peace-pavilion/",
+      "url": "https://collaborativearchitecture.com/work/peace-pavilion/",
+      "title": "Peace Pavilion, New Delhi",
+      "summary": "The Peace Pavilion was part of Collaborative Architecture’s finalist entry in the international competition for the Indian National War Museum in New Delhi, organized by the Government of India in 2017.",
+      "content_text": "The Peace Pavilion was part of Collaborative Architecture’s finalist entry in the international competition for the Indian National War Museum in New Delhi, organized by the Government of India in 2017.",
+      "image": "https://collaborativearchitecture.com/img/peace/p01.webp",
+      "date_published": "2017-01-01T09:00:00Z",
+      "tags": [
+        "Museum, Civic",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "peace-pavilion",
+        "location": "New Delhi, India",
+        "region": "South Asia",
+        "typology": "Museum, Civic",
+        "status": "Finalist, two-stage international competition",
+        "year": "2017",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/",
+          "https://collaborativearchitecture.com/work/tree-of-life/",
+          "https://collaborativearchitecture.com/work/sandy-hook-memorial/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2017",
+            "title": "Finalist, Indian National War Museum, two-stage international competition, Government of India",
+            "url": ""
+          },
+          {
+            "group": "Exhibitions",
+            "date": "2022 Jun",
+            "title": "Designing Peace, Humanitarian Design Series, Cooper Hewitt, Smithsonian Design Museum, New York, June 10, 2022 – September 4, 2023",
+            "url": "https://exhibitions.cooperhewitt.org/designing-peace/peace-pavilion/"
+          },
+          {
+            "group": "Exhibitions",
+            "date": "2023 Oct",
+            "title": "Designing Peace, Museum of Craft and Design, San Francisco, October 7, 2023 – February 4, 2024",
+            "url": "https://sfmcd.org/exhibitions/designing-peace/"
+          },
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Society Interiors, studio profile",
+            "url": "https://collaborativearchitecture.com/press/features/2018-12-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Feb",
+            "title": "Architecture + Design",
+            "url": "https://collaborativearchitecture.com/press/features/2019-02-architecture-and-design-global-dynamics.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Sep",
+            "title": "iDecorama, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2019-09-idecorama-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2020 Aug",
+            "title": "MGS Architecture, Designing Peace",
+            "url": "https://collaborativearchitecture.com/press/features/2020-mgs-architecture-designing-peace-cooper-hewitt.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2019 Jan",
+            "title": "ArchitectureLive",
+            "url": "https://architecturelive.in/national-war-museum-new-delhi-collaborative-architecture/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Apr",
+            "title": "BluPrint, Key projects of the decade",
+            "url": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "e-architect",
+            "url": "https://www.e-architect.co.uk/new-york/designing-peace-at-copper-hewitt-smithsonian-nyc"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "SCALE",
+            "url": "https://www.scalemag.online/collaborative-architecture-to-be-part-of-humanitarian-design-series/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "Indian Furniture Journal",
+            "url": "https://www.ifj.co.in/ifj-likes/mumbai-firm-designs-for-peace/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "Surfaces Reporter",
+            "url": "https://www.surfacesreporter.com/articles/61790/collaborative-architecture-to-exhibit-at-cooper-hewitt-smithsonian-museum"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "Architect and Interiors India",
+            "url": "https://www.architectandinteriorsindia.com/projects/10711-collaborative-architecture-invited-to-exhibit-by-cooper-hewitt-smithsonian-museum"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "Realty Plus",
+            "url": "https://realtyplusmag.com/indian-architectural-firm-invited-by-smithsonian-museum/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "Design Worx",
+            "url": "http://www.designworxasia.com/collaborative-architecture-invited-by-cooper-hewitt-smithsonian-museum/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jul",
+            "title": "Mathrubhumi",
+            "url": "https://english.mathrubhumi.com/money/money-news/collaborative-architecture-invited-to-designing-peace-by-cooper-hewitt-smithsonian-museum-1.4890048"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Aug",
+            "title": "ArchiDiaries",
+            "url": "https://www.archidiaries.com/collaborative-architecture-has-been-invited-to-be-a-part-of-humanitarian-design-series-titled-designing-peace-in-2021/"
+          },
+          {
+            "group": "Online",
+            "date": "",
+            "title": "e-architect, Peace Pavilion",
+            "url": "https://www.e-architect.co.uk/india/peace-pavilion-indian-national-war-museum-new-delhi"
+          },
+          {
+            "group": "Writing",
+            "date": "2026 Jun",
+            "title": "The Collaborative Logs: Could Architecture Save Democracy?",
+            "url": "https://www.linkedin.com/pulse/could-architecture-save-democracy-mujib-ahmed-hcedc"
+          },
+          {
+            "group": "Writing",
+            "date": "2026 Jul",
+            "title": "The Collaborative Logs: The profession that counts carbon should count wars",
+            "url": "https://www.linkedin.com/pulse/profession-counts-carbon-should-count-wars-mujib-ahmed-9jpcc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2017-bluprint-special-issue-cascadia.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2017-bluprint-special-issue-cascadia.pdf",
+      "title": "BluPrint, 2017, special issue: Cascadia",
+      "summary": "Magazine feature. 4 pages on Cascadia, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/cascadia/",
+      "content_text": "Magazine feature. 4 pages on Cascadia, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/cascadia/",
+      "image": "https://collaborativearchitecture.com/img/cascadia/c01-t.webp",
+      "date_published": "2017-01-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Cascadia"
+      ],
+      "authors": [
+        {
+          "name": "BluPrint"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2017-creative-indian-offices-iag-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2017-creative-indian-offices-iag-reflected-topography.pdf",
+      "title": "IAG, Interior Architecture Group: Creative Indian Offices, on Reflected Topography",
+      "summary": "Book. 6 pages on Reflected Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Book. 6 pages on Reflected Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c08-t.webp",
+      "date_published": "2017-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "IAG, Interior Architecture Group"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2017-stylish-indian-restaurants-iag-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2017-stylish-indian-restaurants-iag-inverted-topography.pdf",
+      "title": "IAG, Interior Architecture Group: Stylish Indian Restaurants, on Inverted Topography",
+      "summary": "Book. 11 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Book. 11 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-iag2017mezban.webp",
+      "date_published": "2017-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "IAG, Interior Architecture Group"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2016-07-mondo-arc-india-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2016-07-mondo-arc-india-reflected-topography.pdf",
+      "title": "Mondo*Arc India, July–August 2016, issue 9: Reflected Topography",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c07-t.webp",
+      "date_published": "2016-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "Mondo*Arc India"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf",
+      "title": "Inside Outside, July 2016: interview with Lalita Tharani and Mujib Ahmed",
+      "summary": "Magazine feature. 8 pages on Reflected Topography, House of Cantilevers, Stacked Tectonics, Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 8 pages on Reflected Topography, House of Cantilevers, Stacked Tectonics, Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-io2016.webp",
+      "date_published": "2016-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography",
+        "House of Cantilevers",
+        "Stacked Tectonics",
+        "Wrap-3"
+      ],
+      "authors": [
+        {
+          "name": "Inside Outside"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2016-05-decorama-stacked-tectonics.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2016-05-decorama-stacked-tectonics.pdf",
+      "title": "Decorama, May 2016: Stacked Tectonics",
+      "summary": "Magazine feature. 5 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "content_text": "Magazine feature. 5 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "image": "https://collaborativearchitecture.com/img/jdt/c06-t.webp",
+      "date_published": "2016-05-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Stacked Tectonics"
+      ],
+      "authors": [
+        {
+          "name": "Decorama"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2016-02-ideal-home-and-garden-futuristic-outlook.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2016-02-ideal-home-and-garden-futuristic-outlook.pdf",
+      "title": "Ideal Home and Garden, February 2016: Futuristic Outlook, interview with the principals",
+      "summary": "Magazine feature. 4 pages on Apartment by the Bay, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "content_text": "Magazine feature. 4 pages on Apartment by the Bay, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-ihg2016.webp",
+      "date_published": "2016-02-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Apartment by the Bay"
+      ],
+      "authors": [
+        {
+          "name": "Ideal Home and Garden"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2016-01-society-interiors-icon-issue.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2016-01-society-interiors-icon-issue.pdf",
+      "title": "Society Interiors, January 2016, Icon issue: studio feature",
+      "summary": "Magazine feature. 6 pages on Apartment by the Bay, House of Cantilevers, Inverted Topography, Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "content_text": "Magazine feature. 6 pages on Apartment by the Bay, House of Cantilevers, Inverted Topography, Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "image": "https://collaborativearchitecture.com/img/bay/c02-t.webp",
+      "date_published": "2016-01-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Apartment by the Bay",
+        "House of Cantilevers",
+        "Inverted Topography",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Society Interiors"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2016-01-home-and-design-trends-interview-issue.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2016-01-home-and-design-trends-interview-issue.pdf",
+      "title": "Home & Design Trends, January 2016, interview issue: interview with the principals",
+      "summary": "Magazine feature. 3 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "content_text": "Magazine feature. 3 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "image": "https://collaborativearchitecture.com/img/jdt/c05-t.webp",
+      "date_published": "2016-01-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Stacked Tectonics"
+      ],
+      "authors": [
+        {
+          "name": "Home & Design Trends"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2016-innovative-indian-interiors-iag-apartment-by-the-bay.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2016-innovative-indian-interiors-iag-apartment-by-the-bay.pdf",
+      "title": "IAG, Interior Architecture Group: Innovative Indian Interiors, on Apartment by the Bay",
+      "summary": "Book. 7 pages on Apartment by the Bay, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "content_text": "Book. 7 pages on Apartment by the Bay, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "image": "https://collaborativearchitecture.com/img/bay/c01-t.webp",
+      "date_published": "2016-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Apartment by the Bay"
+      ],
+      "authors": [
+        {
+          "name": "IAG, Interior Architecture Group"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-12-domus-india-46-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-12-domus-india-46-reflected-topography.pdf",
+      "title": "Domus India, December 2015, issue 46: Reflected Topography",
+      "summary": "Magazine feature. 5 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 5 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c02-t.webp",
+      "date_published": "2015-12-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "Domus India"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-11-home-and-design-trends-house-of-cantilevers.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-11-home-and-design-trends-house-of-cantilevers.pdf",
+      "title": "Home & Design Trends, November 2015: House of Cantilevers",
+      "summary": "Magazine feature. 2 pages on House of Cantilevers, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/house-of-cantilevers/",
+      "content_text": "Magazine feature. 2 pages on House of Cantilevers, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/house-of-cantilevers/",
+      "image": "https://collaborativearchitecture.com/img/cantilevers/c01-t.webp",
+      "date_published": "2015-11-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "House of Cantilevers"
+      ],
+      "authors": [
+        {
+          "name": "Home & Design Trends"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-10-gid-studio-profile.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-10-gid-studio-profile.pdf",
+      "title": "Glam Interiors + Design (GID), October 2015: studio profile",
+      "summary": "Magazine feature. 7 pages on Reflected Topography, House of Cantilevers, Stacked Tectonics, Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 7 pages on Reflected Topography, House of Cantilevers, Stacked Tectonics, Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c05-t.webp",
+      "date_published": "2015-10-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography",
+        "House of Cantilevers",
+        "Stacked Tectonics",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Glam Interiors + Design (GID)"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-10-gulf-news-house-of-cantilevers.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-10-gulf-news-house-of-cantilevers.pdf",
+      "title": "Gulf News, 22 October 2015: Sophisticated, personalised homes",
+      "summary": "Magazine feature. 1 page on House of Cantilevers, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/house-of-cantilevers/",
+      "content_text": "Magazine feature. 1 page on House of Cantilevers, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/house-of-cantilevers/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-gulfnews2015.webp",
+      "date_published": "2015-10-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "House of Cantilevers"
+      ],
+      "authors": [
+        {
+          "name": "Gulf News"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-09-2a-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-09-2a-reflected-topography.pdf",
+      "title": "2A, September 2015: Reflected Topography",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c06-t.webp",
+      "date_published": "2015-09-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "2A"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-07-fx-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-07-fx-reflected-topography.pdf",
+      "title": "FX (UK), July 2015: Reflected Topography",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c03-t.webp",
+      "date_published": "2015-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "FX (UK)"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-07-hinge-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-07-hinge-reflected-topography.pdf",
+      "title": "Hinge, July 2015: Reflected Topography",
+      "summary": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 3 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-hinge2015.webp",
+      "date_published": "2015-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "Hinge"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-06-lighting-uk-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-06-lighting-uk-reflected-topography.pdf",
+      "title": "Lighting (UK), June 2015: Reflected Topography",
+      "summary": "Magazine feature. 2 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 2 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c01-t.webp",
+      "date_published": "2015-06-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "Lighting (UK)"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-06-mondo-arc-international-reflected-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-06-mondo-arc-international-reflected-topography.pdf",
+      "title": "Mondo*Arc International, June 2015, issue 85: Reflected Topography",
+      "summary": "Magazine feature. 2 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 2 pages on Reflected Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/bgrt/c04-t.webp",
+      "date_published": "2015-06-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography"
+      ],
+      "authors": [
+        {
+          "name": "Mondo*Arc International"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2015-01-mondo-arc-india-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2015-01-mondo-arc-india-inverted-topography.pdf",
+      "title": "Mondo*Arc India, January 2015, issue 1: Inverted Topography",
+      "summary": "Magazine feature. 2 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Magazine feature. 2 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c10-t.webp",
+      "date_published": "2015-01-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Mondo*Arc India"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2014-03-indian-furniture-journal-studio-profile.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2014-03-indian-furniture-journal-studio-profile.pdf",
+      "title": "Indian Furniture Journal, March–April 2014: studio profile",
+      "summary": "Magazine feature. 6 pages on Reflected Topography, Stacked Tectonics, Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 6 pages on Reflected Topography, Stacked Tectonics, Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/jdt/c03-t.webp",
+      "date_published": "2014-03-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography",
+        "Stacked Tectonics",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Indian Furniture Journal"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "url": "https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+      "title": "Apartment by the Bay, Mumbai",
+      "summary": "Located in Cuffe Parade, Mumbai, Apartment by the Bay is a 180-square-meter family residence completed in 2014. Set within one of the city’s sought-after residential buildings, the apartment opens to panoramic views of the Arabian Sea.",
+      "content_text": "Located in Cuffe Parade, Mumbai, Apartment by the Bay is a 180-square-meter family residence completed in 2014. Set within one of the city’s sought-after residential buildings, the apartment opens to panoramic views of the Arabian Sea.",
+      "image": "https://collaborativearchitecture.com/img/bay/p01.webp",
+      "date_published": "2014-01-01T09:00:00Z",
+      "tags": [
+        "Residential, Interior",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "apartment-by-the-bay",
+        "location": "Mumbai, India",
+        "region": "South Asia",
+        "typology": "Residential, Interior",
+        "status": "Completed",
+        "year": "2014",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/bearys-wafira/",
+          "https://collaborativearchitecture.com/work/50th-cross-road/",
+          "https://collaborativearchitecture.com/work/the-legend/"
+        ],
+        "press": [
+          {
+            "group": "In print",
+            "date": "2015 Dec",
+            "title": "Society Interiors",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "Society Interiors, Icon",
+            "url": "https://collaborativearchitecture.com/press/features/2016-01-society-interiors-icon-issue.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Feb",
+            "title": "Ideal Home and Garden",
+            "url": "https://collaborativearchitecture.com/press/features/2016-02-ideal-home-and-garden-futuristic-outlook.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Indian Furniture Journal, kitchen special",
+            "url": "https://collaborativearchitecture.com/press/features/2018-11-indian-furniture-journal-kitchen-special.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2016",
+            "title": "Innovative Indian Interiors, Interior Architecture Group (IAG)",
+            "url": "https://collaborativearchitecture.com/press/books/2016-innovative-indian-interiors-iag-apartment-by-the-bay.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/reflected-topography/",
+      "url": "https://collaborativearchitecture.com/work/reflected-topography/",
+      "title": "Reflected Topography, Bengaluru",
+      "summary": "Reflected Topography is the public lobby of the Bearys Global Research Triangle, a research and development campus in Bengaluru housing facilities for international companies. Within a 32 × 32-meter hall, the project integrates reception, waiting, relaxation, circulation, and private meeting spaces into a unified architectural experience.",
+      "content_text": "Reflected Topography is the public lobby of the Bearys Global Research Triangle, a research and development campus in Bengaluru housing facilities for international companies. Within a 32 × 32-meter hall, the project integrates reception, waiting, relaxation, circulation, and private meeting spaces into a unified architectural experience.",
+      "image": "https://collaborativearchitecture.com/img/bgrt/p10.webp",
+      "date_published": "2014-01-01T09:00:00Z",
+      "tags": [
+        "Workplace, Research campus",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "reflected-topography",
+        "location": "Bengaluru, India",
+        "region": "South Asia",
+        "typology": "Workplace, Research campus",
+        "status": "Completed",
+        "year": "2014",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/cascadia/",
+          "https://collaborativearchitecture.com/work/bgrt-mumbai/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2016",
+            "title": "OFFICE NEXT, International Workspace category, Winner",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2015",
+            "title": "International Design Awards (IDA), Honorable Mention",
+            "url": "https://idesignawards.com/winners/zoom.php?eid=9-8849-15"
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2015",
+            "title": "IES Illumination Awards, Section Award",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2015",
+            "title": "IES Illumination Awards, Merit Award",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2013 May",
+            "title": "Society Interiors, studio profile (concept stage)",
+            "url": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2014 Mar",
+            "title": "Indian Furniture Journal, studio profile (concept stage)",
+            "url": "https://collaborativearchitecture.com/press/features/2014-03-indian-furniture-journal-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Jun",
+            "title": "Lighting (UK)",
+            "url": "https://collaborativearchitecture.com/press/features/2015-06-lighting-uk-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Jun",
+            "title": "Mondo*Arc International",
+            "url": "https://collaborativearchitecture.com/press/features/2015-06-mondo-arc-international-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Jul",
+            "title": "FX (UK)",
+            "url": "https://collaborativearchitecture.com/press/features/2015-07-fx-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Jul",
+            "title": "Hinge",
+            "url": "https://collaborativearchitecture.com/press/features/2015-07-hinge-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Sep",
+            "title": "2A",
+            "url": "https://collaborativearchitecture.com/press/features/2015-09-2a-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Oct",
+            "title": "GID",
+            "url": "https://collaborativearchitecture.com/press/features/2015-10-gid-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Dec",
+            "title": "Domus",
+            "url": "https://collaborativearchitecture.com/press/features/2015-12-domus-india-46-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "LD+A, IES Award issue",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jul–Aug",
+            "title": "Mondo*Arc India",
+            "url": "https://collaborativearchitecture.com/press/features/2016-07-mondo-arc-india-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jul",
+            "title": "Inside Outside",
+            "url": "https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2017 Jun",
+            "title": "Interiors & Décor, 50 Architects",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2017 Jul",
+            "title": "Buildotech",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2018 Apr",
+            "title": "Interiors & Décor",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2018 Jun",
+            "title": "MGS Architecture",
+            "url": "https://collaborativearchitecture.com/press/features/2018-06-mgs-architecture-reflected-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2018 Dec",
+            "title": "Insite",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2019 Feb",
+            "title": "Architecture + Design",
+            "url": "https://collaborativearchitecture.com/press/features/2019-02-architecture-and-design-global-dynamics.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Apr",
+            "title": "Indian Furniture Journal, Workspace",
+            "url": "https://collaborativearchitecture.com/press/features/2019-03-indian-furniture-journal-workspace.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Sep",
+            "title": "iDecorama, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2019-09-idecorama-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2015 Apr",
+            "title": "e-architect",
+            "url": "https://www.e-architect.co.uk/india/reflected-topography-in-bangalore"
+          },
+          {
+            "group": "Online",
+            "date": "2015 Apr",
+            "title": "FX / DesignCurial",
+            "url": "http://www.designcurial.com/projects/bgrt-offices-bengaluru-accept-an-unusual-challenge-from-collaborative-architecture"
+          },
+          {
+            "group": "Online",
+            "date": "2015 Jul",
+            "title": "Stroiteli",
+            "url": "http://stroiteli.elmedia.net/smt/en/2020-5/index.html"
+          },
+          {
+            "group": "Online",
+            "date": "2016 Apr",
+            "title": "OFFICE NEXT",
+            "url": "https://www.officenext.ru/projects/project-20305-bearys-global-research-triangle/"
+          },
+          {
+            "group": "Online",
+            "date": "2016 Sep",
+            "title": "Desi-Built",
+            "url": "http://desibuilt.ru/677-ofis-reflected-topography-bgrt-bangalore-gde-svet-zadaet-prostranstvo.html"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Apr",
+            "title": "BluPrint",
+            "url": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/"
+          },
+          {
+            "group": "Books",
+            "date": "2017",
+            "title": "Creative Indian Offices, Interior Architecture Group (IAG)",
+            "url": "https://collaborativearchitecture.com/press/books/2017-creative-indian-offices-iag-reflected-topography.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2014-restaurant-and-bar-design-3-artpower-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2014-restaurant-and-bar-design-3-artpower-inverted-topography.pdf",
+      "title": "Artpower: Restaurant and Bar Design III, on Inverted Topography",
+      "summary": "Book. 5 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Book. 5 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c09-t.webp",
+      "date_published": "2014-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Artpower"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2013-07-home-and-design-trends-stacked-tectonics.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2013-07-home-and-design-trends-stacked-tectonics.pdf",
+      "title": "Home & Design Trends, July 2013: Stacked Tectonics",
+      "summary": "Magazine feature. 2 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "content_text": "Magazine feature. 2 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-trends2013.webp",
+      "date_published": "2013-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Stacked Tectonics"
+      ],
+      "authors": [
+        {
+          "name": "Home & Design Trends"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2013-06-domus-india-19-stacked-tectonics.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2013-06-domus-india-19-stacked-tectonics.pdf",
+      "title": "Domus India, June 2013, issue 19: Stacked Tectonics",
+      "summary": "Magazine feature. 5 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "content_text": "Magazine feature. 5 pages on Stacked Tectonics, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "image": "https://collaborativearchitecture.com/img/jdt/c01-t.webp",
+      "date_published": "2013-06-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Stacked Tectonics"
+      ],
+      "authors": [
+        {
+          "name": "Domus India"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf",
+      "title": "Society Interiors, May 2013: studio profile",
+      "summary": "Magazine feature. 7 pages on Reflected Topography, Stacked Tectonics, Inverted Topography, Stanley Lifestyle Store, Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "content_text": "Magazine feature. 7 pages on Reflected Topography, Stacked Tectonics, Inverted Topography, Stanley Lifestyle Store, Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/reflected-topography/",
+      "image": "https://collaborativearchitecture.com/img/jdt/c02-t.webp",
+      "date_published": "2013-05-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Reflected Topography",
+        "Stacked Tectonics",
+        "Inverted Topography",
+        "Stanley Lifestyle Store",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Society Interiors"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2013-03-surfaces-reporter-studio-profile.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2013-03-surfaces-reporter-studio-profile.pdf",
+      "title": "Surfaces Reporter, March 2013: studio profile",
+      "summary": "Magazine feature. 7 pages on Inverted Topography, Wedge-1, Wrap-4, Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Magazine feature. 7 pages on Inverted Topography, Wedge-1, Wrap-4, Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-surfaces2013.webp",
+      "date_published": "2013-03-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Inverted Topography",
+        "Wedge-1",
+        "Wrap-4",
+        "Wrap-3"
+      ],
+      "authors": [
+        {
+          "name": "Surfaces Reporter"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2013-one-of-a-kind-restaurant-design-sendpoints-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2013-one-of-a-kind-restaurant-design-sendpoints-inverted-topography.pdf",
+      "title": "Sendpoints: One of a Kind Restaurant Design, on Inverted Topography",
+      "summary": "Book. 4 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Book. 4 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c07-t.webp",
+      "date_published": "2013-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Sendpoints"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2013-walk-and-watch-2-artpower-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2013-walk-and-watch-2-artpower-wedge-1.pdf",
+      "title": "Artpower: Walk and Watch II, on Wedge-1",
+      "summary": "Book. 3 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Book. 3 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-walkwatch.webp",
+      "date_published": "2013-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Artpower"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2012-10-id-c-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2012-10-id-c-wedge-1.pdf",
+      "title": "ID+C, October 2012: Wedge-1",
+      "summary": "Magazine feature. 5 pages on Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Magazine feature. 5 pages on Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/wedge/c04-t.webp",
+      "date_published": "2012-10-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "ID+C"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2012-05-interior-designer-35-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2012-05-interior-designer-35-inverted-topography.pdf",
+      "title": "Interior Designer (China Architecture Press), May 2012, issue 35: Inverted Topography",
+      "summary": "Magazine feature. 7 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Magazine feature. 7 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c05-t.webp",
+      "date_published": "2012-05-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Interior Designer (China Architecture Press)"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2012-04-id-c-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2012-04-id-c-inverted-topography.pdf",
+      "title": "ID+C, April 2012: Inverted Topography",
+      "summary": "Magazine feature. 7 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Magazine feature. 7 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c02-t.webp",
+      "date_published": "2012-04-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "ID+C"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2012-04-modern-decoration-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2012-04-modern-decoration-inverted-topography.pdf",
+      "title": "Modern Decoration, April 2012: Inverted Topography",
+      "summary": "Magazine feature. 3 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Magazine feature. 3 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c06-t.webp",
+      "date_published": "2012-04-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Modern Decoration"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2012-04-design-today-wedge-1-and-stanley-delhi.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2012-04-design-today-wedge-1-and-stanley-delhi.pdf",
+      "title": "Design Today, April 2012: Wedge-1 and the Stanley store, New Delhi",
+      "summary": "Magazine feature. 4 pages on Stanley Lifestyle Store, Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stanley-lifestyle-store/",
+      "content_text": "Magazine feature. 4 pages on Stanley Lifestyle Store, Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/stanley-lifestyle-store/",
+      "image": "https://collaborativearchitecture.com/img/stanley/c01-t.webp",
+      "date_published": "2012-04-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Stanley Lifestyle Store",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Design Today"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2012-03-hinge-199-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2012-03-hinge-199-inverted-topography.pdf",
+      "title": "Hinge, March 2012, issue 199: Inverted Topography",
+      "summary": "Magazine feature. 4 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Magazine feature. 4 pages on Inverted Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c04-t.webp",
+      "date_published": "2012-03-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Hinge"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "url": "https://collaborativearchitecture.com/work/stacked-tectonics/",
+      "title": "Stacked Tectonics, Kozhikode",
+      "summary": "Stacked Tectonics is a 2,100-square-meter primary school at the JDT Islam campus in Kozhikode, extending Collaborative Architecture’s exploration of learning environments initiated with Wrap-3 in 2006. The project builds on the premise that a school’s spatial organization can shape how children experience learning, interact with others, and discover their surroundings.",
+      "content_text": "Stacked Tectonics is a 2,100-square-meter primary school at the JDT Islam campus in Kozhikode, extending Collaborative Architecture’s exploration of learning environments initiated with Wrap-3 in 2006. The project builds on the premise that a school’s spatial organization can shape how children experience learning, interact with others, and discover their surroundings.",
+      "image": "https://collaborativearchitecture.com/img/jdt/p01.webp",
+      "date_published": "2012-01-01T09:00:00Z",
+      "tags": [
+        "Education",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "stacked-tectonics",
+        "location": "Kozhikode, India",
+        "region": "South Asia",
+        "typology": "Education",
+        "status": "Completed",
+        "year": "2012",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/wrap-3/",
+          "https://collaborativearchitecture.com/work/urnes-stave-heritage-center/",
+          "https://collaborativearchitecture.com/work/national-unity-pavilion/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "SEED Awards, Commendation",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2014",
+            "title": "NDTV Design and Architecture Awards, Socially Relevant Design, Winner",
+            "url": ""
+          },
+          {
+            "group": "Exhibitions",
+            "date": "2016",
+            "title": "State of Architecture, post-independence architecture in India, Mumbai",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2013 May",
+            "title": "Society Interiors",
+            "url": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 Jun",
+            "title": "Domus",
+            "url": "https://collaborativearchitecture.com/press/features/2013-06-domus-india-19-stacked-tectonics.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 Jul",
+            "title": "Trends",
+            "url": "https://collaborativearchitecture.com/press/features/2013-07-home-and-design-trends-stacked-tectonics.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2014 Mar",
+            "title": "Indian Furniture Journal, profile",
+            "url": "https://collaborativearchitecture.com/press/features/2014-03-indian-furniture-journal-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Feb",
+            "title": "Time Address, interview",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2015 Oct",
+            "title": "GID",
+            "url": "https://collaborativearchitecture.com/press/features/2015-10-gid-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "Trends",
+            "url": "https://collaborativearchitecture.com/press/features/2016-01-home-and-design-trends-interview-issue.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 May",
+            "title": "Decorama",
+            "url": "https://collaborativearchitecture.com/press/features/2016-05-decorama-stacked-tectonics.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jul",
+            "title": "Inside Outside",
+            "url": "https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Sep",
+            "title": "iDecorama, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2019-09-idecorama-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2012",
+            "title": "e-architect",
+            "url": "https://www.e-architect.co.uk/india/primary-school-jdt-islam-campus"
+          },
+          {
+            "group": "Online",
+            "date": "2014 Apr",
+            "title": "India Art n Design",
+            "url": "http://inditerrain.indiaartndesign.com/2014/04/stacked-tectonics-inspiring-change.html"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Apr",
+            "title": "BluPrint",
+            "url": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/"
+          },
+          {
+            "group": "Books",
+            "date": "2016",
+            "title": "State of Architecture",
+            "url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2012-restaurants-and-bars-rsd-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2012-restaurants-and-bars-rsd-inverted-topography.pdf",
+      "title": "RSD Publishing: Restaurants & Bars, on Inverted Topography",
+      "summary": "Book. 3 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Book. 3 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c01-t.webp",
+      "date_published": "2012-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "RSD Publishing"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2012-work-shop-06-choise-gallery-inverted-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2012-work-shop-06-choise-gallery-inverted-topography.pdf",
+      "title": "Choise Gallery: Work Shop, issue 06, on Inverted Topography",
+      "summary": "Book. 5 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "content_text": "Book. 5 pages on Inverted Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/inverted-topography/",
+      "image": "https://collaborativearchitecture.com/img/mezban/c03-t.webp",
+      "date_published": "2012-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Inverted Topography"
+      ],
+      "authors": [
+        {
+          "name": "Choise Gallery"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2012-fascinating-exhibition-spaces-phoenix-wrap-4.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2012-fascinating-exhibition-spaces-phoenix-wrap-4.pdf",
+      "title": "Phoenix: Fascinating Exhibition Spaces, on Wrap-4",
+      "summary": "Book. 7 pages on Wrap-4, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "content_text": "Book. 7 pages on Wrap-4, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "image": "https://collaborativearchitecture.com/img/wrap4/c03-t.webp",
+      "date_published": "2012-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Wrap-4"
+      ],
+      "authors": [
+        {
+          "name": "Phoenix"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2011-08-inside-outside-bajaj-corporate-office.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2011-08-inside-outside-bajaj-corporate-office.pdf",
+      "title": "Inside Outside, August 2011, issue 314: Bajaj Corporate Office",
+      "summary": "Magazine feature. 7 pages on Bajaj Corporate Office, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Magazine feature. 7 pages on Bajaj Corporate Office, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-io2011aug.webp",
+      "date_published": "2011-08-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Bajaj Corporate Office"
+      ],
+      "authors": [
+        {
+          "name": "Inside Outside"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2011-07-design-today-bajaj-corporate-office.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2011-07-design-today-bajaj-corporate-office.pdf",
+      "title": "Design Today, July 2011: Bajaj Corporate Office",
+      "summary": "Magazine feature. 5 pages on Bajaj Corporate Office, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Magazine feature. 5 pages on Bajaj Corporate Office, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-designtoday2011.webp",
+      "date_published": "2011-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Bajaj Corporate Office"
+      ],
+      "authors": [
+        {
+          "name": "Design Today"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2011-06-architect-and-interiors-india-bajaj-corporate-office.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2011-06-architect-and-interiors-india-bajaj-corporate-office.pdf",
+      "title": "Architect and Interiors India, June 2011: Bajaj Corporate Office",
+      "summary": "Magazine feature. 4 pages on Bajaj Corporate Office, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Magazine feature. 4 pages on Bajaj Corporate Office, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-ai2011.webp",
+      "date_published": "2011-06-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Bajaj Corporate Office"
+      ],
+      "authors": [
+        {
+          "name": "Architect and Interiors India"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2011-05-insite-studio-profile.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2011-05-insite-studio-profile.pdf",
+      "title": "Insite, May 2011: studio profile",
+      "summary": "Magazine feature. 6 pages on Wedge-1, Wrap-4, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Magazine feature. 6 pages on Wedge-1, Wrap-4, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/wedge/c01-t.webp",
+      "date_published": "2011-05-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wedge-1",
+        "Wrap-4"
+      ],
+      "authors": [
+        {
+          "name": "Insite"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2011-05-indian-architect-and-builder-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2011-05-indian-architect-and-builder-wedge-1.pdf",
+      "title": "Indian Architect & Builder, May 2011: Wedge-1",
+      "summary": "Magazine feature. 5 pages on Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Magazine feature. 5 pages on Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/wedge/c03-t.webp",
+      "date_published": "2011-05-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Indian Architect & Builder"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2011-new-exhibition-design-2-links-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2011-new-exhibition-design-2-links-wedge-1.pdf",
+      "title": "LINKS Books: New Exhibition Design 2, on Wedge-1",
+      "summary": "Book. 7 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Book. 7 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/wedge/c02-t.webp",
+      "date_published": "2011-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "LINKS Books"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2011-retail-design-international-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2011-retail-design-international-wedge-1.pdf",
+      "title": "Retail Design International, on Wedge-1",
+      "summary": "Book. 5 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Book. 5 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-retaildesign2011.webp",
+      "date_published": "2011-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Wedge-1"
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2011-commercial-space-phoenix-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2011-commercial-space-phoenix-wedge-1.pdf",
+      "title": "Phoenix: Commercial Space, on Wedge-1",
+      "summary": "Book. 7 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Book. 7 pages on Wedge-1, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-commercialspace.webp",
+      "date_published": "2011-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Phoenix"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2010-12-inside-outside-bedroom-prototype.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2010-12-inside-outside-bedroom-prototype.pdf",
+      "title": "Inside Outside, December 2010: Bedroom Prototype",
+      "summary": "Magazine feature. 2 pages on Bedroom Prototype, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Magazine feature. 2 pages on Bedroom Prototype, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-io2010dec.webp",
+      "date_published": "2010-12-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Bedroom Prototype"
+      ],
+      "authors": [
+        {
+          "name": "Inside Outside"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2010-10-hinge-wedge-1.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2010-10-hinge-wedge-1.pdf",
+      "title": "Hinge, October 2010: Wedge-1",
+      "summary": "Magazine feature. 3 pages on Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "content_text": "Magazine feature. 3 pages on Wedge-1, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wedge-1/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-hinge2010.webp",
+      "date_published": "2010-10-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wedge-1"
+      ],
+      "authors": [
+        {
+          "name": "Hinge"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/inverted-topography/",
+      "url": "https://collaborativearchitecture.com/work/inverted-topography/",
+      "title": "Inverted Topography, Kozhikode",
+      "summary": "Mezban reimagines a business hotel restaurant in Kozhikode as a versatile setting for dining and social exchange, transitioning from fine dining to an early-evening lounge within a restrained budget.",
+      "content_text": "Mezban reimagines a business hotel restaurant in Kozhikode as a versatile setting for dining and social exchange, transitioning from fine dining to an early-evening lounge within a restrained budget.",
+      "image": "https://collaborativearchitecture.com/img/mezban/p05.webp",
+      "date_published": "2010-01-01T09:00:00Z",
+      "tags": [
+        "Hospitality",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "inverted-topography",
+        "location": "Kozhikode, India",
+        "region": "South Asia",
+        "typology": "Hospitality",
+        "status": "Completed",
+        "year": "2010",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2011",
+            "title": "Celebration of Architecture, Winner",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2011",
+            "title": "Ace of Space, Hospitality, Runner-up",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2011",
+            "title": "IIID Design Practice of the Year, Runner-up (with Wedge-1 and Bajaj Office)",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "IES Illumination Awards, Section Award",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "International Design Awards (IDA), Finalist",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "Restaurant & Bar Design Awards, Finalist",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "SBID International Design Awards, Recreational Spaces, Finalist",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "Architecture Israel, Project of the Year, Second Runner-up",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2012 Mar",
+            "title": "Hinge",
+            "url": "https://collaborativearchitecture.com/press/features/2012-03-hinge-199-inverted-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2012 Mar",
+            "title": "Insite",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2012 Apr",
+            "title": "ID+C",
+            "url": "https://collaborativearchitecture.com/press/features/2012-04-id-c-inverted-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2012 Apr",
+            "title": "Modern Decoration",
+            "url": "https://collaborativearchitecture.com/press/features/2012-04-modern-decoration-inverted-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2012 May",
+            "title": "Interior Design, China Architecture Press",
+            "url": "https://collaborativearchitecture.com/press/features/2012-05-interior-designer-35-inverted-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2012 Jun",
+            "title": "FHRI",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2012 Oct",
+            "title": "Design Today",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2012 Dec",
+            "title": "Time Publishing",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2013 Mar",
+            "title": "Surfaces Reporter, profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-03-surfaces-reporter-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 May",
+            "title": "Society Interiors, studio profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2014 Mar",
+            "title": "Indian Furniture Journal, studio profile",
+            "url": "https://collaborativearchitecture.com/press/features/2014-03-indian-furniture-journal-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Jan",
+            "title": "Mondo*Arc India",
+            "url": "https://collaborativearchitecture.com/press/features/2015-01-mondo-arc-india-inverted-topography.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Oct",
+            "title": "GID",
+            "url": "https://collaborativearchitecture.com/press/features/2015-10-gid-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "Society Interiors, Icon",
+            "url": "https://collaborativearchitecture.com/press/features/2016-01-society-interiors-icon-issue.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2012 Feb",
+            "title": "ArchDaily",
+            "url": "https://www.archdaily.com/205233/mezban-inverted-topography-collaborative-architecture"
+          },
+          {
+            "group": "Online",
+            "date": "2012",
+            "title": "e-Build",
+            "url": "https://ebuild.in/mezban-inverted-topography-kozhikode-collaborative-architecture"
+          },
+          {
+            "group": "Online",
+            "date": "2019 Jan",
+            "title": "ArchitectureLive",
+            "url": "https://architecturelive.in/mezban-calicut-collaborative-architecture/"
+          },
+          {
+            "group": "Books",
+            "date": "2012",
+            "title": "RSD, Restaurants & Bars",
+            "url": "https://collaborativearchitecture.com/press/books/2012-restaurants-and-bars-rsd-inverted-topography.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2012",
+            "title": "Work Shop, issue 06, Choise Gallery",
+            "url": "https://collaborativearchitecture.com/press/books/2012-work-shop-06-choise-gallery-inverted-topography.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2012",
+            "title": "Trends, special issue",
+            "url": ""
+          },
+          {
+            "group": "Books",
+            "date": "2013",
+            "title": "One of a Kind Restaurant Design, Sendpoints",
+            "url": "https://collaborativearchitecture.com/press/books/2013-one-of-a-kind-restaurant-design-sendpoints-inverted-topography.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2014",
+            "title": "Restaurant and Bar Design 3, Artpower",
+            "url": "https://collaborativearchitecture.com/press/books/2014-restaurant-and-bar-design-3-artpower-inverted-topography.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2017",
+            "title": "Stylish Indian Restaurants, Interior Architecture Group (IAG)",
+            "url": "https://collaborativearchitecture.com/press/books/2017-stylish-indian-restaurants-iag-inverted-topography.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2010-01-inside-outside-topography-and-wrap-4.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2010-01-inside-outside-topography-and-wrap-4.pdf",
+      "title": "Inside Outside, January 2010: Topography and Wrap-4",
+      "summary": "Magazine feature. 3 pages on Wrap-4, Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "content_text": "Magazine feature. 3 pages on Wrap-4, Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-io2010jan.webp",
+      "date_published": "2010-01-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wrap-4",
+        "Topography"
+      ],
+      "authors": [
+        {
+          "name": "Inside Outside"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/stanley-lifestyle-store/",
+      "url": "https://collaborativearchitecture.com/work/stanley-lifestyle-store/",
+      "title": "Stanley Lifestyle Store, Delhi NCR",
+      "summary": "The 25,000-square-foot flagship store for Stanley brings its residential and workplace collections together within a unified retail environment. Conceived as a neutral architectural framework, the interior allows furniture, materials, color, and accessories to establish the character of each display setting.",
+      "content_text": "The 25,000-square-foot flagship store for Stanley brings its residential and workplace collections together within a unified retail environment. Conceived as a neutral architectural framework, the interior allows furniture, materials, color, and accessories to establish the character of each display setting.",
+      "image": "https://collaborativearchitecture.com/img/stanley/p04.webp",
+      "date_published": "2009-01-01T09:00:00Z",
+      "tags": [
+        "Retail",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "stanley-lifestyle-store",
+        "location": "Delhi NCR, India",
+        "region": "South Asia",
+        "typology": "Retail",
+        "status": "Completed",
+        "year": "2009",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/miller-knoll-experience-center/",
+          "https://collaborativearchitecture.com/work/wedge-1/",
+          "https://collaborativearchitecture.com/work/prototype-non/"
+        ],
+        "press": [
+          {
+            "group": "In print",
+            "date": "2012 Apr",
+            "title": "Design Today",
+            "url": "https://collaborativearchitecture.com/press/features/2012-04-design-today-wedge-1-and-stanley-delhi.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 May",
+            "title": "Society Interiors, profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/wedge-1/",
+      "url": "https://collaborativearchitecture.com/work/wedge-1/",
+      "title": "Wedge-1, Mumbai",
+      "summary": "Wedge-1 is a full-scale prototype for a freestanding luxury retail building for Stanley Lifestyles. Built for an exhibition in Mumbai, it tested how spatial form, product display and visitor movement could shape a more experiential retail environment. The experiment became a precursor to the Stanley Lifestyle Showroom.",
+      "content_text": "Wedge-1 is a full-scale prototype for a freestanding luxury retail building for Stanley Lifestyles. Built for an exhibition in Mumbai, it tested how spatial form, product display and visitor movement could shape a more experiential retail environment. The experiment became a precursor to the Stanley Lifestyle Showroom.",
+      "image": "https://collaborativearchitecture.com/img/wedge/p09.webp",
+      "date_published": "2009-01-01T09:00:00Z",
+      "tags": [
+        "Retail, Prototype",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "wedge-1",
+        "location": "Mumbai, India",
+        "region": "South Asia",
+        "typology": "Retail, Prototype",
+        "status": "Completed",
+        "year": "2009",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/stanley-lifestyle-store/",
+          "https://collaborativearchitecture.com/work/miller-knoll-experience-center/",
+          "https://collaborativearchitecture.com/work/prototype-non/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2010",
+            "title": "A+D Spectrum Innovative Interior Award, Winner",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2010",
+            "title": "Ace of Space, Runner-up",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2011",
+            "title": "FX International Interior Design Awards, Finalist",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2011",
+            "title": "IIID Design Practice of the Year, Runner-up",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2012",
+            "title": "Architecture Israel, Project of the Year, Winner",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2010 Oct",
+            "title": "Hinge",
+            "url": "https://collaborativearchitecture.com/press/features/2010-10-hinge-wedge-1.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2011 Feb",
+            "title": "Architecture Update",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2011 May",
+            "title": "Insite",
+            "url": "https://collaborativearchitecture.com/press/features/2011-05-insite-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2011 May",
+            "title": "IA&B",
+            "url": "https://collaborativearchitecture.com/press/features/2011-05-indian-architect-and-builder-wedge-1.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2011 Nov",
+            "title": "Interior Design, China Architecture Press",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2012 Mar",
+            "title": "Insite, IIID Anchor Awards",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2012 Apr",
+            "title": "Design Today",
+            "url": "https://collaborativearchitecture.com/press/features/2012-04-design-today-wedge-1-and-stanley-delhi.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2012 Oct",
+            "title": "ID+C",
+            "url": "https://collaborativearchitecture.com/press/features/2012-10-id-c-wedge-1.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 Mar",
+            "title": "Surfaces Reporter, profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-03-surfaces-reporter-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 May",
+            "title": "Society Interiors, studio profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-05-society-interiors-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "Society Interiors, Icon",
+            "url": "https://collaborativearchitecture.com/press/features/2016-01-society-interiors-icon-issue.pdf"
+          },
+          {
+            "group": "Online",
+            "date": "2010 Dec",
+            "title": "ArchDaily",
+            "url": "https://www.archdaily.com/94905/wedge-1-collaborative-architecture"
+          },
+          {
+            "group": "Online",
+            "date": "2010",
+            "title": "e-Build",
+            "url": "https://ebuild.in/wedge-1-mumbai-collaborative-architecture"
+          },
+          {
+            "group": "Online",
+            "date": "2012 Nov",
+            "title": "e-architect",
+            "url": "https://www.e-architect.co.uk/india/wedge-1-mumbai"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Jan",
+            "title": "JIDIPI",
+            "url": "https://interiors.jidipi.com/b21372/wedge-1/"
+          },
+          {
+            "group": "Online",
+            "date": "2020 Apr",
+            "title": "BluPrint",
+            "url": "https://bluprint.onemega.com/collaborative-architecture-key-projects-of-the-decade/"
+          },
+          {
+            "group": "Books",
+            "date": "2011",
+            "title": "LINKS: New Exhibition Design 2",
+            "url": "https://collaborativearchitecture.com/press/books/2011-new-exhibition-design-2-links-wedge-1.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2011",
+            "title": "Retail Design International",
+            "url": "https://collaborativearchitecture.com/press/books/2011-retail-design-international-wedge-1.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2011",
+            "title": "Commercial Space, Phoenix",
+            "url": "https://collaborativearchitecture.com/press/books/2011-commercial-space-phoenix-wedge-1.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2013",
+            "title": "Walk and Watch II, Artpower",
+            "url": "https://collaborativearchitecture.com/press/books/2013-walk-and-watch-2-artpower-wedge-1.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2009-2a-retail-issue-prototype-non-and-wrap-4.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2009-2a-retail-issue-prototype-non-and-wrap-4.pdf",
+      "title": "2A, 2009, retail issue: Prototype N[ON] and Wrap-4",
+      "summary": "Magazine feature. 7 pages on Wrap-4, Prototype N[ON], Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "content_text": "Magazine feature. 7 pages on Wrap-4, Prototype N[ON], Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "image": "https://collaborativearchitecture.com/img/wrap4/c02-t.webp",
+      "date_published": "2009-01-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wrap-4",
+        "Prototype N[ON]"
+      ],
+      "authors": [
+        {
+          "name": "2A"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2009-new-exhibition-design-links-prototype-non.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2009-new-exhibition-design-links-prototype-non.pdf",
+      "title": "LINKS Books: New Exhibition Design, on Prototype N[ON]",
+      "summary": "Book. 6 pages on Prototype N[ON], a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/prototype-non/",
+      "content_text": "Book. 6 pages on Prototype N[ON], a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/prototype-non/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-links2009.webp",
+      "date_published": "2009-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Prototype N[ON]"
+      ],
+      "authors": [
+        {
+          "name": "LINKS Books"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2008-07-elemente-studio-feature.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2008-07-elemente-studio-feature.pdf",
+      "title": "Elemente, July–August 2008: studio feature",
+      "summary": "Magazine feature. 9 pages on Wrap-4, Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "content_text": "Magazine feature. 9 pages on Wrap-4, Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-4/",
+      "image": "https://collaborativearchitecture.com/img/wrap4/c01-t.webp",
+      "date_published": "2008-07-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wrap-4",
+        "Wrap-3"
+      ],
+      "authors": [
+        {
+          "name": "Elemente"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/prototype-non/",
+      "url": "https://collaborativearchitecture.com/work/prototype-non/",
+      "title": "Prototype N[ON], Mumbai",
+      "summary": "Temporary architecture serves as a testing ground for ideas that inform the evolving body of work at Collaborative Architecture. Conceived as spatial experiments, these prototypes provide a framework for testing, refining and reconfiguring architectural propositions before their translation into larger-scale applications.",
+      "content_text": "Temporary architecture serves as a testing ground for ideas that inform the evolving body of work at Collaborative Architecture. Conceived as spatial experiments, these prototypes provide a framework for testing, refining and reconfiguring architectural propositions before their translation into larger-scale applications.",
+      "image": "https://collaborativearchitecture.com/img/non/p02.webp",
+      "date_published": "2008-01-01T09:00:00Z",
+      "tags": [
+        "Retail, Exhibition, Temporary architecture",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "prototype-non",
+        "location": "Mumbai, India",
+        "region": "South Asia",
+        "typology": "Retail, Exhibition, Temporary architecture",
+        "status": "Completed",
+        "year": "2008",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/wedge-1/",
+          "https://collaborativearchitecture.com/work/the-souk/",
+          "https://collaborativearchitecture.com/work/wrap-4/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2008",
+            "title": "IIID Awards, Design Practice of the Year, Winner",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2009",
+            "title": "A+D Spectrum Innovative Interior Award, Commendation",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Nov–Dec",
+            "title": "Indian Furniture Journal",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2009 Jul",
+            "title": "Buildotech",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2009 Jul",
+            "title": "Insite",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2009 Aug",
+            "title": "Inside Outside",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2009",
+            "title": "2A",
+            "url": "https://collaborativearchitecture.com/press/features/2009-2a-retail-issue-prototype-non-and-wrap-4.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "—",
+            "title": "Hinge 175",
+            "url": "https://collaborativearchitecture.com/press/features/hinge-175-prototype-non.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2011 Mar",
+            "title": "Architect and Interiors India, Fab 50",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "Trends, interview",
+            "url": ""
+          },
+          {
+            "group": "Online",
+            "date": "—",
+            "title": "Architype Review, interview with the principals",
+            "url": "http://architypereview.com/lalita-tharani-mujib-ahmed/"
+          },
+          {
+            "group": "Books",
+            "date": "2009",
+            "title": "LINKS: New Exhibition Design",
+            "url": "https://collaborativearchitecture.com/press/books/2009-new-exhibition-design-links-prototype-non.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2007-04-better-interiors-wrap-3.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2007-04-better-interiors-wrap-3.pdf",
+      "title": "Better Interiors, April 2007: Wrap-3",
+      "summary": "Magazine feature. 6 pages on Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "content_text": "Magazine feature. 6 pages on Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-betterinteriors2007.webp",
+      "date_published": "2007-04-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wrap-3"
+      ],
+      "authors": [
+        {
+          "name": "Better Interiors"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/2007-03-indian-architect-and-builder-wrap-3.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/2007-03-indian-architect-and-builder-wrap-3.pdf",
+      "title": "Indian Architect & Builder, March 2007: Wrap-3",
+      "summary": "Magazine feature. 4 pages on Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "content_text": "Magazine feature. 4 pages on Wrap-3, Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-iab2007.webp",
+      "date_published": "2007-03-01T09:00:00Z",
+      "tags": [
+        "Magazine",
+        "Wrap-3"
+      ],
+      "authors": [
+        {
+          "name": "Indian Architect & Builder"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/wrap-4/",
+      "url": "https://collaborativearchitecture.com/work/wrap-4/",
+      "title": "Wrap-4, Kerala",
+      "summary": "Wrap-4 transforms a 1,100-square-meter former warehouse into a Hyundai showroom for the KTC Group, reinterpreting the conventional typology of automobile retail. Set directly along the city’s main street, the building offers an uninterrupted 60-meter frontage that becomes the primary instrument of the architectural intervention.",
+      "content_text": "Wrap-4 transforms a 1,100-square-meter former warehouse into a Hyundai showroom for the KTC Group, reinterpreting the conventional typology of automobile retail. Set directly along the city’s main street, the building offers an uninterrupted 60-meter frontage that becomes the primary instrument of the architectural intervention.",
+      "image": "https://collaborativearchitecture.com/img/wrap4/p01.webp",
+      "date_published": "2007-01-01T09:00:00Z",
+      "tags": [
+        "Retail, Showroom",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "wrap-4",
+        "location": "Kerala, India",
+        "region": "South Asia",
+        "typology": "Retail, Showroom",
+        "status": "Completed",
+        "year": "2007",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/miller-knoll-experience-center/",
+          "https://collaborativearchitecture.com/work/wedge-1/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2007",
+            "title": "Bienal Miami, First Honorable Mention",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2007",
+            "title": "A+D Spectrum Innovative Interior Award, Commendation",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2007",
+            "title": "IIID Awards, Retail Spaces, Winner",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2007",
+            "title": "Better Interiors Innovation Award, Retail Spaces, Winner",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Jan",
+            "title": "Better Interiors",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Jan–Feb",
+            "title": "Indian Furniture Journal",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Apr",
+            "title": "Architecture + Design",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Jul–Aug",
+            "title": "Elemente",
+            "url": "https://collaborativearchitecture.com/press/features/2008-07-elemente-studio-feature.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2008 Aug",
+            "title": "IA&B",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Sep–Oct",
+            "title": "Indian Furniture Journal",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Nov–Dec",
+            "title": "Retail Design International",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2009",
+            "title": "2A",
+            "url": "https://collaborativearchitecture.com/press/features/2009-2a-retail-issue-prototype-non-and-wrap-4.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2010 Jan",
+            "title": "Inside Outside, with Topography",
+            "url": "https://collaborativearchitecture.com/press/features/2010-01-inside-outside-topography-and-wrap-4.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2010 Apr",
+            "title": "VMRD",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2011 May",
+            "title": "Insite",
+            "url": "https://collaborativearchitecture.com/press/features/2011-05-insite-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2013 Mar",
+            "title": "Surfaces Reporter, profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-03-surfaces-reporter-studio-profile.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2012",
+            "title": "Fascinating Exhibition Spaces, Phoenix",
+            "url": "https://collaborativearchitecture.com/press/books/2012-fascinating-exhibition-spaces-phoenix-wrap-4.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/2007-contemporary-color-design-daab-wrap-3.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/2007-contemporary-color-design-daab-wrap-3.pdf",
+      "title": "daab: Contemporary Color Design, on Wrap-3",
+      "summary": "Book. 5 pages on Wrap-3, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "content_text": "Book. 5 pages on Wrap-3, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-contemporarycolordesign.webp",
+      "date_published": "2007-01-01T09:00:00Z",
+      "tags": [
+        "Book",
+        "Wrap-3"
+      ],
+      "authors": [
+        {
+          "name": "daab"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/wrap-3/",
+      "url": "https://collaborativearchitecture.com/work/wrap-3/",
+      "title": "Wrap-3, Kozhikode",
+      "summary": "Completed in 2006, Wrap-3 is a first-generation computer training center for an orphanage in South India. Designed for primary and secondary school students, the space takes the child’s perception as its point of departure, shaping an informal learning environment that feels familiar and inviting.",
+      "content_text": "Completed in 2006, Wrap-3 is a first-generation computer training center for an orphanage in South India. Designed for primary and secondary school students, the space takes the child’s perception as its point of departure, shaping an informal learning environment that feels familiar and inviting.",
+      "image": "https://collaborativearchitecture.com/img/wrap3/p02.webp",
+      "date_published": "2006-01-01T09:00:00Z",
+      "tags": [
+        "Education, Interior",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "wrap-3",
+        "location": "Kozhikode, India",
+        "region": "South Asia",
+        "typology": "Education, Interior",
+        "status": "Completed",
+        "year": "2006",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/stacked-tectonics/",
+          "https://collaborativearchitecture.com/work/wrap-4/",
+          "https://collaborativearchitecture.com/work/house-of-cantilevers/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "2006",
+            "title": "IIID Award, Spaces of Social Relevance, Winner",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2006",
+            "title": "A+D Spectrum Innovative Interior Award, Honorable Mention",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2008",
+            "title": "DesignShare, Educational Spaces, Recognized Value Award",
+            "url": ""
+          },
+          {
+            "group": "Awards and shortlists",
+            "date": "2010",
+            "title": "Aga Khan Award for Architecture, first-round nomination",
+            "url": ""
+          },
+          {
+            "group": "Exhibitions",
+            "date": "2010",
+            "title": "SKETCH, curated by Tadao Ando, Universidad de Monterrey, Mexico, with d3",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2007 Mar",
+            "title": "IAB",
+            "url": "https://collaborativearchitecture.com/press/features/2007-03-indian-architect-and-builder-wrap-3.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2007 Apr",
+            "title": "Architecture + Design",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2007 Apr",
+            "title": "Better Interiors",
+            "url": "https://collaborativearchitecture.com/press/features/2007-04-better-interiors-wrap-3.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2007 Jul",
+            "title": "Architecture Update",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2007 Oct",
+            "title": "Design Today",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2008 Jul",
+            "title": "Elemente",
+            "url": "https://collaborativearchitecture.com/press/features/2008-07-elemente-studio-feature.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2011 Mar",
+            "title": "Architect and Interiors India, Fab 50",
+            "url": ""
+          },
+          {
+            "group": "In print",
+            "date": "2013 Mar",
+            "title": "Surfaces Reporter, profile",
+            "url": "https://collaborativearchitecture.com/press/features/2013-03-surfaces-reporter-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jul",
+            "title": "Inside Outside, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "2007",
+            "title": "Contemporary Color Design, daab",
+            "url": "https://collaborativearchitecture.com/press/books/2007-contemporary-color-design-daab-wrap-3.pdf"
+          },
+          {
+            "group": "Books",
+            "date": "—",
+            "title": "Color Space, Designer Books",
+            "url": "https://collaborativearchitecture.com/press/books/color-space-designer-books-wrap-3.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/house-of-cantilevers/",
+      "url": "https://collaborativearchitecture.com/work/house-of-cantilevers/",
+      "title": "House of Cantilevers, Kerala",
+      "summary": "Overlooking a scenic valley in South India, the House of Cantilevers is conceived as a sequence of projecting volumes that engage with the terrain while minimizing the building’s footprint. Organized across three levels on a contoured site, the 1,100-square-meter residence integrates spatial planning, structural expression, and passive climate strategies.",
+      "content_text": "Overlooking a scenic valley in South India, the House of Cantilevers is conceived as a sequence of projecting volumes that engage with the terrain while minimizing the building’s footprint. Organized across three levels on a contoured site, the 1,100-square-meter residence integrates spatial planning, structural expression, and passive climate strategies.",
+      "image": "https://collaborativearchitecture.com/img/cantilevers/p01.webp",
+      "tags": [
+        "Residential",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "house-of-cantilevers",
+        "location": "Kerala, India",
+        "region": "South Asia",
+        "typology": "Residential",
+        "status": "Under construction",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [],
+        "press": [
+          {
+            "group": "In print",
+            "date": "2015 Oct",
+            "title": "GID",
+            "url": "https://collaborativearchitecture.com/press/features/2015-10-gid-studio-profile.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Oct",
+            "title": "Gulf News, Sophisticated, personalised homes",
+            "url": "https://collaborativearchitecture.com/press/features/2015-10-gulf-news-house-of-cantilevers.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2015 Nov",
+            "title": "Trends",
+            "url": "https://collaborativearchitecture.com/press/features/2015-11-home-and-design-trends-house-of-cantilevers.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jan",
+            "title": "Society Interiors, Icon",
+            "url": "https://collaborativearchitecture.com/press/features/2016-01-society-interiors-icon-issue.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2016 Jul",
+            "title": "Inside Outside, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf"
+          },
+          {
+            "group": "In print",
+            "date": "2019 Sep",
+            "title": "iDecorama, interview",
+            "url": "https://collaborativearchitecture.com/press/features/2019-09-idecorama-interview-with-the-principals.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/rasa-totem/",
+      "url": "https://collaborativearchitecture.com/work/rasa-totem/",
+      "title": "Rasa Totem, Bengaluru",
+      "summary": "Conceived in collaboration with artist Riyas Komu, Rasa Totem explores the intersection of art, architecture, and India’s classical aesthetic traditions. Originally proposed as a 20-meter sculptural landmark for the new terminal at Kempegowda International Airport, Bengaluru, the project translates cultural expression into a contemporary architectural form.",
+      "content_text": "Conceived in collaboration with artist Riyas Komu, Rasa Totem explores the intersection of art, architecture, and India’s classical aesthetic traditions. Originally proposed as a 20-meter sculptural landmark for the new terminal at Kempegowda International Airport, Bengaluru, the project translates cultural expression into a contemporary architectural form.",
+      "image": "https://collaborativearchitecture.com/img/rasa/p01.webp",
+      "tags": [
+        "Art installation",
+        "Narrative Environments and Installations",
+        "Products and Objects"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "rasa-totem",
+        "location": "Bengaluru, India",
+        "region": "South Asia",
+        "typology": "Art installation",
+        "status": "Proposal",
+        "expertise": [
+          "Narrative Environments and Installations",
+          "Products and Objects"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/the-souk/",
+          "https://collaborativearchitecture.com/work/the-spline/"
+        ],
+        "press": []
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/the-spline/",
+      "url": "https://collaborativearchitecture.com/work/the-spline/",
+      "title": "The Spline | Stack 2, Logroño",
+      "summary": "The Spline | Stack 2 is Collaborative Architecture’s proposal for a public pavilion at Concéntrico, the international architecture and design festival in Logroño, Spain. It draws on the square’s intersecting pedestrian routes, translating them into a timber structure that supports public interaction while keeping views across the square open.",
+      "content_text": "The Spline | Stack 2 is Collaborative Architecture’s proposal for a public pavilion at Concéntrico, the international architecture and design festival in Logroño, Spain. It draws on the square’s intersecting pedestrian routes, translating them into a timber structure that supports public interaction while keeping views across the square open.",
+      "image": "https://collaborativearchitecture.com/img/spline/p02.webp",
+      "tags": [
+        "Pavilion, Temporary architecture",
+        "Narrative Environments and Installations"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "the-spline",
+        "location": "Logroño, Spain",
+        "region": "Europe",
+        "typology": "Pavilion, Temporary architecture",
+        "status": "Competition entry",
+        "expertise": [
+          "Narrative Environments and Installations"
+        ],
+        "related": [],
+        "press": []
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/urnes-stave-heritage-center/",
+      "url": "https://collaborativearchitecture.com/work/urnes-stave-heritage-center/",
+      "title": "Urnes Stave Heritage Center, Norway",
+      "summary": "Developed for an international competition, the Urnes Stave Heritage Center proposes a contemporary visitor experience rooted in Nordic timber traditions and regional craftsmanship.",
+      "content_text": "Developed for an international competition, the Urnes Stave Heritage Center proposes a contemporary visitor experience rooted in Nordic timber traditions and regional craftsmanship.",
+      "image": "https://collaborativearchitecture.com/img/urnes/p01.webp",
+      "tags": [
+        "Museum, Heritage center",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "urnes-stave-heritage-center",
+        "location": "Norway, Norway",
+        "region": "Europe",
+        "typology": "Museum, Heritage center",
+        "status": "Competition entry",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/peace-pavilion/",
+          "https://collaborativearchitecture.com/work/cascadia/",
+          "https://collaborativearchitecture.com/work/sandy-hook-memorial/"
+        ],
+        "press": [
+          {
+            "group": "Awards and shortlists",
+            "date": "—",
+            "title": "Urnes Stave Church heritage center, international competition, results awaited",
+            "url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/bgrt-mumbai/",
+      "url": "https://collaborativearchitecture.com/work/bgrt-mumbai/",
+      "title": "BGRT Mumbai, Navi Mumbai",
+      "summary": "Commissioned by the Bearys Group, BGRT Mumbai is a 40,000-square-meter campus for general and pharmaceutical research. Building on the group’s Bengaluru campus, home to Reflected Topography, the proposal retains the masterplan’s footprint while reworking its architectural expression through a climate-responsive façade strategy. The project targets LEED Platinum certification.",
+      "content_text": "Commissioned by the Bearys Group, BGRT Mumbai is a 40,000-square-meter campus for general and pharmaceutical research. Building on the group’s Bengaluru campus, home to Reflected Topography, the proposal retains the masterplan’s footprint while reworking its architectural expression through a climate-responsive façade strategy. The project targets LEED Platinum certification.",
+      "image": "https://collaborativearchitecture.com/img/hb/bgrtmumbai.webp",
+      "tags": [
+        "Research campus, Workplace",
+        "Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "bgrt-mumbai",
+        "location": "Navi Mumbai, India",
+        "region": "South Asia",
+        "typology": "Research campus, Workplace",
+        "status": "In design",
+        "expertise": [
+          "Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/reflected-topography/",
+          "https://collaborativearchitecture.com/work/cascadia/"
+        ],
+        "press": []
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/bearys-wafira/",
+      "url": "https://collaborativearchitecture.com/work/bearys-wafira/",
+      "title": "Bearys Wafira, Dubai",
+      "summary": "In Dubai Healthcare City, Bearys Wafira is conceived as a limited-edition residence where sophisticated luxury is shaped by its arid setting. Collaborative Architecture’s interior design spans the grand lobby, club floors, four condominiums and penthouse, bringing together a human-centered approach, considered detailing and a refined palette of bespoke finishes.",
+      "content_text": "In Dubai Healthcare City, Bearys Wafira is conceived as a limited-edition residence where sophisticated luxury is shaped by its arid setting. Collaborative Architecture’s interior design spans the grand lobby, club floors, four condominiums and penthouse, bringing together a human-centered approach, considered detailing and a refined palette of bespoke finishes.",
+      "image": "https://collaborativearchitecture.com/img/wafira/p01.webp",
+      "tags": [
+        "Residential, Interior",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "bearys-wafira",
+        "location": "Dubai, UAE",
+        "region": "Middle East",
+        "typology": "Residential, Interior",
+        "status": "Due 2029",
+        "expertise": [
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/apartment-by-the-bay/",
+          "https://collaborativearchitecture.com/work/the-legend/",
+          "https://collaborativearchitecture.com/work/reflected-topography/"
+        ],
+        "press": []
+      }
+    },
+    {
+      "id": "https://collaborativearchitecture.com/work/the-vessel/",
+      "url": "https://collaborativearchitecture.com/work/the-vessel/",
+      "title": "The Vessel, Kerala",
+      "summary": "The Vessel transforms a modest, single-story village house on the banks of a tropical river in South India into guest facilities for the Jellyfish Water Sports Club. The project reinterprets the existing structure through a measured architectural intervention, expanding its capacity and strengthening its relationship with the river landscape.",
+      "content_text": "The Vessel transforms a modest, single-story village house on the banks of a tropical river in South India into guest facilities for the Jellyfish Water Sports Club. The project reinterprets the existing structure through a measured architectural intervention, expanding its capacity and strengthening its relationship with the river landscape.",
+      "image": "https://collaborativearchitecture.com/img/vessel/p01.webp",
+      "tags": [
+        "Adaptive reuse, Hospitality",
+        "Architecture",
+        "Interior Architecture"
+      ],
+      "authors": [
+        {
+          "name": "Collaborative Architecture"
+        }
+      ],
+      "_kind": "project",
+      "_project": {
+        "slug": "the-vessel",
+        "location": "Kerala, India",
+        "region": "South Asia",
+        "typology": "Adaptive reuse, Hospitality",
+        "status": "Detailed design",
+        "expertise": [
+          "Architecture",
+          "Interior Architecture"
+        ],
+        "related": [
+          "https://collaborativearchitecture.com/work/the-barn/"
+        ],
+        "press": []
+      }
+    },
+    {
+      "id": "https://architecture.live/startup-architecture-collaborative-architecture/",
+      "url": "https://architecture.live/startup-architecture-collaborative-architecture/",
+      "title": "ArchitectureLive: ArchiSHOTS interview with Mujib Ahmed and Lalita Tharani",
+      "summary": "Interview, with Lalita Tharani, Mujib Ahmed",
+      "content_text": "Interview, with Lalita Tharani, Mujib Ahmed",
+      "tags": [
+        "Interview"
+      ],
+      "authors": [
+        {
+          "name": "ArchitectureLive"
+        }
+      ],
+      "_kind": "press"
+    },
+    {
+      "id": "http://architypereview.com/lalita-tharani-mujib-ahmed/",
+      "url": "http://architypereview.com/lalita-tharani-mujib-ahmed/",
+      "title": "Architype Review: Lalita Tharani and Mujib Ahmed",
+      "summary": "Feature, with Lalita Tharani, Mujib Ahmed",
+      "content_text": "Feature, with Lalita Tharani, Mujib Ahmed",
+      "tags": [
+        "Feature"
+      ],
+      "authors": [
+        {
+          "name": "Architype Review"
+        }
+      ],
+      "_kind": "press"
+    },
+    {
+      "id": "https://www.e-architect.co.uk/architects/collaborative-architecture",
+      "url": "https://www.e-architect.co.uk/architects/collaborative-architecture",
+      "title": "e-architect: Collaborative Architecture",
+      "summary": "Feature",
+      "content_text": "Feature",
+      "tags": [
+        "Feature"
+      ],
+      "authors": [
+        {
+          "name": "e-architect"
+        }
+      ],
+      "_kind": "press"
+    },
+    {
+      "id": "https://www.architectandinteriorsindia.com/lists/3282-lalita-tharani-mujib-ahmed",
+      "url": "https://www.architectandinteriorsindia.com/lists/3282-lalita-tharani-mujib-ahmed",
+      "title": "Architect and Interiors India: Lalita Tharani and Mujib Ahmed",
+      "summary": "Feature, with Lalita Tharani, Mujib Ahmed",
+      "content_text": "Feature, with Lalita Tharani, Mujib Ahmed",
+      "tags": [
+        "Feature"
+      ],
+      "authors": [
+        {
+          "name": "Architect and Interiors India"
+        }
+      ],
+      "_kind": "press"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/hinge-175-prototype-non.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/hinge-175-prototype-non.pdf",
+      "title": "Hinge, issue 175: Prototype N[ON]",
+      "summary": "Magazine feature. 3 pages on Prototype N[ON], Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/prototype-non/",
+      "content_text": "Magazine feature. 3 pages on Prototype N[ON], Collaborative Architecture, Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/prototype-non/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-hinge175.webp",
+      "tags": [
+        "Magazine",
+        "Prototype N[ON]"
+      ],
+      "authors": [
+        {
+          "name": "Hinge"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/gid-charting-the-spice-route.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/gid-charting-the-spice-route.pdf",
+      "title": "Glam Interiors + Design (GID), GID Focus: Charting the Spice Route",
+      "summary": "Magazine feature. 6 pages on Spicy Route, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Magazine feature. 6 pages on Spicy Route, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-gidspiceroute.webp",
+      "tags": [
+        "Magazine",
+        "Spicy Route"
+      ],
+      "authors": [
+        {
+          "name": "Glam Interiors + Design (GID)"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/features/hinge-170-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/features/hinge-170-topography.pdf",
+      "title": "Hinge, issue 170: Topography",
+      "summary": "Magazine feature. 2 pages on Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Magazine feature. 2 pages on Topography, Collaborative Architecture, Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-hinge170.webp",
+      "tags": [
+        "Magazine",
+        "Topography"
+      ],
+      "authors": [
+        {
+          "name": "Hinge"
+        }
+      ],
+      "_kind": "feature"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/color-space-designer-books-wrap-3.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/color-space-designer-books-wrap-3.pdf",
+      "title": "Designer Books: Color Space, on Wrap-3, Bajaj Corporate Office",
+      "summary": "Book. 13 pages on Wrap-3, Bajaj Corporate Office, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "content_text": "Book. 13 pages on Wrap-3, Bajaj Corporate Office, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed. Project page: https://collaborativearchitecture.com/work/wrap-3/",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-colorspace.webp",
+      "tags": [
+        "Book",
+        "Wrap-3",
+        "Bajaj Corporate Office"
+      ],
+      "authors": [
+        {
+          "name": "Designer Books"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/work-shop-02-choise-gallery-bajaj-corporate-office.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/work-shop-02-choise-gallery-bajaj-corporate-office.pdf",
+      "title": "Choise Gallery: Work Shop, issue 02, on Bajaj Corporate Office",
+      "summary": "Book. 3 pages on Bajaj Corporate Office, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Book. 3 pages on Bajaj Corporate Office, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-workshop02.webp",
+      "tags": [
+        "Book",
+        "Bajaj Corporate Office"
+      ],
+      "authors": [
+        {
+          "name": "Choise Gallery"
+        }
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/world-inspiring-office-spaces-bajaj-corporate-office.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/world-inspiring-office-spaces-bajaj-corporate-office.pdf",
+      "title": "World Inspiring Office Spaces, on Bajaj Corporate Office",
+      "summary": "Book. 7 pages on Bajaj Corporate Office, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Book. 7 pages on Bajaj Corporate Office, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-worldofficespaces.webp",
+      "tags": [
+        "Book",
+        "Bajaj Corporate Office"
+      ],
+      "_kind": "book"
+    },
+    {
+      "id": "https://collaborativearchitecture.com/press/books/brand-new-restaurant-design-topography.pdf",
+      "url": "https://collaborativearchitecture.com/press/books/brand-new-restaurant-design-topography.pdf",
+      "title": "Brand-New Restaurant Design, on Topography",
+      "summary": "Book. 5 pages on Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed.",
+      "content_text": "Book. 5 pages on Topography, a project by Collaborative Architecture, designed by Lalita Tharani and Mujib Ahmed.",
+      "image": "https://collaborativearchitecture.com/img/cov/cv-brandnewrestaurant.webp",
+      "tags": [
+        "Book",
+        "Topography"
+      ],
+      "_kind": "book"
+    }
+  ]
+}

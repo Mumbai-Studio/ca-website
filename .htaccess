@@ -1,0 +1,260 @@
+# Collaborative Architecture · server settings for Apache and LiteSpeed (cPanel and most shared hosts)
+# Written by tools/build.js: change server/redirects.txt or tools/build.js, then build again; do not edit this copy.
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html index.php
+AddDefaultCharset utf-8
+AddType image/webp .webp
+AddType text/markdown .md
+AddType application/manifest+json .webmanifest
+AddType font/woff2 .woff2
+AddCharset utf-8 .md .txt .xml .json .js .css
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# one address for search engines: https, no www (only on the real domain, so a test address keeps working)
+RewriteCond %{HTTP_HOST} ^www\.collaborativearchitecture\.com$ [NC]
+RewriteRule ^ https://collaborativearchitecture.com%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^collaborativearchitecture\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://collaborativearchitecture.com%{REQUEST_URI} [R=301,L]
+
+# closed to the web: the form handlers' private folder, and hidden files (but not /.well-known/, which certificates need)
+RewriteRule ^_private(/|$) - [F,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteRule (^|/)\. - [F,L]
+
+# old addresses of the WordPress site (server/redirects.txt)
+RewriteRule ^portfolio-item/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/reflected-topography-bgrt/?$ /work/reflected-topography/ [R=301,L]
+RewriteRule ^portfolio-item/house-of-cantilevers-residential-luxury-villas-bespoke-homes/?$ /work/house-of-cantilevers/ [R=301,L]
+RewriteRule ^portfolio-item/stacked-tectonics-jdt-primary-school/?$ /work/stacked-tectonics/ [R=301,L]
+RewriteRule ^portfolio-item/indian-national-war-museum/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/ntt-data-center/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/wedge-1/?$ /work/wedge-1/ [R=301,L]
+RewriteRule ^portfolio-item/cold-war-memorial/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/cascadia-bcda-iconic-tower/?$ /work/cascadia/ [R=301,L]
+RewriteRule ^portfolio-item/show-condominium-the-legend/?$ /work/the-legend/ [R=301,L]
+RewriteRule ^portfolio-item/concentrico/?$ /work/the-spline/ [R=301,L]
+RewriteRule ^portfolio-item/bgrt/?$ /work/bgrt-mumbai/ [R=301,L]
+RewriteRule ^portfolio-item/the-souk-dubai-design-week-2019/?$ /work/the-souk/ [R=301,L]
+RewriteRule ^portfolio-item/inverted-topography-mezban/?$ /work/inverted-topography/ [R=301,L]
+RewriteRule ^portfolio-item/jellyfish-water-sports-club/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/sandy-hook-memorial/?$ /work/sandy-hook-memorial/ [R=301,L]
+RewriteRule ^portfolio-item/apartment-by-the-bay/?$ /work/apartment-by-the-bay/ [R=301,L]
+RewriteRule ^portfolio-item/bamboo/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/iconic-mosque/?$ /work/iconic-mosque/ [R=301,L]
+RewriteRule ^portfolio-item/wrap-3-jdt-informatic-center/?$ /work/wrap-3/ [R=301,L]
+RewriteRule ^portfolio-item/reimagining-brooklyn-brigde/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/50th-crossroads-show-condominium/?$ /work/50th-cross-road/ [R=301,L]
+RewriteRule ^portfolio-item/topography-1/?$ /expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^portfolio-item/aafco-experience-centre/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/spicy-route/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/concept-bedroom/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/musi-river-revitilization/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/hetro-pharma/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/bhatia-residence/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/herman-miller-experience-center/?$ /work/miller-knoll-experience-center/ [R=301,L]
+RewriteRule ^portfolio-item/wrap-4-ktc-hyundai/?$ /work/wrap-4/ [R=301,L]
+RewriteRule ^portfolio-item/data-center/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/prototype-non/?$ /work/prototype-non/ [R=301,L]
+RewriteRule ^portfolio-item/art-center/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/cocoon/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/linked-house/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/thyssenkrupp-experience-center/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/concept-pavilion-titan-watches/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/bajaj-electricals/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/irooms-hotel-asma-tower/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/parallel-house/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/israeli-lounge-kenndey-center/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/lifestyle-store/?$ /work/stanley-lifestyle-store/ [R=301,L]
+RewriteRule ^portfolio-item/stacked-wedges-secura/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/the-uptown/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/50th-crossroads-lobby/?$ /work/50th-cross-road/ [R=301,L]
+RewriteRule ^portfolio-item/kns-retail/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/sherif-villa/?$ /work/ [R=301,L]
+RewriteRule ^portfolio-item/poppy-parasol/?$ /work/index/ [R=301,L]
+RewriteRule ^portfolio-item/cooper-hewitt/?$ /awards/ [R=301,L]
+RewriteRule ^portfolio-item/the-legend-show-condominium/?$ /work/the-legend/ [R=301,L]
+RewriteRule ^portfolio-item/urnes-slave-heritage-center/?$ /work/urnes-stave-heritage-center/ [R=301,L]
+RewriteRule ^portfolio-item/indian-national-unity-pavilion/?$ /work/national-unity-pavilion/ [R=301,L]
+RewriteRule ^home/?$ / [R=301,L]
+RewriteRule ^main-home/?$ / [R=301,L]
+RewriteRule ^new-home/?$ / [R=301,L]
+RewriteRule ^main-index-dublicate/?$ / [R=301,L]
+RewriteRule ^about/?$ /studio/ [R=301,L]
+RewriteRule ^experts-team/?$ /studio/ [R=301,L]
+RewriteRule ^meet-the-team/?$ /studio/ [R=301,L]
+RewriteRule ^contact-1/?$ /contact/ [R=301,L]
+RewriteRule ^all/?$ /work/ [R=301,L]
+RewriteRule ^project-list/?$ /work/index/ [R=301,L]
+RewriteRule ^residential/?$ /work/ [R=301,L]
+RewriteRule ^hospitality/?$ /work/ [R=301,L]
+RewriteRule ^retail/?$ /work/ [R=301,L]
+RewriteRule ^offices/?$ /work/ [R=301,L]
+RewriteRule ^education/?$ /expertise/architecture/ [R=301,L]
+RewriteRule ^cultural/?$ /expertise/architecture/ [R=301,L]
+RewriteRule ^civic/?$ /expertise/architecture/ [R=301,L]
+RewriteRule ^adaptive-reuse/?$ /expertise/architecture/ [R=301,L]
+RewriteRule ^expertise-architecture/?$ /expertise/architecture/ [R=301,L]
+RewriteRule ^expertise-interior-architecture/?$ /expertise/interior-architecture/ [R=301,L]
+RewriteRule ^expertise-urban-design/?$ /expertise/urban-design-and-infrastructure/ [R=301,L]
+RewriteRule ^master-planning/?$ /expertise/urban-design-and-infrastructure/ [R=301,L]
+RewriteRule ^temporary-architecture/?$ /expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^exhibitions-installations/?$ /expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^graphics/?$ /expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^environmental-graphics/?$ /expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^products/?$ /expertise/products-and-objects/ [R=301,L]
+RewriteRule ^product-design/?$ /expertise/products-and-objects/ [R=301,L]
+RewriteRule ^design-management/?$ /expertise/design-and-behavioral-mapping/ [R=301,L]
+RewriteRule ^total-design/?$ /expertise/ [R=301,L]
+RewriteRule ^design-life-cycle/?$ /studio/approach/ [R=301,L]
+RewriteRule ^collaborative-lab-research/?$ /lab/ [R=301,L]
+RewriteRule ^ideas/?$ /lab/ [R=301,L]
+RewriteRule ^latest-awards/?$ /awards/ [R=301,L]
+RewriteRule ^awards2/?$ /awards/ [R=301,L]
+RewriteRule ^news-archives/?$ /news/ [R=301,L]
+RewriteRule ^blogs-archives/?$ /news/ [R=301,L]
+RewriteRule ^blog/?$ /news/ [R=301,L]
+RewriteRule ^lectures/?$ /news/ [R=301,L]
+RewriteRule ^videos/?$ /news/ [R=301,L]
+RewriteRule ^publications/?$ /news/press/ [R=301,L]
+RewriteRule ^mgs-architecture/?$ /news/press/ [R=301,L]
+RewriteRule ^what-is-iconic-design-interior-decor/?$ /news/press/ [R=301,L]
+RewriteRule ^collaborative-architecture_interior-decor-oct-nov-2020-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-oct-gid-profile-collaborative-architecture/?$ /news/press/ [R=301,L]
+RewriteRule ^2020-jul-mgs-architecture-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2020-mar-surface-reporter-interview-lalita-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2019-dec-architecture-design/?$ /news/press/ [R=301,L]
+RewriteRule ^2019-sep-decorama-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2019-mar-surface-reporter-interview-lalita-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2019-feb-architecture-design-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2018-dec-incite-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2018-dec-society-interiors-profile-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2018-jun-mgs-architecture-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2018-jun-living-etc-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2018-apr-interiors-decore-interview-issue-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2017-iag-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2017-bluprint-special-issue-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2017-jul-interiors-decore-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2017-jul-architects-interiors-india-hot100-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2017-jul-buildotech-2/?$ /news/press/ [R=301,L]
+RewriteRule ^216-iag-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-aug-gid-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-jun-mondo-arc-india-edition-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-may-decorama-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-mar-architects-interiors-india-hot100-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-feb-ideal-home-garden-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-jan-trends-interview-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2016-jan-society-interiors-icon-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-dec-society-interior-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-dec-domus-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-nov-trends-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-sep-2a-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-jul-fx-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2015-jun-lux-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2014-restaurant-and-bar-design-3-art-power-2/?$ /news/press/ [R=301,L]
+RewriteRule ^2014-mar-indian-furniture-journal-profile-2/?$ /news/press/ [R=301,L]
+RewriteRule ^feed/?$ /feeds/news.xml [R=301,L]
+RewriteRule ^sitemap_index\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^page-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^post-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^portfolio-item-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^category-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^post_tag-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^portfolio-category-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^portfolio-tag-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^testimonials_category-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^carousels_category-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^slides_category-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^author-sitemap\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^expertise/design-management/?$ /expertise/design-and-behavioral-mapping/ [R=301,L]
+RewriteRule ^expertise/design-and-behavioural-mapping/?$ /expertise/design-and-behavioral-mapping/ [R=301,L]
+RewriteRule ^work/urnes-stave-heritage-centre/?$ /work/urnes-stave-heritage-center/ [R=301,L]
+RewriteRule ^cookies/?$ /privacy/ [R=301,L]
+RewriteRule ^cart/?$ - [G,L]
+RewriteRule ^checkout/?$ - [G,L]
+RewriteRule ^my-account/?$ - [G,L]
+RewriteRule ^architecture-studio/?$ - [G,L]
+RewriteRule ^home-decor/?$ - [G,L]
+RewriteRule ^remodeling-home/?$ - [G,L]
+RewriteRule ^furniture-store/?$ - [G,L]
+RewriteRule ^left-menu-home/?$ - [G,L]
+RewriteRule ^construction-home/?$ - [G,L]
+RewriteRule ^interior-design/?$ - [G,L]
+RewriteRule ^building-home/?$ - [G,L]
+RewriteRule ^vertical-slider/?$ - [G,L]
+RewriteRule ^interactive-slider/?$ - [G,L]
+RewriteRule ^portfolio-tiles/?$ - [G,L]
+RewriteRule ^landing/?$ - [G,L]
+RewriteRule ^hover-effects/?$ - [G,L]
+RewriteRule ^parallax-presentation/?$ - [G,L]
+RewriteRule ^sample-page/?$ - [G,L]
+RewriteRule ^testing/?$ - [G,L]
+RewriteRule ^portfolio-gallery_dublicate/?$ - [G,L]
+RewriteRule ^comments/feed/?$ - [G,L]
+RewriteRule ^wp-login\.php$ - [G,L]
+RewriteRule ^xmlrpc\.php$ - [G,L]
+RewriteRule ^testimonials_category/ - [G,L]
+RewriteRule ^portfolio-category/ /work/ [R=301,L]
+RewriteRule ^carousels_category/ - [G,L]
+RewriteRule ^slides_category/ - [G,L]
+RewriteRule ^portfolio-item/ /work/ [R=301,L]
+RewriteRule ^portfolio-tag/ /work/ [R=301,L]
+RewriteRule ^services-all/ - [G,L]
+RewriteRule ^wp-includes/ - [G,L]
+RewriteRule ^wp-content/ - [G,L]
+RewriteRule ^portfolio/ - [G,L]
+RewriteRule ^category/ /news/ [R=301,L]
+RewriteRule ^elements/ - [G,L]
+RewriteRule ^wp-admin - [G,L]
+RewriteRule ^author/ /studio/ [R=301,L]
+RewriteRule ^wp-json - [G,L]
+RewriteRule ^shop/ - [G,L]
+RewriteRule ^blog/ - [G,L]
+RewriteRule ^2015/ - [G,L]
+RewriteRule ^2016/ - [G,L]
+RewriteRule ^2020/ - [G,L]
+RewriteRule ^tag/ /news/ [R=301,L]
+
+# AI assistants that ask for Markdown (Accept: text/markdown) get the page's Markdown copy, the same text as the page
+RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.md -f
+RewriteRule ^(.*?)/?$ $1/index.md [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; media-src 'self' blob:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  <FilesMatch "\.(html|md)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+    Header merge Vary "Accept"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico|mp4|webm|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "^site-[0-9]+\.[0-9a-f]{12}\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^(robots\.txt|sitemap\.xml|llms\.txt|llms-full\.txt|site-config\.js|site\.webmanifest)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+  <FilesMatch "^(index|404)\.html$">
+    Header set Link "</llms.txt>; rel=\"describedby\"; type=\"text/plain\""
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml text/xml text/plain text/markdown image/svg+xml application/manifest+json application/feed+json application/rss+xml
+</IfModule>

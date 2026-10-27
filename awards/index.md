@@ -1,0 +1,49 @@
+# Awards, honors and exhibitions
+
+60 awards, honors and international shortlists, 30 of them international
+
+- 2023: Invited exhibition, Designing Peace, Museum of Craft and Design, San Francisco, Indian National War (Peace) Museum (https://sfmcd.org/exhibitions/designing-peace/)
+- 2022: Invited exhibition, Designing Peace, Cooper Hewitt, Smithsonian Design Museum, New York, Indian National War (Peace) Museum (https://exhibitions.cooperhewitt.org/designing-peace/peace-pavilion/)
+- 2021: International competition, winning entry, Notions of India, Tata Steel, National Unity Pavilion
+- 2020: Two-stage international competition, Shortlisted, Jiaxing Municipality, China, iStop
+- 2019: Installation program, Winner, Dubai Design Week, The Souk
+- 2018: Two-stage international competition, Finalist, Kennedy Center, Washington DC, Israeli Lounge
+- 2017: Two-stage international competition, Finalist, Government of India, Indian National War Museum
+- 2017: Two-stage international competition, Finalist, with J. MAYER H., Government of the Philippines and BCDA, Cascadia, BCDA Iconic Tower
+- 2016: Invited exhibition, State of Architecture, Mumbai, Stacked Tectonics
+- 2016: International Workspace category, Winner, OFFICE NEXT, Reflected Topography
+- 2016: Retail Spaces, First Runner-up, IIID Awards, West, Gender Bender
+- 2016: Role Model Award, WADe, Women in Architecture and Design, Lalita Tharani
+- 2016: Women in Architecture and Design, AIS Keystone Awards, Lalita Tharani
+- 2015: Honorable Mention, International Design Awards (IDA), Reflected Topography
+- 2015: Section Award, IES Illumination Awards, Reflected Topography
+- 2015: Merit Award, IES Illumination Awards, Reflected Topography
+- 2014: Socially Relevant Design, Winner, NDTV Design and Architecture Awards, Stacked Tectonics
+- 2014: Global search for new workspace design, Shortlisted, Rosatom, Rosatom
+- 2012: Commendation, SEED Awards, Stacked Tectonics
+- 2012: Section Award, IES Illumination Awards, Inverted Topography
+- 2012: Finalist, International Design Awards (IDA), Inverted Topography
+- 2012: Finalist, Restaurant & Bar Design Awards, Inverted Topography
+- 2012: Recreational Spaces, Finalist, SBID International Design Awards, Inverted Topography
+- 2012: Project of the Year, Winner, Architecture Israel, Wedge-1
+- 2012: Project of the Year, Second Runner-up, Architecture Israel, Inverted Topography
+- 2011: Finalist, INBAR International Competition for Bamboo Innovations, Wrap-5X
+- 2011: Finalist, FX International Interior Design Awards, Wedge-1
+- 2011: Winner, Celebration of Architecture, Bajaj Corporate Office
+- 2011: Winner, Celebration of Architecture, Inverted Topography
+- 2011: Design Practice of the Year, Runner-up, IIID Awards, Wedge-1, Bajaj Office, Inverted Topography
+- 2011: Hospitality, Runner-up, Ace of Space, Inverted Topography
+- 2010: First-round nomination, Aga Khan Award for Architecture, Wrap-3
+- 2010: Invited exhibition curated by Tadao Ando, SKETCH, Universidad de Monterrey, Mexico, Wrap-3
+- 2010: Winner, A+D Spectrum Innovative Interior Award, Wedge-1
+- 2010: Runner-up, Ace of Space, Wedge-1
+- 2009: Commendation, A+D Spectrum Innovative Interior Award, Prototype N[ON]
+- 2008: Educational Spaces, Recognized Value Award, DesignShare, Wrap-3
+- 2008: Design Practice of the Year, Winner, IIID Awards, Prototype N[ON]
+- 2007: First Honorable Mention, Bienal Miami, Wrap-4
+- 2007: Commendation, A+D Spectrum Innovative Interior Award, Wrap-4
+- 2007: Retail Spaces, Winner, IIID Awards, Wrap-4
+- 2007: Retail Spaces, Winner, Better Interiors Innovation Award, Wrap-4
+- 2006: Honorable Mention, A+D Spectrum Innovative Interior Award, Wrap-3
+- 2006: Retail Spaces (Small), Winner, IIID Awards, Concept Pavilion for Titan
+- 2006: Spaces of Social Relevance, Winner, IIID Awards, Wrap-3

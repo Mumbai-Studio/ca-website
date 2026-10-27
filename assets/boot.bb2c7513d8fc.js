@@ -1,0 +1,1 @@
+(function(){try{var t=document.documentElement;sessionStorage.getItem("ca-pl")!=="1"&&(t.classList.add("pl-boot"),window.CA_PL_T=performance.now())}catch{}try{var e=+localStorage.getItem("ca-w01")||0;e%6!==0&&document.documentElement.classList.add("w01-wait")}catch{}})();

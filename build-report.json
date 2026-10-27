@@ -1,0 +1,687 @@
+{
+ "when": "2026-10-27T11:48:07.126Z",
+ "staging": false,
+ "pages": 67,
+ "shared": [
+  "assets/site-1.ae2e5b71b724.css",
+  "assets/site-2.989b2af33c60.js",
+  "assets/site-3.78d4c56e2196.js",
+  "assets/site-4.338f83c15bf8.js",
+  "assets/site-5.df8485f7c0b1.js",
+  "assets/site-6.dfd44c457563.js",
+  "assets/site-7.4f6cfbde3814.js"
+ ],
+ "problems": [],
+ "report": [
+  {
+   "path": "/",
+   "title": "Collaborative Architecture | Architects in Mumbai and Riyadh",
+   "h1": "Design beyondthe brief",
+   "words": 1109,
+   "imgs": 25,
+   "noalt": 0,
+   "ld": 8,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/",
+   "title": "Architecture and interior projects | Collaborative Architecture",
+   "h1": "Work",
+   "words": 168,
+   "imgs": 31,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/index/",
+   "title": "Index of all projects | Collaborative Architecture",
+   "h1": "Work",
+   "words": 364,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/",
+   "title": "Architecture and interior design | Collaborative Architecture",
+   "h1": "Expertise",
+   "words": 279,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/lab/",
+   "title": "Collaborative Lab: design research | Collaborative Architecture",
+   "h1": "Speculative futures",
+   "words": 985,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 12,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/awards/",
+   "title": "Awards and recognition | Collaborative Architecture",
+   "h1": "awards, honors and international shortlists since 2004, 30 of them international",
+   "words": 600,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/studio/",
+   "title": "Lalita Tharani and Mujib Ahmed | Collaborative Architecture",
+   "h1": "Collaborative Architecture is a verb",
+   "words": 815,
+   "imgs": 1,
+   "noalt": 0,
+   "ld": 7,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/studio/approach/",
+   "title": "Total Design: our approach | Collaborative Architecture",
+   "h1": "Total Design",
+   "words": 591,
+   "imgs": 4,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/news/",
+   "title": "News and press | Collaborative Architecture",
+   "h1": "News",
+   "words": 2077,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 7,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/news/press/",
+   "title": "Press room | Collaborative Architecture",
+   "h1": "News",
+   "words": 2077,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 6,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/contact/",
+   "title": "Contact: Mumbai and Riyadh | Collaborative Architecture",
+   "h1": "MumbaiStudioBe in touch withCollaborativeStudios",
+   "words": 81,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 6,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/apartment-by-the-bay/",
+   "title": "Apartment by the Bay, Cuffe Parade, Mumbai | Collaborative Architecture",
+   "h1": "Apartment by the Bay",
+   "words": 348,
+   "imgs": 16,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/reflected-topography/",
+   "title": "Reflected Topography, Bengaluru | Collaborative Architecture",
+   "h1": "Reflected Topography",
+   "words": 549,
+   "imgs": 20,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/house-of-cantilevers/",
+   "title": "House of Cantilevers, Kerala | Collaborative Architecture",
+   "h1": "House of Cantilevers",
+   "words": 487,
+   "imgs": 13,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/cascadia/",
+   "title": "Cascadia, BCDA Iconic Tower, Manila | Collaborative Architecture",
+   "h1": "Cascadia",
+   "words": 620,
+   "imgs": 21,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/iconic-gateway/",
+   "title": "The Iconic Gateway, Diyar Al Muharraq | Collaborative Architecture",
+   "h1": "The Iconic Gateway",
+   "words": 473,
+   "imgs": 20,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/stacked-tectonics/",
+   "title": "Stacked Tectonics, Kozhikode | Collaborative Architecture",
+   "h1": "Stacked Tectonics",
+   "words": 537,
+   "imgs": 22,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/the-legend/",
+   "title": "The Legend show apartment, Kochi | Collaborative Architecture",
+   "h1": "The Legend",
+   "words": 452,
+   "imgs": 15,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/inverted-topography/",
+   "title": "Inverted Topography, Kozhikode | Collaborative Architecture",
+   "h1": "Inverted Topography",
+   "words": 384,
+   "imgs": 18,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/iconic-mosque/",
+   "title": "Iconic Mosque for Emaar, Dubai | Collaborative Architecture",
+   "h1": "Iconic Mosque",
+   "words": 342,
+   "imgs": 16,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/rasa-totem/",
+   "title": "Rasa Totem, Bengaluru | Collaborative Architecture",
+   "h1": "Rasa Totem",
+   "words": 391,
+   "imgs": 15,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/sandy-hook-memorial/",
+   "title": "Sandy Hook Memorial, Connecticut | Collaborative Architecture",
+   "h1": "Sandy Hook Memorial",
+   "words": 573,
+   "imgs": 19,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/the-souk/",
+   "title": "The Souk, Dubai Design Week 2019 | Collaborative Architecture",
+   "h1": "The Souk",
+   "words": 387,
+   "imgs": 17,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/the-spline/",
+   "title": "The Spline | Stack 2, Logroño | Collaborative Architecture",
+   "h1": "The Spline | Stack 2",
+   "words": 316,
+   "imgs": 18,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/stanley-lifestyle-store/",
+   "title": "Stanley Lifestyle Store, Delhi NCR | Collaborative Architecture",
+   "h1": "Stanley Lifestyle Store",
+   "words": 577,
+   "imgs": 18,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/national-unity-pavilion/",
+   "title": "National Unity Pavilion, Notions of India | Collaborative Architecture",
+   "h1": "National Unity Pavilion",
+   "words": 1054,
+   "imgs": 17,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/urnes-stave-heritage-center/",
+   "title": "Urnes Stave Heritage Center, Norway | Collaborative Architecture",
+   "h1": "Urnes Stave Heritage Center",
+   "words": 454,
+   "imgs": 13,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/wedge-1/",
+   "title": "Wedge-1, Mumbai | Collaborative Architecture",
+   "h1": "Wedge-1",
+   "words": 426,
+   "imgs": 17,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/wrap-4/",
+   "title": "Wrap-4, Kerala | Collaborative Architecture",
+   "h1": "Wrap-4",
+   "words": 500,
+   "imgs": 19,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/project-alpha/",
+   "title": "Project Alpha, 3D-printed housing, Texas | Collaborative Architecture",
+   "h1": "Project Alpha",
+   "words": 791,
+   "imgs": 26,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/50th-cross-road/",
+   "title": "50th Cross Road show apartment, Kerala | Collaborative Architecture",
+   "h1": "50th Cross Road",
+   "words": 383,
+   "imgs": 14,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/material-cartographies/",
+   "title": "Material Cartographies: Bahrain Pavilion, Venice Biennale 2027 | Collaborative Architecture",
+   "h1": "Material Cartographies",
+   "words": 1710,
+   "imgs": 19,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/the-measured-city/",
+   "title": "The Measured City, Venice | Collaborative Architecture",
+   "h1": "The Measured City",
+   "words": 1389,
+   "imgs": 23,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/bgrt-mumbai/",
+   "title": "BGRT Mumbai research campus | Collaborative Architecture",
+   "h1": "BGRT Mumbai",
+   "words": 330,
+   "imgs": 5,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/bearys-wafira/",
+   "title": "Bearys Wafira residences, Dubai | Collaborative Architecture",
+   "h1": "Bearys Wafira",
+   "words": 434,
+   "imgs": 11,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/miller-knoll-experience-center/",
+   "title": "MillerKnoll Experience Center, Bengaluru | Collaborative Architecture",
+   "h1": "MillerKnoll Experience Center",
+   "words": 470,
+   "imgs": 18,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/wrap-3/",
+   "title": "Wrap-3, computer learning center, Kozhikode | Collaborative Architecture",
+   "h1": "Wrap-3",
+   "words": 376,
+   "imgs": 13,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/prototype-non/",
+   "title": "Prototype N[ON] for Moroso, Mumbai | Collaborative Architecture",
+   "h1": "Prototype N[ON]",
+   "words": 445,
+   "imgs": 8,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/tree-of-life/",
+   "title": "Tree of Life, Shoah Memorial competition entry, Lyon | Collaborative Architecture",
+   "h1": "Tree of Life",
+   "words": 919,
+   "imgs": 13,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/the-barn/",
+   "title": "The Barn, Suretech House, Navi Mumbai | Collaborative Architecture",
+   "h1": "The Barn",
+   "words": 514,
+   "imgs": 15,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/the-vessel/",
+   "title": "The Vessel, Jellyfish Water Sports Club, Kerala | Collaborative Architecture",
+   "h1": "The Vessel",
+   "words": 438,
+   "imgs": 10,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/peace-pavilion/",
+   "title": "Peace Pavilion, Indian National War Museum, New Delhi | Collaborative Architecture",
+   "h1": "Peace Pavilion",
+   "words": 769,
+   "imgs": 11,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/architecture/",
+   "title": "Architecture and building design | Collaborative Architecture",
+   "h1": "Architecture",
+   "words": 204,
+   "imgs": 3,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/interior-architecture/",
+   "title": "Interior architecture and design | Collaborative Architecture",
+   "h1": "Interior Architecture",
+   "words": 231,
+   "imgs": 5,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/urban-design-and-infrastructure/",
+   "title": "Urban design and infrastructure | Collaborative Architecture",
+   "h1": "Urban Design and Infrastructure",
+   "words": 203,
+   "imgs": 2,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/narrative-environments-and-installations/",
+   "title": "Experience centers and installations | Collaborative Architecture",
+   "h1": "Narrative Environments and Installations",
+   "words": 209,
+   "imgs": 6,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/products-and-objects/",
+   "title": "Furniture, lighting and objects | Collaborative Architecture",
+   "h1": "Products and Objects",
+   "words": 266,
+   "imgs": 3,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/expertise/design-and-behavioral-mapping/",
+   "title": "Design and behavioral mapping | Collaborative Architecture",
+   "h1": "Design and Behavioral Mapping",
+   "words": 203,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/lab/design-research/",
+   "title": "Design Research, Collaborative Lab | Collaborative Architecture",
+   "h1": "Speculative futures",
+   "words": 643,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 8,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/lab/policy-advocacy/",
+   "title": "Policy Advocacy, Collaborative Lab | Collaborative Architecture",
+   "h1": "Speculative futures",
+   "words": 295,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 6,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/lab/epistemologies/",
+   "title": "Epistemologies, Collaborative Lab | Collaborative Architecture",
+   "h1": "Speculative futures",
+   "words": 289,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/lab/architectural-cartographies/",
+   "title": "Architectural Cartographies, Collaborative Lab | Collaborative Architecture",
+   "h1": "Speculative futures",
+   "words": 393,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 6,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/lab/newsletters/",
+   "title": "Newsletters, Collaborative Lab | Collaborative Architecture",
+   "h1": "Speculative futures",
+   "words": 985,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/india/",
+   "title": "Architects in India | Collaborative Architecture",
+   "h1": "Architecture in India",
+   "words": 477,
+   "imgs": 19,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/uae/",
+   "title": "Architects in the UAE | Collaborative Architecture",
+   "h1": "Architecture in the UAE",
+   "words": 232,
+   "imgs": 4,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/saudi-arabia/",
+   "title": "Architects in Riyadh, Saudi Arabia | Collaborative Architecture",
+   "h1": "Architecture in Saudi Arabia",
+   "words": 233,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/bahrain/",
+   "title": "Architects in Bahrain | Collaborative Architecture",
+   "h1": "Architecture in Bahrain",
+   "words": 219,
+   "imgs": 2,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/middle-east/",
+   "title": "Architects in the Middle East: the GCC and North Africa | Collaborative Architecture",
+   "h1": "Architecture in the Middle East",
+   "words": 269,
+   "imgs": 6,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/mumbai/",
+   "title": "Architects in Mumbai | Collaborative Architecture",
+   "h1": "Architecture in Mumbai",
+   "words": 144,
+   "imgs": 5,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/bengaluru/",
+   "title": "Architects in Bengaluru (Bangalore) | Collaborative Architecture",
+   "h1": "Architecture in Bengaluru",
+   "words": 126,
+   "imgs": 3,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/kerala/",
+   "title": "Architects in Kochi and Kerala | Collaborative Architecture",
+   "h1": "Architecture in Kerala",
+   "words": 182,
+   "imgs": 8,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/delhi-ncr/",
+   "title": "Architects in Delhi NCR | Collaborative Architecture",
+   "h1": "Architecture in Delhi NCR",
+   "words": 134,
+   "imgs": 2,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/in/dubai/",
+   "title": "Architects in Dubai | Collaborative Architecture",
+   "h1": "Architecture in Dubai",
+   "words": 153,
+   "imgs": 3,
+   "noalt": 0,
+   "ld": 5,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/list/",
+   "title": "Projects, list view | Collaborative Architecture",
+   "h1": "Work",
+   "words": 865,
+   "imgs": 10,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/work/map/",
+   "title": "Projects on a map | Collaborative Architecture",
+   "h1": "Work",
+   "words": 77,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  },
+  {
+   "path": "/privacy/",
+   "title": "Privacy policy | Collaborative Architecture",
+   "h1": "Privacy policy",
+   "words": 2989,
+   "imgs": 0,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "noindex, follow"
+  },
+  {
+   "path": "/links/",
+   "title": "Links | Collaborative Architecture",
+   "h1": "Collaborative Architecture",
+   "words": 57,
+   "imgs": 1,
+   "noalt": 0,
+   "ld": 4,
+   "robots": "noindex, follow"
+  }
+ ]
+}
