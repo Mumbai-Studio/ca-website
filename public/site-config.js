@@ -3,7 +3,7 @@
    After a change, upload this one file; visitors get it within the hour. */
 window.CA_CONFIG = {
   // Google Analytics 4 measurement ID, for example 'G-AB12CD34EF'. Analytics load only after a visitor accepts them.
-  ga4: '',
+  ga4: 'G-5RDVZSGPK7',
 
   // Cloudflare Turnstile site key (the public one), for the security check on the inquiry and newsletter forms.
   // Leave empty to rely on the form handler's own checks; the secret key goes in api/config.php.
