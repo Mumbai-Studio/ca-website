@@ -133,16 +133,22 @@ const cut = frag.indexOf('<a class="skip"');
 if (cut < 0) throw new Error('the source has no skip link where the body begins');
 let head = frag.slice(0, cut);
 const swap = (a, b) => { if (!head.includes(a)) throw new Error('not found in the head: ' + a.slice(0, 80)); head = head.replace(a, b); };
+// 5 November 2026: the source no longer connects to Google Fonts ahead of time (fonts from the site's own files since 4 November); drop the tags only when present
+const swapIf = (a, b) => { if (head.includes(a)) head = head.replace(a, b); };
 swap('<title>CA Website Prototype</title>', '<title>Collaborative Architecture</title>');
-swap('<link rel="preconnect" href="https://fonts.googleapis.com">\n', '');
-swap('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n', '');
+swapIf('<link rel="preconnect" href="https://fonts.googleapis.com">\n', '');
+swapIf('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n', '');
 head = head.replace(/<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com\/css2[^"]*">/, () =>
   '<link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="preload" href="/fonts/instrument-sans-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="stylesheet" href="/fonts/fonts.css">');
-if (/fonts\.googleapis/.test(head)) throw new Error('Google Fonts still linked: the published site uses its own copy of the fonts');
+// 5 November 2026: the page may name Google Fonts inside a script, as the fallback when its own font files cannot be read (4 November);
+// what must not be left is a Google Fonts stylesheet linked in the head, which every visitor would load
+if (/<link\b[^>]*fonts\.googleapis/i.test(head)) throw new Error('Google Fonts still linked: the published site uses its own copy of the fonts');
 const EXTRA = '<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<link rel="manifest" href="/site.webmanifest">\n<meta name="theme-color" content="#A7182C">\n<script src="/site-config.js"></script>\n';
 const NOSCRIPT = '<noscript><style>#pl{display:none!important}.hero .def,.hero .bg:first-child,.ppq{opacity:1!important;transform:none!important}.ns .sl{position:relative!important;opacity:1!important;visibility:visible!important}</style></noscript>';
+// 5 November 2026 (W3C validation, Fix 1, approved by Mujib): the no-script styles go first in the head. The logo screen (div#pl) sits in the
+// source ahead of the main styles so the crimson paints first, and the browser ends the head there; styles placed last would land in the body.
 const DOC = '<!doctype html>\n<html lang="en" data-routing="path" data-live="1"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
-  + EXTRA + head + NOSCRIPT + '\n</head><body>\n' + frag.slice(cut) + '\n</body></html>\n';
+  + NOSCRIPT + '\n' + EXTRA + head + '\n</head><body>\n' + frag.slice(cut) + '\n</body></html>\n';
 
 let siteConfig = fs.readFileSync(path.join(PUB, 'site-config.js'), 'utf8');
 if (STAGING) { if (!/indexable:\s*true/.test(siteConfig)) throw new Error('site-config.js: "indexable: true" not found'); siteConfig = siteConfig.replace(/indexable:\s*true/, 'indexable: false'); }
