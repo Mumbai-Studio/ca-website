@@ -111,12 +111,13 @@ Every message is also kept as a copy in `/_private/` (one file a month). Web acc
 1. In `api/`, **copy `config.sample.php` to `config.php`** and fill it in.
    - `config.php` holds passwords. It stays on the server only and is never put in the repository.
    - Automatic deployments never overwrite it.
-2. Set `from_email`: the address the site's emails come from. Create `website@collaborativearchitecture.com` in Google Workspace, as a user or an alias.
+2. Set `from_email`: the address the site's emails come from. `website@collaborativearchitecture.com` is an alias of `enquiry@collaborativearchitecture.com` in Google Workspace (added 8 November 2026).
 3. **SMTP (strongly recommended).** Send through Google Workspace so the emails are authenticated and do not land in spam:
-   1. Sign in to Google as the `from_email` account.
-   2. Turn on 2-Step Verification.
-   3. Create an app password at myaccount.google.com/apppasswords.
-   4. Put it in `smtp.pass`. Keep `smtp.gmail.com`, port 465, `ssl`.
+   1. Sign in to Google as `enquiry@collaborativearchitecture.com`, the account the alias belongs to. An alias cannot sign in.
+   2. In Gmail, go to Settings → Accounts → "Send mail as" and add `website@collaborativearchitecture.com`, with "Treat as an alias" ticked. Without this, Gmail changes the sender to enquiry@.
+   3. Turn on 2-Step Verification.
+   4. Create an app password at myaccount.google.com/apppasswords.
+   5. Put `enquiry@collaborativearchitecture.com` in `smtp.user` and the app password in `smtp.pass`. Keep `smtp.gmail.com`, port 465, `ssl`.
 4. If you leave `smtp.host` empty, PHP's own `mail()` is used. That only delivers well if the server's IP is in the domain's SPF record (see 7.3).
 
 ### 5.2 Security check (optional)

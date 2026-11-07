@@ -7,7 +7,7 @@ return [
     // the addresses the site is served from; forms sent from anywhere else are refused
     'allowed_hosts' => ['collaborativearchitecture.com', 'www.collaborativearchitecture.com'],
 
-    // who the emails come from: an address of the domain (create it in Google Workspace, or use an alias of enquiry@)
+    // who the emails come from: website@ is an alias of enquiry@ in Google Workspace (added 8 November 2026)
     'from_email' => 'website@collaborativearchitecture.com',
     'from_name'  => 'Collaborative Architecture website',
 
@@ -23,9 +23,11 @@ return [
     'newsletter_to' => 'enquiry@collaborativearchitecture.com',   // who hears of newsletter sign-ups when Mailchimp is not connected
 
     // RECOMMENDED: send through Google Workspace, so the mail is authenticated and never lands in spam.
-    // In Google Workspace, sign in as the from_email account, turn on 2-step verification, create an app password
-    // (myaccount.google.com/apppasswords) and paste it below. Leave host empty to use the server's own mail().
-    'smtp' => ['host' => 'smtp.gmail.com', 'port' => 465, 'secure' => 'ssl', 'user' => 'website@collaborativearchitecture.com', 'pass' => ''],
+    // The login is enquiry@, the account website@ belongs to (an alias cannot sign in). Signed in to Google as enquiry@:
+    // 1. in Gmail, Settings → Accounts → Send mail as → add website@ (Treat as an alias), or Gmail changes the sender to enquiry@;
+    // 2. turn on 2-step verification; 3. create an app password (myaccount.google.com/apppasswords) and paste it below.
+    // Leave host empty to use the server's own mail().
+    'smtp' => ['host' => 'smtp.gmail.com', 'port' => 465, 'secure' => 'ssl', 'user' => 'enquiry@collaborativearchitecture.com', 'pass' => ''],
 
     // Cloudflare Turnstile secret key (its site key goes in site-config.js); empty = no Turnstile check
     'turnstile_secret' => '',
