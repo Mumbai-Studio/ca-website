@@ -79,8 +79,8 @@ function htaccess() {
   for (const [k, v] of Object.entries(HEADERS)) L.push(`  Header always set ${k} "${v}"`);
   L.push(`  <FilesMatch "\\.(html|md)$">`, `    Header set Cache-Control "${CACHE.page}"`, '    Header merge Vary "Accept"', '  </FilesMatch>');
   L.push(`  <FilesMatch "\\.(webp|jpe?g|png|gif|svg|ico|mp4|webm|woff2?)$">`, `    Header set Cache-Control "${CACHE.media}"`, '  </FilesMatch>');
-  L.push(`  <FilesMatch "^site-[0-9]+\\.[0-9a-f]{12}\\.(js|css)$">`, `    Header set Cache-Control "${CACHE.hashed}"`, '  </FilesMatch>');
-  L.push(`  <FilesMatch "^(robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|site-config\\.js|site\\.webmanifest)$">`, `    Header set Cache-Control "${CACHE.hour}"`, '  </FilesMatch>');
+  L.push(`  <FilesMatch "^(site-[0-9]+|data-[a-z0-9-]+|boot|load)\\.[0-9a-f]{12}\\.(js|css)$">`, `    Header set Cache-Control "${CACHE.hashed}"`, '  </FilesMatch>');
+  L.push(`  <FilesMatch "^(robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|site-config\\.js|site\\.webmanifest|ca-fonts\\.css)$">`, `    Header set Cache-Control "${CACHE.hour}"`, '  </FilesMatch>');
   L.push('  <FilesMatch "^(index|404)\\.html$">', `    Header set Link "</llms.txt>; rel=\\"describedby\\"; type=\\"text/plain\\""`, '  </FilesMatch>');
   L.push('</IfModule>', '');
   L.push('<IfModule mod_deflate.c>', '  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml text/xml text/plain text/markdown image/svg+xml application/manifest+json application/feed+json application/rss+xml', '</IfModule>');
@@ -128,7 +128,7 @@ function nginxConf() {
 }
 
 /* ---------- the page: the source fragment made into a whole document, in the published-site mode ---------- */
-const frag = fs.readFileSync(SRC, 'utf8');
+let frag = fs.readFileSync(SRC, 'utf8');
 const cut = frag.indexOf('<a class="skip"');
 if (cut < 0) throw new Error('the source has no skip link where the body begins');
 let head = frag.slice(0, cut);
@@ -143,10 +143,19 @@ head = head.replace(/<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.c
 // 5 November 2026: the page may name Google Fonts inside a script, as the fallback when its own font files cannot be read (4 November);
 // what must not be left is a Google Fonts stylesheet linked in the head, which every visitor would load
 if (/<link\b[^>]*fonts\.googleapis/i.test(head)) throw new Error('Google Fonts still linked: the published site uses its own copy of the fonts');
-const EXTRA = '<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<link rel="manifest" href="/site.webmanifest">\n<meta name="theme-color" content="#A7182C">\n<script src="/site-config.js"></script>\n';
+const EXTRA = '<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<link rel="manifest" href="/site.webmanifest">\n<meta name="theme-color" content="#A7182C">\n<script src="/site-config.js" defer></script>\n';
 const NOSCRIPT = '<noscript><style>#pl{display:none!important}.hero .def,.hero .bg:first-child,.ppq{opacity:1!important;transform:none!important}.ns .sl{position:relative!important;opacity:1!important;visibility:visible!important}</style></noscript>';
 // 5 November 2026 (W3C validation, Fix 1, approved by Mujib): the no-script styles go first in the head. The logo screen (div#pl) sits in the
 // source ahead of the main styles so the crimson paints first, and the browser ends the head there; styles placed last would land in the body.
+/* 7 November 2026 (speed): the review copy on claude.ai is held to 511 files, so the small copies (-800) of 45 pictures were retired there
+   and listed in C.smallSame (cards and Work tiles then load the full picture, up to 780 KB, where the small copy is 20-130 KB). The
+   published site has no such limit: wherever public/ holds a small copy at least as new as its picture, the picture leaves the list and its
+   cards and tiles take the small copy again. Make the copies with tools/small800.py after the pictures are updated. */
+const SMALL_KEPT = [], SMALL_USED = [];
+frag = frag.replace(/C\.smallSame = \[([\s\S]*?)\];/, (all, body) => 'C.smallSame = [' + body.replace(/'(img\/[^']+)',?\s*/g, (m, f) => {
+  const full = path.join(PUB, f + '.webp'), small = path.join(PUB, f + '-800.webp');
+  if (fs.existsSync(full) && fs.existsSync(small) && fs.statSync(small).mtimeMs >= fs.statSync(full).mtimeMs) { SMALL_USED.push(f); return ''; }
+  SMALL_KEPT.push(f); return m; }) + '];');
 const DOC = '<!doctype html>\n<html lang="en" data-routing="path" data-live="1"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
   + NOSCRIPT + '\n' + EXTRA + head + '\n</head><body>\n' + frag.slice(cut) + '\n</body></html>\n';
 
@@ -178,18 +187,37 @@ const LEADS = (frag.match(/C\.leads = \[([^\]]*)\]/) || [, ''])[1].split(',').fi
 const BOOT = minify(`(function(){try{var d=document.documentElement;if(sessionStorage.getItem('ca-pl')!=='1'){d.classList.add('pl-boot');window.CA_PL_T=performance.now();}}catch(e){}
 try{var n=+localStorage.getItem('ca-w01')||0;if(${LEADS}>1&&n%${LEADS}!==0)document.documentElement.classList.add('w01-wait');}catch(e){}})();`, 'js');
 const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
+/* 7 November 2026 (repair): the page's data. Since 4 November the source keeps the projects, the landscape line and the keywords as JSON
+   blocks (type="application/json", read with JSON.parse); the build left them in every page it wrote, so each page carried some 260 KB of
+   the same data (about 60 KB compressed), where the build of 3 November kept it in a shared file the browser fetches once. Each large block
+   now becomes a shared file again: it puts the same block back into the page, with the same id, before the site's scripts run, so they read it
+   as before. The small block of published edits (ca-edits) stays in the page. */
+const DATA = [];
+for (const m of DOC.matchAll(/<script type="application\/json" id="([a-z0-9-]+)">([\s\S]*?)<\/script>/g)) {
+  if (m[2].length < 2000) continue;
+  JSON.parse(m[2]);   // the block must be valid JSON
+  const body = `(function(){var s=document.createElement('script');s.type='application/json';s.id=${JSON.stringify(m[1])};s.text=${JSON.stringify(m[2])};document.body.appendChild(s);})();`;
+  DATA.push({ whole: m[0], id: m[1], file: `assets/data-${m[1]}.${crypto.createHash('sha256').update(body).digest('hex').slice(0, 12)}.js`, body });
+}
 const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
-const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false;
-function go(){if(done)return;done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
-if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(go,0);});setTimeout(go,400);})();`, 'js');
+/* 7 November 2026 (repair): the scripts go in only once the whole page has been read (the page's data sits in it, below this tag), so on a
+   slow connection they can never start before their data has arrived. They are asked for at high priority (speed): on a slow phone
+   connection they otherwise queued behind the page's pictures and arrived after 10-15 seconds. */
+const LOADER = minify(`(function(){var L=${JSON.stringify([...DATA, ...SCRIPTS].map(x => '/' + x.file))},done=false,ready=false;
+function go(){if(done||!ready)return;if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);return;}done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;s.fetchPriority='high';document.body.appendChild(s);}}
+function painted(){ready=true;go();}
+if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(painted,0);});setTimeout(painted,400);})();`, 'js');
 const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
 const externalize = html => {
   for (const x of SHARED) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('shared block not found in a page: ' + x.file); html = html.slice(0, i) + x.tag + html.slice(i + x.whole.length); }
+  for (const x of DATA) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('data block not found in a page: ' + x.id); html = html.slice(0, i) + html.slice(i + x.whole.length); }
   // the scripts' own tags give way to the loader, at the place of the first one
   let first = -1;
   for (const x of SCRIPTS) { const i = html.indexOf(x.tag); if (i < 0) throw new Error('script tag not found: ' + x.file); if (first < 0) first = i; html = html.slice(0, i) + html.slice(i + x.tag.length); }
   html = html.slice(0, first) + `<script src="/${loadFile}"></script>` + html.slice(first);
-  const c = html.indexOf('<script src="/site-config.js"></script>'); if (c < 0) throw new Error('site-config.js tag not found');
+  // 7 November 2026 (speed): site-config.js is deferred: nothing needs it before the page has been read (load.js brings the site's scripts
+  // after that), so it no longer holds up the logo screen's first paint. boot.js stays the one script the first paint waits for.
+  const c = html.search(/<script src="\/site-config\.js" defer(="")?><\/script>/); if (c < 0) throw new Error('site-config.js tag not found');   // the page as written by the browser reads defer=
   return html.slice(0, c) + `<script src="/${bootFile}"></script>` + html.slice(c);
 };
 
@@ -224,6 +252,7 @@ const server = http.createServer((req, res) => {
     return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md }; // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages
   });
   for (const x of SHARED) write(x.file, x.body);
+  for (const x of DATA) write(x.file, x.body);
   write(bootFile, BOOT); write(loadFile, LOADER);
   for (const [f, t] of Object.entries(plan.files)) write(f, t);
   for (const [f, t] of Object.entries(plan.md)) write(f, t);
@@ -236,8 +265,16 @@ const server = http.createServer((req, res) => {
     await pg.waitForTimeout(250);
     return pg.evaluate(BAN => {
       // the logo screen stays hidden in the built page: the head script (boot.js) shows it from the first frame on the first page of a visit
-      const pl = document.getElementById('pl'); if (pl) pl.setAttribute('hidden', '');
+      const pl = document.getElementById('pl'); if (pl) { pl.setAttribute('hidden', ''); pl.classList.remove('run', 'rm', 'out'); }
       document.querySelectorAll('[data-lq]').forEach(el => el.removeAttribute('data-lq'));
+      /* 7 November 2026 (repair): the source's head scripts marked data-boot (the page's own security policy, the early first picture, the
+         logo's start, the font link) run in the review copy before the rest of the page. Here they have done their work: what they set up
+         (the policy, the font link) stays in the page, and the scripts go, so the site's scripts are the only ones load.js brings, from the
+         body, after the page's data. Their review-only pieces go too: the early picture (the page names its own) and the Google Fonts
+         fallback (the published site has its own font files, and its security policy would refuse Google's). */
+      document.querySelectorAll('script[data-boot], link[data-ca-early], link[href*="fonts.googleapis"]').forEach(el => el.remove());
+      // 7 November 2026 (speed): the font stylesheet becomes a marker the build fills with the font faces themselves (keep(), below)
+      document.querySelectorAll('link[rel="stylesheet"][href$="/fonts/ca-fonts.css"]').forEach(el => { const m = document.createElement('meta'); m.setAttribute('name', 'ca-fonts'); el.replaceWith(m); });
       const html = '<!doctype html>\n' + document.documentElement.outerHTML;
       const ld = document.querySelector('script#ca-ld').textContent;
       const b = document.body.cloneNode(true); b.querySelectorAll('script, style, template').forEach(x => x.remove());
@@ -249,12 +286,19 @@ const server = http.createServer((req, res) => {
         banned: m ? text.slice(Math.max(0, m.index - 60), m.index + 60).replace(/\s+/g, ' ') : '' };
     }, { src: BANNED.source });
   };
+  /* 7 November 2026 (speed): the font faces (fonts/ca-fonts.css, 5 KB, 1 KB compressed) are written into the head of each page instead of the font link,
+     with their file paths made absolute, so the first paint waits for no stylesheet: the slow-4G test showed the logo screen held back by
+     this one file. The faces only name the files; the browser fetches a font when the page first uses it, as before. */
+  const FONT_CSS = fs.existsSync(path.join(PUB, 'fonts', 'ca-fonts.css')) ? fs.readFileSync(path.join(PUB, 'fonts', 'ca-fonts.css'), 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '').replace(/url\(\s*['"]?(?!\/|https?:|data:)([^'")]+)['"]?\s*\)/g, 'url(/fonts/$1)').replace(/\n+/g, '') : '';
   const keep = (p, r) => {
+    if (!FONT_CSS) fail.push('fonts: public/fonts/ca-fonts.css is missing');
+    r.html = r.html.replace('<meta name="ca-fonts">', '').replace('</head>', `<style id="ca-fonts">${FONT_CSS}</style></head>`);   // in the head: a style element belongs there
     const html = externalize(r.html);
     const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/(ld\+)?json")[^>]*>/g)].length;
     if (inline) fail.push(`${p}: ${inline} inline script(s) left`);
     if (r.banned) fail.push(`${p}: draft wording on the page: “…${r.banned}…”`);
-    for (const m of html.matchAll(/\/(img|vid|fonts)\/[A-Za-z0-9_./%-]+\.(webp|jpe?g|png|mp4|webm|woff2|gif)/g)) media.add(decodeURIComponent(m[0]));
+    for (const m of html.matchAll(/\/(img|vid|fonts)\/[A-Za-z0-9_./%-]+\.(webp|jpe?g|png|mp4|webm|woff2|gif|css)/g)) media.add(decodeURIComponent(m[0]));
     r.links.forEach(l => links.add(l.split('#')[0].split('?')[0]));
     return html;
   };
@@ -276,12 +320,35 @@ const server = http.createServer((req, res) => {
   write('_headers', netlifyHeaders());
   fs.writeFileSync(path.join(ROOT, 'server', 'nginx.conf'), nginxConf());
 
+  /* 7 November 2026 (Mujib): the opening. On the first page of a visit the logo screen must cover the first frame, before the page's
+     scripts arrive: the head script (boot.js) marks <html class="pl-boot">, and the rule that then shows the hidden logo screen must
+     outrank the site's [hidden]{display:none!important}. The live build of 3 November had lost the !important, so the page and its
+     picture showed before the logo. */
+  { const home = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8'), iBody = home.indexOf('<body'), iBoot = home.indexOf(`/${bootFile}`),
+      iPl = home.indexOf('id="pl"'), iHero = home.search(/class="hero\b/);
+    const css = SHARED.filter(x => x.file.endsWith('.css')).map(x => x.body).join('') + ((home.match(/<style id="pl-first">([\s\S]*?)<\/style>/) || [, ''])[1]);
+    const show = css.match(/html\.pl-boot #pl\[hidden\]\{display:[^}]*\}/g) || [];
+    if (!(iBoot > 0 && iBoot < iBody)) fail.push('opening: boot.js is not in the head of the home page');
+    if (iPl < iBody || (iHero > 0 && iPl > iHero)) fail.push('opening: the logo screen does not come before the page on the home page');
+    if (!show.length || show.some(r => !/!important/.test(r))) fail.push('opening: the rule that shows the logo screen at first paint is missing or not !important, so [hidden]{display:none!important} would hide it'); }
+
   // every internal link reaches a page or a file; every picture, film and font named in a page exists
   for (const l of links) { if (!l || l === '/') continue; const f = path.join(OUT, l); if (!(fs.existsSync(path.join(f, 'index.html')) || (fs.existsSync(f) && fs.statSync(f).isFile()))) fail.push('link to a missing page: ' + l); }
   for (const m of media) if (!fs.existsSync(path.join(OUT, m))) fail.push('missing file: ' + m);
+  /* 7 November 2026 (repair): the fonts. Every page links the site's own font stylesheet, and every font file it names is in the package
+     (the build of 7 November found the stylesheet missing: the page would have fallen back to the browser's fonts) */
+  { const home = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8'), faces = (home.match(/<style id="ca-fonts">([\s\S]*?)<\/style>/) || [])[1] || '';
+    if (!/@font-face/.test(faces)) fail.push('fonts: the home page does not carry the site\'s own font faces');
+    for (const u of faces.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) if (!fs.existsSync(path.join(OUT, u[1]))) fail.push('fonts: a font face names a missing file: ' + u[1]);
+    // the site's scripts are brought in from the body, below the page's data, and none is left in the head
+    const iLoad = home.indexOf(`/${loadFile}`), iData = home.indexOf('id="ca-data-j"'), iBody = home.indexOf('<body');
+    if (iData > 0) fail.push('data: the site\'s data is written into every page (ca-data-j) instead of a shared file');
+    if (iLoad < iBody || (iData > 0 && iLoad < iData)) fail.push('scripts: load.js is not in the body after the page\'s data (it would run the scripts before their data)');
+    if (/data-boot/.test(home)) fail.push('scripts: a review-only head script (data-boot) is left in the page'); }
   if (errors.length) fail.push(...errors.map(e => 'script error: ' + e));
 
-  write('build-report.json', JSON.stringify({ when: new Date().toISOString(), staging: STAGING, pages: report.length, shared: SHARED.map(x => x.file), problems: fail, report }, null, 1));
+  if (SMALL_KEPT.length) console.log(`note: ${SMALL_KEPT.length} picture(s) have no small copy (-800) as new as the picture, so cards and tiles load the full file: run tools/small800.py (${SMALL_KEPT.slice(0, 6).join(', ')}${SMALL_KEPT.length > 6 ? ', …' : ''})`);
+  write('build-report.json', JSON.stringify({ when: new Date().toISOString(), staging: STAGING, pages: report.length, shared: SHARED.map(x => x.file), small800: { used: SMALL_USED, missing: SMALL_KEPT }, problems: fail, report }, null, 1));
   console.log(`${STAGING ? 'STAGING · ' : ''}${report.length} pages + 404, ${Object.keys(plan.md).length} Markdown copies, ${Object.keys(plan.files).length} search files, ${SHARED.length} shared files, ${RULES.length} redirect rules → ${path.relative(ROOT, OUT) || OUT}`);
   if (fail.length) { console.error(`\n${fail.length} problem(s):\n- ` + [...new Set(fail)].slice(0, 60).join('\n- ')); process.exit(1); }
   console.log('checks passed: no draft wording, no inline script, every link and file present');
