@@ -187,6 +187,11 @@ const LEADS = (frag.match(/C\.leads = \[([^\]]*)\]/) || [, ''])[1].split(',').fi
 const BOOT = minify(`(function(){try{var d=document.documentElement;if(sessionStorage.getItem('ca-pl')!=='1'){d.classList.add('pl-boot');window.CA_PL_T=performance.now();}}catch(e){}
 try{var n=+localStorage.getItem('ca-w01')||0;if(${LEADS}>1&&n%${LEADS}!==0)document.documentElement.classList.add('w01-wait');}catch(e){}})();`, 'js');
 const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
+/* 7 November 2026 (speed): boot.js was the one request the first paint still waited for (one round trip, 0.6 s on Lighthouse's slow 4G).
+   It is now written into each page's head, and the security policy allows exactly this script by its hash; no other inline script
+   runs. The file is still written (assets/boot.*.js) for anything that names it. Upload .htaccess (or _headers) with the pages. */
+const BOOT_HASH = `'sha256-${crypto.createHash('sha256').update(BOOT).digest('base64')}'`;
+HEADERS['Content-Security-Policy'] = HEADERS['Content-Security-Policy'].replace("script-src 'self'", `script-src 'self' ${BOOT_HASH}`);
 /* 7 November 2026 (repair): the page's data. Since 4 November the source keeps the projects, the landscape line and the keywords as JSON
    blocks (type="application/json", read with JSON.parse); the build left them in every page it wrote, so each page carried some 260 KB of
    the same data (about 60 KB compressed), where the build of 3 November kept it in a shared file the browser fetches once. Each large block
@@ -201,10 +206,10 @@ for (const m of DOC.matchAll(/<script type="application\/json" id="([a-z0-9-]+)"
 }
 const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
 /* 7 November 2026 (repair): the scripts go in only once the whole page has been read (the page's data sits in it, below this tag), so on a
-   slow connection they can never start before their data has arrived. They are asked for at high priority (speed): on a slow phone
-   connection they otherwise queued behind the page's pictures and arrived after 10-15 seconds. */
+   slow connection they can never start before their data has arrived. (High priority for them was tried and left out: once the built
+   page stopped asking for the pictures below the first screen, they no longer queue behind them, and the laptop scores were better.) */
 const LOADER = minify(`(function(){var L=${JSON.stringify([...DATA, ...SCRIPTS].map(x => '/' + x.file))},done=false,ready=false;
-function go(){if(done||!ready)return;if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);return;}done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;s.fetchPriority='high';document.body.appendChild(s);}}
+function go(){if(done||!ready)return;if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);return;}done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
 function painted(){ready=true;go();}
 if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(painted,0);});setTimeout(painted,400);})();`, 'js');
 const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
@@ -218,7 +223,7 @@ const externalize = html => {
   // 7 November 2026 (speed): site-config.js is deferred: nothing needs it before the page has been read (load.js brings the site's scripts
   // after that), so it no longer holds up the logo screen's first paint. boot.js stays the one script the first paint waits for.
   const c = html.search(/<script src="\/site-config\.js" defer(="")?><\/script>/); if (c < 0) throw new Error('site-config.js tag not found');   // the page as written by the browser reads defer=
-  return html.slice(0, c) + `<script src="/${bootFile}"></script>` + html.slice(c);
+  return html.slice(0, c) + `<script>${BOOT}</script>` + html.slice(c);
 };
 
 /* ---------- a local server for the build: the public files, and the page for every address ---------- */
@@ -275,6 +280,25 @@ const server = http.createServer((req, res) => {
       document.querySelectorAll('script[data-boot], link[data-ca-early], link[href*="fonts.googleapis"]').forEach(el => el.remove());
       // 7 November 2026 (speed): the font stylesheet becomes a marker the build fills with the font faces themselves (keep(), below)
       document.querySelectorAll('link[rel="stylesheet"][href$="/fonts/ca-fonts.css"]').forEach(el => { const m = document.createElement('meta'); m.setAttribute('name', 'ca-fonts'); el.replaceWith(m); });
+      /* 7 November 2026 (speed; nothing a visitor sees changes): the built page is what the browser shows until the site's scripts arrive,
+         and the scripts then draw the page again with their own pictures (render). In the built page:
+         - a slideshow keeps only the picture on screen: the slides behind it (Home's hero and Studio Now) had their full pictures asked for
+           at high priority, 1.5-2.5 MB before anything else could load; the scripts fetch them ahead as before, well before they are seen;
+         - only the first picture keeps high priority (the hero or the top tile); the others are lazy and wait their turn. */
+      document.querySelectorAll('#app [data-bg].bg:not(.on) > img.bgi').forEach(im => { const box = im.parentElement; if (box.parentElement && box.parentElement.querySelectorAll(':scope > .bg').length > 1) im.remove(); });
+      let firstHigh = null;
+      document.querySelectorAll('#app img.bgi[fetchpriority="high"]').forEach(im => { if (!firstHigh) { firstHigh = im; return; } im.removeAttribute('fetchpriority'); im.setAttribute('loading', 'lazy'); });
+      /* - pictures below the first screen are kept for search engines and for browsers without scripts (in noscript), and are not
+           fetched by the built page: the site's scripts draw them and fetch them ahead, as on the review site, so they still arrive
+           before they are seen. On a laptop their 2-3 MB had started before the first picture had painted. */
+      scrollTo(0, 0);
+      document.querySelectorAll('#app img.bgi').forEach(im => { if (im === firstHigh) return; const box = im.parentElement || im;
+        if (box.getBoundingClientRect().top < innerHeight) return;
+        const ns = document.createElement('noscript'); ns.textContent = im.outerHTML; im.replaceWith(ns); });
+      /* - the same for pictures set as backgrounds below the first screen (Home's expertise thumbnails are full pictures, 940 KB); the
+           scripts set them again when they draw the page */
+      document.querySelectorAll('#app [data-bg][style*="background-image"]').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) return;
+        el.style.removeProperty('background-image'); el.removeAttribute('data-done'); el.removeAttribute('data-shown'); if (!el.getAttribute('style')) el.removeAttribute('style'); });
       const html = '<!doctype html>\n' + document.documentElement.outerHTML;
       const ld = document.querySelector('script#ca-ld').textContent;
       const b = document.body.cloneNode(true); b.querySelectorAll('script, style, template').forEach(x => x.remove());
@@ -294,8 +318,15 @@ const server = http.createServer((req, res) => {
   const keep = (p, r) => {
     if (!FONT_CSS) fail.push('fonts: public/fonts/ca-fonts.css is missing');
     r.html = r.html.replace('<meta name="ca-fonts">', '').replace('</head>', `<style id="ca-fonts">${FONT_CSS}</style></head>`);   // in the head: a style element belongs there
+    /* 7 November 2026 (speed): the Work mosaic's tiles. The site's script gives phones the 800 px copy of every tile but the featured one
+       (mblock, 31 October); the built page is written at laptop size, so a phone first loaded the full pictures (Peace Pavilion 650 KB,
+       Project Alpha 780 KB) and then the copies. Each tile now names both: the full picture for laptops and the copy for phones. */
+    r.html = r.html.replace(/(<a class="mb(?: s)?"[^>]*>\s*<div class="fr">\s*<div class="im"[^>]*>\s*)<img ([^>]*?)src="(\/img\/[^"]+?)\.webp"([^>]*)>/g, (all, pre, a, f, b) => {
+      if (/srcset=/.test(a + b) || /-800$/.test(f) || !fs.existsSync(path.join(PUB, f + '-800.webp'))) return all;
+      const w = +((a + b).match(/\bwidth="(\d+)"/) || [, 1920])[1];
+      return `${pre}<img ${a}src="${f}.webp" srcset="${f}-800.webp 800w, ${f}.webp ${w}w" sizes="(max-width:700px) 1px, 100vw"${b}>`; });
     const html = externalize(r.html);
-    const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/(ld\+)?json")[^>]*>/g)].length;
+    const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/(ld\+)?json")[^>]*>([\s\S]*?)<\/script>/g)].filter(m => m[2] !== BOOT).length;
     if (inline) fail.push(`${p}: ${inline} inline script(s) left`);
     if (r.banned) fail.push(`${p}: draft wording on the page: “…${r.banned}…”`);
     for (const m of html.matchAll(/\/(img|vid|fonts)\/[A-Za-z0-9_./%-]+\.(webp|jpe?g|png|mp4|webm|woff2|gif|css)/g)) media.add(decodeURIComponent(m[0]));
@@ -324,11 +355,12 @@ const server = http.createServer((req, res) => {
      scripts arrive: the head script (boot.js) marks <html class="pl-boot">, and the rule that then shows the hidden logo screen must
      outrank the site's [hidden]{display:none!important}. The live build of 3 November had lost the !important, so the page and its
      picture showed before the logo. */
-  { const home = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8'), iBody = home.indexOf('<body'), iBoot = home.indexOf(`/${bootFile}`),
+  { const home = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8'), iBody = home.indexOf('<body'), iBoot = home.indexOf(`<script>${BOOT}</script>`),
       iPl = home.indexOf('id="pl"'), iHero = home.search(/class="hero\b/);
     const css = SHARED.filter(x => x.file.endsWith('.css')).map(x => x.body).join('') + ((home.match(/<style id="pl-first">([\s\S]*?)<\/style>/) || [, ''])[1]);
     const show = css.match(/html\.pl-boot #pl\[hidden\]\{display:[^}]*\}/g) || [];
-    if (!(iBoot > 0 && iBoot < iBody)) fail.push('opening: boot.js is not in the head of the home page');
+    if (!(iBoot > 0 && iBoot < iBody)) fail.push('opening: the boot script is not in the head of the home page');
+    if (!HEADERS['Content-Security-Policy'].includes(BOOT_HASH)) fail.push('opening: the security policy does not allow the boot script by its hash');
     if (iPl < iBody || (iHero > 0 && iPl > iHero)) fail.push('opening: the logo screen does not come before the page on the home page');
     if (!show.length || show.some(r => !/!important/.test(r))) fail.push('opening: the rule that shows the logo screen at first paint is missing or not !important, so [hidden]{display:none!important} would hide it'); }
 
