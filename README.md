@@ -7,7 +7,7 @@ It is one source file, turned into a static site that works on any host. There i
 **Pick your guide:**
 
 - **Host or developer putting the site online:** read [`docs/HOST-GUIDE.md`](docs/HOST-GUIDE.md).
-- **Studio:** to change the site, ask Claude in the WEBSITE project. It edits this repository, shows a preview, and pushes the change, which goes live automatically once deployment is set up (HOST-GUIDE, section 11).
+- **Studio:** the studio's web team changes the site in this repository, checks it on the review copy, and pushes the change, which goes live automatically once deployment is set up (HOST-GUIDE, section 11).
 
 ## Layout
 
@@ -39,7 +39,7 @@ The build fails if any of these is true:
 
 ## Two modes, one source
 
-`src/ca-website.html` is also the studio's review copy on claude.ai.
+`src/ca-website.html` is also the studio's review copy.
 
 - **Review copy:** shows the draft badge, the SEO check, the review notes, the ⚑ flags and the admin.
 - **Published site:** `tools/build.js` marks every page `data-live="1"`, which hides all of the above. The forms post to `/api/`, analytics load only after consent, and the fonts come from the site itself.

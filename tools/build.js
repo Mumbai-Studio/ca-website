@@ -157,7 +157,7 @@ const EXTRA = '<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="i
 const NOSCRIPT = '<noscript><style>#pl{display:none!important}.hero .def,.hero .bg:first-child,.ppq{opacity:1!important;transform:none!important}.ns .sl{position:relative!important;opacity:1!important;visibility:visible!important}</style></noscript>';
 // 5 November 2026 (W3C validation, Fix 1, approved by Mujib): the no-script styles go first in the head. The logo screen (div#pl) sits in the
 // source ahead of the main styles so the crimson paints first, and the browser ends the head there; styles placed last would land in the body.
-/* 7 November 2026 (speed): the review copy on claude.ai is held to 511 files, so the small copies (-800) of 45 pictures were retired there
+/* 7 November 2026 (speed): the review copy is held to 511 files, so the small copies (-800) of 45 pictures were retired there
    and listed in C.smallSame (cards and Work tiles then load the full picture, up to 780 KB, where the small copy is 20-130 KB). The
    published site has no such limit: wherever public/ holds a small copy at least as new as its picture, the picture leaves the list and its
    cards and tiles take the small copy again. Make the copies with tools/small800.py after the pictures are updated. */
@@ -179,10 +179,18 @@ if (STAGING) { if (!/indexable:\s*true/.test(siteConfig)) throw new Error('site-
 const esbuild = require('esbuild');
 const TARGET = ['chrome100', 'edge100', 'firefox100', 'safari15', 'ios15'];
 const minify = (code, ext) => esbuild.transformSync(code, { loader: ext, minify: true, target: TARGET, legalComments: 'none', charset: 'utf8' }).code;
+/* 9 November 2026 (Mujib: the published site reads as custom built and designed). The published files name no tool the site was made with:
+   the review copy's runtime hooks and its notes about the review copy are neutral here (on the published site those hooks are never present,
+   so nothing changes in use), the pages carry no HTML comments, and every page names itself custom built and designed. The AI services the
+   site lists for search and for referrals (robots.txt, the AI-referral names) stay: they are about those services, not about who built it. */
+const MASK = [['window.claude', 'window.caStudio'], ['the claude.ai account', 'the studio account'], ['in claude.ai', 'in the studio editor']];
+const maskJs = code => MASK.reduce((c, [a, b]) => c.split(a).join(b), code);
+const finishHtml = h => h.replace(/<!--(?!\[if)[\s\S]*?-->/g, '').replace('<meta charset="utf-8">', '<meta charset="utf-8"><meta name="generator" content="Custom built and designed">');
+const ALLOWED_NAMES = [/['"]claude\.ai['"],\s*['"]Claude['"]/g, /Claude-SearchBot|Claude-User|ClaudeBot/g, /Anthropic: Claude search, visits Claude makes for its users/g, /Claude, ChatGPT, Gemini/g];
 const SHARED = [];
 for (const m of DOC.matchAll(/<(script|style)>([\s\S]*?)<\/\1>/g)) {
   if (m[1] === 'style' && m[2].length < 2000) continue;
-  const ext = m[1] === 'script' ? 'js' : 'css', body = minify(m[2], ext);
+  const ext = m[1] === 'script' ? 'js' : 'css', body = ext === 'js' ? maskJs(minify(m[2], ext)) : minify(m[2], ext);
   const h = crypto.createHash('sha256').update(body).digest('hex').slice(0, 12), n = SHARED.length + 1;
   SHARED.push({ whole: m[0], file: `assets/site-${n}.${h}.${ext}`, body, tag: m[1] === 'script' ? `<script src="/assets/site-${n}.${h}.${ext}"></script>` : `<link rel="stylesheet" href="/assets/site-${n}.${h}.${ext}">` });
 }
@@ -413,13 +421,13 @@ const server = http.createServer((req, res) => {
   };
   for (const p of plan.paths) {
     let r; try { r = await capture(p); } catch (e) { console.error('could not build ' + p + ': ' + String(e).slice(0, 160), errors.slice(-3)); fail.push('could not build the page ' + p); continue; } // 26 October 2026: a page that fails is reported with the others, and the build still fails
-    write(path.join(p, 'index.html'), keep(p, r));
+    write(path.join(p, 'index.html'), finishHtml(keep(p, r)));
     report.push({ path: p, title: r.title, h1: r.h1.trim().replace(/\s+/g, ' '), words: r.words, imgs: r.imgs, noalt: r.noalt, ld: r.ldOk, robots: r.robots });
   }
   // the 404 page answers at any address: its own links to "this page" become plain anchors
   const nf = await capture('/this-address-does-not-exist/');
   nf.html = nf.html.split('href="/this-address-does-not-exist/#').join('href="#'); nf.links = nf.links.filter(l => !l.startsWith('/this-address-does-not-exist/'));
-  write('404.html', keep('/404.html', nf));
+  write('404.html', finishHtml(keep('/404.html', nf)));
   await browser.close(); server.close();
 
   copyDir(PUB, OUT);
@@ -459,6 +467,14 @@ const server = http.createServer((req, res) => {
   for (const f of SZ.files) if (!fs.existsSync(path.join(OUT, f))) fail.push('sizes: a lighter copy in the list is missing from the package: ' + f);
   if (!LOADER.includes('/' + sizesFile)) fail.push('sizes: load.js does not bring in the list of lighter copies');
   if (errors.length) fail.push(...errors.map(e => 'script error: ' + e));
+  // 9 November 2026 (Mujib): no published file names a tool the site was made with (the AI services it lists for search and referrals aside)
+  { const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
+    for (const f of walk(OUT).filter(f => /\.(html|js|css|txt|md|json|xml|php|conf)$|[\\/](\.htaccess|_headers|_redirects)$/.test(f))) {
+      const t = ALLOWED_NAMES.reduce((x, r) => x.replace(r, ''), fs.readFileSync(f, 'utf8')), m = t.match(/.{0,40}(claude|anthropic).{0,40}/i);
+      if (m) fail.push(`${path.relative(OUT, f)} names a build tool: “${m[0].trim()}”`); }
+    for (const pg of ['index.html', '404.html']) { const t = fs.readFileSync(path.join(OUT, pg), 'utf8');
+      if (!t.includes('content="Custom built and designed"')) fail.push(pg + ': the page does not name itself custom built and designed');
+      if (/<!--(?!\[if)/.test(t)) fail.push(pg + ': an HTML comment is left in the page'); } }
 
   if (SMALL_KEPT.length) console.log(`note: ${SMALL_KEPT.length} picture(s) have no small copy (-800) as new as the picture, so cards and tiles load the full file: run tools/small800.py (${SMALL_KEPT.slice(0, 6).join(', ')}${SMALL_KEPT.length > 6 ? ', …' : ''})`);
   write('build-report.json', JSON.stringify({ when: new Date().toISOString(), staging: STAGING, pages: report.length, shared: SHARED.map(x => x.file), small800: { used: SMALL_USED, missing: SMALL_KEPT }, sizes: { pictures: Object.keys(SZ.sizes).length, copies: SZ.files.length, phoneCrops: Object.fromEntries(Object.entries(CROPS_FOR).map(([p, m]) => [p, Object.keys(m).length])) }, problems: fail, report }, null, 1));

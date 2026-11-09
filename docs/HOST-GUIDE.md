@@ -259,7 +259,7 @@ Email is unaffected either way, as long as the MX records were left alone.
 ## 11. Changing the site later
 
 - **Do not edit the HTML files on the server.** They are generated, and the next deployment replaces them.
-- The source is `src/ca-website.html` in the repository; pictures are in `public/img/`, the press pages in `public/press/books/` and `public/press/features/`. The studio requests changes through Claude, which edits the repository.
+- The source is `src/ca-website.html` in the repository; pictures are in `public/img/`, the press pages in `public/press/books/` and `public/press/features/`. The studio requests changes through its web team, which edits the repository.
 - **Automatic deployment (recommended):** every change pushed to `main` is built, checked and uploaded by GitHub Actions (`.github/workflows/deploy.yml`). To switch it on, in the repository's *Settings → Secrets and variables → Actions*:
   - **FTP (cPanel):**
     - Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`. Create an FTP account limited to the web root.

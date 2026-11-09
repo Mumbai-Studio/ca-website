@@ -3805,7 +3805,7 @@ window.CA_CLEAN = (E0, base) => {
 window.CA_SEO = (() => {
 'use strict';
 const D = window.CA_DATA, P = D.projects, IDX = D.index;
-const LIVE = document.documentElement.dataset.live === '1'; // the published site (tools/build.js); the review copy on claude.ai is not
+const LIVE = document.documentElement.dataset.live === '1'; // the published site (tools/build.js); the review copy is not
 const SC = window.CA_CONFIG || {}; // site-config.js on the published site: the settings the host can change without a new build
 
 /* ---------- configuration: the only values the studio edits ---------- */
@@ -4469,6 +4469,7 @@ ${docList().map(({ c }) => `<url><loc>${xe(bookUrl(c))}</loc><lastmod>${maxD([c.
 ## In brief
 - What: an architecture and interior design studio, with research through Collaborative Lab
 - Who: founded ${CFG.foundingDate} by ${C.principals.map(p => p.n).join(' and ')}, co-founders and principals
+- This website: custom built and designed for ${CFG.name}
 - Official profiles of ${CFG.name}: ${socSort(profiles().studio).map(x => `${PLAT_NAME(x)} ${x.u}`).join(' · ')}
 ${C.principals.map(p => `- ${p.n}, ${p.r} of ${CFG.name}: ${abs('/studio/')}#${p.n.toLowerCase().replace(/[^a-z]+/g, '-')}${(profiles().people[p.n] || []).length ? ' · ' + socSort(profiles().people[p.n]).map(x => `${PLAT_NAME(x)} ${x.u}`).join(' · ') : ''}`).join('\n')}
 - Where: headquarters in Mumbai, India; satellite studio in Riyadh, Saudi Arabia; projects across India, the Middle East and Southeast Asia, and international competitions
@@ -5734,7 +5735,7 @@ const covSrc = async f => { const i = COVS && COVS.map[f]; if (i === undefined) 
 const docWorks = c => [...(c.ps || []).map(p => p.title), ...(c.ws || [])];
 /* draft 2.13: the title of a book or magazine feature, as the reader and the structured data show it */
 const docTitle = c => c.bn ? `${c.bn}${c.bp ? ', ' + c.bp : ''}${/\d{4}/.test(c.d || '') ? ', ' + c.d : ''}` : c.mag ? `${c.mag}, ${c.issue || c.d}${c.subj ? ': ' + c.subj : ''}` : c.t;
-/* draft 2.13: a book's or a magazine's pages, read on the page. In the review copy on claude.ai a link cannot open a PDF in a new tab, so the PDF
+/* draft 2.13: a book's or a magazine's pages, read on the page. In the review copy a link cannot open a PDF in a new tab, so the PDF
    is drawn here with PDF.js; on the published site (one page per address) the same links open the PDF itself, which crawlers follow. */
 /* 4 November 2026 (OWASP ASVS review, finding 2; Mujib's choice): pdf.js 6.4.299 (3 October 2026) replaces 3.11.174, which CVE-2024-4367
    affects (a crafted PDF could run script). Version 6 has no eval path at all, and isEvalSupported is still set to false below. Both files
@@ -5761,7 +5762,7 @@ async function openDoc(href, title) {
   const key = e => { if (e.key === 'Escape') { e.stopPropagation(); close(); } };
   document.addEventListener('keydown', key, true); ov.querySelector('[data-close]').onclick = close; ov.querySelector('[data-close]').focus();
   const B = ov.querySelector('[data-b]');
-  /* 2 November 2026: the press PDFs (press/books, press/features; 73 files, 78 MB) are kept off the review copy on claude.ai to free its storage.
+  /* 2 November 2026: the press PDFs (press/books, press/features; 73 files, 78 MB) are kept off the review copy to free its storage.
      They are saved at the same paths on the studio's computer (Downloads › CA-Website-Launch › site-assets, with MANIFEST.txt) and are copied
      into the published site at publishing, where this viewer opens them as before. */
   if (!LIVE && /^\/?press\//.test(href)) { B.innerHTML = `<p class="pdfv-l">This PDF is kept off the review copy to save space.<br>It is added back when the site is published.</p>`; return; }
@@ -7037,7 +7038,7 @@ function fixAssets(root) {
 }
 /* ---------- studio admin (draft 2.0) ----------
    Sign in, add and edit projects, upload images, keep the news, the Collaborative Logs, references and profiles, check search, publish.
-   On this prototype the sign-in is the viewer's claude.ai account: only people with edit access to the site can publish, and every
+   On the review copy the sign-in is the viewer's studio account: only people with edit access to the site can publish, and every
    publish is a new version of the site that can be rolled back. At launch the same screens sit behind the CMS login (studio email and
    two-factor). Changes are kept as a draft in this browser until they are published. */
 const ADM = { mode: '', name: '', canPublish: false, art: null, user: null, tab: 'overview', edit: null, draft: null, urls: {}, el: null, msg: '' };
@@ -8262,7 +8263,7 @@ function labLinks(root) {
 }
 /* parts drawn after the page (the awards register, filters) are linked as they appear */
 { let mq = 0; new MutationObserver(ms => { if (mq) return; mq = requestAnimationFrame(() => { mq = 0; mcdLinks(app); labLinks(app); logsLinks(app); }); }).observe(app, { childList: true, subtree: true }); }
-/* draft 2.9 (23 October): email and phone links inside a framed preview (the Claude prototype viewer blocks a frame from opening the email
+/* draft 2.9 (23 October): email and phone links inside a framed preview (the review viewer blocks a frame from opening the email
    app or the dialer). In a frame only, the link opens through a new window, which the viewer lets through; if that is refused too, the address
    is copied and a short note says so. On the site itself (not in a frame) the links work as they always do. */
 const FRAMED = (() => { try { return window.top !== window.self; } catch (e) { return true; } })();
@@ -8354,7 +8355,7 @@ liveClean(document.body); fixLinks(document.body); fixAssets(document.body);
    exactly the page the visitor was on, and the place on that page, on every page of the site.
    - Live site: the address names the page and the browser keeps history.state through a reload, so the page and its scroll
      position (PLACES, below) come back by themselves.
-   - Review copy on claude.ai (in a frame or the Claude app): the frame reloads without its #address, so the page and the place
+   - Review copy (in a frame or the studio app): the frame reloads without its #address, so the page and the place
      are kept in this tab's sessionStorage and reopened on reload. Only a new visit (a new tab or window, nothing kept yet)
      opens at Home, after the logo animation (as does a refresh at the very top of Home); a refresh anywhere else skips the
      animation and lands on the page and the section.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Collaborative Architecture · make the small copies (-800) of the pictures the review copy shows at full size.
 
-The review copy on claude.ai is held to 511 files, so the small copies of some pictures were retired there and the pictures are listed in
+The review copy is held to 511 files, so the small copies of some pictures were retired there and the pictures are listed in
 C.smallSame in src/ca-website.html (cards and the Work tiles then load the full picture, up to 780 KB). The published site has no file
 limit: for every picture in that list this writes public/img/<path>-800.webp from public/img/<path>.webp, 800 px wide (at most 1,200 px
 high), WebP quality 80, lightly sharpened, so it matches the picture as it is now. tools/build.js then gives cards and tiles the small copy
