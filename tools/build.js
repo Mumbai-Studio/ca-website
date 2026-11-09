@@ -55,6 +55,9 @@ const RULES = fs.readFileSync(path.join(ROOT, 'server', 'redirects.txt'), 'utf8'
 // exact addresses first, then the longest prefixes, so "/blog/" (moved) wins over "/blog/*" (gone)
 RULES.sort((a, b) => (a.prefix - b.prefix) || (a.prefix ? b.from.length - a.from.length : 0));
 const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/* 9 November 2026 (SEO audit 1.4, approved by Mujib): a redirect names its new address in full (https and the domain), so a server behind a
+   proxy that sees plain http never sends the visitor through a second hop. A staging build keeps the addresses relative (its own host). */
+const toAbs = r => (!STAGING && r.to.startsWith('/') ? ORIGIN + r.to : r.to);
 const apacheFrom = r => { const p = r.from.replace(/^\//, ''); return r.prefix ? '^' + reEsc(p.slice(0, -1)) : '^' + reEsc(p.replace(/\/$/, '')) + (p.endsWith('/') || p === '' ? '/?$' : '$'); };
 
 function htaccess() {
@@ -71,7 +74,7 @@ function htaccess() {
   L.push('# closed to the web: the form handlers\' private folder, and hidden files (but not /.well-known/, which certificates need)');
   L.push('RewriteRule ^_private(/|$) - [F,L]', 'RewriteCond %{REQUEST_URI} !^/\\.well-known/', 'RewriteRule (^|/)\\. - [F,L]', '');
   L.push('# old addresses of the WordPress site (server/redirects.txt)');
-  for (const r of RULES) L.push(`RewriteRule ${apacheFrom(r)} ${r.gone ? '- [G,L]' : r.to + ' [R=301,L]'}`);
+  for (const r of RULES) L.push(`RewriteRule ${apacheFrom(r)} ${r.gone ? '- [G,L]' : toAbs(r) + ' [R=301,L]'}`);
   L.push('', '# AI assistants that ask for Markdown (Accept: text/markdown) get the page\'s Markdown copy, the same text as the page');
   L.push('RewriteCond %{HTTP_ACCEPT} text/markdown [NC]', 'RewriteCond %{REQUEST_FILENAME} -d', 'RewriteCond %{REQUEST_FILENAME}/index.md -f', 'RewriteRule ^(.*?)/?$ $1/index.md [L]');
   L.push('# 9 November 2026 (SEO audit): each Markdown copy names its page as canonical (Link header, below), so search engines index the page, not the copy');
@@ -122,9 +125,9 @@ function nginxConf() {
   L.push('  gzip on; gzip_types text/css text/javascript application/javascript application/json application/xml text/plain text/markdown image/svg+xml application/manifest+json;', '');
   L.push('  types { text/html html; text/css css; text/javascript js; application/json json; application/xml xml; text/plain txt; text/markdown md; image/webp webp; image/png png; image/jpeg jpg jpeg; image/x-icon ico; video/mp4 mp4; font/woff2 woff2; application/manifest+json webmanifest; }', '');
   L.push('  # old addresses of the WordPress site (server/redirects.txt)');
-  for (const r of RULES) { const re = apacheFrom(r).replace(/^\^/, '^/'); L.push(r.gone ? `  location ~ ${re} { return 410; }` : `  rewrite ${re} ${r.to} permanent;`); }
+  for (const r of RULES) { const re = apacheFrom(r).replace(/^\^/, '^/'); L.push(r.gone ? `  location ~ ${re} { return 410; }` : `  rewrite ${re} ${toAbs(r)} permanent;`); }
   L.push('', '  location ^~ /_private/ { deny all; }', '  location ~ /\\.(?!well-known/) { deny all; }', '  location ~ ^/api/(lib|config|config\\.sample)\\.php$ { deny all; }');
-  L.push('  location ~ ^/api/(contact|subscribe)\\.php$ {', '    include fastcgi_params; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;', '    fastcgi_pass unix:/run/php/php-fpm.sock;   # the PHP-FPM socket of this server', '  }');
+  L.push('  location ~ ^/api/(contact|subscribe|vitals)\\.php$ {', '    include fastcgi_params; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;', '    fastcgi_pass unix:/run/php/php-fpm.sock;   # the PHP-FPM socket of this server', '  }');
   L.push(`  location /assets/ { add_header Cache-Control "${CACHE.hashed}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
   L.push(`  location ~* ^/(img|vid|fonts)/ { add_header Cache-Control "${CACHE.media}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
   // 9 November 2026 (SEO audit): a Markdown copy names its page as canonical (also when a page's address is answered with its copy)
@@ -215,11 +218,14 @@ const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
 /* 7 November 2026 (repair): the scripts go in only once the whole page has been read (the page's data sits in it, below this tag), so on a
    slow connection they can never start before their data has arrived. (High priority for them was tried and left out: once the built
    page stopped asking for the pictures below the first screen, they no longer queue behind them, and the laptop scores were better.) */
-const LOADER = minify(`(function(){var L=${JSON.stringify([...DATA, ...SCRIPTS].map(x => '/' + x.file))},done=false,ready=false;
+/* 9 November 2026 (speed): the loader is made once the build knows the list of the pictures' lighter copies (assets/sizes.*.js, below),
+   which it brings in first, before the page's data and scripts. */
+let LOADER = '', loadFile = '';
+const makeLoader = (first = []) => { LOADER = minify(`(function(){var L=${JSON.stringify([...first, ...[...DATA, ...SCRIPTS].map(x => '/' + x.file)])},done=false,ready=false;
 function go(){if(done||!ready)return;if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);return;}done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
 function painted(){ready=true;go();}
 if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(painted,0);});setTimeout(painted,400);})();`, 'js');
-const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
+  loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`; };
 const externalize = html => {
   for (const x of SHARED) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('shared block not found in a page: ' + x.file); html = html.slice(0, i) + x.tag + html.slice(i + x.whole.length); }
   for (const x of DATA) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('data block not found in a page: ' + x.id); html = html.slice(0, i) + html.slice(i + x.whole.length); }
@@ -263,8 +269,60 @@ const server = http.createServer((req, res) => {
     const ids = [...(files['sitemap.xml'].match(/<loc>[^<]+<\/loc>/g) || [])].map(l => new URL(l.slice(5, -6)).pathname);
     return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/news/press/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md }; // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages. 9 November 2026: /news/press/ is built too (it names /news/ as canonical, so it is not in the sitemap)
   });
+  /* 9 November 2026 (speed before launch, approved by Mujib: benchmark audit P1). The lighter copies of the pictures. Every page is
+     visited at phone size (412 x 823) to see what each picture is used for: a picture drawn smaller than a screen somewhere gets copies
+     800 and 1,280 px wide; a picture that fills a box taller than it is wide gets a crop of its full height, cut at the box's focal point.
+     tools/sizes.py makes them (kept in .cache/sizes between builds; a copy is remade only when its picture changes) and the list the
+     page reads (window.CA_SIZES, in assets/sizes.*.js, which load.js brings in first). The site's scripts then give each picture the
+     lightest copy that covers it as drawn, and the built page's own first picture names its phone crop (srcset), so a phone fetches the
+     crop from the start. Nothing a visitor sees changes. */
+  const CACHE = path.join(ROOT, '.cache', 'sizes'), use = {};
+  { const phone = await browser.newContext({ viewport: { width: 412, height: 823 }, deviceScaleFactor: 1.75, isMobile: true, hasTouch: true });
+    await phone.addInitScript(() => { window.__PRERENDER = true; });
+    await phone.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
+    await phone.route(/\.(webp|jpe?g|png|gif|mp4|webm|avif)(\?|$)/i, r => r.abort());   // the boxes are what count here, not the pictures
+    const pp = await phone.newPage();
+    for (const p of plan.paths) {
+      try {
+        await pp.goto(base + p, { waitUntil: 'load' });
+        await pp.waitForFunction(() => document.querySelector('#app').children.length && document.querySelector('script#ca-ld'));
+        use[p] = await pp.evaluate(() => {
+          const FULL = '.hero,.cnow,.ps,.pp,.ns .sl,.nextp,.prh,.labp', out = [];
+          const pct = t => { t = String(t || '').trim().split(/[\s,]+/)[0]; if (t === 'center') return 50; if (t === 'left' || t === '0' || t === '0px') return 0; if (t === 'right') return 100; return /^-?\d+(\.\d+)?%$/.test(t) ? Math.round(parseFloat(t)) : null; };
+          document.querySelectorAll('#app [data-bg]').forEach(el => {
+            const u = el.dataset.bg || ''; if (!/(^|\/)img\/[^?#]+\.webp$/.test(u)) return;
+            const cs = getComputedStyle(el), fit = cs.backgroundSize || '', img = el.dataset.alt !== undefined, full = !!el.closest(FULL);
+            let r = el.getBoundingClientRect(); if (!(r.width > 1 && r.height > 1)) { const q = el.closest(FULL); if (q) r = q.getBoundingClientRect(); }
+            let xp, xd = null; if (el.dataset.fp) { const [d, m] = el.dataset.fp.split('|'); xp = pct(m || d || '50%'); xd = pct(d || '50%'); } else xp = pct(cs.backgroundPosition || '50%');
+            out.push({ k: u.replace(/^\/+/, ''), full, cover: img ? !/contain/.test(fit) : /cover/.test(fit), w: r.width, h: r.height, xp, xd, vw: innerWidth, vh: innerHeight });
+          });
+          return out;
+        });
+      } catch (e) { fail.push('sizes: could not read the pictures of ' + p + ': ' + String(e).slice(0, 120)); }
+    }
+    await phone.close(); }
+  const widths = new Set(), crops = [];
+  for (const list of Object.values(use)) for (const e of list) {
+    if (!(e.full && e.cover)) widths.add(e.k);   // drawn smaller than a screen somewhere
+    if (e.cover && e.w > 1 && e.h > 1 && e.w / e.h <= .75) { if (e.xp != null) crops.push([e.k, e.xp]); if (e.xd != null && e.xd !== e.xp) crops.push([e.k, e.xd]); }   // the laptop focal point too, for a tablet held upright
+  }
+  fs.mkdirSync(CACHE, { recursive: true });
+  const planFile = path.join(CACHE, 'plan.json'), sizesOut = path.join(CACHE, 'sizes.json');
+  fs.writeFileSync(planFile, JSON.stringify({ widths: [...widths].sort(), crops }));
+  require('child_process').execFileSync(process.env.PYTHON || 'python3', [path.join(ROOT, 'tools', 'sizes.py'), '--public', PUB, '--cache', CACHE, '--plan', planFile, '--out', sizesOut], { stdio: 'inherit' });
+  const SZ = JSON.parse(fs.readFileSync(sizesOut, 'utf8'));
+  const sizesBody = `window.CA_SIZES=${JSON.stringify(SZ.sizes)};`, sizesFile = `assets/sizes.${crypto.createHash('sha256').update(sizesBody).digest('hex').slice(0, 12)}.js`;
+  makeLoader(['/' + sizesFile]);
+  // each page's pictures that have a phone crop, with the widest screen (width / height x 1000) at which the crop still holds the whole box
+  const CROPS_FOR = {};
+  for (const [p, list] of Object.entries(use)) { const m = {};
+    for (const e of list) { const z = SZ.sizes[e.k], cw = z && e.cover && e.xp != null && z[3][e.xp]; if (!cw || m[e.k] || !(e.w > 1 && e.h > 1)) continue;
+      const ca = cw / z[1], n = Math.floor(1000 * Math.min(1, ca * (e.h / e.vh) / (e.w / e.vw))); if (e.w / e.h > ca || n < 400) continue;
+      m[e.k] = { x: e.xp, cw, W: z[0], n }; }
+    CROPS_FOR[p] = m; }
   for (const x of SHARED) write(x.file, x.body);
   for (const x of DATA) write(x.file, x.body);
+  write(sizesFile, sizesBody);
   write(bootFile, BOOT); write(loadFile, LOADER);
   for (const [f, t] of Object.entries(plan.files)) write(f, t);
   for (const [f, t] of Object.entries(plan.md)) write(f, t);
@@ -275,7 +333,7 @@ const server = http.createServer((req, res) => {
     await pg.goto(base + p, { waitUntil: 'load' });
     await pg.waitForFunction(() => document.querySelector('#app').children.length && document.querySelector('script#ca-ld'));
     await pg.waitForTimeout(250);
-    return pg.evaluate(BAN => {
+    return pg.evaluate(BAN => {   // BAN: { src: the draft-wording pattern, cr: this page's phone crops }
       // the logo screen stays hidden in the built page: the head script (boot.js) shows it from the first frame on the first page of a visit
       const pl = document.getElementById('pl'); if (pl) { pl.setAttribute('hidden', ''); pl.classList.remove('run', 'rm', 'out'); }
       document.querySelectorAll('[data-lq]').forEach(el => el.removeAttribute('data-lq'));
@@ -295,6 +353,13 @@ const server = http.createServer((req, res) => {
       document.querySelectorAll('#app [data-bg].bg:not(.on) > img.bgi').forEach(im => { const box = im.parentElement; if (box.parentElement && box.parentElement.querySelectorAll(':scope > .bg').length > 1) im.remove(); });
       let firstHigh = null;
       document.querySelectorAll('#app img.bgi[fetchpriority="high"]').forEach(im => { if (!firstHigh) { firstHigh = im; return; } im.removeAttribute('fetchpriority'); im.setAttribute('loading', 'lazy'); });
+      /* 9 November 2026 (speed before launch): the first picture names its phone crop beside the full file. A phone held upright (narrower
+         than 701 px, and no wider than the crop allows) takes the crop, which holds exactly what its box shows; every other screen
+         takes the full file. The preload in the head names the same pair, so the browser fetches one file, not two. */
+      if (firstHigh && BAN.cr) { const k = ((firstHigh.parentElement || {}).dataset || {}).bg, c = k && BAN.cr[k.replace(/^\/+/, '')], src = firstHigh.getAttribute('src');
+        if (c && src) { const ss = `${src.replace(/\.webp$/, '')}-m${c.x}.webp ${c.cw}w, ${src} ${c.W}w`, sz = `(max-width:700px) and (max-aspect-ratio:${c.n}/1000) 1px, 100vw`;
+          firstHigh.setAttribute('srcset', ss); firstHigh.setAttribute('sizes', sz);
+          document.querySelectorAll('link[rel="preload"][as="image"]').forEach(l => { if (l.getAttribute('href') === src) { l.setAttribute('imagesrcset', ss); l.setAttribute('imagesizes', sz); } }); } }
       /* - pictures below the first screen are kept for search engines and for browsers without scripts (in noscript), and are not
            fetched by the built page: the site's scripts draw them and fetch them ahead, as on the review site, so they still arrive
            before they are seen. On a laptop their 2-3 MB had started before the first picture had painted. */
@@ -304,7 +369,10 @@ const server = http.createServer((req, res) => {
         const ns = document.createElement('noscript'); ns.textContent = im.outerHTML; im.replaceWith(ns); });
       /* - the same for pictures set as backgrounds below the first screen (Home's expertise thumbnails are full pictures, 940 KB); the
            scripts set them again when they draw the page */
-      document.querySelectorAll('#app [data-bg][style*="background-image"]').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) return;
+      // 9 November 2026: and those hidden at laptop size outside the first section (Home's expertise thumbnails, shown on phones), which a
+      // phone fetched in full from the built page while the site's scripts now give it the lighter copy
+      const sec0 = document.querySelector('#app > *');
+      document.querySelectorAll('#app [data-bg][style*="background-image"]').forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && ((r.width > 0 && r.height > 0) || (sec0 && sec0.contains(el)))) return;
         el.style.removeProperty('background-image'); el.removeAttribute('data-done'); el.removeAttribute('data-shown'); if (!el.getAttribute('style')) el.removeAttribute('style'); });
       const html = '<!doctype html>\n' + document.documentElement.outerHTML;
       const ld = document.querySelector('script#ca-ld').textContent;
@@ -315,7 +383,7 @@ const server = http.createServer((req, res) => {
         words: document.querySelector('#app').innerText.split(/\s+/).filter(Boolean).length, links: [...document.querySelectorAll('a[href^="/"]')].map(a => a.getAttribute('href')),
         imgs: document.querySelectorAll('#app img').length, noalt: document.querySelectorAll('#app img:not([alt])').length, robots: (document.querySelector('meta[name="robots"]') || {}).content || '',
         banned: m ? text.slice(Math.max(0, m.index - 60), m.index + 60).replace(/\s+/g, ' ') : '' };
-    }, { src: BANNED.source });
+    }, { src: BANNED.source, cr: CROPS_FOR[p] || {} });
   };
   /* 7 November 2026 (speed): the font faces (fonts/ca-fonts.css, 5 KB, 1 KB compressed) are written into the head of each page instead of the font link,
      with their file paths made absolute, so the first paint waits for no stylesheet: the slow-4G test showed the logo screen held back by
@@ -336,6 +404,9 @@ const server = http.createServer((req, res) => {
     const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/(ld\+)?json")[^>]*>([\s\S]*?)<\/script>/g)].filter(m => m[2] !== BOOT).length;
     if (inline) fail.push(`${p}: ${inline} inline script(s) left`);
     if (r.banned) fail.push(`${p}: draft wording on the page: “…${r.banned}…”`);
+    /* 9 November 2026 (benchmark audit A1, approved by Mujib: facts stay in the server's page). A number the page counts up to (b[data-n]) is
+       written in full in the built page, so crawlers and AI systems that run no script read the real figure, never a 0 (as MVRDV's site does). */
+    for (const m of html.matchAll(/<b\b[^>]*\bdata-n="([^"]+)"[^>]*>([\s\S]*?)<\/b>/g)) { const t = m[2].replace(/<[^>]+>/g, '').trim(); if (t !== m[1]) fail.push(`${p}: a counted figure is not written in full in the page (data-n="${m[1]}", the page says "${t.slice(0, 20)}")`); }
     for (const m of html.matchAll(/\/(img|vid|fonts)\/[A-Za-z0-9_./%-]+\.(webp|jpe?g|png|mp4|webm|woff2|gif|css)/g)) media.add(decodeURIComponent(m[0]));
     r.links.forEach(l => links.add(l.split('#')[0].split('?')[0]));
     return html;
@@ -352,6 +423,7 @@ const server = http.createServer((req, res) => {
   await browser.close(); server.close();
 
   copyDir(PUB, OUT);
+  for (const f of SZ.files) { const to = path.join(OUT, f); fs.mkdirSync(path.dirname(to), { recursive: true }); fs.copyFileSync(path.join(CACHE, f), to); }   // 9 November 2026: the pictures' lighter copies
   write('site-config.js', siteConfig);
   write('.htaccess', htaccess());
   write('_redirects', netlifyRedirects());
@@ -384,10 +456,12 @@ const server = http.createServer((req, res) => {
     if (iData > 0) fail.push('data: the site\'s data is written into every page (ca-data-j) instead of a shared file');
     if (iLoad < iBody || (iData > 0 && iLoad < iData)) fail.push('scripts: load.js is not in the body after the page\'s data (it would run the scripts before their data)');
     if (/data-boot/.test(home)) fail.push('scripts: a review-only head script (data-boot) is left in the page'); }
+  for (const f of SZ.files) if (!fs.existsSync(path.join(OUT, f))) fail.push('sizes: a lighter copy in the list is missing from the package: ' + f);
+  if (!LOADER.includes('/' + sizesFile)) fail.push('sizes: load.js does not bring in the list of lighter copies');
   if (errors.length) fail.push(...errors.map(e => 'script error: ' + e));
 
   if (SMALL_KEPT.length) console.log(`note: ${SMALL_KEPT.length} picture(s) have no small copy (-800) as new as the picture, so cards and tiles load the full file: run tools/small800.py (${SMALL_KEPT.slice(0, 6).join(', ')}${SMALL_KEPT.length > 6 ? ', …' : ''})`);
-  write('build-report.json', JSON.stringify({ when: new Date().toISOString(), staging: STAGING, pages: report.length, shared: SHARED.map(x => x.file), small800: { used: SMALL_USED, missing: SMALL_KEPT }, problems: fail, report }, null, 1));
+  write('build-report.json', JSON.stringify({ when: new Date().toISOString(), staging: STAGING, pages: report.length, shared: SHARED.map(x => x.file), small800: { used: SMALL_USED, missing: SMALL_KEPT }, sizes: { pictures: Object.keys(SZ.sizes).length, copies: SZ.files.length, phoneCrops: Object.fromEntries(Object.entries(CROPS_FOR).map(([p, m]) => [p, Object.keys(m).length])) }, problems: fail, report }, null, 1));
   console.log(`${STAGING ? 'STAGING · ' : ''}${report.length} pages + 404, ${Object.keys(plan.md).length} Markdown copies, ${Object.keys(plan.files).length} search files, ${SHARED.length} shared files, ${RULES.length} redirect rules → ${path.relative(ROOT, OUT) || OUT}`);
   if (fail.length) { console.error(`\n${fail.length} problem(s):\n- ` + [...new Set(fail)].slice(0, 60).join('\n- ')); process.exit(1); }
   console.log('checks passed: no draft wording, no inline script, every link and file present');

@@ -29,6 +29,7 @@ function ca_config(): array {
         'keep_copies'    => true,
         'rate_limit'     => ['per_10_min' => 5, 'per_day' => 20],
         'min_seconds'    => 3,
+        'vitals_key'     => '',   // 9 November 2026: the key for api/vitals.php?report=YYYY-MM&key=… (empty: no report is given)
     ];
     $local = [];
     if (is_file(__DIR__ . '/config.php')) { $local = require __DIR__ . '/config.php'; if (!is_array($local)) $local = []; }

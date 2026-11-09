@@ -6,3 +6,4 @@ public/api/config.php
 .DS_Store
 packages/
 __pycache__/
+.cache/

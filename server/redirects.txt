@@ -11,7 +11,7 @@
 /portfolio-item/reflected-topography-bgrt/                              /work/reflected-topography/
 /portfolio-item/house-of-cantilevers-residential-luxury-villas-bespoke-homes/  /work/house-of-cantilevers/
 /portfolio-item/stacked-tectonics-jdt-primary-school/                   /work/stacked-tectonics/
-/portfolio-item/indian-national-war-museum/                             /work/
+/portfolio-item/indian-national-war-museum/                             /work/peace-pavilion/   # 9 November 2026: the project has its page
 /portfolio-item/ntt-data-center/                                        /work/index/
 /portfolio-item/wedge-1/                                                /work/wedge-1/
 /portfolio-item/cold-war-memorial/                                      /work/index/
@@ -31,9 +31,9 @@
 /portfolio-item/50th-crossroads-show-condominium/                       /work/50th-cross-road/
 /portfolio-item/topography-1/                                           /expertise/narrative-environments-and-installations/
 /portfolio-item/aafco-experience-centre/                                /work/index/
-/portfolio-item/spicy-route/                                            /work/index/
+/portfolio-item/spicy-route/                                            /work/spicy-route/   # 9 November 2026: the project has its page
 /portfolio-item/concept-bedroom/                                        /work/
-/portfolio-item/musi-river-revitilization/                              /work/index/
+/portfolio-item/musi-river-revitilization/                              /work/musi-eco-corridor/   # 9 November 2026: the project has its page
 /portfolio-item/hetro-pharma/                                           /work/
 /portfolio-item/bhatia-residence/                                       /work/
 /portfolio-item/herman-miller-experience-center/                        /work/miller-knoll-experience-center/
@@ -44,10 +44,10 @@
 /portfolio-item/cocoon/                                                 /work/
 /portfolio-item/linked-house/                                           /work/
 /portfolio-item/thyssenkrupp-experience-center/                         /work/
-/portfolio-item/concept-pavilion-titan-watches/                         /work/index/
+/portfolio-item/concept-pavilion-titan-watches/                         /work/concept-pavilion-ii/   # 9 November 2026: the project has its page
 /portfolio-item/bajaj-electricals/                                      /work/index/
 /portfolio-item/irooms-hotel-asma-tower/                                /work/index/
-/portfolio-item/parallel-house/                                         /work/index/
+/portfolio-item/parallel-house/                                         /work/parallel-house/   # 9 November 2026: the project has its page
 /portfolio-item/israeli-lounge-kenndey-center/                          /work/
 /portfolio-item/lifestyle-store/                                        /work/stanley-lifestyle-store/
 /portfolio-item/stacked-wedges-secura/                                  /work/
@@ -64,6 +64,10 @@
 
 # ---- the studio's pages ----
 /home/                          /
+/home.html                      /             # 9 November 2026: ArchDaily's office page links here
+/contact-us/                    /contact/     # 9 November 2026
+/projects/                      /work/        # 9 November 2026
+/team/                          /studio/      # 9 November 2026
 /main-home/                     /
 /new-home/                      /
 /main-index-dublicate/          /

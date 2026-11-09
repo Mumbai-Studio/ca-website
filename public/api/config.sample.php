@@ -38,4 +38,8 @@ return [
     // a copy of every message, one file a month, in a folder closed to the web (or set a path outside the web folder)
     'storage_dir' => dirname(__DIR__) . '/_private',
     'keep_copies' => true,
+
+    // 9 November 2026: a private key of your choice (long and random) to read real visitors' speed for a month:
+    // https://collaborativearchitecture.com/api/vitals.php?report=2026-12&key=THE-KEY ; empty = the report is not given
+    'vitals_key' => '',
 ];

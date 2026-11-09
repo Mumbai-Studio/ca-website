@@ -85,7 +85,10 @@ def main():
     o = a.parse_args(); os.makedirs(MAN, exist_ok=True)
     if o.mode == 'applied':
         if not o.version or not os.path.exists(os.path.join(MAN, o.version + '.json')): sys.exit('no package of that version: ' + str(o.version))
-        open(os.path.join(MAN, 'live.txt'), 'w').write(o.version + '\n'); print('live version:', o.version); return
+        open(os.path.join(MAN, 'live.txt'), 'w').write(o.version + '\n'); print('live version:', o.version)
+        # 9 November 2026 (benchmark audit S3): the search engines are told what changed, once it is live
+        print('now tell the search engines (Bing and the other IndexNow engines; Google reads the sitemap):\n  node tools/indexnow.js', os.path.relpath(o.dist, ROOT), '   (or --urls <the update zip\'s CHANGED-URLS.txt>)')
+        return
     if not os.path.isdir(o.dist): sys.exit('no build at ' + o.dist + ': run node tools/build.js first')
     os.makedirs(o.out, exist_ok=True)
     version = datetime.datetime.now(IST).strftime('%Y-%m-%d-%H%M') + (('-' + o.name) if o.name else '')
