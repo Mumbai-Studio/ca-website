@@ -5843,7 +5843,7 @@ function expertisePage(k) {
     : `<div class="wide${x.fit ? ' fit' : ''}${x.mimg ? ' imd' : ''}" data-tone="dark" ${bg(x.img, false, picAlt(x.img))} style="margin-top:0"></div>${x.mimg ? `<div class="wide imm" data-tone="dark" ${bg(x.mimg, false, picAlt(x.mimg))} style="margin-top:0"></div>` : ''}`}
   ${x.feat.length ? `<section class="feat" data-tone="light"><p class="lede" style="max-width:46ch;margin-bottom:28px">${esc(x.fs)}</p><div class="row">${x.cards ? x.cards.map(relCard).join('') : withPage.map(card).join('')}</div>
     ${without.length ? `<p class="tbcl">${LIVE ? 'Also in this discipline' : 'Also in this discipline, with pages in a later draft'}: ${without.map(esc).join(' · ')}</p>` : ''}</section>` : ''}
-  ${inqBox(`Planning a project in ${x.n.toLowerCase()}?`, (XCOMM[x.k] ? XCOMM[x.k] + ' ' : '') + 'Tell us where the site is, what the project is for, its approximate scale and timing, and anything you already have: a brief, drawings or photographs. From our studios in Mumbai and Riyadh, we work across India, the Middle East and Southeast Asia, and enter international competitions.', `Project type: ${x.n}`)}
+  ${''/* 9 November 2026, Mujib: no Project inquiry box on any Expertise page; clients write to the studio by email or through the contact form */}
   <section class="wrap" data-tone="light" style="padding-bottom:80px"><p class="mono" style="margin-bottom:14px">Other expertise</p>${C.expertise.filter(e => e !== x && !e.hidden).map(e => `<a class="xi dsp xo" href="#x-${e.k}" data-img="${esc(e.patches ? 'bands:' + e.k : e.img)}"><span>${esc(e.n)}</span>${xiThumb(e)}</a>`).join('')}</section>`;
   return { html, title: x.n, nav: 'expertise', init: () => xiHover() };
 }
