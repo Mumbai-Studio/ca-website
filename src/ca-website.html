@@ -2167,7 +2167,7 @@ C.heroSentence = 'Since 2004, Collaborative Architecture has advanced a research
    Stacked Tectonics on phones is p01 again (was p03) */
 C.reel = [
   { t: 'National Unity Pavilion', p: 'Notions of India', w: '2021', img: 'img/unity/p01', fpm: '35% 50%', s: 'national-unity-pavilion' },
-  { t: 'The Iconic Gateway', p: 'Diyar Al Muharraq, Bahrain', w: 'Competition', img: 'img/diyar/p01', mimg: 'img/diyar/p01', fpm: '30% 50%', s: 'iconic-gateway', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', delay: 0, dur: 6 },   // 30 October 2026: the first 6 seconds of the approach film; 31 October: it opens on the film's own first frame (C.f0) and starts at once
+  { t: 'The Iconic Gateway', p: 'Diyar Al Muharraq, Bahrain', w: 'Competition', img: 'img/diyar/p01', fpm: '30% 50%', s: 'iconic-gateway', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', delay: 0, dur: 6 },   // 30 October 2026: the first 6 seconds of the approach film; 31 October: it opens on the film's own first frame (C.f0) and starts at once
   { t: 'Reflected Topography', p: 'BGRT, Bengaluru', w: '2014', img: 'img/bgrt/p10', fpm: '50% 50%', s: 'reflected-topography', vid: 'vid/bgrt-hero-1080.mp4', vidm: 'vid/bgrt-hero-720.mp4', delay: 1.5, dur: 8 },   // 7 November 2026 (Mujib): the BGRT film crop (as on its page), 8 s: the lobby turning up to the lit waffle slab and the column; it opens on the film's own first frame (C.f0)
   { t: 'Stacked Tectonics', p: 'JDT Primary School, Kozhikode', w: '2012', img: 'img/jdt/p01', fpm: '20% 50%', s: 'stacked-tectonics' },
   { t: 'MillerKnoll Experience Center', p: 'Bengaluru', w: '2025', img: 'img/millerknoll/p01', mimg: 'img/millerknoll/p07', fpm: '27% 50%', s: 'miller-knoll-experience-center' },
@@ -2205,7 +2205,7 @@ C.intro = ['Our projects evolve out of a meaningful convergence of people, place
    Rasa Totem the close view (p06). A film's own first frame stays the picture on laptops; on phones fpm now frames it too */
 C.panels = [
   { id: 'H08', st: 'Architecture that|fosters democracy', s: 'national-unity-pavilion', img: 'img/unity/p03', fpm: '91% 50%', sent: 'Conceived for the 75th anniversary of India’s independence, the pavilion brings together a pylon representing each state and union territory around a central Bodhi tree, within a footprint comparable to the Great Stupa at Sanchi.', cap: 'National Unity Pavilion · Notions of India|One of the three winning entries' },
-  { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', mimg: 'img/diyar/p01', fpm: '28% 50%', vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', loop: 10, sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
+  { id: 'H09', st: 'Establish the|sense of place', s: 'iconic-gateway', img: 'img/diyar/p01', fpm: '28% 50%',   /* 9 November 2026: phones too open on the film's own first frame (C.seam); the separate phone picture (p01) is retired */ vid: 'vid/diyar-gateway-1080.mp4', vidm: 'vid/diyar-gateway-720.mp4', loop: 10, sent: 'In Bahrain, two 65-meter pylons carry a shaded, radiant-cooled footbridge that marks the entrance to a new city, drawing its identity from the context and vernacular intelligence of the region.', cap: 'The Iconic Gateway|Diyar Al Muharraq, Bahrain · Proposal' },
   { id: 'H10', st: 'Architecture|for peace', s: '', img: 'img/hb/peacecanopy', fpm: '46% 50%', sent: 'The Peace Pavilion was part of Collaborative Architecture’s finalist entry in the international competition for the Indian National War Museum in New Delhi, organized by the Government of India in 2017.', cap: 'Peace Pavilion · Exhibited at the Cooper Hewitt, New York|and the Museum of Craft and Design, San Francisco' },
   { id: 'H15', st: 'Luxury that engages|with its context', s: 'bearys-wafira', img: 'img/wafira/p01', fpm: '65% 60%', sent: 'In Healthcare City, Dubai, the interiors of a limited-edition residence set benchmarks for sustainable living, from the grand lobby to the penthouse.', cap: 'Bearys Wafira · Dubai|Under construction' },
   { id: 'H11', st: 'Homes shaped by the|people who live in them', s: 'house-of-cantilevers', img: 'img/cantilevers/p02', fpm: '78% 50%', sent: 'Our sophisticated mapping tools capture the unique and distinctive lifestyle and aspirations of each of our clients.', cap: 'House of Cantilevers|Kerala' },
@@ -2650,7 +2650,7 @@ C.rev = {
     seq: ['p01', 'p06', 'p04', 'p05', 'p02', 'p03', 'p07', 'p08', 'p09', 'p10', 'p11', 'p12', 'p13', 'p14'], rot: ['p01', 'p06', 'p04'],   // 3 November 2026, the studio: the new renders (View 2 now the hero), then the eight photographs of the prototype at Index Mumbai
     add: [{ f: 's01', k: 'sk', cap: 'Concept sketch', r: 0.878 }], rel: ['poppy', 'the-souk', 'the-spline'],
     isk: { f: 's01', at: 'text', sz: 0.5, mid: true } },   // 3 November 2026, the studio: the concept sketch under the introductory paragraph, as on the other projects (half size, centered between the text and the gallery); it is the project's only sketch, so, as on House of Cantilevers and Inverted Topography, it leaves Drawings and process
-  'sandy-hook-memorial': { teaser: { src: 'vid/sandyhook-home.mp4', delay: 1.5, img: 'img/sandyhook/p01' },   // 1 November 2026: the page opens on the studio's new View 1 and the film merges in over it after 1.5 seconds (three plays a visit, as on every hero); the film's own first frame (f01) stays for Home and Studio Now; the full film is only among the images
+  'sandy-hook-memorial': { teaser: { src: 'vid/sandyhook-home.mp4', delay: 1.5, img: 'img/sandyhook/f01' },   // 9 November 2026 (Mujib: no veil, no shift from picture to film): the page opens on the film's own first frame and the film starts from it without a dissolve (C.seam); View 1 stays in the gallery. Before: 1 November 2026: the page opened on the studio's new View 1 and the film merged in over it after 1.5 seconds (three plays a visit, as on every hero); the film's own first frame (f01) stays for Home and Studio Now; the full film is only among the images
     gvid: [{ src: 'vid/sandyhook-home.mp4', full: 'vid/sandyhook-film.mp4', poster: 'img/sandyhook/f01.webp', t: 'Walkthrough', d: '0:26', w: 2, dur: 'PT26S', date: '2026-10-30' }],
     seq: ['p01', 'p02', 'p03', 'p04'], rot: ['p01', 'p02', 'p04'], card: 'p01', gif: ['s01', 's02'], drw: ['d01', 'd02', 'd03', 'd04'], rel: ['coldwar', 'urnes-stave-heritage-center', 'holocaust'],   // 6 November 2026 (v433): the approved CA-STD-WEB-01 set, site layout plan, section A-A', Elevations A and B
     isk: { f: 's02', at: 'text', sz: 0.5, mid: true } },   // 2 November 2026, the studio: the axonometric sketch with the text, as on Inverted Topography (half size, centered between the text and the videos); both sketches still play in Drawings and process   // 1 November 2026: the studio's new set; drawings and sketches only under Drawings and process
@@ -5021,6 +5021,22 @@ const heroBadge = slug => { const k = (C.heroAward || {})[slug], B = k && BADGE[
    also start from a different picture: Rasa Totem's prototype film (Index Mumbai) merges in over the airport render and has no entry here. */
 C.f0 = { 'vid/diyar-gateway.mp4': 'vid/diyar-gateway', 'vid/cross50-teaser.mp4': 'vid/cross50-teaser', 'vid/alpha-hero.mp4': 'img/alpha/f01', 'vid/sandyhook-home.mp4': 'img/sandyhook/f01', 'vid/bgrt-hero.mp4': 'img/bgrt/f01' };
 const F0 = v => { if (!v || CAP || PRE) return ''; const M = C.f0 || {}; return M[String(v).replace(/-(1080|720)(\.mp4)$/, '$2')] || M[v] || ''; };
+/* 9 November 2026 (Mujib, Sandy Hook: "no veil while transitioning from the image to the video, and no abrupt visible shift from image
+   to movie"). A film listed in C.seam starts from a picture that is its own first frame and ends on that same frame (its last frames settle
+   on its first). It never dissolves over its picture, in or out: it takes over on its first frame, so nothing on screen changes, then plays,
+   and hands back to the picture on its last frame, which is the same picture. On a phone it fills the frame at the picture's own crop, as
+   the picture does, never a letterboxed band (Mujib: "Film fills the screen"). Everywhere the film plays: Home's reel and principles,
+   Studio Now's Retrospective, the project's hero. Every other film keeps the 1.5-second merge of 1 November 2026.
+   'loop': in and out on the same frame (Sandy Hook). 'in' (Mujib, 9 November 2026, The Iconic Gateway: "the same"): the film takes over
+   from its own first frame in the same way, on every screen; its approach does not come back to its start, so at its end it still merges
+   back into its picture in 1.5 seconds, as on 1 November. */
+C.seam = { 'vid/sandyhook-home.mp4': 'loop', 'vid/diyar-gateway.mp4': 'in' };
+const isSeam = src => (C.seam || {})[String(src || '').replace(/^https?:\/\/[^/]+/, '').replace(/^\//, '').replace(/-(1080|720)(\.mp4)$/, '$2')] || '';
+const posOf = el => { if (!el) return ''; const i2 = el.querySelector(':scope > img.bgi, :scope > .im img.bgi'); return i2 ? getComputedStyle(i2).objectPosition : getComputedStyle(el).backgroundPosition; };
+const seamPrep = (v, pos, mode) => { if (mode !== 'in') v.style.setProperty('transition', 'none', 'important'); v.style.setProperty('object-fit', 'cover', 'important'); v.style.setProperty('background', 'transparent', 'important'); if (pos) v.style.setProperty('object-position', pos, 'important'); };
+/* the film takes over on a frame already drawn, with no dissolve; a film that merges back at its end ('in') gets its dissolve back for that */
+const seamShow = (v, mode, f) => { v.style.setProperty('transition', 'none', 'important'); onFrame(v, () => { f(); if (mode === 'in') requestAnimationFrame(() => requestAnimationFrame(() => v.style.removeProperty('transition'))); }); };
+const onFrame = (v, f) => { let ok = false; const go = () => { if (!ok) { ok = true; f(); } }; if (v.requestVideoFrameCallback) { v.requestVideoFrameCallback(go); setTimeout(go, 300); } else requestAnimationFrame(() => requestAnimationFrame(go)); };   // the film shows only once its frame is on screen
 C.now = [{ t: 'The Iconic Gateway, shortlisted in the UltraTech IndiaNext Innovation Awards 2026', badge: 'indianext', h: '#p-iconic-gateway', vid: 'vid/diyar-gateway-1080.mp4', m: 'vid/diyar-gateway-720.mp4', poster: 'vid/diyar-gateway', end: 'img/diyar/p01' }, /* 31 October 2026: the shortlisting first, its film (the 720p one on phones) ending on the gateway */
   { t: 'Project Alpha, longlisted in the UltraTech IndiaNext Innovation Awards 2026', badge: 'indianextL', h: '#p-project-alpha', vid: 'vid/alpha-hero-1080.mp4', m: 'vid/alpha-hero-720.mp4', poster: 'img/alpha/f01', end: 'img/alpha/p01' }, /* 2 November 2026, the studio: timed as the Gateway, its film from its first frame (720p on phones), ending on the hero */
   { t: 'The Barn hands over in Navi Mumbai', h: '#p-the-barn', vid: 'vid/barn-transformation.mp4', poster: 'vid/barn-transformation', end: 'img/barn/p04' }];
@@ -5155,7 +5171,7 @@ function nowWindowInit(s) {
       /* 30 October 2026: a Retrospective film loops on itself from its beginning, with no picture at its end or before it plays again;
          the visitor moves to the next project with Explore Now or a swipe */
       v.loop = !!it.lp; v.onended = it.lp ? null : done; v.onerror = done; v.classList.remove('vin'); try { v.currentTime = 0; } catch (e) {}
-      const go = () => v.play().then(() => v.classList.add('vin'), () => done());
+      const sm = isSeam(it.vid); if (sm) seamPrep(v, posOf(el), sm); const go = () => v.play().then(() => { if (sm) seamShow(v, sm, () => v.classList.add('vin')); else v.classList.add('vin'); }, () => done());
       if (it.delay) later(go, it.delay * 1000); else go(); }); };
   // a chapter comes in: its title rises as on arrival, then settles; the one before fades out
   /* 30 October 2026: every title in the window (Studio Now, Retrospective Showcase) arrives the same way: its words rise in at the full
@@ -5192,7 +5208,7 @@ function nowWindowInit(s) {
     T = setTimeout(() => { if (flip.tok === tok && Math.abs(ps.getBoundingClientRect().top) < 8) arrived = true; else off(); }, Math.max(1600, (flip.end || 0) - performance.now() + 250));
     O = new IntersectionObserver(es => es.forEach(e => { if (!arrived && flip.tok !== tok) off(); else if (arrived && (!e.isIntersecting || e.intersectionRatio < .05)) off(); }), { threshold: [0, .02, .5, .9] });
     O.observe(ps); };
-  const jump = k => { gen++; clearTimeout(timer); const v = cur && cur.querySelector('video'); if (v) { v.onended = null; v.onerror = null; v.pause(); v.classList.remove('vin'); }
+  const jump = k => { gen++; clearTimeout(timer); const v = cur && cur.querySelector('video'); if (v) { v.onended = null; v.onerror = null; v.pause(); if (isSeam(v.getAttribute('src')) === 'loop') setTimeout(() => { if (!v.closest('.bg.on')) v.classList.remove('vin'); }, 2600); else v.classList.remove('vin'); }
     toCh(chOf(k)); run(k); };
   const goPrev = () => { if (i > 0) jump(i - 1); };
   /* 30 October 2026: on phones, tablets and touch screens a swipe moves through the news and the projects as the box does: a swipe to the
@@ -6331,7 +6347,7 @@ function heroInit() {
   // draft 1.8: the title settles after the preloader has gone; the studio sentence then slides in and stays
   let t1 = 0; const t2 = 0; const go = () => { t1 = setTimeout(() => hero.classList.add('settled'), 1500); };
   let i = 0, n = 0, t = 0, vt = 0, vp = null, seen = true;
-  const film = el => { const v = el && el.querySelector('video.hv'); if (!v) return false; const r = reelOrder[bgs.indexOf(el)] || {};
+  const film = el => { const v = el && el.querySelector('video.hv'); if (!v) return false; const r = reelOrder[bgs.indexOf(el)] || {}; const sm = isSeam(r.vid); if (sm) seamPrep(v, posOf(el), sm);
     clearInterval(t); t = 0; clearTimeout(vt);
     let fin = false;
     /* 30 October 2026: when its seconds are up the film goes straight into the next project's slide, which comes in over the moving film
@@ -6341,7 +6357,7 @@ function heroInit() {
     const start = () => { if (!el.classList.contains('on') || !document.body.contains(el)) return; if (!seen) { vt = setTimeout(start, 800); return; }
       if (!v.getAttribute('src')) { v.src = A(r.vidm && matchMedia('(max-width:700px)').matches ? r.vidm : r.vid); v.load(); } try { v.currentTime = r.from || 0; } catch (e) {}
       v.onended = done; v.onerror = done; vp = v; fin = false;
-      v.play().then(() => { v.classList.add('vin'); const D = Math.min(8, Math.max(6, +r.dur || 7));   /* 7 November 2026 (Mujib): every film on Home's top slideshow is a clip of 6 to 8 s */
+      v.play().then(() => { if (sm) seamShow(v, sm, () => v.classList.add('vin')); else v.classList.add('vin'); const D = Math.min(8, Math.max(6, +r.dur || 7));   /* 7 November 2026 (Mujib): every film on Home's top slideshow is a clip of 6 to 8 s */
         const run = () => { if (fin) return; if (!seen || v.paused) { vt = setTimeout(run, 500); return; } if (v.currentTime - (r.from || 0) >= D - .05) done(); else vt = setTimeout(run, 250); }; vt = setTimeout(run, 250); }, done); };
     if (!v.getAttribute('src')) { v.preload = 'auto'; v.src = A(r.vidm && matchMedia('(max-width:700px)').matches ? r.vidm : r.vid); v.load(); }   // fetched while the picture shows
     vt = setTimeout(start, (r.delay != null ? r.delay : 1.5) * 1000); return true; };   // delay: 0 starts the film at once (31 October 2026)
@@ -6688,6 +6704,8 @@ function teaserInit() {
     const im = v.parentElement.querySelector(':scope > .im');
     const frame = () => { if (!im) return; const i2 = im.querySelector('img.bgi'); v.style.objectPosition = i2 ? getComputedStyle(i2).objectPosition : getComputedStyle(im).backgroundPosition; };
     let fading = false;
+    const seam = isSeam(src), sframe = () => { if (!seam) return; const i2 = im && im.querySelector('img.bgi'); seamPrep(v, im ? (i2 ? getComputedStyle(i2).objectPosition : getComputedStyle(im).backgroundPosition) : '', seam); };   // 9 November 2026: see C.seam
+    if (seam) sframe();
     const host0 = v.parentElement, on = x => { host0.classList.toggle('tvon', x && phone); host0.classList.toggle('playing', !!x); filmBody(); };
     /* 2 November 2026: a film with a white page (data-lt="from,to", in the film's seconds: Parallel House's title page). While it shows,
        the hero reads as a light section: the header, the place line and the title turn ink, and the shading lifts */
@@ -6741,13 +6759,13 @@ function teaserInit() {
       const back = () => { if (!document.hidden && seen && v.paused && v.getAttribute('src')) again(); };
       document.addEventListener('visibilitychange', back); cleanup.push(() => { document.removeEventListener('visibilitychange', back); clearTimeout(wait); });
     }
-    v.addEventListener('playing', () => { fading = false; frame(); v.classList.remove('done'); on(true); if (capArm) { capArm = false; capShow(2000); } });
-    v.addEventListener('timeupdate', () => { if (hold || cont) return; if (!fading && v.duration && v.duration - v.currentTime < 1.6) { fading = true; v.classList.add('done'); on(false); capHide(); } });
+    v.addEventListener('playing', () => { fading = false; frame(); if (seam) seamShow(v, seam, () => { if (!v.paused) v.classList.remove('done'); }); else v.classList.remove('done'); on(true); if (capArm) { capArm = false; capShow(2000); } });
+    v.addEventListener('timeupdate', () => { if (hold || cont || seam === 'loop') return; if (!fading && v.duration && v.duration - v.currentTime < 1.6) { fading = true; v.classList.add('done'); on(false); capHide(); } });
     v.addEventListener('ended', () => { if (hold) { host0.classList.remove('playing'); filmBody(); return; } v.classList.add('done'); on(false); });
     v.addEventListener('playing', () => filmHint(v));
     v.addEventListener('error', () => { v.classList.add('done'); on(false); });
     v.addEventListener('pause', () => { if (v.classList.contains('done')) on(false); });
-    const play = () => { plays++; v._go = true; capArm = true; frame(); if (!v.getAttribute('src')) { v.src = src; v.load(); } try { v.currentTime = 0; } catch (e) {} const pr = v.play(); if (pr && pr.catch) pr.catch(() => { v.classList.add('done'); tapToPlay(v); }); };
+    const play = () => { plays++; v._go = true; capArm = true; frame(); sframe(); if (!v.getAttribute('src')) { v.src = src; v.load(); } try { v.currentTime = 0; } catch (e) {} const pr = v.play(); if (pr && pr.catch) pr.catch(() => { v.classList.add('done'); tapToPlay(v); }); };
     v._play = play;
     v.setAttribute('autoplay', '');
     const turn = () => setTimeout(() => { const r = v.parentElement.getBoundingClientRect(); if (r.bottom > innerHeight * .3 && r.top < innerHeight * .7 && v.paused && v.getAttribute('src') && !v.classList.contains('done') && !v.ended) v.play().catch(() => {}); }, 350);   // resume, never from the start
