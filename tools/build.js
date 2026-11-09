@@ -74,6 +74,8 @@ function htaccess() {
   for (const r of RULES) L.push(`RewriteRule ${apacheFrom(r)} ${r.gone ? '- [G,L]' : r.to + ' [R=301,L]'}`);
   L.push('', '# AI assistants that ask for Markdown (Accept: text/markdown) get the page\'s Markdown copy, the same text as the page');
   L.push('RewriteCond %{HTTP_ACCEPT} text/markdown [NC]', 'RewriteCond %{REQUEST_FILENAME} -d', 'RewriteCond %{REQUEST_FILENAME}/index.md -f', 'RewriteRule ^(.*?)/?$ $1/index.md [L]');
+  L.push('# 9 November 2026 (SEO audit): each Markdown copy names its page as canonical (Link header, below), so search engines index the page, not the copy');
+  L.push('RewriteRule ^(.*/)?index\\.md$ - [E=CA_MD_PAGE:/$1]');
   L.push('</IfModule>', '');
   L.push('<IfModule mod_headers.c>');
   for (const [k, v] of Object.entries(HEADERS)) L.push(`  Header always set ${k} "${v}"`);
@@ -82,6 +84,7 @@ function htaccess() {
   L.push(`  <FilesMatch "^(site-[0-9]+|data-[a-z0-9-]+|boot|load)\\.[0-9a-f]{12}\\.(js|css)$">`, `    Header set Cache-Control "${CACHE.hashed}"`, '  </FilesMatch>');
   L.push(`  <FilesMatch "^(robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|site-config\\.js|site\\.webmanifest|ca-fonts\\.css)$">`, `    Header set Cache-Control "${CACHE.hour}"`, '  </FilesMatch>');
   L.push('  <FilesMatch "^(index|404)\\.html$">', `    Header set Link "</llms.txt>; rel=\\"describedby\\"; type=\\"text/plain\\""`, '  </FilesMatch>');
+  L.push(`  Header set Link "<${ORIGIN}%{CA_MD_PAGE}e>; rel=\\"canonical\\"" env=CA_MD_PAGE`);
   L.push('</IfModule>', '');
   L.push('<IfModule mod_deflate.c>', '  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml text/xml text/plain text/markdown image/svg+xml application/manifest+json application/feed+json application/rss+xml', '</IfModule>');
   return L.join('\n') + '\n';
@@ -94,7 +97,7 @@ function netlifyRedirects() {
     else { L.push(`${r.from} ${r.to} 301`); if (r.from.endsWith('/') && r.from !== '/') L.push(`${r.from.slice(0, -1)} ${r.to} 301`); } }
   return L.join('\n') + '\n';
 }
-function netlifyHeaders() {
+function netlifyHeaders(mdFiles = []) {
   const L = ['# Collaborative Architecture · response headers (Netlify and Cloudflare Pages). Written by tools/build.js.', '', '/*'];
   for (const [k, v] of Object.entries(HEADERS)) L.push(`  ${k}: ${v}`);
   L.push(`  Cache-Control: ${CACHE.page}`, '  Link: </llms.txt>; rel="describedby"; type="text/plain"', '');
@@ -102,6 +105,8 @@ function netlifyHeaders() {
   for (const p of ['/img/*', '/vid/*', '/fonts/*']) L.push(p, `  Cache-Control: ${CACHE.media}`);
   for (const p of ['/robots.txt', '/sitemap.xml', '/llms.txt', '/llms-full.txt', '/site-config.js', '/feeds/*']) L.push(p, `  Cache-Control: ${CACHE.hour}`);
   L.push('/*.md', '  Content-Type: text/markdown; charset=utf-8', '/api/*', '  X-Robots-Tag: noindex');
+  // 9 November 2026 (SEO audit): each Markdown copy names its page as canonical
+  for (const f of mdFiles) { const page = '/' + f.replace(/index\.md$/, ''); L.push('/' + f, `  Link: <${ORIGIN}${page}>; rel="canonical"`); }
   return L.join('\n') + '\n';
 }
 function nginxConf() {
@@ -122,6 +127,8 @@ function nginxConf() {
   L.push('  location ~ ^/api/(contact|subscribe)\\.php$ {', '    include fastcgi_params; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;', '    fastcgi_pass unix:/run/php/php-fpm.sock;   # the PHP-FPM socket of this server', '  }');
   L.push(`  location /assets/ { add_header Cache-Control "${CACHE.hashed}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
   L.push(`  location ~* ^/(img|vid|fonts)/ { add_header Cache-Control "${CACHE.media}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
+  // 9 November 2026 (SEO audit): a Markdown copy names its page as canonical (also when a page's address is answered with its copy)
+  L.push(`  location ~ ^(?<ca_md_page>/(?:.*/)?)index\\.md$ { add_header Link "<${ORIGIN}$ca_md_page>; rel=\\"canonical\\"" always; add_header Cache-Control "${CACHE.page}"; add_header Vary "Accept"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
   L.push('  location / {', `    add_header Cache-Control "${CACHE.page}";`, '    add_header Vary "Accept";', `    ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')}`,
     '    if ($ca_md) { rewrite ^(.*/)$ $1index.md last; }', '    try_files $uri $uri/index.html =404;', '  }', '}');
   return L.join('\n') + '\n';
@@ -254,7 +261,7 @@ const server = http.createServer((req, res) => {
   const plan = await pg.evaluate(() => {
     const S = CA_SEO, files = S.feeds(), md = S.pagesMd();
     const ids = [...(files['sitemap.xml'].match(/<loc>[^<]+<\/loc>/g) || [])].map(l => new URL(l.slice(5, -6)).pathname);
-    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md }; // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages
+    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/news/press/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md }; // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages. 9 November 2026: /news/press/ is built too (it names /news/ as canonical, so it is not in the sitemap)
   });
   for (const x of SHARED) write(x.file, x.body);
   for (const x of DATA) write(x.file, x.body);
@@ -348,7 +355,7 @@ const server = http.createServer((req, res) => {
   write('site-config.js', siteConfig);
   write('.htaccess', htaccess());
   write('_redirects', netlifyRedirects());
-  write('_headers', netlifyHeaders());
+  write('_headers', netlifyHeaders(Object.keys(plan.md)));
   fs.writeFileSync(path.join(ROOT, 'server', 'nginx.conf'), nginxConf());
 
   /* 7 November 2026 (Mujib): the opening. On the first page of a visit the logo screen must cover the first frame, before the page's
