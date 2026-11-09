@@ -2005,6 +2005,17 @@ html.picw .mb .fr:has(> .im[data-bg]:not([data-shown])) > :not(.im){visibility:h
 /* 1 November 2026: on a phone's project page too the caption now sits under the menu (placed by the player), no longer under the film */
 @media (max-width:700px) and (orientation:portrait) and (max-height:720px){.vcap{font-size:24px}}
 @media (orientation:landscape) and (max-height:500px){.vcap,.prh .vcap{top:52px;right:var(--gut);font-size:clamp(22px,3.6vw,30px)}}
+/* 9 November 2026 (Mujib: "disable the default PDF capture across the site and browsers"). Printing a page, or saving it as a PDF
+   through the browser's print, gives only the studio's name and addresses, in every browser; the page itself does not print. */
+@media print{
+  @page{margin:22mm 20mm}
+  html,body{background:#fff!important;height:auto!important;overflow:visible!important}
+  body>*{display:none!important}
+  body::after{content:"Collaborative Architecture\A \A Mumbai Studio\A G/4, Amit Industrial Estate, Dr. S S Rao Road, Lalbaug\A Mumbai 400012, India\A \A Riyadh Studio\A Riyadh, Saudi Arabia\A \A collaborativearchitecture.com";
+    display:block!important;white-space:pre;font:400 12pt/1.5 Arial,Helvetica,sans-serif;color:#1b1b1b}
+}
+/* the "Convert to PDF" button a PDF extension places on the page (see pdfToolsOff) */
+[data-ca-xpdf]{display:none!important;visibility:hidden!important;pointer-events:none!important}
 /* ==========================================================================================================================
    STANDING RULE, UNIVERSAL (the principals, 31 October 2026; replaces the exceptions of 22 October; revised 1 November 2026). Keep this
    block LAST in the styles and unchanged in every later draft, on every page, laptop and phone:
@@ -8591,6 +8602,29 @@ addEventListener('load', () => setTimeout(keepNote, 600));
     try { navigator.sendBeacon('/api/vitals.php', new Blob([body], { type: 'application/json' })); } catch (e) {} };
   addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') send(); });
   addEventListener('pagehide', send);
+})();
+/* 9 November 2026 (Mujib, with a screenshot of Adobe Acrobat's red "Convert to PDF" button on the Studio page): keep the PDF button that
+   a browser extension places on the page off the site's pages. A website cannot switch off a visitor's extension, so this is best effort:
+   it hides what the extension adds directly to the page (to <html> or <body>) wherever that names Acrobat, Adobe or the extension itself
+   (Chrome: efaidnbmnnnibpcajpcglclefindmkaj; Edge: elhekieabhbkpmcefcoobjddigjcaadp). The site's own elements never carry those names;
+   nothing else a visitor's browser adds (translation, password managers, reading tools) is touched. The extension's toolbar button
+   still works; printing and "Save as PDF" give only the studio's name and addresses (the print styles). */
+(function pdfToolsOff() {
+  if (typeof MutationObserver === 'undefined') return;
+  const SIG = /acrobat|adobe|efaidnbmnnnibpcajpcglclefindmkaj|elhekieabhbkpmcefcoobjddigjcaadp/i;
+  const OWN = new Set(['app', 'pl', 'fh', 'cookie-box', 'ca-data-j']);
+  const named = el => { try { return SIG.test(el.tagName) || SIG.test(el.id || '') || SIG.test(typeof el.className === 'string' ? el.className : (el.getAttribute('class') || ''))
+      || [...el.attributes].some(a => /^(src|href|style|data-[\w-]+)$/.test(a.name) && SIG.test(a.value)); } catch (e) { return false; } };
+  const foreign = el => { if (!el || el.nodeType !== 1 || OWN.has(el.id) || el.hasAttribute('data-ca-xpdf')) return false; if (/^(SCRIPT|STYLE|LINK|META|HEAD|BODY|NOSCRIPT)$/.test(el.tagName)) return false;
+    if (named(el)) return true; try { const all = el.getElementsByTagName('*'); if (all.length < 400 && [...all].some(named)) return true; } catch (e) {}
+    try { return !!(el.shadowRoot && [...el.shadowRoot.querySelectorAll('*')].some(named)); } catch (e) { return false; } };
+  const hide = el => { el.setAttribute('data-ca-xpdf', ''); el.setAttribute('aria-hidden', 'true'); el.style.setProperty('display', 'none', 'important');
+    new MutationObserver(() => { if (el.style.getPropertyValue('display') !== 'none') el.style.setProperty('display', 'none', 'important'); }).observe(el, { attributes: true, attributeFilter: ['style'] }); };
+  const scan = root => { if (root) [...root.children].forEach(el => { if (foreign(el)) hide(el); }); };
+  const look = () => { scan(document.documentElement); scan(document.body); };
+  const mo = new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1 && (n.parentNode === document.body || n.parentNode === document.documentElement) && foreign(n)) hide(n); })));
+  mo.observe(document.documentElement, { childList: true }); if (document.body) mo.observe(document.body, { childList: true });
+  look(); setTimeout(look, 1500); setTimeout(look, 5000);   // extensions often add their button a moment after the page has loaded
 })();
 cookieBox();
 if (!LIVE && /[?&]seo\b/.test(location.search)) SEO.panel(true);
