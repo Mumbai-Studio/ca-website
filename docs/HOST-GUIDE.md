@@ -175,6 +175,42 @@ A subdomain such as `new.collaborativearchitecture.com` also works. If you use o
   - `/wp-admin/` answers 410 (gone)
 - [ ] `https://www.…` and `http://…` both redirect to `https://collaborativearchitecture.com/…`.
 - [ ] **Headers:** `curl -I https://collaborativearchitecture.com/` shows `Content-Security-Policy`, `Strict-Transport-Security` and `X-Content-Type-Options`.
+- [ ] **Copy protection** (6.1): a site-copying tool is refused, and search and AI crawlers are not:
+  - `curl -s -o /dev/null -w "%{http_code}\n" -A "HTTrack" https://collaborativearchitecture.com/` answers **403**;
+  - the same with `-A "Mozilla/5.0 HeadlessChrome/142.0.0.0"` answers **403**;
+  - the same with `-A "Googlebot/2.1"`, `-A "GPTBot/1.2"` or `-A "ClaudeBot/1.0"` answers **200**;
+  - `-A "HTTrack"` on `/robots.txt` and `/llms.txt` answers **200**.
+
+### 6.1 Copy protection (13 November 2026)
+
+The studio does not allow the site to be mirrored or cloned by site-copying tools (Craft Anything, HTTrack, Wget and the like). Search engines, AI crawlers and assistants, SEO tools and link previews must never be hampered. The build writes all of it; there is nothing to set by hand on Apache, LiteSpeed or nginx.
+
+- **The server** (`.htaccess`, `nginx.conf`): copying tools and hidden (headless) browsers get **403** and a page with only the studio's name and addresses (`403.html`).
+- **Every page** starts with a small check: a browser driven by a program shows only the same name and addresses, and loads nothing else.
+- **`robots.txt`** asks the copying tools that read it to stay out.
+- **Always let through:**
+  - search engines;
+  - the AI crawlers the site welcomes;
+  - AI agents that sign their requests (a `Signature-Agent` header, for example ChatGPT's cloud browser);
+  - PageSpeed Insights and Lighthouse, WebPageTest, GTmetrix, Semrush, Ahrefs, Screaming Frog, Sitebulb;
+  - link previews (Instagram and Facebook, LinkedIn, X, Pinterest, WhatsApp).
+- **Always open to every reader:** `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, the feeds and the Markdown copies.
+- **The lists** are in `tools/guard.js`. The build fails if a search or AI crawler would be refused, or a copying tool let through.
+
+**If Cloudflare sits in front of the site, or on Cloudflare Pages:**
+
+1. Add a custom rule (*Security → WAF → Custom rules*), action **Block**, with this expression:
+
+   ```
+   (http.user_agent contains "HTTrack" or http.user_agent contains "Wget" or http.user_agent contains "HeadlessChrome" or http.user_agent contains "SiteSucker" or http.user_agent contains "WebCopier" or http.user_agent contains "Offline Explorer" or http.user_agent contains "Scrapy") and not cf.client.bot
+   ```
+
+   `cf.client.bot` is Cloudflare's list of verified search and AI crawlers, which cannot be faked.
+2. In *Security → Bots*, leave **Block AI bots** off. In *AI Crawl Control*, keep every crawler on **Allow**: the studio allows AI crawlers for search and for training.
+3. Do not turn on **Bot Fight Mode**: it can challenge SEO tools.
+4. If the server sits behind Cloudflare or another proxy, make sure it passes on the visitor's `User-Agent` and `Signature-Agent` headers unchanged (proxies do by default).
+
+**Limits:** a copying tool built to pass as an ordinary visitor (a normal browser, driven by hand, or one that lies about its name) cannot be told apart from a visitor. This protection stops the automatic tools.
 
 ## 7. Move the domain (DNS)
 
