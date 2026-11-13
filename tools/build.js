@@ -8,7 +8,9 @@
    - the search files (sitemap.xml, robots.txt, llms.txt, llms-full.txt, feeds, a Markdown copy of every page);
    - the server settings, from server/redirects.txt and the security headers below: .htaccess (Apache, LiteSpeed, most cPanel
      hosts), _redirects and _headers (Netlify, Cloudflare Pages), server/nginx.conf (nginx);
-   - checks: no draft wording on any page, no inline script, every picture and internal link present.
+   - checks: no draft wording on any page, no inline script, every picture and internal link present;
+   - copy protection (13 November 2026, tools/guard.js): site-copying tools and program-driven browsers see only the studio's name
+     and addresses; search engines, AI crawlers and assistants, SEO tools and link previews always pass.
 
    Usage:  npm run build              (the site for collaborativearchitecture.com, into dist/)
            npm run build:staging      (the same, marked noindex everywhere, for a test address)
@@ -16,6 +18,7 @@
 'use strict';
 const http = require('http'), fs = require('fs'), path = require('path'), crypto = require('crypto');
 const { chromium } = require('playwright');
+const guard = require('./guard');
 
 const ROOT = path.resolve(__dirname, '..');
 const argv = process.argv.slice(2);
@@ -57,17 +60,18 @@ RULES.sort((a, b) => (a.prefix - b.prefix) || (a.prefix ? b.from.length - a.from
 const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const apacheFrom = r => { const p = r.from.replace(/^\//, ''); return r.prefix ? '^' + reEsc(p.slice(0, -1)) : '^' + reEsc(p.replace(/\/$/, '')) + (p.endsWith('/') || p === '' ? '/?$' : '$'); };
 
-function htaccess() {
+function htaccess(bots) {
   const L = [];
   L.push('# Collaborative Architecture · server settings for Apache and LiteSpeed (cPanel and most shared hosts)');
   L.push('# Written by tools/build.js: change server/redirects.txt or tools/build.js, then build again; do not edit this copy.', '');
   L.push('Options -Indexes -MultiViews', 'DirectoryIndex index.html index.php', 'AddDefaultCharset utf-8',
     'AddType image/webp .webp', 'AddType text/markdown .md', 'AddType application/manifest+json .webmanifest', 'AddType font/woff2 .woff2',
-    'AddCharset utf-8 .md .txt .xml .json .js .css', 'ErrorDocument 404 /404.html', 'ErrorDocument 410 /404.html', '');
+    'AddCharset utf-8 .md .txt .xml .json .js .css', 'ErrorDocument 403 /403.html', 'ErrorDocument 404 /404.html', 'ErrorDocument 410 /404.html', '');
   L.push('<IfModule mod_rewrite.c>', 'RewriteEngine On', 'RewriteBase /', '');
   L.push('# one address for search engines: https, no www (only on the real domain, so a test address keeps working)');
   L.push(`RewriteCond %{HTTP_HOST} ^www\\.${reEsc(HOST)}$ [NC]`, `RewriteRule ^ ${ORIGIN}%{REQUEST_URI} [R=301,L]`);
   L.push(`RewriteCond %{HTTP_HOST} ^${reEsc(HOST)}$ [NC]`, 'RewriteCond %{HTTPS} !=on', 'RewriteCond %{HTTP:X-Forwarded-Proto} !=https', `RewriteRule ^ ${ORIGIN}%{REQUEST_URI} [R=301,L]`, '');
+  L.push(...guard.apacheRules(bots, HOST));
   L.push('# closed to the web: the form handlers\' private folder, and hidden files (but not /.well-known/, which certificates need)');
   L.push('RewriteRule ^_private(/|$) - [F,L]', 'RewriteCond %{REQUEST_URI} !^/\\.well-known/', 'RewriteRule (^|/)\\. - [F,L]', '');
   L.push('# old addresses of the WordPress site (server/redirects.txt)');
@@ -95,7 +99,8 @@ function netlifyRedirects() {
   return L.join('\n') + '\n';
 }
 function netlifyHeaders() {
-  const L = ['# Collaborative Architecture · response headers (Netlify and Cloudflare Pages). Written by tools/build.js.', '', '/*'];
+  const L = ['# Collaborative Architecture · response headers (Netlify and Cloudflare Pages). Written by tools/build.js.',
+    '# Copy protection on these hosts: the check in every page (boot.js) and robots.txt; the server rule is a Cloudflare custom rule (HOST-GUIDE, 6.1).', '', '/*'];
   for (const [k, v] of Object.entries(HEADERS)) L.push(`  ${k}: ${v}`);
   L.push(`  Cache-Control: ${CACHE.page}`, '  Link: </llms.txt>; rel="describedby"; type="text/plain"', '');
   for (const p of ['/assets/*']) L.push(p, `  Cache-Control: ${CACHE.hashed}`);
@@ -104,15 +109,16 @@ function netlifyHeaders() {
   L.push('/*.md', '  Content-Type: text/markdown; charset=utf-8', '/api/*', '  X-Robots-Tag: noindex');
   return L.join('\n') + '\n';
 }
-function nginxConf() {
+function nginxConf(bots) {
   const L = [];
   L.push('# Collaborative Architecture · nginx (a VPS or a dedicated server). Written by tools/build.js; set "root", the certificate lines',
     '# and the PHP socket for your server. The folder in "root" is the contents of dist/.', '');
   L.push('map $http_accept $ca_md { default 0; "~*text/markdown" 1; }', '');
+  L.push(...guard.nginxMaps(bots));
   L.push('server {', '  listen 80; listen [::]:80;', `  server_name ${HOST} www.${HOST};`, '  location /.well-known/acme-challenge/ { root /var/www/collaborativearchitecture.com; }', `  location / { return 301 ${ORIGIN}$request_uri; }`, '}');
   L.push('server {', '  listen 443 ssl; listen [::]:443 ssl; http2 on;', `  server_name www.${HOST};`, '  # ssl_certificate /etc/letsencrypt/live/collaborativearchitecture.com/fullchain.pem;', '  # ssl_certificate_key /etc/letsencrypt/live/collaborativearchitecture.com/privkey.pem;', `  return 301 ${ORIGIN}$request_uri;`, '}');
   L.push('server {', '  listen 443 ssl; listen [::]:443 ssl; http2 on;', `  server_name ${HOST};`, '  # ssl_certificate /etc/letsencrypt/live/collaborativearchitecture.com/fullchain.pem;', '  # ssl_certificate_key /etc/letsencrypt/live/collaborativearchitecture.com/privkey.pem;');
-  L.push('  root /var/www/collaborativearchitecture.com;', '  index index.html;', '  charset utf-8;', '  error_page 404 410 /404.html;', '');
+  L.push('  root /var/www/collaborativearchitecture.com;', '  index index.html;', '  charset utf-8;', '  error_page 403 /403.html;', '  error_page 404 410 /404.html;', '  location = /403.html { internal; }', '');
   for (const [k, v] of Object.entries(HEADERS)) L.push(`  add_header ${k} "${v}" always;`);
   L.push('  gzip on; gzip_types text/css text/javascript application/javascript application/json application/xml text/plain text/markdown image/svg+xml application/manifest+json;', '');
   L.push('  types { text/html html; text/css css; text/javascript js; application/json json; application/xml xml; text/plain txt; text/markdown md; image/webp webp; image/png png; image/jpeg jpg jpeg; image/x-icon ico; video/mp4 mp4; font/woff2 woff2; application/manifest+json webmanifest; }', '');
@@ -120,9 +126,9 @@ function nginxConf() {
   for (const r of RULES) { const re = apacheFrom(r).replace(/^\^/, '^/'); L.push(r.gone ? `  location ~ ${re} { return 410; }` : `  rewrite ${re} ${r.to} permanent;`); }
   L.push('', '  location ^~ /_private/ { deny all; }', '  location ~ /\\.(?!well-known/) { deny all; }', '  location ~ ^/api/(lib|config|config\\.sample)\\.php$ { deny all; }');
   L.push('  location ~ ^/api/(contact|subscribe)\\.php$ {', '    include fastcgi_params; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;', '    fastcgi_pass unix:/run/php/php-fpm.sock;   # the PHP-FPM socket of this server', '  }');
-  L.push(`  location /assets/ { add_header Cache-Control "${CACHE.hashed}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
-  L.push(`  location ~* ^/(img|vid|fonts)/ { add_header Cache-Control "${CACHE.media}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
-  L.push('  location / {', `    add_header Cache-Control "${CACHE.page}";`, '    add_header Vary "Accept";', `    ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')}`,
+  L.push(`  location /assets/ { if ($ca_refuse) { return 403; } add_header Cache-Control "${CACHE.hashed}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
+  L.push(`  location ~* ^/(img|vid|fonts)/ { if ($ca_refuse) { return 403; } add_header Cache-Control "${CACHE.media}"; ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')} try_files $uri =404; }`);
+  L.push('  location / {', '    if ($ca_refuse) { return 403; }', `    add_header Cache-Control "${CACHE.page}";`, '    add_header Vary "Accept";', '    add_header Set-Cookie $ca_agent_cookie;   # signed AI agents (Web Bot Auth) pass the page check', `    ${Object.entries(HEADERS).map(([k, v]) => `add_header ${k} "${v}" always;`).join(' ')}`,
     '    if ($ca_md) { rewrite ^(.*/)$ $1index.md last; }', '    try_files $uri $uri/index.html =404;', '  }', '}');
   return L.join('\n') + '\n';
 }
@@ -172,6 +178,11 @@ const LEADS = (frag.match(/C\.leads = \[([^\]]*)\]/) || [, ''])[1].split(',').fi
 const BOOT = minify(`(function(){try{var d=document.documentElement;if(sessionStorage.getItem('ca-pl')!=='1'){d.classList.add('pl-boot');window.CA_PL_T=performance.now();}}catch(e){}
 try{var n=+localStorage.getItem('ca-w01')||0;if(${LEADS}>1&&n%${LEADS}!==0)document.documentElement.classList.add('w01-wait');}catch(e){}})();`, 'js');
 const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
+/* copy protection (13 November 2026, tools/guard.js): the page check is the first thing in every page's head, inline, so it runs before
+   the browser asks for anything else (as a file, a program-driven browser's look-ahead had already fetched pictures while it loaded).
+   The security policy allows exactly this script by its SHA-256 hash, and still no other inline script. Made once the page's own data
+   (the studio's addresses, the AI crawlers it welcomes) has been read, below. */
+let GUARD_TAG = '';
 const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
 const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false;
 function go(){if(done)return;done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
@@ -183,6 +194,9 @@ const externalize = html => {
   let first = -1;
   for (const x of SCRIPTS) { const i = html.indexOf(x.tag); if (i < 0) throw new Error('script tag not found: ' + x.file); if (first < 0) first = i; html = html.slice(0, i) + html.slice(i + x.tag.length); }
   html = html.slice(0, first) + `<script src="/${loadFile}"></script>` + html.slice(first);
+  const vp = html.indexOf('<meta name="viewport"'), vpEnd = vp < 0 ? -1 : html.indexOf('>', vp) + 1;
+  if (vp < 0 || !GUARD_TAG) throw new Error('copy protection: the page check could not be placed');
+  html = html.slice(0, vpEnd) + GUARD_TAG + html.slice(vpEnd);
   const c = html.indexOf('<script src="/site-config.js"></script>'); if (c < 0) throw new Error('site-config.js tag not found');
   return html.slice(0, c) + `<script src="/${bootFile}"></script>` + html.slice(c);
 };
@@ -215,8 +229,17 @@ const server = http.createServer((req, res) => {
   const plan = await pg.evaluate(() => {
     const S = CA_SEO, files = S.feeds(), md = S.pagesMd();
     const ids = [...(files['sitemap.xml'].match(/<loc>[^<]+<\/loc>/g) || [])].map(l => new URL(l.slice(5, -6)).pathname);
-    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md }; // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages
+    return { paths: [...new Set([...ids, '/work/list/', '/work/map/', '/privacy/', '/links/'])].filter(p => !/\.[a-z0-9]{2,5}$/i.test(p)), files, md, // 26 October 2026: the sitemap also lists the press PDFs; they are files, not pages
+      cfg: { name: S.CFG.name, email: S.CFG.email, offices: S.CFG.offices }, bots: (S.AI_BOTS || []).flatMap(x => x[1]) }; // copy protection, 13 November 2026
   });
+  // copy protection (13 November 2026, tools/guard.js): the page check goes first in every page; robots.txt asks the copying tools to stay
+  // out; the 403 page shows the studio's name and addresses; the build fails if a good reader would be refused or a copier let through
+  const GUARD = minify(guard.pageGuard(plan.cfg, plan.bots), 'js').trim();
+  GUARD_TAG = `<script>${GUARD}</script>`;
+  HEADERS['Content-Security-Policy'] = HEADERS['Content-Security-Policy'].replace("script-src 'self'", `script-src 'self' 'sha256-${crypto.createHash('sha256').update(GUARD).digest('base64')}'`);
+  if (!STAGING && plan.files['robots.txt']) plan.files['robots.txt'] += guard.robotsAddendum();
+  write('403.html', guard.page403(plan.cfg));
+  fail.push(...guard.selfTest(plan.bots));
   for (const x of SHARED) write(x.file, x.body);
   write(bootFile, BOOT); write(loadFile, LOADER);
   for (const [f, t] of Object.entries(plan.files)) write(f, t);
@@ -245,8 +268,9 @@ const server = http.createServer((req, res) => {
   };
   const keep = (p, r) => {
     const html = externalize(r.html);
-    const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/(ld\+)?json")[^>]*>/g)].length;
+    const inline = [...html.split(GUARD_TAG).join('').matchAll(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/(ld\+)?json")[^>]*>/g)].length;
     if (inline) fail.push(`${p}: ${inline} inline script(s) left`);
+    if (!html.startsWith(GUARD_TAG, html.indexOf('>', html.indexOf('<meta name="viewport"')) + 1)) fail.push(`${p}: the copy protection check is not first in the head`);
     if (r.banned) fail.push(`${p}: draft wording on the page: “…${r.banned}…”`);
     for (const m of html.matchAll(/\/(img|vid|fonts)\/[A-Za-z0-9_./%-]+\.(webp|jpe?g|png|mp4|webm|woff2|gif)/g)) media.add(decodeURIComponent(m[0]));
     r.links.forEach(l => links.add(l.split('#')[0].split('?')[0]));
@@ -265,10 +289,10 @@ const server = http.createServer((req, res) => {
 
   copyDir(PUB, OUT);
   write('site-config.js', siteConfig);
-  write('.htaccess', htaccess());
+  write('.htaccess', htaccess(plan.bots));
   write('_redirects', netlifyRedirects());
   write('_headers', netlifyHeaders());
-  fs.writeFileSync(path.join(ROOT, 'server', 'nginx.conf'), nginxConf());
+  fs.writeFileSync(path.join(ROOT, 'server', 'nginx.conf'), nginxConf(plan.bots));
 
   // every internal link reaches a page or a file; every picture, film and font named in a page exists
   for (const l of links) { if (!l || l === '/') continue; const f = path.join(OUT, l); if (!(fs.existsSync(path.join(f, 'index.html')) || (fs.existsSync(f) && fs.statSync(f).isFile()))) fail.push('link to a missing page: ' + l); }
