@@ -1,3 +1,5 @@
+/* 15 November 2026 (Mujib, IBM Plex Mono review, item A): the three IBM Plex Mono Latin files also carry the arrows U+2190 and
+   U+2192-2199 from IBM Plex Mono 2.005 (IBM, SIL Open Font License); every other letter in them is unchanged. */
 /* archivo-latin-ext-wdth-normal */
 @font-face {
   font-family: 'Archivo';
@@ -74,7 +76,7 @@
   font-display: swap;
   font-weight: 400;
   src: url(/fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2'), url(/fonts/ibm-plex-mono-latin-400-normal.woff) format('woff');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 /* ibm-plex-mono-latin-ext-500-normal */
 @font-face {
@@ -92,7 +94,7 @@
   font-display: swap;
   font-weight: 500;
   src: url(/fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2'), url(/fonts/ibm-plex-mono-latin-500-normal.woff) format('woff');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 /* ibm-plex-mono-latin-ext-700-normal */
 @font-face {
@@ -110,5 +112,5 @@
   font-display: swap;
   font-weight: 700;
   src: url(/fonts/ibm-plex-mono-latin-700-normal.woff2) format('woff2'), url(/fonts/ibm-plex-mono-latin-700-normal.woff) format('woff');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+FEFF,U+FFFD;
 }
