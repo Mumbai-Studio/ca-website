@@ -8,9 +8,28 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 - `public/fonts/ca-fonts.css` and its 14 font files, which the source now loads (the older `fonts.css` and its files are left in place, unused);
 - 102 pictures and films checked byte for byte against the review copy.
 
+## Added from the studio PC (15 November 2026, second commit)
+
+- 50 drawings from `Downloads\dwg std\Cleaned` (the "web copy" files). With the C2PA content-credentials block that the PC copies carry taken out, each is byte for byte the review copy's file.
+- 9 films from the review copy (each under 4 MB), byte for byte.
+- 12 films from `Downloads\CA Website Masters\Live films (full quality)`. These are the studio's full-quality 1080p encodes of the same cuts (running times match the review copy's films and this repository's older copies), not the review copy's lighter encodes:
+
+  - `vid/alpha-film.mp4`
+  - `vid/alpha-walkthrough.mp4`
+  - `vid/bgrt-hero-1080.mp4`
+  - `vid/cascadia-walkthrough.mp4`
+  - `vid/cross50-film.mp4`
+  - `vid/cross50-teaser-1080.mp4`
+  - `vid/mezban-film-orig-1080.mp4`
+  - `vid/parallel-film.mp4`
+  - `vid/rasa-prototype-1080.mp4`
+  - `vid/sandyhook-film.mp4`
+  - `vid/sandyhook-home.mp4`
+  - `vid/unity-film-v2.mp4`
+
 ## Still to add before this can be built
 
-300 files of the review copy (144.3 MB) could not be taken out of the review copy in this session. Where the repository already has a file of the same name it is an older version; where it has none, the build's "a picture or film is missing" check will fail until it is added. Each line gives the path, the size and the SHA-256 of the review copy's version.
+229 pictures of the review copy (36.0 MB) are not on the studio PC as web copies and could not be taken out of the review copy in this session. Where the repository already has a file of the same name it is an older version; where it has none, the build's "a picture or film is missing" check will fail until it is added. Each line gives the path, the size and the SHA-256 of the review copy's version.
 
 | Path | In repo now | Size | SHA-256 (review copy) |
 |---|---|---|---|
@@ -21,12 +40,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/barn/p06.webp` | older copy | 373,838 | `1fdfd6983a58a4e434415647451c23411dc281f6368dc8a3dd2db469b62df965` |
 | `img/barn/p09.webp` | no | 609,926 | `3dc4c59c889710fe933c7cfb8d0fa33c45981a38b653f6501036f951a16c20fe` |
 | `img/barn/s01.webp` | no | 37,072 | `22590d06c702cdd7423d7fc6bb7f0a08b5d7c0c838234845f901299d9c00d1b9` |
-| `img/bay/d01.webp` | older copy | 68,854 | `773b3ed8899a7c7a3764ce26dd5d75be0ca6c836a2ac86487a590c70078dfa0c` |
-| `img/bay/d02.webp` | older copy | 52,116 | `d709aaf67d987e49b37c39b3f278accae75f2a67e96acccb5f656b1cbac325b2` |
-| `img/bgrt/d01.webp` | no | 124,774 | `98494c20640eebfb52aef77d2f22c5e8f115eb0ecef5c1a543479a0d90958027` |
-| `img/bgrt/d02.webp` | no | 115,198 | `7cc605aabea743d413dd747946c4902478ef5d4968235c7ae598db1b08da87c6` |
-| `img/bgrt/d03.webp` | no | 134,558 | `df95413849a2b098d0ee87c38f5d0184049827254b35fc98e37c20ec17aaef74` |
-| `img/bgrt/d04.webp` | no | 82,258 | `c9744deaabb2788f8f35792a19ba0fd681f6ecfb3f91b91027a3d98ec61c7ff1` |
 | `img/bgrt/f01.webp` | no | 282,060 | `f750214883343cfcfea9be3c33ff2b1a69fa4788f124527871b96ce21548391f` |
 | `img/bgrt/p01.webp` | older copy | 192,322 | `52676d328ae6abcc3ce7ae8d2132f0b7a8bdeb30463224afff54b06297e029c8` |
 | `img/bgrt/p02.webp` | older copy | 140,122 | `a24ceacdaf7c3a63643673121d0af43a7738385e9638f8447943a755e68843c1` |
@@ -45,18 +58,9 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/bgrt/sketches.webp` | older copy | 108,772 | `82bb235002e4a089274e627045614763fc20213879751a80fd597118c88d45cc` |
 | `img/bgrtm/s01.webp` | no | 46,966 | `b93821b1b43d52b27f97315124023ca0e3ea9d7ac802972921e8ab11e5640135` |
 | `img/brick/p01.webp` | no | 255,006 | `cd36b527cff7390c7f3a8dee5b326988585e7e29fedce84e582c23a0a8bf8f37` |
-| `img/cantilevers/d01.webp` | older copy | 80,610 | `9c3e5597071fa2740afa89cedc4b5aaf3f9c1cf35a7b8fab40d5f5a9d8ed63a0` |
-| `img/cantilevers/d02.webp` | older copy | 235,832 | `752ba930883ce1d88dc336015bae52e62c7ecb0e4844c0e0401d03c34a9ce545` |
-| `img/cantilevers/d03.webp` | older copy | 223,844 | `7a96ca18a47b48bfa603dbd50d0b385f8851eb6a34726448be1d72fdcc32e6ca` |
-| `img/cantilevers/d04.webp` | older copy | 142,052 | `4262b1faef2c7b03baae05bf06108b584b36e4397c554aef9a73134364ad4996` |
 | `img/cantilevers/p01.webp` | older copy | 195,486 | `295c400ea1107e56fe4d4ebf40dc06c6f25e99378fa6c6686aa5f7a1bd90fc1a` |
 | `img/cantilevers/p02.webp` | older copy | 169,300 | `a7ab5f159de4a8da7989d0ce06cc4a3aa5343826d050e341f1e8fd6dd93ffc69` |
 | `img/cantilevers/p06.webp` | older copy | 319,068 | `7a4434123709739c0b37a3147f42a4cffb65564a6fe3ee05d435158c67ff1bd0` |
-| `img/cascadia/d01.webp` | no | 251,342 | `2e8a93685b33523fa238bf6555ceab178294fcb9417f80ba24f0e415c5aabd7f` |
-| `img/cascadia/d02.webp` | no | 75,324 | `ca5049c64f31226f220d862fe3200f3c3ae3eb99134db8a5233ba821a1eaf297` |
-| `img/cascadia/d03.webp` | no | 80,582 | `959397583c4c88eb876627013d25be02b1508cee76dbf101f138cf6830fbad5e` |
-| `img/cascadia/d04.webp` | no | 81,712 | `816bee598cd8d784f11d7886e50c64cbe1e438ba311bc868f2a44ec90d8ec57a` |
-| `img/cascadia/d05.webp` | no | 78,200 | `91dea58792f579a543638661e98ba1f33773cd1790e9de6db168aed5ab7ac459` |
 | `img/cascadia/s01.webp` | no | 38,616 | `db24766a82028091425182551e50d073270810e775dbe6f0cebc9ccd92d87e81` |
 | `img/cascadia/s02.webp` | no | 196,550 | `7c5184498701c01aa2231bf492109fc3b31df9d4cead610bcf68db739ead7e5d` |
 | `img/cascadia/s03.webp` | no | 31,352 | `5b7ae15f8854a2f605af64d7153d949a862c44fd9add5727c2289fd55dd42c83` |
@@ -64,24 +68,10 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/cov/cv-designingpeace.webp` | no | 92,880 | `31a78b15c1bfa407b938637746e401d1e4677047c2a263dbca1b50bb6d7fbd02` |
 | `img/cov/cv-ifj2026.webp` | no | 18,878 | `90eb4c9284d9efe66fc85d989eb140628884e7b8cf8b5d1a9b70cdac06162a50` |
 | `img/cov/fairememoire.webp` | no | 11,780 | `7b4964c3c122361600756a2a241650bca83c79e993f65b8e7ccdc85d48bce6dd` |
-| `img/cross50/d01.webp` | no | 44,952 | `b68e96b04ed3fed9de696d9eca98d93d28d2d4278982f4934b19e15da165da8e` |
-| `img/diyar/d01.webp` | older copy | 115,200 | `89392de3013db96e3d01ea67c2b1692963b2c46dcef7b2e55e408aab37c10125` |
-| `img/diyar/d02.webp` | older copy | 102,318 | `a3936f3174a31d4a3ee6b96727a1e0e319e74185ebd2707f6cd2848bd53135c9` |
-| `img/diyar/d03.webp` | older copy | 164,556 | `cdad376212d938bd2d62eb730a83a315b16d9e2129e6584db4de74b69d4bbd1b` |
-| `img/diyar/d04.webp` | older copy | 142,812 | `ac2bdda87e95d7764652cd49713f169645bb5cc4325dd9355bda8c9ef7a4964c` |
-| `img/diyar/d05.webp` | older copy | 127,310 | `1b2cd2adcb6cf5bff9f63d32518a81a849815e7c82ba2edeab5ac78d50f348b9` |
-| `img/diyar/d07.webp` | older copy | 94,778 | `0881c4cbb516afbde40f784f1a80ef0e8c98998c5c5e33e71c764df4a76e4387` |
 | `img/diyar/p02.webp` | older copy | 161,636 | `4c874a092ff3bc4ccff85aa720e2efb5c5ae324ce136f86104702c4aa7f826fd` |
 | `img/diyar/p03.webp` | older copy | 145,360 | `2090362fdc4be89070c154778230e1747d5abf8f3b10f8cd320bde9e1c9fe8bc` |
 | `img/diyar/p04.webp` | older copy | 236,820 | `06ebed88367247b5088908c3f880a231cb81bb730f6f3df181a908230a1d57fd` |
 | `img/diyar/sketches.webp` | older copy | 82,776 | `6028c8c4357998a0e2fa9f652b0306306e293e47f71e2e8e25036168128c0d85` |
-| `img/jdt/d01.webp` | no | 186,704 | `1bbdc8e0c3720580ac6ad27388b17629fa73f6fcf40ff00d3d18c37eea8769c5` |
-| `img/jdt/d02.webp` | no | 196,276 | `3d8187631c324acbd561c9d775be35d78e69ce419f335bf636a74524ae627e10` |
-| `img/jdt/d03.webp` | no | 102,636 | `133605f1451fc20f651b143dd94e1ab8c249e90d89732527f3f330ff8816110f` |
-| `img/jdt/d04.webp` | no | 96,030 | `18898e70da38523d1317783f7291fe902e8c108583ee4534c7bd3b83e8c83ff6` |
-| `img/jdt/d05.webp` | no | 129,146 | `d41a86de6b66f1e07d374e06c0e0485e6c90afbad59b1efe237ce39fb3916ee1` |
-| `img/jdt/d06.webp` | no | 63,800 | `bd72e1c78c3f09cd4b29f64225ab84984beb8d7d402bda9d102fab37d42efda2` |
-| `img/jdt/d07.webp` | no | 53,622 | `3ca73bebccb930499ce8a06dfddec4072c85b73e0a2b4353c1aff03e34fdde02` |
 | `img/jdt/p01.webp` | older copy | 168,246 | `d36a4cec0068075c55ba538ebe8a990efb3605e0028df99f761a25d3e9aa10fc` |
 | `img/jdt/p02.webp` | older copy | 264,542 | `5cabda192ad29514c75b37df07d064d84e30e09a98a58c803c7489854b0137de` |
 | `img/jdt/p03.webp` | older copy | 133,114 | `00cee49c5542dfb61abaaf789dcd27f813dd1da0ebbaea99579517fae4c351f6` |
@@ -102,9 +92,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/mezban/p09.webp` | older copy | 76,068 | `88e7bcd2df7c4ef7cc10a23af49d10ae37303b12d587bd61a80d930be1ab93c4` |
 | `img/mezban/p10.webp` | older copy | 92,426 | `d680a5fc937f6f6033fbc2c54e9f6e23403316879c4622ccee926db8fb5232a8` |
 | `img/mezban/p12.webp` | older copy | 104,772 | `eb1b4e8234c3035be1af638538ff913c34b29fde43440dd966e8729c38369464` |
-| `img/millerknoll/d01.webp` | older copy | 126,222 | `e9294b49a934a9ee7776ceeacdf45f726d0fc901d336b7b315bd2f656fb2f276` |
-| `img/millerknoll/d02.webp` | older copy | 95,614 | `bdbcb17f3acbf4d9bb7639eb6ea1d38b9b8a22ee16c737abb8307edd2c143999` |
-| `img/millerknoll/d03.webp` | older copy | 90,254 | `51d85b95f3a3f3e4b0762cf3faab028aeb6e983ff001220901a0c8edc3339964` |
 | `img/millerknoll/p10.webp` | no | 545,056 | `c32b7468db01d168c8ca55a3a3ea4cd2afd176c08df5e3d151bba84c5d5750d5` |
 | `img/mosque/d01.webp` | older copy | 211,926 | `5327883e8c897e4cc7c862e3e5452f2e2224c097fc5e5cd6dc96e863cd636b8e` |
 | `img/mosque/d02.webp` | no | 106,670 | `38508ababe391a1c60e01b8b503c11cab40c7dfec9f445e9d72c38dc35a98e64` |
@@ -138,11 +125,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/non/p02.webp` | older copy | 226,606 | `88990bfc182f53585327324d1d22b48bc96a573bf9e362224d14998528e9bc26` |
 | `img/non/p03.webp` | older copy | 121,092 | `3e2edc4d8a6e195788d797454bb1d9a6d4cd6a368d24700ce1baa21779ebffa6` |
 | `img/non/s01.webp` | no | 114,022 | `10ad5bf7e4ee6feed1d01bec27fd905fb71dd9a378fee5855ddabcc945fcbcfb` |
-| `img/parallel/d01.webp` | no | 103,274 | `46df2a8482f07f6a2cd214578092227461e0d8132f5a108c0f0cdad4ff6afa7b` |
-| `img/parallel/d02.webp` | no | 174,522 | `cd5c186e54fe658e11b59157942734ebda5d4efc2a64b455814018c69d16ad1e` |
-| `img/parallel/d03.webp` | no | 102,990 | `dd0df452c00fbfe64dff6f4d972269624f40c5748b196d9e4f1b5a429f0624eb` |
-| `img/parallel/d04.webp` | no | 122,132 | `3722a7e8245c6b9a15291d2d2a6922958584db43de2fad1237d6db185f3e5f40` |
-| `img/parallel/d05.webp` | no | 95,444 | `acc3e5043fd026a8eb3b48724e7173d8a0e247056384a54755d97198be430bcc` |
 | `img/parallel/p03.webp` | no | 131,678 | `c6579bced0c4507c8c4ebecaba21414b4519972c866bf1ce37dee9f2e815993f` |
 | `img/parallel/s01.webp` | no | 195,722 | `e659b3608580cfc8010b0b213c0e0df87c5eee059ef743dd946cc7f20d709b9c` |
 | `img/peace/p04.webp` | older copy | 511,442 | `faf6a33d571d18b3b15383ddc5580aaa1b5c7603f0e6c616c1639f651ecafa86` |
@@ -158,10 +140,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/rasa/p12.webp` | no | 237,154 | `b0d78b8b80415c5a96af8ad7adb26630b7f4f9949ddaed063c708a54326c2e59` |
 | `img/rasa/p13.webp` | no | 186,242 | `e38803450f01bea3d7d30195aa06b7de9cc48173b116133620b2146eca921670` |
 | `img/rasa/p14.webp` | no | 189,786 | `dc8f15fe5b77cb0e355ad4d70dc5ebb38f5c989919722d47d87ff7acc6249384` |
-| `img/sandyhook/d01.webp` | no | 213,202 | `a4b241549b3896d8e748b229562c93d4797059bf857ea9536931e07eb319188f` |
-| `img/sandyhook/d02.webp` | no | 122,038 | `2c2a130c8fee276e33c04334cf7d86555b3dee139160cd8a017b7ae36ae063bf` |
-| `img/sandyhook/d03.webp` | no | 91,972 | `c9f1f6b5fbbf2bb506473f8b1ef2e9df2e7ee40d1839a6a80cb2b8422b7cd080` |
-| `img/sandyhook/d04.webp` | no | 53,202 | `47b5e421bd878ab1ec3b3e89783573acdaffd1583c9e61ff30c9aec6c4323d42` |
 | `img/sandyhook/f01.webp` | no | 329,944 | `a8aa4eb6f82f3743076359cafa55122f917b72781133dbb47193b2ae8c1fee55` |
 | `img/sandyhook/p02.webp` | older copy | 250,660 | `734099b70f80006eedc4206b531964887f6f8d2aa396801a1f45447eeee68143` |
 | `img/sandyhook/p03.webp` | older copy | 228,908 | `7f9099f8efe28c77d7115ca1751946278e4f30031817c3bb42e4d50cb6607dc7` |
@@ -226,10 +204,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/unity/p12.webp` | no | 147,514 | `708bb7b63a83dea60e4aa2ef279d6cf63704d59b945c65e9ed7c689f119587c6` |
 | `img/unity/p13.webp` | no | 172,072 | `1f7d2d4ebe05d4b5f17d616fb368d80140a4e67ec6b92e9fae4ae51efe511199` |
 | `img/unity/syms.webp` | older copy | 164,658 | `08a3a951a7de8fa43d5e3f995e2d46f6630765bf9d44a0c8531f5c599a6add86` |
-| `img/urnes/d01.webp` | no | 109,640 | `25dc184cf6b193f157c16b122584c0a6c74c6cf3d8a7b8ef3358e6909b43a8f6` |
-| `img/urnes/d02.webp` | no | 83,424 | `4195e14f223bc931d5494a09a8d50335f86a4fffa47345822da3dcd3ef1a6efd` |
-| `img/urnes/d03.webp` | no | 49,190 | `e12d9a89d4fcd7149c812dfc11f24cc6c3722c1522f8d1687d0e6e66d0620fa2` |
-| `img/urnes/d04.webp` | no | 51,666 | `b2f2d28cb21733e79d304841d497bad32565ef2fba69cd403de8eb219447b9a7` |
 | `img/urnes/p01.webp` | older copy | 388,476 | `58d24c3b989bf64ca752787292ae64725526ba89b25efa35f9064900b0af5cbb` |
 | `img/urnes/p02.webp` | older copy | 433,874 | `4eab2f82edb3bd7e6cac3fb9d3fb4e0eeec0ecdcc618db314079dcd0ca9fde2f` |
 | `img/urnes/p03.webp` | older copy | 397,798 | `3ed933416f98b040a97c13478649bddd79142a8bc7e125d6b87955aad18a4e03` |
@@ -242,10 +216,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/vessel/p02.webp` | older copy | 272,786 | `771256f205d9add9663514f253b77cf79ccbd33852b5978f5a3797a6e8e82350` |
 | `img/vessel/p03.webp` | older copy | 403,632 | `82b9ad91e5c8a17d44200814d1c1de47dd2684de69a470750214b947c83f3b30` |
 | `img/vessel/s01.webp` | no | 41,600 | `18c3505c62c77b43db06939a9fb915a04dfb7b948fe3aeadb49afcc2dbe52d58` |
-| `img/wafira/d01.webp` | no | 115,150 | `421ad3e3db95515cf6d258514262ffb9502221d2f250a0ca1b979d30372fc051` |
-| `img/wafira/d02.webp` | no | 166,980 | `64b71b89a3c4243f03e97e26c120cb30f1382cb363d2044dcd355ac74bb3c679` |
-| `img/wafira/d03.webp` | no | 111,278 | `bdc06bd4fcb7f664dcf701462d7aa065ad734870c0115459a1f6c25b29d52a31` |
-| `img/wafira/d04.webp` | no | 202,936 | `4e1151ae825932a1fdb78cb28b32c97d48f3783eae0b055580ef752475d9f8fd` |
 | `img/wafira/s01.webp` | no | 100,186 | `6562375e6d9254429f2b25a6223611293a04666cd14aa302826e5cfb17d05412` |
 | `img/wedge/p01.webp` | older copy | 140,264 | `57bf04f94f7ff56259a0f0c3cd45218fdba5f0098a8a1db3327a97b5fa813036` |
 | `img/wedge/p05.webp` | older copy | 152,884 | `cdba235801e094ea59cb4498deb9e2e10567c0ca5411e1c0d7aae222826219a7` |
@@ -258,7 +228,6 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/wedge/p14.webp` | older copy | 27,322 | `bb5f371887c10c9ede06b9bb767799bbcd7d2fa601e1885e58f8befff6ddf1c3` |
 | `img/wedge/p15.webp` | older copy | 45,974 | `4bfce3256deb927398ede4e6ffda6525ba2507df54142d7244c44dba4024a2e0` |
 | `img/wedge/p18.webp` | older copy | 241,566 | `5bf8b0f6d926eb195a9d57fa8ec674920eb71c6183cf1c749f9e4728cffce765` |
-| `img/wrap3/d01.webp` | no | 148,974 | `a19e252e0602fdf5b5a22b826e39ff114a6ea7ff5ba36a212ced32eff8bbebf5` |
 | `img/wrap3/p02.webp` | older copy | 104,984 | `44ac6234876479cb387d9843dbf41e87a5c68124b6f42149d8057c37438c6a2e` |
 | `img/wrap3/p03.webp` | older copy | 223,334 | `e9655770f0070441eaa63bcf682438b584251348e22df3b9b84b1ee3e360b3eb` |
 | `img/wrap3/p04.webp` | older copy | 126,040 | `be77adc042867ea1d2615275409f7ffd0ad40b00a71c6dd0f9c624cfe20867cc` |
@@ -286,31 +255,10 @@ This branch brings `src/ca-website.html` up to the review copy (claude.ai artifa
 | `img/wrap4/p15.webp` | older copy | 54,636 | `f9d7eeff7a08be9e52a7daf50bd5167f857b964b2542f7e8dd8c29f5a5567991` |
 | `img/wrap4/p16.webp` | older copy | 41,530 | `81d6dfa39662343ef6231964a4849b62eef3590550463a4d581c9b1d0569f13d` |
 | `img/wrap4/p17.webp` | no | 71,126 | `1fe5cfac347614c45431ac3aa1230fe2de9389e6df5dc630e531e39ff9a83227` |
-| `vid/alpha-film.mp4` | older copy | 10,800,498 | `f50890e3c713f24c6a999dd64e9a4dba4c0785214bdb86e24bf96c65df1a2c72` |
-| `vid/alpha-hero-720.mp4` | no | 1,522,956 | `612a2f624ebcadba00b3b5a16bce501f45098ca80e8518a4f84bb67f91169abb` |
-| `vid/alpha-walkthrough.mp4` | no | 5,211,185 | `5257837e58d9ad1dfaa95ccb21e9942979c62e96b932474270e87924184cc939` |
-| `vid/barn-transformation.mp4` | no | 1,969,766 | `1403b8190c88450e38797958ec33454d62bc8b0841b86ab95dfc6abeaf2ec16f` |
 | `vid/barn-transformation.webp` | no | 57,504 | `67f075cc791372117aa6aabfb26e1f4af707703b3c60e210b834491c2985a301` |
-| `vid/bgrt-hero-1080.mp4` | no | 6,817,109 | `2db4cd268892cbe8cf0a9950b534bc0f56475bb3fee4d64f66fb017cacc1ef55` |
-| `vid/bgrt-hero-720.mp4` | no | 2,116,357 | `015510e14fc26d1a3530af0c1eea1b606b6f81167908c80415ff292d02b9cb05` |
-| `vid/cascadia-walkthrough.mp4` | older copy | 9,130,067 | `15c1025f827d3d1cc4379909887cde6ae8226924beab38e6238459882ef23e46` |
-| `vid/cross50-film.mp4` | older copy | 14,588,751 | `7324c6efcfa9014a9b90ff12d661b65901d84c073a59a40cbc4b3debaa2b9666` |
 | `vid/cross50-film.webp` | older copy | 68,056 | `db95768df15fd5966210c04c0e92823bd38bdd2e18df66ac4b83c2a4971a21ec` |
-| `vid/cross50-teaser-1080.mp4` | older copy | 6,543,740 | `c95284d6616046810f27fc077d375dd831cb1148c0adf8789e05d93496017816` |
 | `vid/cross50-teaser.webp` | no | 96,626 | `6bc13c90bee4f488df2a907c2ca9458b195edcb278e91b15389a2ad313342abc` |
-| `vid/diyar-gateway-720.mp4` | older copy | 2,234,842 | `79d543e71e4553d8ddb1bcc7935260914872acbd146aeae5416f747dd80562f3` |
 | `vid/diyar-gateway.webp` | no | 113,338 | `1c4a4d694aa0a276f30439717fd2bdccec4f9ca2efe1805b340f5d85740a05c0` |
-| `vid/mezban-film-orig-1080.mp4` | no | 6,211,476 | `c4aaefe7c05a84fd2f2a238312fe674e43c8edaaaa37a5b8ab18bc287d5d6186` |
-| `vid/parallel-film.mp4` | no | 6,936,793 | `8fd0c4139508feefd86173e96b0f3a95e598fe7fea360edc063e924ac99055df` |
 | `vid/parallel-film.webp` | no | 139,124 | `339b72d73de7564c8c800df4dd2f493ae166381f55c1d9775d0dd78f7eb2f2ce` |
-| `vid/parallel-hero-1080.mp4` | no | 374,693 | `06e3b3251ba2c8eb04d94dea9a0c474f65054c48e695c276aad9eb92d396fe96` |
-| `vid/parallel-hero-720.mp4` | no | 206,192 | `02c524b4d163c8fe2a918f463370a0cdc7621b7b4bc46504fe1c82bbeaaa7c29` |
-| `vid/rasa-prototype-1080.mp4` | no | 5,516,494 | `1670a676d9147a6828a16807e9ead37a95012c4bd4932ee6580c0f49df839933` |
-| `vid/rasa-prototype-720.mp4` | no | 2,306,809 | `98e2617eb52680ba2792acf39346ee6f14ecce71da75c5894caaf1616a373ccf` |
-| `vid/sandyhook-film.mp4` | no | 6,094,195 | `c0f2bcd5797751508d8f955d561ca7d8d9bffca23d2130cc2e8c473d66bc65db` |
-| `vid/sandyhook-home.mp4` | no | 5,090,859 | `fa240e361612bd801d046d8471b884f3a81ce962e07ba721600e60fd357b251f` |
-| `vid/unity-film-v2.mp4` | no | 11,956,238 | `f982c3768c17bd6c29d8753c3d772c9095f53f857fdac1d4d4e34d9338d6308e` |
 | `vid/unity-film-v2.webp` | no | 13,666 | `39334594be105c0560b11c8c9357b2c15de4af90ec3f328e11a35e7499532c91` |
 | `vid/vessel-film.webp` | older copy | 155,552 | `344d12c6f4a4a592dd521cd882e4a563c59102449be798715ccbeab2afb98cd3` |
-| `vid/vessel-teaser-1080.mp4` | older copy | 1,413,695 | `31aff11f80d7cca6dea054e407406d6aa5d468de63525311b91e0c437a427d71` |
-| `vid/vessel-teaser-720.mp4` | older copy | 618,308 | `6c9f75dae008542268603ab12762db5e5a729596f824b8fc542c2718f36eaa9b` |
