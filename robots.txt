@@ -1,0 +1,81 @@
+# Collaborative Architecture
+# Search engines and AI assistants are welcome to read, quote, link to and learn from this site,
+# for search and for training (the studio's decision, October 21, 2026). Only the admin is closed.
+
+# Content signals (contentsignals.org): search=yes (search results and snippets), ai-input=yes (answers in AI search and assistants),
+# ai-train=yes (training AI models)
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+Disallow: /admin/
+
+# OpenAI: ChatGPT search, visits ChatGPT makes for its users, and model training
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+
+# Anthropic: Claude search, visits Claude makes for its users, and model training
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+
+# Google: Search, AI Overviews and AI Mode (Googlebot); Gemini training and grounding (Google-Extended)
+User-agent: Googlebot
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+
+# Microsoft: Bing and Copilot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+# xAI: Grok (the names xAI has published; Grok also reads the web through other services)
+User-agent: GrokBot
+User-agent: xAI-Grok
+User-agent: Grok-DeepSearch
+Allow: /
+Disallow: /admin/
+
+# Others: Perplexity, Apple Intelligence, Meta AI, DuckDuckGo, and Common Crawl, the open archive many models learn from
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: DuckAssistBot
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+
+# ByteDance: Doubao and TikTok search, across China and South East Asia
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+
+# Regional search engines (24 October 2026): Baidu, Sogou and 360 Search in China; Petal Search on Huawei phones across Asia, the Gulf and Africa; Coc Coc in Vietnam
+User-agent: Baiduspider
+User-agent: Sogou web spider
+User-agent: 360Spider
+User-agent: PetalBot
+User-agent: coccocbot-web
+Allow: /
+Disallow: /admin/
+
+# Libraries and archives: the Internet Archive, whose Wayback Machine copies are what academic citations link to
+User-agent: archive.org_bot
+User-agent: ia_archiver
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://collaborativearchitecture.com/sitemap.xml
+
+# Books and magazine features on the studio's work: their pages are open to read and index, as PDF files under https://collaborativearchitecture.com/press/books/
+# and https://collaborativearchitecture.com/press/features/, each one listed in the sitemap and in llms.txt
+
+# For AI assistants: a summary at https://collaborativearchitecture.com/llms.txt, the full text at https://collaborativearchitecture.com/llms-full.txt,
+# and a Markdown copy of each page at its address followed by index.md
