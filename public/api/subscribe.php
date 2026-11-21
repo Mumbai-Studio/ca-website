@@ -5,7 +5,9 @@
    (newsletter_to in config.php) and kept in the private folder, to be added to the list by hand.
    21 November 2026: the key and the audience ID can also be kept in api/mailchimp.php, a file of their own, so they can be put on
    the server without touching config.php (which holds the mail password); a value filled in there wins. A sign-up is also tagged
-   "Website" in Mailchimp (the tag is set in mailchimp.php or config.php; empty = no tag). */
+   "Website" in Mailchimp (the tag is set in mailchimp.php or config.php; empty = no tag).
+   21 November 2026: the studio hears of every sign-up at notify_to (newsletter@, an alias delivered to press@), set in mailchimp.php;
+   notify_every = false sends that email only when Mailchimp could not take the sign-up. */
 
 declare(strict_types=1);
 require __DIR__ . '/lib.php';
@@ -24,11 +26,12 @@ $mc = $cfg['mailchimp'];
 $mcFile = __DIR__ . '/mailchimp.php';
 if (is_file($mcFile)) {
     $own = (static function (string $f) { return include $f; })($mcFile);
-    if (is_array($own)) foreach (['api_key', 'list_id', 'tag', 'double_opt_in'] as $k) { if (array_key_exists($k, $own) && $own[$k] !== '' && $own[$k] !== null) $mc[$k] = $own[$k]; }
+    if (is_array($own)) foreach (['api_key', 'list_id', 'tag', 'double_opt_in', 'notify_to', 'notify_every'] as $k) { if (array_key_exists($k, $own) && $own[$k] !== '' && $own[$k] !== null) $mc[$k] = $own[$k]; }
 }
 // tidy what was pasted: stray spaces, quotes or a trailing hyphen would otherwise break the Mailchimp address
 $mc['api_key'] = trim((string) $mc['api_key'], " -\t\r\n'\"");
 $mc['list_id'] = trim((string) $mc['list_id'], " \t\r\n'\"");
+$notify = filter_var((string) ($mc['notify_to'] ?? ''), FILTER_VALIDATE_EMAIL) ? (string) $mc['notify_to'] : $cfg['newsletter_to'];
 if ($mc['api_key'] !== '' && $mc['list_id'] !== '') {
     $dc = substr(strrchr($mc['api_key'], '-') ?: '-us1', 1);
     $url = 'https://' . preg_replace('/[^a-z0-9]/', '', $dc) . '.api.mailchimp.com/3.0/lists/' . rawurlencode($mc['list_id']) . '/members/' . md5(strtolower($email));
@@ -44,13 +47,15 @@ if ($mc['api_key'] !== '' && $mc['list_id'] !== '') {
             $t = ca_put($url . '/tags', json_encode(['tags' => [['name' => mb_substr($tag, 0, 100), 'status' => 'active']]]), 'ca:' . $mc['api_key'], 'POST');
             if ($t['code'] < 200 || $t['code'] >= 300) error_log('CA subscribe: Mailchimp tag answered ' . $t['code'] . ' ' . substr($t['body'], 0, 300));
         }
+        // the studio's copy of the sign-up (a failed email never fails the sign-up)
+        if (!empty($mc['notify_every'])) ca_mail([$notify], 'Newsletter sign-up · ' . $email, "A reader signed up for the studio's newsletter:\n\n" . $email . "\n\nSigned up on collaborativearchitecture.com on " . gmdate('j F Y, H:i') . " UTC.\n" . ($mc['double_opt_in'] ? 'Mailchimp has added the address and sent its confirmation email; the reader joins the list once they confirm.' : 'Mailchimp has added the address to the list.') . ($tag !== '' ? ' Tag in Mailchimp: ' . $tag . '.' : ''), $email);
         ca_json(200, ['ok' => true, 'pending' => (bool) $mc['double_opt_in']]);
     }
     error_log('CA subscribe: Mailchimp answered ' . $res['code'] . ' ' . substr($res['body'], 0, 300));
     // fall through: the studio still hears of the sign-up by email
 }
 
-$sent = ca_mail([$cfg['newsletter_to']], 'Newsletter sign-up · ' . $email, "A reader asked to receive the studio's newsletter:\n\n" . $email . "\n\nSigned up on collaborativearchitecture.com on " . gmdate('j F Y, H:i') . " UTC. Add the address to the newsletter list in Mailchimp.", $email);
+$sent = ca_mail([$notify], 'Newsletter sign-up · ' . $email, "A reader asked to receive the studio's newsletter:\n\n" . $email . "\n\nSigned up on collaborativearchitecture.com on " . gmdate('j F Y, H:i') . " UTC. Add the address to the newsletter list in Mailchimp.", $email);
 ca_keep('newsletter', ['email' => $email, 'emailed' => $sent]);
 if (!$sent) ca_json(502, ['ok' => false, 'error' => 'The sign-up could not be saved just now. Please try again later.']);
 ca_json(200, ['ok' => true, 'pending' => false]);

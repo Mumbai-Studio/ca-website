@@ -14,4 +14,6 @@ return [
     'api_key' => '',
     'list_id' => '',
     'tag'     => 'Website',   // every sign-up from the site gets this tag in Mailchimp; '' = no tag
+    'notify_to'    => 'newsletter@collaborativearchitecture.com',   // the studio is emailed about sign-ups here (an alias delivered to press@)
+    'notify_every' => true,   // true: an email for every sign-up; false: only when Mailchimp could not take it
 ];
