@@ -16,4 +16,10 @@ return [
     'tag'     => 'Website',   // every sign-up from the site gets this tag in Mailchimp; '' = no tag
     'notify_to'    => 'newsletter@collaborativearchitecture.com',   // the studio is emailed about sign-ups here (an alias delivered to press@)
     'notify_every' => true,   // true: an email for every sign-up; false: only when Mailchimp could not take it
+
+    // the sign-up emails are sent as newsletter@ through press@'s Google account (never through enquiry@)
+    'mail_user' => 'press@collaborativearchitecture.com',
+    'mail_pass' => '',   // press@'s app password: signed in to Google as press@, turn on 2-Step Verification, then myaccount.google.com/apppasswords
+    'mail_from' => 'newsletter@collaborativearchitecture.com',
+    'mail_from_name' => 'Collaborative Architecture newsletter',
 ];

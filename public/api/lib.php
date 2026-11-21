@@ -21,7 +21,7 @@ function ca_config(): array {
             'Vendors'     => 'vendors@collaborativearchitecture.com',
         ],
         'riyadh_cc'      => '',
-        'newsletter_to'  => 'enquiry@collaborativearchitecture.com',
+        'newsletter_to'  => 'newsletter@collaborativearchitecture.com',   // 21 November 2026: not read by subscribe.php any more (notify_to in mailchimp.php)
         'smtp'           => ['host' => '', 'port' => 465, 'secure' => 'ssl', 'user' => '', 'pass' => ''],
         'turnstile_secret' => '',
         'mailchimp'      => ['api_key' => '', 'list_id' => '', 'double_opt_in' => true],
@@ -130,8 +130,10 @@ function ca_keep(string $kind, array $record): void {
 function ca_mime(string $s): string { return preg_match('/[^\x20-\x7E]/', $s) ? '=?UTF-8?B?' . base64_encode($s) . '?=' : $s; }
 
 /* Send one plain-text message: through SMTP when config.php gives a server (recommended: Google Workspace), else PHP mail() */
-function ca_mail(array $to, string $subject, string $text, string $replyTo = '', array $cc = []): bool {
-    $cfg = ca_config();
+/* 21 November 2026: $as sends with another sender and mail account than config.php's: the newsletter's own (newsletter@ through press@),
+   so newsletter mail never goes through enquiry@. Keys: from_email, from_name, smtp (as in config.php). */
+function ca_mail(array $to, string $subject, string $text, string $replyTo = '', array $cc = [], array $as = []): bool {
+    $cfg = array_merge(ca_config(), array_intersect_key($as, ['from_email' => 1, 'from_name' => 1, 'smtp' => 1]));
     $to = array_values(array_filter(array_map('ca_line', $to), fn($a) => filter_var($a, FILTER_VALIDATE_EMAIL)));
     $cc = array_values(array_filter(array_map('ca_line', $cc), fn($a) => filter_var($a, FILTER_VALIDATE_EMAIL)));
     if (!$to) return false;

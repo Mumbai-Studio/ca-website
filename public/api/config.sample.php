@@ -20,7 +20,7 @@ return [
         'Vendors'     => 'vendors@collaborativearchitecture.com',
     ],
     'riyadh_cc'     => '',   // a Riyadh studio address to copy on inquiries for the Riyadh studio
-    'newsletter_to' => 'enquiry@collaborativearchitecture.com',   // who hears of newsletter sign-ups when Mailchimp is not connected
+    'newsletter_to' => 'newsletter@collaborativearchitecture.com',   // 21 November 2026: newsletter emails go to newsletter@ (set in api/mailchimp.php, notify_to); never enquiry@
 
     // RECOMMENDED: send through Google Workspace, so the mail is authenticated and never lands in spam.
     // The login is enquiry@, the account website@ belongs to (an alias cannot sign in). Signed in to Google as enquiry@:
