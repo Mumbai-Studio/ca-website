@@ -1,5 +1,5 @@
-# the form handlers: only contact.php and subscribe.php answer from the web
-<FilesMatch "^(lib|config|config\.sample)\.php$">
+# the form handlers: only contact.php, subscribe.php and vitals.php answer from the web; the settings files never do
+<FilesMatch "^(lib|config|config\.sample|mailchimp|mailchimp\.sample)\.php$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>

@@ -4,3 +4,4 @@ dist-staging/
 release/
 public/api/config.php
 .DS_Store
+public/api/mailchimp.php
