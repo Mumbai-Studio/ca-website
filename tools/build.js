@@ -43,7 +43,7 @@ const CACHE = { page: 'public, max-age=0, must-revalidate', hashed: 'public, max
 /* ---------- small helpers ---------- */
 const write = (rel, text) => { const p = path.join(OUT, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, text); };
 const copyDir = (from, to) => { fs.mkdirSync(to, { recursive: true }); for (const e of fs.readdirSync(from, { withFileTypes: true })) {
-  if (e.name === 'config.php' || e.name === 'mailchimp.php' || e.name === '.DS_Store') continue; // the server's own settings never come from the repository
+  if (e.name === 'config.php' || e.name === 'mailchimp.php' || e.name === 'security.php' || e.name === '.DS_Store') continue; // the server's own settings never come from the repository
   const a = path.join(from, e.name), b = path.join(to, e.name); e.isDirectory() ? copyDir(a, b) : fs.copyFileSync(a, b); } };
 const fail = [];
 

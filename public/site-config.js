@@ -6,7 +6,7 @@ window.CA_CONFIG = {
   ga4: '',
 
   // Cloudflare Turnstile site key (the public one), for the security check on the inquiry and newsletter forms.
-  // Leave empty to rely on the form handler's own checks; the secret key goes in api/config.php.
+  // Leave empty to rely on the form handler's own checks; the secret key goes in api/security.php (or api/config.php).
   turnstileSiteKey: '',
 
   // Where the forms send. The defaults are the PHP handlers in /api/. On a host without PHP, use a form service's address.

@@ -33,6 +33,9 @@ function ca_config(): array {
     $local = [];
     if (is_file(__DIR__ . '/config.php')) { $local = require __DIR__ . '/config.php'; if (!is_array($local)) $local = []; }
     $cfg = array_replace_recursive($defaults, $local);
+    // 21 November 2026: the Cloudflare Turnstile secret can sit in api/security.php, a file of its own (a value there wins)
+    if (is_file(__DIR__ . '/security.php')) { $sec = (static function (string $f) { return include $f; })(__DIR__ . '/security.php');
+        if (is_array($sec) && isset($sec['turnstile_secret']) && is_string($sec['turnstile_secret']) && trim($sec['turnstile_secret']) !== '') $cfg['turnstile_secret'] = trim($sec['turnstile_secret']); }
     return $cfg;
 }
 
@@ -98,6 +101,10 @@ function ca_rate_limit(string $what): void {
 function ca_turnstile(): void {
     $secret = ca_config()['turnstile_secret'];
     if ($secret === '') return;
+    // 21 November 2026: a secret on the server while site-config.js has no site key would refuse every form (no visitor could
+    // pass a check that is never shown), so the check waits until the site key is there too
+    $sc = @file_get_contents(dirname(__DIR__) . '/site-config.js');
+    if (is_string($sc) && preg_match("/turnstileSiteKey:\\s*'([^']*)'/", $sc, $m) && (trim($m[1]) === '' || strpos($m[1], 'PASTE') !== false)) { error_log('CA forms: Turnstile secret set but no site key in site-config.js; the check is skipped'); return; }
     $token = ca_field('cf-turnstile-response', 4096);
     if ($token === '') ca_json(400, ['ok' => false, 'error' => 'Please complete the security check.']);
     $res = ca_post('https://challenges.cloudflare.com/turnstile/v0/siteverify', http_build_query(['secret' => $secret, 'response' => $token, 'remoteip' => ca_client_ip()]), ['Content-Type: application/x-www-form-urlencoded']);
