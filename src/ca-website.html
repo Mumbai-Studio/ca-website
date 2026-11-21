@@ -1446,6 +1446,8 @@ b.roll .dgs i{display:block;height:1em;font-style:normal;line-height:1}
 .ct-stu{display:block;margin-bottom:.55em}
 @media (max-width:860px){.ct-stu{display:none}}
 .cap-row{display:flex;align-items:center;gap:18px 24px;flex-wrap:wrap}
+/* newsletter: Cloudflare's check runs out of sight and takes no room until it needs a click */
+.ts-w.ts-q{position:absolute!important;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);pointer-events:none}
 .cap-row .chk{grid-column:auto;margin:0;align-items:center;font:400 15px/1.4 var(--body);letter-spacing:0;text-transform:none;color:var(--ink)}
 .cap-row .chk input{margin-top:0}
 
@@ -6052,14 +6054,26 @@ function lab(anchor) {
 let TS_LOAD = null;
 function turnstileOn(root) {
   const el = $('[data-ts]', root); if (!LIVE || !el || !SEO.CFG.turnstile) return;
+  // newsletter (yellow panel): hidden until Cloudflare needs a click, then the dark style; enquiry: visible, light
+  const quiet = !!el.closest('[data-sub]'); if (quiet && !el.dataset.tsId) el.classList.add('ts-q');
   TS_LOAD = TS_LOAD || new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
-  TS_LOAD.then(() => { if (el.isConnected && !el.dataset.tsId) el.dataset.tsId = turnstile.render(el, { sitekey: SEO.CFG.turnstile, theme: 'light', size: 'flexible' }); }).catch(() => {});
+  TS_LOAD.then(() => { if (el.isConnected && !el.dataset.tsId) el.dataset.tsId = turnstile.render(el, quiet
+    ? { sitekey: SEO.CFG.turnstile, theme: 'dark', size: 'flexible', appearance: 'interaction-only',
+        'before-interactive-callback': () => el.classList.remove('ts-q'), 'after-interactive-callback': () => el.classList.add('ts-q') }
+    : { sitekey: SEO.CFG.turnstile, theme: 'light', size: 'flexible' }); }).catch(() => {});
 }
 async function sendForm(form, url, fields, note, thanks) {
   const btn = form.querySelector('button[type="submit"]'), label = btn ? btn.textContent : '';
   const body = new FormData(); Object.entries(fields).forEach(([k, v]) => body.append(k, v == null ? '' : String(v)));
-  const ts = form.querySelector('[name="cf-turnstile-response"]'); if (ts) body.append('cf-turnstile-response', ts.value);
-  const tsEl = form.querySelector('[data-ts]'); if (tsEl && tsEl.dataset.tsId && !(ts && ts.value)) { if (note) note.textContent = 'Please complete the security check.'; return false; }
+  const tsEl = form.querySelector('[data-ts]'); let ts = form.querySelector('[name="cf-turnstile-response"]');
+  if (tsEl && tsEl.dataset.tsId && !(ts && ts.value)) {
+    // the check may still be running (out of sight on the newsletter): wait up to 10 s (2 s on the enquiry form)
+    if (note) note.textContent = 'One moment…';
+    for (let k = 0, w = tsEl.classList.contains('ts-q') ? 40 : 8; k < w && !(ts && ts.value); k++) { await new Promise(r => setTimeout(r, 250)); ts = form.querySelector('[name="cf-turnstile-response"]'); }
+    if (!(ts && ts.value)) { if (note) note.textContent = 'Please complete the security check.'; return false; }
+    if (note) note.textContent = '';
+  }
+  if (ts) body.append('cf-turnstile-response', ts.value);
   body.append('page', location.pathname);
   if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; } if (note) note.textContent = '';
   let ok = false, msg = '', j = {};
