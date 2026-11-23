@@ -181,15 +181,16 @@ try{if(!matchMedia('(max-width:700px)').matches&&screen.width/screen.height>=1.7
 const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
 const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
 // 23 November 2026 (Mujib: the opening logo was clunky on phones): on the first page of a visit, while the logo screen is up (html.pl-boot),
-// the scripts are downloaded at the usual moment (preload) but run only once the logo has started moving (the boot script's ca-pl-ready;
-// 1.6 s at the latest), so a busy phone cannot hold the animation back. Later pages and a refresh run them at once, as before.
+// the scripts are downloaded at the usual moment (preload) but run only once the line under the T has been drawn (2.35 s after the
+// boot script's ca-pl-ready; 3 s at the latest), so neither a busy phone nor a desktop holds the animation back (23 November, patch
+// snippet3: they used to start as the logo began to move). Later pages and a refresh run them at once, as before.
 const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false,pre=false;
 function go(){if(done)return;done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
-var boot=document.documentElement.classList.contains('pl-boot'),ok=!boot;
+var boot=document.documentElement.classList.contains('pl-boot'),ok=!boot,armed=false;
 function preload(){if(pre)return;pre=true;for(var i=0;i<L.length;i++){var l=document.createElement('link');l.rel='preload';l.as='script';l.href=L[i];document.head.appendChild(l);}}
 function start(){if(ok)go();else preload();}
-function moving(){if(ok)return;ok=true;if(window.requestAnimationFrame)requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0);});});setTimeout(go,400);}
-if(boot){addEventListener('ca-pl-ready',moving);setTimeout(moving,1600);var c=function(){var p=document.getElementById('pl');if(p&&p.classList.contains('ready'))moving();};c();document.addEventListener('DOMContentLoaded',c);}
+function moving(){if(armed)return;armed=true;var t=window.CA_PL_T,w=typeof t==='number'?Math.max(0,t+2350-performance.now()):0;setTimeout(function(){ok=true;go();},w);}
+if(boot){addEventListener('ca-pl-ready',moving);setTimeout(moving,3000);var c=function(){var p=document.getElementById('pl');if(p&&p.classList.contains('ready'))moving();};c();document.addEventListener('DOMContentLoaded',c);}
 if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(start,0);});setTimeout(start,400);})();`, 'js');
 const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
 const externalize = html => {

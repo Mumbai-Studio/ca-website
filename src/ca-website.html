@@ -16,14 +16,14 @@
 .pl{position:fixed;inset:0;z-index:100;background:var(--crimson);display:grid;place-items:center;overflow:hidden;transition:transform 1.1s cubic-bezier(.7,0,.2,1)}
 .pl.out{transform:translateY(-100%)}
 .pl-in{position:relative;aspect-ratio:1/1;height:min(44.8vh,89.6vw);width:min(44.8vh,89.6vw);max-width:none;transition:opacity .75s ease,transform 1.1s cubic-bezier(.7,0,.2,1)}
-.pl-in img{width:100%;height:100%;opacity:.01;transform:translateY(6%) scale(.97);will-change:transform,opacity}
+.pl-in img{width:100%;height:100%;opacity:.01;transform:translateY(6%) scale(.97)}
 .pl.run .pl-in img{animation:plr 1.2s cubic-bezier(.33,0,.2,1) forwards}
-.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:60vh;background:#fff;transform:scaleY(0);transform-origin:50% 0;will-change:transform}
+.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:0;background:#fff}
 .pl.run .pl-s{animation:pls 1.3s 1s cubic-bezier(.45,0,.2,1) forwards}
-.pl.rm .pl-in img{opacity:1;transform:none}.pl.rm .pl-s{transform:none}
+.pl.rm .pl-in img{opacity:1;transform:none}
 .pl.out .pl-in{opacity:0;transform:translateY(-3%)}
 @keyframes plr{to{opacity:1;transform:none}}
-@keyframes pls{to{transform:scaleY(1)}}
+@keyframes pls{to{height:60vh}}
 html.pl-boot #pl[hidden]{display:grid!important}
 html.pl-boot #pl[hidden]{animation:plgone 0s 8s forwards}
 @keyframes plgone{to{visibility:hidden}}
@@ -31,7 +31,10 @@ html.pl-boot #pl[hidden]{animation:plgone 0s 8s forwards}
    timing; they used to start with the page, so on most first visits the picture arrived after its 0.6 s rise and simply appeared */
 html.pl-boot #pl.ready .pl-in img{animation:plr 1.2s cubic-bezier(.33,0,.2,1) forwards}html.pl-boot #pl:not(.ready) .pl-in img{animation:none}
 html.pl-boot #pl.ready .pl-s{animation:pls 1.3s 1s cubic-bezier(.45,0,.2,1) forwards}html.pl-boot #pl:not(.ready) .pl-s{animation:none}
-
+/* 23 November 2026 (Mujib: since patch logo1 the line under the T stood still on desktop too): the line grows its height again, as before
+   logo1 (logo1 scaled a full-length line up from zero, which some graphics cards show only once it has finished). The device's
+   reduce-motion setting no longer stops the logo. On the first page of a visit the site's scripts run once the line has been drawn
+   (assets/load.js, tools/build.js), so nothing holds the animation back; the shortest hold after them is 0.25 s. */
 </style>
 <div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><img src="img/logo-640.png" alt=""><i class="pl-s"></i></div></div>
 <script data-boot>/* speed (30 October 2026): the logo starts its animation from the first frame, and its 3.25-second hold is counted from here, not from
@@ -120,11 +123,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .pl-in{position:relative;height:40vh;aspect-ratio:1/1;max-width:80vw}
 .pl-in img{width:100%;height:100%;opacity:.01;transform:translateY(18%)}
 .pl.run .pl-in img{animation:plr .6s var(--ease) forwards}
-.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:60vh;background:#fff;transform:scaleY(0);transform-origin:50% 0;will-change:transform}
+.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:0;background:#fff}
 .pl.run .pl-s{animation:pls .6s .6s var(--ease) forwards}
-.pl.rm .pl-in img{opacity:1;transform:none}.pl.rm .pl-s{transform:none}
+.pl.rm .pl-in img{opacity:1;transform:none}
 @keyframes plr{to{opacity:1;transform:none}}
-@keyframes pls{to{transform:scaleY(1)}}
+@keyframes pls{to{height:60vh}}
 /* speed (25 October 2026), published site: the head script marks the first page of a visit (html.pl-boot), so the logo screen is
    there from the first frame, before the page's scripts have arrived; the scripts then carry on the same animation */
 html.pl-boot #pl[hidden]{display:grid!important}   /* 3 November 2026: !important, or the site-wide [hidden]{display:none!important} won and the logo screen waited for the scripts (about a second late) */
@@ -8179,7 +8182,7 @@ function preloader() {
   // published site: the logo has been on screen since the first frame (head script), so it holds 3.25 seconds from then
   // 19 November 2026: the hold waits for the logo picture (#pl.ready, at most 1.5 s), so the rise and the line are seen whole
   const go = () => { if (pl._go) return; pl._go = 1;
-    const t0 = window.CA_PL_T, hold = typeof t0 === 'number' ? Math.max(600, 3250 - (performance.now() - t0)) : 3250;
+    const t0 = window.CA_PL_T, hold = typeof t0 === 'number' ? Math.max(250, 3250 - (performance.now() - t0)) : 3250;
     setTimeout(() => { pl.classList.add('out'); document.documentElement.classList.remove('pl-boot'); PL_ACTIVE = false; dispatchEvent(new Event('ca-pl-done')); setTimeout(() => pl.remove(), 1200); }, hold); };
   if (RM || pl.classList.contains('ready') || !document.documentElement.classList.contains('pl-boot')) go();
   else { addEventListener('ca-pl-ready', go, { once: true });
