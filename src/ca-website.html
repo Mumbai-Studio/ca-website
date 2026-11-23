@@ -16,14 +16,14 @@
 .pl{position:fixed;inset:0;z-index:100;background:var(--crimson);display:grid;place-items:center;overflow:hidden;transition:transform 1.1s cubic-bezier(.7,0,.2,1)}
 .pl.out{transform:translateY(-100%)}
 .pl-in{position:relative;aspect-ratio:1/1;height:min(44.8vh,89.6vw);width:min(44.8vh,89.6vw);max-width:none;transition:opacity .75s ease,transform 1.1s cubic-bezier(.7,0,.2,1)}
-.pl-in img{width:100%;height:100%;opacity:.01;transform:translateY(6%) scale(.97)}
+.pl-in img{width:100%;height:100%;opacity:.01;transform:translateY(6%) scale(.97);will-change:transform,opacity}
 .pl.run .pl-in img{animation:plr 1.2s cubic-bezier(.33,0,.2,1) forwards}
-.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:0;background:#fff}
+.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:60vh;background:#fff;transform:scaleY(0);transform-origin:50% 0;will-change:transform}
 .pl.run .pl-s{animation:pls 1.3s 1s cubic-bezier(.45,0,.2,1) forwards}
-.pl.rm .pl-in img{opacity:1;transform:none}
+.pl.rm .pl-in img{opacity:1;transform:none}.pl.rm .pl-s{transform:none}
 .pl.out .pl-in{opacity:0;transform:translateY(-3%)}
 @keyframes plr{to{opacity:1;transform:none}}
-@keyframes pls{to{height:60vh}}
+@keyframes pls{to{transform:scaleY(1)}}
 html.pl-boot #pl[hidden]{display:grid!important}
 html.pl-boot #pl[hidden]{animation:plgone 0s 8s forwards}
 @keyframes plgone{to{visibility:hidden}}
@@ -31,7 +31,7 @@ html.pl-boot #pl[hidden]{animation:plgone 0s 8s forwards}
    timing; they used to start with the page, so on most first visits the picture arrived after its 0.6 s rise and simply appeared */
 html.pl-boot #pl.ready .pl-in img{animation:plr 1.2s cubic-bezier(.33,0,.2,1) forwards}html.pl-boot #pl:not(.ready) .pl-in img{animation:none}
 html.pl-boot #pl.ready .pl-s{animation:pls 1.3s 1s cubic-bezier(.45,0,.2,1) forwards}html.pl-boot #pl:not(.ready) .pl-s{animation:none}
-@media (prefers-reduced-motion:reduce){html.pl-boot #pl#pl#pl .pl-in img{animation:none;opacity:1;transform:none}html.pl-boot #pl#pl#pl .pl-s{animation:none}.pl,.pl-in{transition:none}}
+
 </style>
 <div class="pl" id="pl" aria-hidden="true"><div class="pl-in"><img src="img/logo-640.png" alt=""><i class="pl-s"></i></div></div>
 <script data-boot>/* speed (30 October 2026): the logo starts its animation from the first frame, and its 3.25-second hold is counted from here, not from
@@ -47,7 +47,7 @@ try { var pl = document.getElementById('pl'), skip = false, ss = function (k) { 
       skip = !!(h && !/^#(home)?$/.test(h)) || !!(L.id && (!location.hash || location.hash === L.h) && P[L.id] > 40); } }
   // 19 November 2026: the rise starts, and the hold is counted, from the moment the logo picture has arrived
   if (skip) pl.hidden = true; else { var im = pl.querySelector('img'), go = function () { if (pl.classList.contains('ready')) return; pl.classList.add('ready'); window.CA_PL_T = performance.now();
-      pl.classList.add(matchMedia('(prefers-reduced-motion:reduce)').matches ? 'rm' : 'run'); dispatchEvent(new Event('ca-pl-ready')); };
+      pl.classList.add('run'); dispatchEvent(new Event('ca-pl-ready')); };
     if (!im || (im.complete && im.naturalWidth)) go(); else { im.addEventListener('load', go); im.addEventListener('error', go); } }
 } catch (e) {}</script>
 <script data-boot>/* fonts (4 November 2026, Mujib's choice): Archivo, Instrument Sans and IBM Plex Mono from the site's own files (fonts/ca-fonts.css,
@@ -120,11 +120,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .pl-in{position:relative;height:40vh;aspect-ratio:1/1;max-width:80vw}
 .pl-in img{width:100%;height:100%;opacity:.01;transform:translateY(18%)}
 .pl.run .pl-in img{animation:plr .6s var(--ease) forwards}
-.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:0;background:#fff}
+.pl-s{position:absolute;left:65.8%;top:96%;width:max(2px,.45%);height:60vh;background:#fff;transform:scaleY(0);transform-origin:50% 0;will-change:transform}
 .pl.run .pl-s{animation:pls .6s .6s var(--ease) forwards}
-.pl.rm .pl-in img{opacity:1;transform:none}
+.pl.rm .pl-in img{opacity:1;transform:none}.pl.rm .pl-s{transform:none}
 @keyframes plr{to{opacity:1;transform:none}}
-@keyframes pls{to{height:60vh}}
+@keyframes pls{to{transform:scaleY(1)}}
 /* speed (25 October 2026), published site: the head script marks the first page of a visit (html.pl-boot), so the logo screen is
    there from the first frame, before the page's scripts have arrived; the scripts then carry on the same animation */
 html.pl-boot #pl[hidden]{display:grid!important}   /* 3 November 2026: !important, or the site-wide [hidden]{display:none!important} won and the logo screen waited for the scripts (about a second late) */
@@ -137,7 +137,7 @@ html.w01-wait #app .mrow.r-xl{visibility:hidden}
    timing; they used to start with the page, so on most first visits the picture arrived after its 0.6 s rise and simply appeared */
 html.pl-boot #pl.ready .pl-in img{animation:plr 1.2s cubic-bezier(.33,0,.2,1) forwards}html.pl-boot #pl:not(.ready) .pl-in img{animation:none}
 html.pl-boot #pl.ready .pl-s{animation:pls 1.3s 1s cubic-bezier(.45,0,.2,1) forwards}html.pl-boot #pl:not(.ready) .pl-s{animation:none}
-@media (prefers-reduced-motion:reduce){html.pl-boot #pl#pl#pl .pl-in img{animation:none;opacity:1;transform:none}html.pl-boot #pl#pl#pl .pl-s{animation:none}}
+
 
 /* header */
 .hdr{position:fixed;left:0;right:0;top:0;z-index:50;height:calc(var(--hdr) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) var(--gut) 0;display:flex;align-items:center;gap:clamp(16px,2.4vw,36px);color:var(--ink);transition:transform .35s var(--ease),background-color .25s,color .25s,height .25s}
@@ -1811,7 +1811,7 @@ html.snap .pslides>.ps{position:relative}
 .pl.run .pl-in img{animation:plr 1.2s cubic-bezier(.33,0,.2,1) forwards}
 .pl.run .pl-s{animation:pls 1.3s 1s cubic-bezier(.45,0,.2,1) forwards}
 .pl.out .pl-in{opacity:0;transform:translateY(-3%)}
-@media (prefers-reduced-motion:reduce){.pl,.pl-in{transition:none}}
+
 /* concept sketches: one animated GIF */
 .drs-g .gifx>div,.drs-g .gifx>.tim{opacity:1}
 /* 29 October 2026: a stack of drawings of one kind (plans, elevations and sections, axonometrics): the top sheet with two sheets behind it */
@@ -5165,7 +5165,7 @@ const meta = p => [place(p), yrShown(p) ? p.year : '', statusOf(p)].filter(Boole
 const yearOrStatus = p => (yrShown(p) && p.year) || statusOf(p);
 const card = p => `<a class="card" href="#p-${esc(p.slug)}"><div class="im" ${bg(p.card, true, `${p.title}, ${p.city || p.country}`)}></div><b>${esc(p.title)}</b><span>${esc(p.city || p.country)}${yrShown(p) && p.year ? ' · ' + fl(p.year) : ''}</span></a>`;
 const tbc = LIVE ? '' : 'Page in a later draft';
-const stubCard = k => { const x = (C.stubs || {})[k]; if (!x) return ''; return `<div class="card off"><div class="im${x.img ? '' : ' none'}" ${x.img ? bg(x.img, true, `${x.t}, ${x.p}`) : ''}>${x.img ? '' : `<span>${esc(x.t)}</span>`}</div><b>${esc(x.t)}</b><span>${esc([x.p, /^(19|20)\d\d/.test(String(x.y || '')) ? '' : x.y].filter(Boolean).join(' · '))}</span><span class="soon mono">${tbc}</span></div>`; };
+const stubCard = k => { const x = (C.stubs || {})[k]; if (!x || !x.img) return ''; // 23 November 2026 (Mujib): no blank boxes in Related projects return `<div class="card off"><div class="im${x.img ? '' : ' none'}" ${x.img ? bg(x.img, true, `${x.t}, ${x.p}`) : ''}>${x.img ? '' : `<span>${esc(x.t)}</span>`}</div><b>${esc(x.t)}</b><span>${esc([x.p, /^(19|20)\d\d/.test(String(x.y || '')) ? '' : x.y].filter(Boolean).join(' · '))}</span><span class="soon mono">${tbc}</span></div>`; };
 const relCard = k => bySlug[k] ? card(bySlug[k]) : stubCard(k);
 /* draft 2.7: light emphasis in Studio copy, ***bold italic***, **bold**, *italic* */
 const emd = t => esc(t).replace(/\*\*\*(.+?)\*\*\*/g, '<b><i>$1</i></b>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\*(.+?)\*/g, '<i>$1</i>');
@@ -6187,7 +6187,7 @@ function studio() {
   <section class="cols2 prs" id="principals" data-tone="light">${C.principals.map(pr => `<div class="pr" id="${esc(pr.n.toLowerCase().replace(/[^a-z]+/g, '-'))}"><h2 class="hd">${esc(pr.n)}</h2><p class="mono" style="color:var(--concrete);margin:6px 0 16px">${esc(pr.r)}</p><p>${emd(pr.x)}</p><blockquote class="prq" style="margin:22px 0 0;border-left:3px solid var(--crimson);padding-left:18px"><p class="pq">“${esc(pr.q)}”</p>${profLinks(pr.n)}<cite class="mono" style="font-style:normal">${esc(pr.n)}</cite></blockquote></div>`).join('')}</section>
   <section class="cols2" data-tone="light"><div><h2 class="hd">Design and Behavioral Mapping</h2></div><div><p>${fl(C.studioMapping)}</p><a class="lk" href="#x-design-and-behavioral-mapping">Design and Behavioral Mapping →</a></div></section>
   <section class="cols2" data-tone="light"><div><h2 class="hd">Collaborators</h2></div><div><p>Each project is shaped with an international team. Partners on recent work include:</p><div class="collab">${C.collaborators.map(c => { const u = (C.collabUrl || {})[c]; return u ? `<a class="pill cla" href="${esc(safeUrl(u))}" target="_blank" rel="noopener">${esc(c)}<span aria-hidden="true">&nbsp;↗</span></a>` : `<span class="pill">${esc(c)}</span>`; }).join('')}</div></div></section>
-  <section class="cols2" id="careers" data-tone="light" style="margin-bottom:60px"><div><h2 class="hd">Careers</h2></div><div><p>${emd(C.careers).replace('<b><i>Design-Snippet</i></b>', '<a class="chl" href="mailto:studio@collaborativearchitecture.com?subject=Design-Snippet%20challenge"><b><i>Design-Snippet</i></b></a>')}</p><a class="btn" href="#contact" data-inq="Career">Apply through the contact form →</a><p class="mail-alt">Or mail your work to <a href="mailto:studio@collaborativearchitecture.com">studio@collaborativearchitecture.com</a></p></div></section>`;
+  <section class="cols2" id="careers" data-tone="light" style="margin-bottom:60px"><div><h2 class="hd">Careers</h2></div><div><p>${emd(C.careers).replace('<b><i>Design-Snippet</i></b>', '<a class="chl" href="/design-snippet/" target="_self"><b><i>Design-Snippet</i></b></a>')}</p><a class="btn" href="#contact" data-inq="Career">Apply through the contact form →</a><p class="mail-alt">Or mail your work to <a href="mailto:studio@collaborativearchitecture.com">studio@collaborativearchitecture.com</a></p></div></section>`;
   return { html, title: 'Studio', nav: 'studio', init: () => { $$('[data-inq]').forEach(a => a.addEventListener('click', () => { Cpre = a.dataset.inq; })); greyQuotes(); hvInit(); } };
 }
 /* draft 2.4: "a verb" and Speculative Futures turn red under the pointer; on a touch screen, while they are in view */
@@ -8319,8 +8319,11 @@ function springTo(from, to, v0, frame, done, side) {
   // a quintic ease whose start speed is the gesture's. Its length follows the speed: a flick lands quickly, a slow release unhurried.
   // 19 November 2026 (Mujib: the phone's scroll had become too fast): a swipe on a touch screen glides in 0.7 to 1.15 s ("soft"), a flick no
   // longer lands in 0.3 s; the wheel, keys and sideways sliders are unchanged
-  const soft = side === 'soft', lo = soft ? 700 : side ? 260 : 300, hi = soft ? 1150 : side ? 700 : 900;
-  const T = Math.max(lo, Math.min(hi, v > 0 ? (soft ? 2.6 : 1.9) * dist / v : hi)); v = Math.min(v, 1.9 * dist / T);
+  // 23 November 2026 (Mujib: on phones the change between Home's sections was "snappy and fast ... make it smooth"): a full section
+  // now takes 1.3 to 1.7 s at about half the speed; a short move (a nudge back into place) keeps the timing of 19 November
+  const soft = side === 'soft', far = soft ? Math.min(1, Math.sqrt(dist / (innerHeight * .7))) : 1;
+  const lo = soft ? Math.max(700, 1300 * far) : side ? 260 : 300, hi = soft ? Math.max(1150, 1700 * far) : side ? 700 : 900;
+  const T = Math.max(lo, Math.min(hi, v > 0 ? (soft ? 3.4 : 1.9) * dist / v : hi)); v = Math.min(v, 1.9 * dist / T);
   const a = v * T, pos = s => dist * s * s * s * (10 - 15 * s + 6 * s * s) + a * (s - 6 * s ** 3 + 8 * s ** 4 - 3 * s ** 5);
   let Ts = T; for (let s = 0; s <= 1; s += .01) if (dist - pos(s) < 3) { Ts = s * T; break; }
   const t0 = performance.now(); let raf = 0, live = true;
@@ -8549,7 +8552,8 @@ document.addEventListener('click', e => {
 }, true);
 /* draft 2.9 (23 October): a link can open a page at one of its sections (data-sec): Careers, in the menu and the footer,
    opens the Studio page at its Careers section, not at the top; from the Studio page itself it scrolls down to Careers */
-let pendingSec = null;
+// 23 November 2026: /studio/#careers, opened from another page (the Design Snippet page's Careers link), lands on Careers
+let pendingSec = PATHMODE && location.pathname === '/studio/' && location.hash === '#careers' ? 'careers' : null;
 function secTop(el) { const h = document.getElementById('hdr'); return Math.max(0, el.getBoundingClientRect().top + scrollY - (h ? h.offsetHeight : 0) - 12); }
 document.addEventListener('click', e => {
   const a = e.target.closest && e.target.closest('a[data-sec]'); if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;

@@ -180,9 +180,17 @@ try{var n=+localStorage.getItem('ca-w01')||0;if(${LEADS}>1&&n%${LEADS}!==0)docum
 try{if(!matchMedia('(max-width:700px)').matches&&screen.width/screen.height>=1.7)document.documentElement.classList.add('scr169');}catch(e){}})();`, 'js');
 const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
 const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
-const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false;
+// 23 November 2026 (Mujib: the opening logo was clunky on phones): on the first page of a visit, while the logo screen is up (html.pl-boot),
+// the scripts are downloaded at the usual moment (preload) but run only once the logo has started moving (the boot script's ca-pl-ready;
+// 1.6 s at the latest), so a busy phone cannot hold the animation back. Later pages and a refresh run them at once, as before.
+const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false,pre=false;
 function go(){if(done)return;done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
-if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(go,0);});setTimeout(go,400);})();`, 'js');
+var boot=document.documentElement.classList.contains('pl-boot'),ok=!boot;
+function preload(){if(pre)return;pre=true;for(var i=0;i<L.length;i++){var l=document.createElement('link');l.rel='preload';l.as='script';l.href=L[i];document.head.appendChild(l);}}
+function start(){if(ok)go();else preload();}
+function moving(){if(ok)return;ok=true;if(window.requestAnimationFrame)requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0);});});setTimeout(go,400);}
+if(boot){addEventListener('ca-pl-ready',moving);setTimeout(moving,1600);var c=function(){var p=document.getElementById('pl');if(p&&p.classList.contains('ready'))moving();};c();document.addEventListener('DOMContentLoaded',c);}
+if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(start,0);});setTimeout(start,400);})();`, 'js');
 const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
 const externalize = html => {
   for (const x of SHARED) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('shared block not found in a page: ' + x.file); html = html.slice(0, i) + x.tag + html.slice(i + x.whole.length); }
