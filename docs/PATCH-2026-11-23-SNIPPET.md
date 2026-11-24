@@ -36,3 +36,25 @@ On top of 2026-11-23-snippet1. It replaces snippet2, which was built but never u
     (2.35 s after the logo picture arrives, 3 s at the latest), so neither a busy phone nor a desktop holds the animation back
     (`tools/build.js`). The shortest hold after the scripts is now 0.25 s (was 0.6 s): on a desktop the logo still leaves at 3.25 s; on
     a slow phone it no longer waits an extra half second.
+
+# Live patch 2026-11-24-seo3: the Semrush site audit
+
+On top of 2026-11-23-snippet1, and carries snippet3. Built from the live text copy with `make_patch_seo3.py`; the changes are
+mirrored here. Semrush site audit of 24 November 2026 (project "CA website - collaborativearchitecture.com (site audit)", 153
+pages): 9 errors, 167 warnings, 31 notices. No visible change on the site.
+
+- **hreflang (9 errors):** a page whose canonical is another page (Work's list and map views, the Media Hub) carries no hreflang,
+  in the static pages and in the code that rewrites the head on each page change.
+- **Broken outbound links (39 of 40 warnings):** the WhatsApp share link starts as the project page's own address and takes its
+  wa.me address only when pressed or focused (`a[data-wa]`), because wa.me refuses link checkers. Five dead press and partner
+  links point to their Wayback Machine copies, or to J. MAYER H.'s address without www. The Notions of India submission page is
+  gone and has no archive, so its citation has no address and is drawn as plain text.
+- **Orphaned pages (8 notices):** the Gulf city pages stay out of every visible list of places (Mujib, 23 November), but the city
+  names already printed in the "Where we work" lists of the Saudi Arabia, UAE and Middle East pages link to them (`a.qc`, drawn
+  like the text around them; `QUIET_CITY` in `linkCities`).
+- **Left as they are, with the reason:** low text-to-HTML ratio (56: the structured data that AI search reads is most of each
+  page's weight); low word count (2: Contact and the map view); one internal link (7: the Lab strands and Total Design are reached
+  through filter buttons and the Home menu, which link checkers do not follow; the Design Snippet by design); outbound links that
+  answer 403 (6) and the IFJ Sandy Hook article (1): those sites refuse link checkers but open for people; content not optimized
+  (9: Semrush's text suggestions for the Lab pages, which would change visible text); Privacy blocked from crawling (noindex by
+  design). site-config.js unminified (69): the host's file, minified by the host.
