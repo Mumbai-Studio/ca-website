@@ -432,6 +432,8 @@ section{padding:clamp(56px,8vw,112px) 0}
 }
 @media screen and (max-width:520px){.send ol,.t-g .send ol{grid-template-columns:minmax(0,1fr)}.top .dl{padding:11px 12px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+/* 26 November 2026 (Mujib): on phones the header logo takes the main site footer logo's size and proportions, with the name */
+@media screen and (max-width:700px){.top .w{height:84px}.brand{gap:14px;font:600 17px/1.1 var(--body)}.brand img{width:64px;height:64px}.brand span{display:block}}
 
 /* ===================== the pamphlets: A4, six pages per division ===================== */
 @page{size:A4;margin:0}

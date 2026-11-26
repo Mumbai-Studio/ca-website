@@ -2111,6 +2111,10 @@ a.sx-pi:hover b,a.sx-pi:focus-visible b{color:var(--crimson)}
 .sf-n b{display:block;font-size:clamp(54px,7vw,110px);line-height:.95;color:var(--crimson);font-stretch:70%;font-weight:750}
 .sf-n span{display:block;margin-top:8px;max-width:26ch}
 @media (max-width:760px){.sx-g,.sx-qa,.sx-pr{grid-template-columns:1fr}.sf-n{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 26 November 2026 (Mujib): "Follow the footer size and proportions throughout the site for mobile." On phones the header logo
+   takes the footer logo's size and proportions (64 px mark, 14 px gap, the name at line height 1.1), also when the bar turns solid;
+   the bar grows to 84 px to hold it. Kept last, after every earlier rule for .brand and --hdr. Tablets and desktop unchanged. */
+@media(max-width:700px){:root{--hdr:84px}.hdr.solid{--hdr:84px}.brand{gap:14px;line-height:1.1;letter-spacing:normal}.brand img,.hdr.solid .brand img{width:64px;height:64px}}
 </style>
 <a class="skip" href="#app">Skip to content</a><button class="skip skip-m" type="button" data-motion aria-pressed="false">Pause moving pictures</button>
 <header class="hdr" id="hdr" data-tone="dark">
@@ -4985,7 +4989,7 @@ const exhibitionNodes = slug => EXHIBITIONS.filter(x => !slug || x.s === slug).m
   '@id': `${CFG.origin}/work/${x.s}/#exhibition-${x.city.toLowerCase().replace(/\s+/g, '-')}`, name: `${x.name}, ${x.venue}`, url: x.url, startDate: x.start, endDate: x.end,
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: { '@type': 'Museum', name: x.venue, url: x.venueUrl, address: { '@type': 'PostalAddress', ...(x.street ? { streetAddress: x.street } : {}), addressLocality: x.city, addressRegion: x.region, addressCountry: x.country } },
-  organizer: { '@type': 'Museum', name: x.venue, url: x.venueUrl },
+  organizer: { '@type': 'Organization', name: x.venue, url: x.venueUrl },   // 26 November 2026 (Ahrefs audit): schema.org allows Organization or Person here; the museum stays the location
   workFeatured: { '@id': `${CFG.origin}/work/${x.s}/#project` }, about: { '@id': ORG } }));
 // 31 October 2026 (search check): the Lab strands' search descriptions, written from their research (two were under 80 characters)
 const LABD = {

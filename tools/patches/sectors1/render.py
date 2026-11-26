@@ -117,7 +117,8 @@ def normalize(h, sizes):
 # ---------------------------------------------------------------- carrying changes -----------------------------------------------------
 TOK = re.compile(r'(?=<)')                       # one token per tag, with the text that follows it
 toks = lambda h: [t for t in TOK.split(h) if t]
-key = lambda t: re.sub(r' data-seed="\d+"', '', t)
+# the seed differs per render, and the hero gains "settled" when its opening animation ends (timing, not content)
+key = lambda t: re.sub(r' data-seed="\d+"', '', t).replace('<section class="hero settled"', '<section class="hero"')
 
 def hunks(a, b):
     A, B = toks(a), toks(b); sm = difflib.SequenceMatcher(None, [key(x) for x in A], [key(x) for x in B], autojunk=False)
