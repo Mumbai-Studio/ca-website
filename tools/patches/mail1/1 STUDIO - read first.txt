@@ -1,0 +1,22 @@
+Patch 2026-11-27-mail1: the website's emails delivered to the studio's Google mailboxes
+
+What it does: every Contact form inquiry and every newsletter notice is sent through Google with an app password, so it lands in
+the right inbox: Client, Consultants and Research at enquiry@, Career at studio@, Vendors at vendors@, newsletter sign-ups at
+newsletter@ (press@). Nothing on the pages changes.
+
+Nothing has to be pasted for it to work: it uses press@'s app password from patch newsletter1. The inquiries then arrive "from"
+press@ under the name "Collaborative Architecture website", and pressing Reply answers the visitor.
+
+Optional: if enquiry@, studio@ or vendors@ should send their own form emails (they then arrive from that mailbox and do not pass
+through press@), paste that mailbox's app password in upload\api\mail.php on its line (signed in to Google as that mailbox:
+2-Step Verification on, then myaccount.google.com/apppasswords). If one of them is an alias or a group, leave it empty. A
+password that stops working is not fatal: the email then goes through press@.
+
+Also needed, in DNS (Cloudflare > collaborativearchitecture.com > DNS), for all of the studio's email, not only the website's:
+  - SPF: add a TXT record, name "@", content:  v=spf1 include:_spf.google.com ~all
+    (the domain has none today; add other services here only if they send email as @collaborativearchitecture.com)
+  - DKIM: Google Admin console > Apps > Google Workspace > Gmail > Authenticate email > Generate new record. Add the TXT record
+    it shows (name google._domainkey) in Cloudflare, then press Start authentication in Google Admin.
+  The DMARC record is already there (p=none) and Mailchimp's own records (k2 and k3) are in place.
+
+The check page key is check_key in upload\api\mail.php. Send the folder to the host privately.

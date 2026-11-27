@@ -1,0 +1,23 @@
+Patch 2026-11-27-newsletter1: connect the newsletter form to Mailchimp and switch on Cloudflare's check on the server
+
+Why: the two settings files of the 21 November patch went to the server with their secret values empty. Since then the
+newsletter sign-ups have not reached Mailchimp (they were only emailed to newsletter@, sent by the web server itself), and the
+server has not checked Cloudflare's "Verify you are human" box, so programs can send both forms without it.
+Nothing on the site's pages, scripts or styles changes.
+
+Before the host gets this folder, paste three values into the two files in upload\api\ (open each in Notepad: right-click >
+Open with > Notepad; paste between the two quotes on the marked line, keep the quotes, save):
+
+  upload\api\mailchimp.php
+    1. api_key    Mailchimp > profile picture (top right) > Profile > Extras > API keys > Create A Key, name it "Website".
+                  Copy it straight away (Mailchimp shows it once). It ends in -us3.
+    2. mail_pass  press@'s Google app password: sign in to Google as press@, make sure 2-Step Verification is on, then open
+                  myaccount.google.com/apppasswords, name it "Website", Create. Paste the 16 letters without the spaces.
+
+  upload\api\security.php
+    3. turnstile_secret  Cloudflare dashboard > Turnstile > the collaborativearchitecture.com widget > Settings > Secret Key.
+                         It must be the secret of the SAME widget whose Site Key is already on the site. Both start with 0x4;
+                         the secret is the longer one.
+
+Then send the whole folder to the host privately (not in a shared channel): right-click the folder > Send to > Compressed
+(zipped) folder. These keys open the Mailchimp account, press@'s mail and the Cloudflare check; never post them anywhere.

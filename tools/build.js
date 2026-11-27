@@ -43,7 +43,7 @@ const CACHE = { page: 'public, max-age=0, must-revalidate', hashed: 'public, max
 /* ---------- small helpers ---------- */
 const write = (rel, text) => { const p = path.join(OUT, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, text); };
 const copyDir = (from, to) => { fs.mkdirSync(to, { recursive: true }); for (const e of fs.readdirSync(from, { withFileTypes: true })) {
-  if (e.name === 'config.php' || e.name === '.DS_Store') continue; // the server's own settings never come from the repository
+  if (e.name === 'config.php' || e.name === 'mailchimp.php' || e.name === 'security.php' || e.name === '.DS_Store') continue; // the server's own settings never come from the repository
   const a = path.join(from, e.name), b = path.join(to, e.name); e.isDirectory() ? copyDir(a, b) : fs.copyFileSync(a, b); } };
 const fail = [];
 
@@ -164,21 +164,34 @@ for (const m of DOC.matchAll(/<(script|style)>([\s\S]*?)<\/\1>/g)) {
 /* speed (25 October 2026): the page paints first, then its scripts run.
    - boot.js, in the head (tiny, runs before the first paint): on the first page of a visit it marks <html class="pl-boot">, so the logo
      screen is there from the first frame (it used to wait for the scripts); it notes the time, so the logo still holds 3.25 seconds.
-     16 November 2026: it also marks <html class="wide"> on screens shaped 16:9 or wider, so their pictures paint on the cyan framing from the
+     19 November 2026: it marks the logo screen #pl.ready when the logo picture has arrived (load or error, caught on the document), and notes
+     that time, so the rise starts and the 3.25-second hold is counted from then.
+     16 November 2026: it also marks <html class="scr169"> (until 19 November "wide", which collided with the .wide picture band) on screens shaped 16:9 or wider, so their pictures paint on the cyan framing from the
      first frame (the page's own script keeps the mark up to date afterwards).
    - load.js, at the end of the body: puts the page's scripts in after the first frame has been painted, in their order (async=false keeps
      the order). The built page is complete without them, so the first picture and the type appear as soon as they arrive. */
 // the Work page's top cell: the built page shows the first of the projects that take turns (C.leads); a returning visitor whose turn
 // is another waits for the page's drawing (html.w01-wait hides that one cell for the moment), so the cell never switches before their eyes
 const LEADS = (frag.match(/C\.leads = \[([^\]]*)\]/) || [, ''])[1].split(',').filter(x => x.trim()).length;
-const BOOT = minify(`(function(){try{var d=document.documentElement;if(sessionStorage.getItem('ca-pl')!=='1'){d.classList.add('pl-boot');window.CA_PL_T=performance.now();}}catch(e){}
+const BOOT = minify(`(function(){try{var d=document.documentElement;if(sessionStorage.getItem('ca-pl')!=='1'){d.classList.add('pl-boot');window.CA_PL_T=performance.now();
+var r=function(e){var p=e.target&&e.target.closest&&e.target.closest('#pl');if(p&&!p.classList.contains('ready')){p.classList.add('ready');window.CA_PL_T=performance.now();dispatchEvent(new Event('ca-pl-ready'));}};
+document.addEventListener('load',r,true);document.addEventListener('error',r,true);}}catch(e){}
 try{var n=+localStorage.getItem('ca-w01')||0;if(${LEADS}>1&&n%${LEADS}!==0)document.documentElement.classList.add('w01-wait');}catch(e){}
-try{if(!matchMedia('(max-width:700px)').matches&&screen.width/screen.height>=1.7)document.documentElement.classList.add('wide');}catch(e){}})();`, 'js');
+try{if(!matchMedia('(max-width:700px)').matches&&screen.width/screen.height>=1.7)document.documentElement.classList.add('scr169');}catch(e){}})();`, 'js');
 const bootFile = `assets/boot.${crypto.createHash('sha256').update(BOOT).digest('hex').slice(0, 12)}.js`;
 const SCRIPTS = SHARED.filter(x => x.file.endsWith('.js'));
-const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false;
+// 23 November 2026 (Mujib: the opening logo was clunky on phones): on the first page of a visit, while the logo screen is up (html.pl-boot),
+// the scripts are downloaded at the usual moment (preload) but run only once the line under the T has been drawn (2.35 s after the
+// boot script's ca-pl-ready; 3 s at the latest), so neither a busy phone nor a desktop holds the animation back (23 November, patch
+// snippet3: they used to start as the logo began to move). Later pages and a refresh run them at once, as before.
+const LOADER = minify(`(function(){var L=${JSON.stringify(SCRIPTS.map(x => '/' + x.file))},done=false,pre=false;
 function go(){if(done)return;done=true;for(var i=0;i<L.length;i++){var s=document.createElement('script');s.src=L[i];s.async=false;document.body.appendChild(s);}}
-if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(go,0);});setTimeout(go,400);})();`, 'js');
+var boot=document.documentElement.classList.contains('pl-boot'),ok=!boot,armed=false;
+function preload(){if(pre)return;pre=true;for(var i=0;i<L.length;i++){var l=document.createElement('link');l.rel='preload';l.as='script';l.href=L[i];document.head.appendChild(l);}}
+function start(){if(ok)go();else preload();}
+function moving(){if(armed)return;armed=true;var t=window.CA_PL_T,w=typeof t==='number'?Math.max(0,t+2350-performance.now()):0;setTimeout(function(){ok=true;go();},w);}
+if(boot){addEventListener('ca-pl-ready',moving);setTimeout(moving,3000);var c=function(){var p=document.getElementById('pl');if(p&&p.classList.contains('ready'))moving();};c();document.addEventListener('DOMContentLoaded',c);}
+if(window.requestAnimationFrame)requestAnimationFrame(function(){setTimeout(start,0);});setTimeout(start,400);})();`, 'js');
 const loadFile = `assets/load.${crypto.createHash('sha256').update(LOADER).digest('hex').slice(0, 12)}.js`;
 const externalize = html => {
   for (const x of SHARED) { const i = html.indexOf(x.whole); if (i < 0) throw new Error('shared block not found in a page: ' + x.file); html = html.slice(0, i) + x.tag + html.slice(i + x.whole.length); }

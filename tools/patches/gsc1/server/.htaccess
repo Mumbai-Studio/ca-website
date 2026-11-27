@@ -1,0 +1,299 @@
+# Collaborative Architecture · server settings for Apache and LiteSpeed (cPanel and most shared hosts)
+# Written by tools/build.js: change server/redirects.txt or tools/build.js, then build again; do not edit this copy.
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html index.php
+AddDefaultCharset utf-8
+AddType image/webp .webp
+AddType text/markdown .md
+AddType application/manifest+json .webmanifest
+AddType font/woff2 .woff2
+AddCharset utf-8 .md .txt .xml .json .js .css
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# one address for search engines: https, no www (only on the real domain, so a test address keeps working)
+RewriteCond %{HTTP_HOST} ^www\.collaborativearchitecture\.com$ [NC]
+RewriteRule ^ https://collaborativearchitecture.com%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^collaborativearchitecture\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://collaborativearchitecture.com%{REQUEST_URI} [R=301,L]
+
+# copy protection (13 November 2026, tools/guard.js): site-copying tools and hidden (headless) browsers get 403 and the studio's
+# name and addresses; search engines, AI crawlers and assistants (also any agent that signs its requests), SEO and speed tools
+# and link previews always pass; the text files (robots.txt, sitemap.xml, llms.txt, feeds, Markdown copies) stay open to all
+RewriteCond %{HTTP:Signature-Agent} .
+RewriteRule ^ - [CO=ca-agent:1:collaborativearchitecture.com:1440:/:true:false]
+RewriteCond %{REQUEST_URI} !(\.(txt|md|xml|json)$|^/403\.html$|^/\.well-known/)
+RewriteCond %{HTTP:Signature-Agent} ^$
+RewriteCond %{HTTP_USER_AGENT} !(Googlebot|Google-InspectionTool|GoogleOther|Google-Extended|Storebot-Google|AdsBot-Google|Mediapartners-Google|FeedFetcher-Google|Google-Read-Aloud|Google-Site-Verification|Google-CloudVertexBot|APIs-Google|Google-Safety|bingbot|BingPreview|MicrosoftPreview|msnbot|adidxbot|DuckDuckBot|DuckAssistBot|YandexBot|YandexRenderResourcesBot|YandexImages|Baiduspider|Sogou|360Spider|PetalBot|coccocbot|Applebot|SeznamBot|Yeti|NaverBot|Qwantbot|MojeekBot|archive\.org_bot|ia_archiver|GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-User|Claude-SearchBot|anthropic-ai|PerplexityBot|Perplexity-User|meta-externalagent|meta-externalfetcher|FacebookBot|Amazonbot|CCBot|Bytespider|GrokBot|xAI-Grok|Grok-DeepSearch|cohere-ai|MistralAI-User|YouBot|Chrome-Lighthouse|PTST|GTmetrix|Pingdom|SemrushBot|SiteAuditBot|AhrefsBot|AhrefsSiteAudit|Screaming\sFrog|Sitebulb|rogerbot|dotbot|MJ12bot|DataForSeoBot|serpstatbot|BLEXBot|Seobility|Lumar|deepcrawl|ContentKing|OncrawlBot|botify|W3C_Validator|W3C-checklink|Validator\.nu|UptimeRobot|StatusCake|facebookexternalhit|Facebot|LinkedInBot|Twitterbot|Pinterest|Slackbot|Discordbot|WhatsApp|TelegramBot|SkypeUriPreview|redditbot|Embedly|Iframely|Bingbot|Applebot-Extended|Sogou\sweb\sspider|coccocbot-web) [NC]
+RewriteCond %{HTTP_USER_AGENT} (HTTrack|Wget|WebCopier|Cyotek|WebCopy|Teleport|Offline\sExplorer|OfflineExplorer|SiteSucker|WebZIP|WebStripper|WebReaper|BlackWidow|SiteSnagger|WebWhacker|Website\sExtractor|Website\sDownloader|Web\sDownloader|WebSauger|PageNest|Scrapy|craft-anything|CraftAnything|HeadlessChrome|PhantomJS|SlimerJS|Puppeteer|Playwright|Selenium) [NC]
+RewriteRule ^ - [F,L]
+
+# closed to the web: the form handlers' private folder, and hidden files (but not /.well-known/, which certificates need)
+RewriteRule ^_private(/|$) - [F,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteRule (^|/)\. - [F,L]
+
+# old addresses of the WordPress site (server/redirects.txt)
+# 26 November 2026 (Search Console, Pages report): old addresses Google still asks for (patch gsc1)
+# feed links that once read "feeds/..." without the leading slash, so /news/press/ made /news/press/feeds/...
+RewriteRule ^.+/feeds/(logs|news|press|projects)\.xml$ https://collaborativearchitecture.com/feeds/$1.xml [R=301,L]
+RewriteRule ^en/?$ https://collaborativearchitecture.com/ [R=301,L]
+RewriteRule ^portfolio/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^wp-content/uploads/2020/11/2020-AUG-MGS-ARCHITECTURE\.pdf$ https://collaborativearchitecture.com/press/features/2020-mgs-architecture-designing-peace-cooper-hewitt.pdf [R=301,L]
+RewriteRule ^wp-content/uploads/2020/11/2019-FEB-ARCHITECTURE-DESIGN\.pdf$ https://collaborativearchitecture.com/press/features/2019-02-architecture-and-design-global-dynamics.pdf [R=301,L]
+RewriteRule ^wp-content/uploads/2020/11/3\.-IO-July-16_Lalita-Mujib\.pdf$ https://collaborativearchitecture.com/press/features/2016-07-inside-outside-interview-with-the-principals.pdf [R=301,L]
+RewriteRule ^wp-content/uploads/2020/12/2015-JUL-FX\.pdf$ https://collaborativearchitecture.com/press/features/2015-07-fx-reflected-topography.pdf [R=301,L]
+# the old WordPress search: /search/... is gone, and /?s=... goes to the home page without the query
+RewriteRule ^search/ - [G,L]
+RewriteCond %{QUERY_STRING} (^|&)s=
+RewriteRule ^$ https://collaborativearchitecture.com/? [R=301,L]
+
+RewriteRule ^portfolio-item/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/reflected-topography-bgrt/?$ https://collaborativearchitecture.com/work/reflected-topography/ [R=301,L]
+RewriteRule ^portfolio-item/house-of-cantilevers-residential-luxury-villas-bespoke-homes/?$ https://collaborativearchitecture.com/work/house-of-cantilevers/ [R=301,L]
+RewriteRule ^portfolio-item/stacked-tectonics-jdt-primary-school/?$ https://collaborativearchitecture.com/work/stacked-tectonics/ [R=301,L]
+RewriteRule ^portfolio-item/indian-national-war-museum/?$ https://collaborativearchitecture.com/work/peace-pavilion/ [R=301,L]
+RewriteRule ^portfolio-item/ntt-data-center/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/wedge-1/?$ https://collaborativearchitecture.com/work/wedge-1/ [R=301,L]
+RewriteRule ^portfolio-item/cold-war-memorial/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/cascadia-bcda-iconic-tower/?$ https://collaborativearchitecture.com/work/cascadia/ [R=301,L]
+RewriteRule ^portfolio-item/show-condominium-the-legend/?$ https://collaborativearchitecture.com/work/the-legend/ [R=301,L]
+RewriteRule ^portfolio-item/concentrico/?$ https://collaborativearchitecture.com/work/the-spline/ [R=301,L]
+RewriteRule ^portfolio-item/bgrt/?$ https://collaborativearchitecture.com/work/bgrt-mumbai/ [R=301,L]
+RewriteRule ^portfolio-item/the-souk-dubai-design-week-2019/?$ https://collaborativearchitecture.com/work/the-souk/ [R=301,L]
+RewriteRule ^portfolio-item/inverted-topography-mezban/?$ https://collaborativearchitecture.com/work/inverted-topography/ [R=301,L]
+RewriteRule ^portfolio-item/jellyfish-water-sports-club/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/sandy-hook-memorial/?$ https://collaborativearchitecture.com/work/sandy-hook-memorial/ [R=301,L]
+RewriteRule ^portfolio-item/apartment-by-the-bay/?$ https://collaborativearchitecture.com/work/apartment-by-the-bay/ [R=301,L]
+RewriteRule ^portfolio-item/bamboo/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/iconic-mosque/?$ https://collaborativearchitecture.com/work/iconic-mosque/ [R=301,L]
+RewriteRule ^portfolio-item/wrap-3-jdt-informatic-center/?$ https://collaborativearchitecture.com/work/wrap-3/ [R=301,L]
+RewriteRule ^portfolio-item/reimagining-brooklyn-brigde/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/50th-crossroads-show-condominium/?$ https://collaborativearchitecture.com/work/50th-cross-road/ [R=301,L]
+RewriteRule ^portfolio-item/topography-1/?$ https://collaborativearchitecture.com/expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^portfolio-item/aafco-experience-centre/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/spicy-route/?$ https://collaborativearchitecture.com/work/spicy-route/ [R=301,L]
+RewriteRule ^portfolio-item/concept-bedroom/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/musi-river-revitilization/?$ https://collaborativearchitecture.com/work/musi-eco-corridor/ [R=301,L]
+RewriteRule ^portfolio-item/hetro-pharma/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/bhatia-residence/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/herman-miller-experience-center/?$ https://collaborativearchitecture.com/work/miller-knoll-experience-center/ [R=301,L]
+RewriteRule ^portfolio-item/wrap-4-ktc-hyundai/?$ https://collaborativearchitecture.com/work/wrap-4/ [R=301,L]
+RewriteRule ^portfolio-item/data-center/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/prototype-non/?$ https://collaborativearchitecture.com/work/prototype-non/ [R=301,L]
+RewriteRule ^portfolio-item/art-center/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/cocoon/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/linked-house/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/thyssenkrupp-experience-center/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/concept-pavilion-titan-watches/?$ https://collaborativearchitecture.com/work/concept-pavilion-ii/ [R=301,L]
+RewriteRule ^portfolio-item/bajaj-electricals/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/irooms-hotel-asma-tower/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/parallel-house/?$ https://collaborativearchitecture.com/work/parallel-house/ [R=301,L]
+RewriteRule ^portfolio-item/israeli-lounge-kenndey-center/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/lifestyle-store/?$ https://collaborativearchitecture.com/work/stanley-lifestyle-store/ [R=301,L]
+RewriteRule ^portfolio-item/stacked-wedges-secura/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/the-uptown/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/50th-crossroads-lobby/?$ https://collaborativearchitecture.com/work/50th-cross-road/ [R=301,L]
+RewriteRule ^portfolio-item/kns-retail/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/sherif-villa/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-item/poppy-parasol/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^portfolio-item/cooper-hewitt/?$ https://collaborativearchitecture.com/awards/ [R=301,L]
+RewriteRule ^portfolio-item/the-legend-show-condominium/?$ https://collaborativearchitecture.com/work/the-legend/ [R=301,L]
+RewriteRule ^portfolio-item/urnes-slave-heritage-center/?$ https://collaborativearchitecture.com/work/urnes-stave-heritage-center/ [R=301,L]
+RewriteRule ^portfolio-item/indian-national-unity-pavilion/?$ https://collaborativearchitecture.com/work/national-unity-pavilion/ [R=301,L]
+RewriteRule ^home/?$ https://collaborativearchitecture.com/ [R=301,L]
+RewriteRule ^home\.html$ https://collaborativearchitecture.com/ [R=301,L]
+RewriteRule ^contact-us/?$ https://collaborativearchitecture.com/contact/ [R=301,L]
+RewriteRule ^projects/indian-national-peace-museum/?$ https://collaborativearchitecture.com/work/peace-pavilion/ [R=301,L]
+RewriteRule ^projects/stacked-tectonics/?$ https://collaborativearchitecture.com/work/stacked-tectonics/ [R=301,L]
+RewriteRule ^projects/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^team/?$ https://collaborativearchitecture.com/studio/ [R=301,L]
+RewriteRule ^main-home/?$ https://collaborativearchitecture.com/ [R=301,L]
+RewriteRule ^new-home/?$ https://collaborativearchitecture.com/ [R=301,L]
+RewriteRule ^main-index-dublicate/?$ https://collaborativearchitecture.com/ [R=301,L]
+RewriteRule ^about/?$ https://collaborativearchitecture.com/studio/ [R=301,L]
+RewriteRule ^experts-team/?$ https://collaborativearchitecture.com/studio/ [R=301,L]
+RewriteRule ^meet-the-team/?$ https://collaborativearchitecture.com/studio/ [R=301,L]
+RewriteRule ^contact-1/?$ https://collaborativearchitecture.com/contact/ [R=301,L]
+RewriteRule ^all/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^project-list/?$ https://collaborativearchitecture.com/work/index/ [R=301,L]
+RewriteRule ^residential/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^hospitality/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^retail/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^offices/?$ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^education/?$ https://collaborativearchitecture.com/expertise/architecture/ [R=301,L]
+RewriteRule ^cultural/?$ https://collaborativearchitecture.com/expertise/architecture/ [R=301,L]
+RewriteRule ^civic/?$ https://collaborativearchitecture.com/expertise/architecture/ [R=301,L]
+RewriteRule ^adaptive-reuse/?$ https://collaborativearchitecture.com/expertise/architecture/ [R=301,L]
+RewriteRule ^expertise-architecture/?$ https://collaborativearchitecture.com/expertise/architecture/ [R=301,L]
+RewriteRule ^expertise-interior-architecture/?$ https://collaborativearchitecture.com/expertise/interior-architecture/ [R=301,L]
+RewriteRule ^expertise-urban-design/?$ https://collaborativearchitecture.com/expertise/urban-design-and-infrastructure/ [R=301,L]
+RewriteRule ^master-planning/?$ https://collaborativearchitecture.com/expertise/urban-design-and-infrastructure/ [R=301,L]
+RewriteRule ^temporary-architecture/?$ https://collaborativearchitecture.com/expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^exhibitions-installations/?$ https://collaborativearchitecture.com/expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^graphics/?$ https://collaborativearchitecture.com/expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^environmental-graphics/?$ https://collaborativearchitecture.com/expertise/narrative-environments-and-installations/ [R=301,L]
+RewriteRule ^products/?$ https://collaborativearchitecture.com/expertise/products-and-objects/ [R=301,L]
+RewriteRule ^product-design/?$ https://collaborativearchitecture.com/expertise/products-and-objects/ [R=301,L]
+RewriteRule ^design-management/?$ https://collaborativearchitecture.com/expertise/design-and-behavioral-mapping/ [R=301,L]
+RewriteRule ^total-design/?$ https://collaborativearchitecture.com/expertise/ [R=301,L]
+RewriteRule ^design-life-cycle/?$ https://collaborativearchitecture.com/studio/approach/ [R=301,L]
+RewriteRule ^collaborative-lab-research/?$ https://collaborativearchitecture.com/lab/ [R=301,L]
+RewriteRule ^ideas/?$ https://collaborativearchitecture.com/lab/ [R=301,L]
+RewriteRule ^latest-awards/?$ https://collaborativearchitecture.com/awards/ [R=301,L]
+RewriteRule ^awards2/?$ https://collaborativearchitecture.com/awards/ [R=301,L]
+RewriteRule ^news-archives/?$ https://collaborativearchitecture.com/news/ [R=301,L]
+RewriteRule ^blogs-archives/?$ https://collaborativearchitecture.com/news/ [R=301,L]
+RewriteRule ^blog/?$ https://collaborativearchitecture.com/news/ [R=301,L]
+RewriteRule ^lectures/?$ https://collaborativearchitecture.com/news/ [R=301,L]
+RewriteRule ^videos/?$ https://collaborativearchitecture.com/news/ [R=301,L]
+RewriteRule ^publications/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^mgs-architecture/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^what-is-iconic-design-interior-decor/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^collaborative-architecture_interior-decor-oct-nov-2020-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-oct-gid-profile-collaborative-architecture/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2020-jul-mgs-architecture-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2020-mar-surface-reporter-interview-lalita-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2019-dec-architecture-design/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2019-sep-decorama-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2019-mar-surface-reporter-interview-lalita-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2019-feb-architecture-design-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2018-dec-incite-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2018-dec-society-interiors-profile-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2018-jun-mgs-architecture-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2018-jun-living-etc-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2018-apr-interiors-decore-interview-issue-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2017-iag-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2017-bluprint-special-issue-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2017-jul-interiors-decore-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2017-jul-architects-interiors-india-hot100-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2017-jul-buildotech-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^216-iag-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-aug-gid-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-jun-mondo-arc-india-edition-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-may-decorama-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-mar-architects-interiors-india-hot100-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-feb-ideal-home-garden-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-jan-trends-interview-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2016-jan-society-interiors-icon-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-dec-society-interior-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-dec-domus-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-nov-trends-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-sep-2a-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-jul-fx-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2015-jun-lux-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2014-restaurant-and-bar-design-3-art-power-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^2014-mar-indian-furniture-journal-profile-2/?$ https://collaborativearchitecture.com/news/press/ [R=301,L]
+RewriteRule ^feed/?$ https://collaborativearchitecture.com/feeds/news.xml [R=301,L]
+RewriteRule ^sitemap_index\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^page-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^post-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^portfolio-item-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^category-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^post_tag-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^portfolio-category-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^portfolio-tag-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^testimonials_category-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^carousels_category-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^slides_category-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^author-sitemap\.xml$ https://collaborativearchitecture.com/sitemap.xml [R=301,L]
+RewriteRule ^expertise/design-management/?$ https://collaborativearchitecture.com/expertise/design-and-behavioral-mapping/ [R=301,L]
+RewriteRule ^expertise/design-and-behavioural-mapping/?$ https://collaborativearchitecture.com/expertise/design-and-behavioral-mapping/ [R=301,L]
+RewriteRule ^work/urnes-stave-heritage-centre/?$ https://collaborativearchitecture.com/work/urnes-stave-heritage-center/ [R=301,L]
+RewriteRule ^cookies/?$ https://collaborativearchitecture.com/privacy/ [R=301,L]
+RewriteRule ^cart/?$ - [G,L]
+RewriteRule ^checkout/?$ - [G,L]
+RewriteRule ^my-account/?$ - [G,L]
+RewriteRule ^architecture-studio/?$ - [G,L]
+RewriteRule ^home-decor/?$ - [G,L]
+RewriteRule ^remodeling-home/?$ - [G,L]
+RewriteRule ^furniture-store/?$ - [G,L]
+RewriteRule ^left-menu-home/?$ - [G,L]
+RewriteRule ^construction-home/?$ - [G,L]
+RewriteRule ^interior-design/?$ - [G,L]
+RewriteRule ^building-home/?$ - [G,L]
+RewriteRule ^vertical-slider/?$ - [G,L]
+RewriteRule ^interactive-slider/?$ - [G,L]
+RewriteRule ^portfolio-tiles/?$ - [G,L]
+RewriteRule ^landing/?$ - [G,L]
+RewriteRule ^hover-effects/?$ - [G,L]
+RewriteRule ^parallax-presentation/?$ - [G,L]
+RewriteRule ^sample-page/?$ - [G,L]
+RewriteRule ^testing/?$ - [G,L]
+RewriteRule ^portfolio-gallery_dublicate/?$ - [G,L]
+RewriteRule ^comments/feed/?$ - [G,L]
+RewriteRule ^wp-login\.php$ - [G,L]
+RewriteRule ^xmlrpc\.php$ - [G,L]
+RewriteRule ^testimonials_category/ - [G,L]
+RewriteRule ^portfolio-category/ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^carousels_category/ - [G,L]
+RewriteRule ^slides_category/ - [G,L]
+RewriteRule ^portfolio-item/ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^projects/ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^portfolio-tag/ https://collaborativearchitecture.com/work/ [R=301,L]
+RewriteRule ^services-all/ - [G,L]
+RewriteRule ^wp-includes/ - [G,L]
+RewriteRule ^wp-content/ - [G,L]
+RewriteRule ^portfolio/ - [G,L]
+RewriteRule ^category/ https://collaborativearchitecture.com/news/ [R=301,L]
+RewriteRule ^elements/ - [G,L]
+RewriteRule ^wp-admin - [G,L]
+RewriteRule ^author/ https://collaborativearchitecture.com/studio/ [R=301,L]
+RewriteRule ^wp-json - [G,L]
+RewriteRule ^shop/ - [G,L]
+RewriteRule ^blog/ - [G,L]
+RewriteRule ^2015/ - [G,L]
+RewriteRule ^2016/ - [G,L]
+RewriteRule ^2020/ - [G,L]
+RewriteRule ^tag/ https://collaborativearchitecture.com/news/ [R=301,L]
+
+# AI assistants that ask for Markdown (Accept: text/markdown) get the page's Markdown copy, the same text as the page
+RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.md -f
+RewriteRule ^(.*?)/?$ $1/index.md [L]
+# 9 November 2026 (SEO audit): each Markdown copy names its page as canonical (Link header, below), so search engines index the page, not the copy
+RewriteRule ^(.*/)?index\.md$ - [E=CA_MD_PAGE:/$1]
+# 26 November 2026 (Search Console, patch gsc1): the feeds are for feed readers; search engines may read them, not list them
+RewriteRule ^feeds/ - [E=CA_FEED:1]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-so78EsL13WkSv15ejZupKLYhNIGDM9+A9L5nirao6W4=' 'sha256-82AwgoR/TRkX92d7lf5f4CyUZ9Hw039ex9zYKrVMk7M=' https://www.googletagmanager.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; media-src 'self' blob:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  <FilesMatch "\.(html|md)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+    Header merge Vary "Accept"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico|mp4|webm|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "^(site-[0-9]+|data-[a-z0-9-]+|boot|load)\.[0-9a-f]{12}\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^(robots\.txt|sitemap\.xml|llms\.txt|llms-full\.txt|site-config\.js|site\.webmanifest|ca-fonts\.css)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+  <FilesMatch "^(index|404)\.html$">
+    Header set Link "</llms.txt>; rel=\"describedby\"; type=\"text/plain\""
+  </FilesMatch>
+  Header set Link "<https://collaborativearchitecture.com%{CA_MD_PAGE}e>; rel=\"canonical\"" env=CA_MD_PAGE
+  Header set X-Robots-Tag "noindex, follow" env=CA_FEED
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml text/xml text/plain text/markdown image/svg+xml application/manifest+json application/feed+json application/rss+xml
+</IfModule>

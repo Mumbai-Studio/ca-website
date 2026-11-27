@@ -1,0 +1,24 @@
+Patch 2026-11-27-forms1: one package for the host, with the forms' email, Career on the Contact page, and patches gsc1 and ahrefs1
+
+What it does for email: every Contact form inquiry and every newsletter notice is sent through Google with an app password, so it
+lands in the right inbox: Client, Consultants and Research at enquiry@, Career at studio@, Vendors at vendors@, newsletter
+sign-ups at newsletter@ (press@).
+
+Nothing has to be pasted for it to work: it uses press@'s app password from patch newsletter1 (sent to the host separately, with
+the Mailchimp key and the Cloudflare secret). The inquiries arrive "from" press@ under the name "Collaborative Architecture
+website", and pressing Reply answers the visitor. If enquiry@, studio@ or vendors@ should later send their own form emails, the
+host can paste that mailbox's app password into api/mail.php on the server.
+
+Contact page: with "Career" chosen, the form gives way to the careers note of the Studio page (with "email a portfolio"), its
+Design-Snippet link, and studio@collaborativearchitecture.com as a link. The other inquiry types keep the form. The Studio page
+itself is unchanged.
+
+Also needed, in DNS (Cloudflare > collaborativearchitecture.com > DNS), for all of the studio's email, not only the website's:
+  - SPF: add a TXT record, name "@", content:  v=spf1 include:_spf.google.com ~all
+    (the domain has none today; add other services here only if they send email as @collaborativearchitecture.com)
+  - DKIM: Google Admin console > Apps > Google Workspace > Gmail > Authenticate email > Generate new record. Add the TXT record
+    it shows (name google._domainkey) in Cloudflare, then press Start authentication in Google Admin.
+  The DMARC record is already there (p=none) and Mailchimp's own records (k2 and k3) are in place.
+
+The key of the email check page is check_key in upload/api/mail.php inside the zip. The zip holds no password or key of the
+studio's accounts, so it can go to the host as usual; patch newsletter1 stays private.

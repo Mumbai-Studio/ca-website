@@ -11,7 +11,7 @@
 /portfolio-item/reflected-topography-bgrt/                              /work/reflected-topography/
 /portfolio-item/house-of-cantilevers-residential-luxury-villas-bespoke-homes/  /work/house-of-cantilevers/
 /portfolio-item/stacked-tectonics-jdt-primary-school/                   /work/stacked-tectonics/
-/portfolio-item/indian-national-war-museum/                             /work/
+/portfolio-item/indian-national-war-museum/                             /work/peace-pavilion/
 /portfolio-item/ntt-data-center/                                        /work/index/
 /portfolio-item/wedge-1/                                                /work/wedge-1/
 /portfolio-item/cold-war-memorial/                                      /work/index/
@@ -31,9 +31,9 @@
 /portfolio-item/50th-crossroads-show-condominium/                       /work/50th-cross-road/
 /portfolio-item/topography-1/                                           /expertise/narrative-environments-and-installations/
 /portfolio-item/aafco-experience-centre/                                /work/index/
-/portfolio-item/spicy-route/                                            /work/index/
+/portfolio-item/spicy-route/                                            /work/spicy-route/
 /portfolio-item/concept-bedroom/                                        /work/
-/portfolio-item/musi-river-revitilization/                              /work/index/
+/portfolio-item/musi-river-revitilization/                              /work/musi-eco-corridor/
 /portfolio-item/hetro-pharma/                                           /work/
 /portfolio-item/bhatia-residence/                                       /work/
 /portfolio-item/herman-miller-experience-center/                        /work/miller-knoll-experience-center/
@@ -44,10 +44,10 @@
 /portfolio-item/cocoon/                                                 /work/
 /portfolio-item/linked-house/                                           /work/
 /portfolio-item/thyssenkrupp-experience-center/                         /work/
-/portfolio-item/concept-pavilion-titan-watches/                         /work/index/
+/portfolio-item/concept-pavilion-titan-watches/                         /work/concept-pavilion-ii/
 /portfolio-item/bajaj-electricals/                                      /work/index/
 /portfolio-item/irooms-hotel-asma-tower/                                /work/index/
-/portfolio-item/parallel-house/                                         /work/index/
+/portfolio-item/parallel-house/                                         /work/parallel-house/
 /portfolio-item/israeli-lounge-kenndey-center/                          /work/
 /portfolio-item/lifestyle-store/                                        /work/stanley-lifestyle-store/
 /portfolio-item/stacked-wedges-secura/                                  /work/
@@ -64,6 +64,12 @@
 
 # ---- the studio's pages ----
 /home/                          /
+/home.html                      /
+/contact-us/                    /contact/
+/projects/indian-national-peace-museum/  /work/peace-pavilion/
+/projects/stacked-tectonics/    /work/stacked-tectonics/
+/projects/                      /work/
+/team/                          /studio/
 /main-home/                     /
 /new-home/                      /
 /main-index-dublicate/          /
@@ -174,6 +180,7 @@
 /my-account/                    410
 /blog/*                         410
 /elements/*                     410
+/projects/*                     /work/
 /portfolio/*                    410
 /services-all/*                 410
 /architecture-studio/           410
@@ -206,3 +213,22 @@
 /wp-includes/*                  410
 /wp-json*                       410
 /xmlrpc.php                     410
+
+# ---- 26 November 2026, patch gsc1: addresses Google Search Console still asked for (Pages report) ----
+/en/                                                       /
+/portfolio/                                                /work/
+/news/press/feeds/logs.xml                                 /feeds/logs.xml
+/news/press/feeds/news.xml                                 /feeds/news.xml
+/news/press/feeds/press.xml                                /feeds/press.xml
+/news/press/feeds/projects.xml                             /feeds/projects.xml
+/news/feeds/logs.xml                                       /feeds/logs.xml
+/news/feeds/news.xml                                       /feeds/news.xml
+/news/feeds/press.xml                                      /feeds/press.xml
+/news/feeds/projects.xml                                   /feeds/projects.xml
+/wp-content/uploads/2020/11/2020-AUG-MGS-ARCHITECTURE.pdf  /press/features/2020-mgs-architecture-designing-peace-cooper-hewitt.pdf
+/wp-content/uploads/2020/11/2019-FEB-ARCHITECTURE-DESIGN.pdf  /press/features/2019-02-architecture-and-design-global-dynamics.pdf
+/wp-content/uploads/2020/11/3.-IO-July-16_Lalita-Mujib.pdf    /press/features/2016-07-inside-outside-interview-with-the-principals.pdf
+/wp-content/uploads/2020/12/2015-JUL-FX.pdf                /press/features/2015-07-fx-reflected-topography.pdf
+/search/*                                                  410
+# Not expressible in this list, so kept by hand in the live .htaccess, _headers and nginx.conf (tools/patches/make_server_gsc1.py):
+# the home page with ?s=… goes to / without the query, and /feeds/ answers with X-Robots-Tag: noindex, follow.
