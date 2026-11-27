@@ -21,5 +21,3 @@ Open with > Notepad; paste between the two quotes on the marked line, keep the q
 
 Then send the whole folder to the host privately (not in a shared channel): right-click the folder > Send to > Compressed
 (zipped) folder. These keys open the Mailchimp account, press@'s mail and the Cloudflare check; never post them anywhere.
-
-If you like, tell Claude once the three values are in: it can check the two files are well formed without reading the values.
