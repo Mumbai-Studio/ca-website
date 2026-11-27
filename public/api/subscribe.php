@@ -39,7 +39,8 @@ $nlFrom = filter_var((string) ($own['mail_from'] ?? ''), FILTER_VALIDATE_EMAIL) 
 $nlAs = ['from_email' => $nlFrom, 'from_name' => (string) ($own['mail_from_name'] ?? 'Collaborative Architecture newsletter'),
     // press@'s app password filled in: Gmail, signed in as press@; otherwise the server's own mail(), still as newsletter@
     'smtp' => trim((string) ($own['mail_pass'] ?? '')) !== ''
-        ? ['host' => 'smtp.gmail.com', 'port' => 465, 'secure' => 'ssl', 'user' => (string) ($own['mail_user'] ?? 'press@collaborativearchitecture.com'), 'pass' => (string) $own['mail_pass']]
+        // 27 November 2026 (patch mail1): the app password without the spaces Google shows it with; port 587 when 465 is closed (lib.php)
+        ? ['host' => ca_config()['google']['host'], 'port' => 465, 'secure' => 'ssl', 'user' => (string) ($own['mail_user'] ?? 'press@collaborativearchitecture.com'), 'pass' => str_replace(' ', '', trim((string) $own['mail_pass']))]
         : ['host' => '', 'port' => 465, 'secure' => 'ssl', 'user' => '', 'pass' => '']];
 if ($mc['api_key'] !== '' && $mc['list_id'] !== '') {
     $dc = substr(strrchr($mc['api_key'], '-') ?: '-us1', 1);
